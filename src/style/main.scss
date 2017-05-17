@@ -1,0 +1,275 @@
+/*
+* Third Party
+*/
+@import "../../bower_components/normalize-css/normalize.scss";
+@import "../../bower_components/bootstrap-sass/assets/stylesheets/_bootstrap.scss";
+
+/*
+* Custom
+*/
+
+@import "partials/variable";
+@import "partials/fonts";
+@import "partials/owl.carousel.scss";
+@import "partials/sv_icons.scss";
+@import "partials/magnific-popup.scss";
+@import "partials/sprite.scss";
+
+body {
+	font-family: "Rob-reg";
+	letter-spacing: 1px;
+	color: $text;
+	overflow-x: hidden;
+}
+
+//icons
+
+.flex {
+	display: flex;
+	align-items: center;
+	i {
+		margin-right: 12px;
+	}
+}
+
+
+[class^="ic-"] {
+	display: inline-block;
+}
+
+.ic-man {
+	@include sprite($man);
+}
+
+.ic-phone {
+	@include sprite($phone);
+}
+
+.ic-mail {
+	@include sprite($mail);
+}
+
+
+ 
+.header {
+
+	&__container {
+		display: flex;
+	}
+
+	&__logo {
+		flex: 0 1 auto;
+		width: 190px;
+		padding: 15px 0;
+	}
+
+	&__info {
+		flex: 1 0 auto;
+	}
+
+	&__top {
+		display: flex;
+		justify-content: flex-end;
+		align-items: center;
+		padding: 24px 0;
+	}
+
+	&__contacts {
+		display: flex;
+		justify-content: flex-end;
+		align-items: center;
+	}
+
+	&__phones {
+		display: flex;
+		flex-direction: column;
+	}
+
+	&__login {
+
+		a {
+			color: $text;
+
+			&:hover {
+				color: $brand2;
+			}
+		}
+	}
+
+	&__lang {
+		margin-left: 20px;
+		border-right: 1px solid #707070;
+		border-left: 1px solid #707070;
+	}
+
+	&__cart {
+		margin-left: 20px;
+
+		.shortcut_heading {
+			color: $text;
+		}
+	}
+
+	&__callback {
+		margin-left: 30px;
+		a {
+			color: #fff;
+			background-color: $brand;
+			padding: 11px 28px;
+			font-family: "Rob-light";
+
+			&:hover {
+				background-color: $brand2;
+			}
+		}
+	}
+
+	&__bot {
+		position: relative;
+		height: 46px;
+		display: flex;
+		align-items: center;
+		justify-content: flex-end;
+		background-color: $brand2;
+
+		&:before {
+			content: "";
+			position: absolute;
+			left: 100%;
+			top: 0;
+			height: 100%;
+			width: 999px;
+			background-color: $brand2;
+		}
+
+		&:after {
+			content: "";
+			border: 65px solid transparent;
+			border-bottom-width: 46px;
+			position: absolute;
+			right: 100%;
+			bottom: 0;
+			border-bottom-color: $brand2;
+			transform: translateX(50%);
+		}
+
+		a {
+			color: #fff;
+		}
+	}
+
+	&__phones,
+	&__mail{
+		padding-left: 36px;
+		position: relative;
+		margin-left: 36px;
+
+		i {
+			position: absolute;
+			left: 0;
+			top: 50%;
+			transform: translateY(-50%);
+		}
+
+		a {
+			font-size: 15px;
+
+			&:hover {
+				color: $brand;
+				text-decoration: none;
+			}
+		}
+	}
+
+	&__phones {
+		padding-left: 29px;
+	}
+
+	&__mail {
+		a {
+			text-decoration: underline;
+		}
+	}
+
+	#menu {
+		& > ul {
+			& > li {
+				margin-right: 30px;
+				position: relative;
+				
+				&:after {
+					content: "";
+					height: 12px;
+					width: 1px;
+					background-color: #444;
+					position: absolute;
+					left: calc(100% + 14px);
+					top: calc(50% - 6px);
+				}
+
+				& > a {
+					font-size: 15px;
+					color: #fff;
+					padding: 10px 3px;
+					font-family: "Rob-thin";
+					display: inline-block;
+					vertical-align: middle;
+					-webkit-transform: perspective(1px) translateZ(0);
+					transform: perspective(1px) translateZ(0);
+					box-shadow: 0 0 1px transparent;
+					position: relative;
+					overflow: hidden;
+
+					i {
+						margin-left: 5px;
+						position: relative;
+						top: -2px;
+					}
+
+					&:before {
+						content: "";
+						position: absolute;
+						z-index: -1;
+						left: 50%;
+						right: 50%;
+						bottom: 0;
+						background: $brand2;
+						height: 2px;
+						-webkit-transition-property: left, right;
+						transition-property: left, right;
+						-webkit-transition-duration: 0.3s;
+						transition-duration: 0.3s;
+						-webkit-transition-timing-function: ease-out;
+						transition-timing-function: ease-out;
+					}
+
+					&:hover,
+					&:focus,
+					&:active {
+						background-color: transparent;
+						&:before {
+							left: 0;
+							right: 0;
+						}
+					}
+				}
+			}
+		}
+
+		a {
+			color: $text;
+			&:hover {
+				background-color: $brand;
+				color: #fff;
+			}
+		}
+	}
+
+	.menu_wrapper {
+		background-color: #151515;
+		padding: 35px 0;
+	}
+}
+
+
+@import "partials/media.scss";

@@ -2,7 +2,8 @@
 <div class="language_current contrast_font">
 <?php foreach ($languages as $language) { ?>
     <?php if ($language['code'] == $code) { ?>
-    <a class="head"><img src="catalog/language/<?php echo $language['code']; ?>/<?php echo $language['code']; ?>.png" alt="<?php echo $language['name']; ?>" title="<?php echo $language['name']; ?>" />
+    <a class="head">
+    <?php echo $language['name']; ?>
     <i class="fa fa-angle-down"></i></a>
     <?php } ?>
     <?php } ?>
