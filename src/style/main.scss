@@ -32,6 +32,15 @@ body {
 	}
 }
 
+.no-clearfix {
+	&:before {
+		display: none;
+	}
+
+	&:after {
+		display: none;
+	}
+}
 
 [class^="ic-"] {
 	display: inline-block;
@@ -49,7 +58,13 @@ body {
 	@include sprite($mail);
 }
 
+.ic-location {
+	@include sprite($location);
+}
 
+.ic-cart {
+	@include sprite($cart);
+}
  
 .header {
 
@@ -271,5 +286,103 @@ body {
 	}
 }
 
+.footer {
+	font-size: 13px;
+	border-top: 6px solid #111111;
+	padding-top: 50px;
+	color: $brand;
+	a {
+		color: $brand;
+		&:hover {
+			color: $brand2;
+		}
+	}
+
+	&__container {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		text-align: center;	
+	}
+
+	&__list {
+		padding-left: 0;
+		list-style-type: none;
+
+		&-item {
+			margin-bottom: 20px;
+		}
+	}
+
+	&__logo {
+		margin-bottom: 40px;
+	}
+
+	&__losung {
+		font-size: 18px;
+		font-family: "Rob-bold";
+		text-transform: uppercase;
+		position: relative;
+		margin-bottom: 65px;
+
+		&:before {
+			content: "";
+			position: absolute;
+			left: calc(50% - 59px);
+			width: 108px;
+			top: calc(100% + 33px);
+			height: 1px;
+			background-color: #a1a1a1;
+		}
+	}
+
+	&__info {
+		display: flex;
+	}
+
+	&__column {
+		max-width: 270px;
+		font-family: "Rob-bold";
+
+		&:not(:last-child) {
+			margin-right: 75px;
+		}
+	}
+
+	&__contacts {
+		& > div {
+			margin-bottom: 20px;
+			display: flex;
+			flex-direction: column;
+		}
+	}
+
+	&__column-title {
+		margin-bottom: 35px;
+		padding-top: 50px;
+		position: relative;
+		span {
+			font-size: 18px;
+			text-transform: uppercase;
+			font-family: "Rob-bold";
+		}
+
+		i {
+			position: absolute;
+			left: 50%;
+			top: 0;
+			transform: translateX(-50%);
+		}
+	}
+
+	&__copy {
+		padding: 30px 0;
+		text-align: center;
+		border-top: 1px solid #e1e1e1;
+		font-size: 13px;
+	}
+
+}
+ 
 
 @import "partials/media.scss";

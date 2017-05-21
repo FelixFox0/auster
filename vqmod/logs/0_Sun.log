@@ -1,0 +1,14 @@
+---------- Date: 2017-05-21 19:17:08 ~ IP : 127.0.0.1 ----------
+REQUEST URI : /
+MOD DETAILS:
+   modFile   : C:\OPENSERVER\OpenServer\domains\auster.loc\vqmod/xml/all.install.ocmod.xml
+   id        : 
+   version   : OpenCart Version 2.2
+   vqmver    : 2.0.0
+   author    : Rupak Nepali
+
+File Name    : catalog/view/theme/*/template/common/header.tpl(0)
+VQModObject::applyMod - SEARCH NOT FOUND (ABORTING MOD): <ul class="nav navbar-nav">
+----------------------------------------------------------------------
+
+
