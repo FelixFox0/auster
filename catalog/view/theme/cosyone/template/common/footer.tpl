@@ -1,6 +1,58 @@
-<div class="clearfix footer_margin"></div>
-<?php echo $footer_modules ?>
-<div id="footer">
+<div id="footer" class="footer">
+  <div class="container no-clearfix footer__container">
+    <div class="footer__logo">
+      <a href="#"><img src="/image/catalog/logoo2.png" alt=""></a>
+    </div>
+    <div class="footer__losung">покупай у отечественного производителя</div>
+    <div class="footer__info">
+      <div class="footer__column">
+        <div class="footer__column-title">
+        <i class="ic-cart"></i>
+        <span>ПРОДУКЦИЯ</span>
+        </div>
+        <ul class="footer__list">
+          <li class="footer__list-item">
+            <a href="#">Вентиляционный решетки "Auster "</a>
+          </li>
+          <li class="footer__list-item">
+            <a href="#">Решетки переливные для бассейнов " Wester "</a>
+          </li>
+          <li class="footer__list-item">
+            <a href="#">Нержавеющие решетки для водоотвода "Fluxe "</a>
+          </li>
+          <li class="footer__list-item">
+            <a href="#">Ревизионные и сантехнические люки - невидимки"</a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="footer__column ">
+        <div class="footer__column-title">
+        <i class="ic-location"></i>
+        <span>контакты</span>
+        </div>
+        <div class="footer__contacts">
+          <div class="footer__contacts-address">
+            <a href="#">Україна, м. Київ, ул. Визволителів, 17</a>
+          </div>
+          <div class="footer__contacts-mail">
+            <a href="mailto:StonehengeKiev@gmail.com">StonehengeKiev@gmail.com</a>
+          </div>
+          <div class="footer__contacts-address">
+            <a href="tel:+380 98-480-45-03">+380 98-480-45-03</a>
+            <a href="tel:+380 66-922-69-70">+380 66-922-69-70</a>
+            <a href="tel:+380 66-922-69-70">+380 66-922-69-70</a>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+  <div class="footer__copy">
+    © Stonehenge company, 2017. Все права защищены
+  </div>
+
+  <?php if(false): ?>
 	<div class="column">
 	<div class="box-heading heading">
     <?php echo $cosyone_footer_custom_block_title; ?>
@@ -48,11 +100,12 @@
    <?php } ?>
    <div class="clearfix"></div>
   </div>
+<?php endif; ?>
 <!--
 OpenCart is open source software and you are free to remove the powered by OpenCart if you want, but its generally accepted practise to make a small donation.
 Please donate via PayPal to donate@opencart.com
 //-->
-</div>  <!-- .container ends -->
+
 </div>  <!-- .outer_container ends -->
 <script type="text/javascript" src="catalog/view/theme/cosyone/js/jquery.cookie.js"></script>
 
