@@ -33,6 +33,7 @@
                 <div class="blog-single__description">
                     <p><?php echo html_entity_decode($blog['description']); ?></p>
                 </div>
+              <p><span>youtube</span><?php echo $blog['youtube']; ?></p>
           </div>
         </div>
       </div>

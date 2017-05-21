@@ -4,7 +4,7 @@ class ModelDesignCollections extends Model {
 	public function addcollections($data) {
 		$this->event->trigger('pre.admin.collections.add', $data);
 
-		$this->db->query("INSERT INTO " . DB_PREFIX . "collections SET sort_order = '" . (int)$data['sort_order'] . "', status = '" . (int)$data['status'] . "', date_modified = NOW(), date_added = NOW()");
+		$this->db->query("INSERT INTO " . DB_PREFIX . "collections SET sort_order = '" . (int)$data['sort_order'] . "', youtube = '" . $data['youtube'] . "', status = '" . (int)$data['status'] . "', date_modified = NOW(), date_added = NOW()");
 //        var_dump("INSERT INTO " . DB_PREFIX . "collections SET sort_order = '" . (int)$data['sort_order'] . "', status = '" . (int)$data['status'] . "', date_modified = NOW(), date_added = NOW()");
 		$collections_id = $this->db->getLastId();
 
@@ -51,7 +51,7 @@ class ModelDesignCollections extends Model {
 //        var_dump($data);
 		$this->event->trigger('pre.admin.collections.edit', $data);
 
-		$this->db->query("UPDATE " . DB_PREFIX . "collections SET sort_order = '" . (int)$data['sort_order'] . "', status = '" . (int)$data['status'] . "', date_modified = NOW() WHERE collections_id = '" . (int)$collections_id . "'");
+		$this->db->query("UPDATE " . DB_PREFIX . "collections SET sort_order = '" . (int)$data['sort_order'] . "', youtube = '" . $data['youtube'] . "', status = '" . (int)$data['status'] . "', date_modified = NOW() WHERE collections_id = '" . (int)$collections_id . "'");
 
 		if (isset($data['image'])) {
 			$this->db->query("UPDATE " . DB_PREFIX . "collections SET image = '" . $this->db->escape($data['image']) . "' WHERE collections_id = '" . (int)$collections_id . "'");
@@ -198,7 +198,7 @@ class ModelDesignCollections extends Model {
 	public function getcollectionss($data = array()) {
 //		$sql = "SELECT cp.collections_id AS collections_id, cd1.name AS name, c1.sort_order FROM " . DB_PREFIX . "collections_path cp LEFT JOIN " . DB_PREFIX . "collections c1 ON (cp.collections_id = c1.collections_id) LEFT JOIN " . DB_PREFIX . "collections c2 ON (cp.path_id = c2.collections_id) LEFT JOIN " . DB_PREFIX . "collections_description cd1 ON (cp.path_id = cd1.collections_id) LEFT JOIN " . DB_PREFIX . "collections_description cd2 ON (cp.collections_id = cd2.collections_id) WHERE cd1.language_id = '" . (int)$this->config->get('config_language_id') . "' AND cd2.language_id = '" . (int)$this->config->get('config_language_id') . "'";
         
-        $sql = "SELECT c1.collections_id, c1.sort_order, cd1.name FROM " . DB_PREFIX . "collections c1, " . DB_PREFIX . "collections_description cd1 WHERE cd1.language_id = '" . (int)$this->config->get('config_language_id') . "' AND c1.collections_id = cd1.collections_id";
+        $sql = "SELECT c1.collections_id, c1.sort_order, c1.youtube, cd1.name FROM " . DB_PREFIX . "collections c1, " . DB_PREFIX . "collections_description cd1 WHERE cd1.language_id = '" . (int)$this->config->get('config_language_id') . "' AND c1.collections_id = cd1.collections_id";
         
 //        var_dump($sql);
         

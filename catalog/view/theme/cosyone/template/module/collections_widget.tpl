@@ -6,6 +6,7 @@
         <?php foreach ($collections as $special_offer) { ?>  
         
         <div class="collections-home__item">
+            <p><span>youtube</span><?php echo $special_offer['youtube']; ?></p>
           <div class="collections-home__item-img">
             <a href="<?php echo $special_offer['link']; ?>" style="background-image: url(<?php echo $special_offer['image']; ?>);">
               <div class="go">
@@ -40,6 +41,7 @@
                     <h5><?php echo $special_offer['title']; ?></h5>
                 </div>
                 <div class="info">
+                    <p><span>youtube</span><?php echo $special_offer['youtube']; ?></p>
                     <div class="img">
                         <img src="<?php echo $special_offer['image']; ?>" />
                     </div>

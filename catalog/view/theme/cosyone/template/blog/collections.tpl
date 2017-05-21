@@ -35,7 +35,7 @@
                           <div class="info">                            
                             <div class="img">
                             <a href="<?php echo HTTP_SERVER; ?>index.php?route=blog/collections&amp;path=<?php echo $post['blog_id']; ?>" style="background-image: url('/image/<?php echo $post['image']; ?>');">
-                              
+                                <p><span>youtube</span><?php echo $post['youtube']; ?></p>
                               <div class="go">
                                 <span>перейти</span>
                               </div>

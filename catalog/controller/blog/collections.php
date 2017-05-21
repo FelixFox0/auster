@@ -94,6 +94,7 @@ class ControllerBlogCollections extends Controller
                 }
                 
                 $data['blog'][$b]['name'] = $blog['name'];
+                $data['blog'][$b]['youtube'] = $blog['youtube'];
                 $data['blog'][$b]['image'] = $blog['image'];
                 $data['blog'][$b]['description'] = $blog['description'];
                 $data['blog'][$b]['day'] = date('j', strtotime($blog['date_added']));
@@ -146,6 +147,7 @@ class ControllerBlogCollections extends Controller
             } else {
                 $data['blog'] = array();
             }
+            
             
             $data['blog']['day'] = date('n', strtotime($blog['date_added']));
             $data['blog']['month'] = $data['text_date_added'][date('n', strtotime($blog['date_added']))];

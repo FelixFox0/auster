@@ -199,6 +199,7 @@ class ControllerDesigncollections extends Controller
 				'collections_id' => $result['collections_id'],
 				'name'        => $result['name'],
 				'sort_order'  => $result['sort_order'],
+                                'youtube'     => $result['youtube'],
 				'edit'        => $this->url->link('design/collections/edit', 'token=' . $this->session->data['token'] . '&collections_id=' . $result['collections_id'] . $url, 'SSL'),
 				'delete'      => $this->url->link('design/collections/delete', 'token=' . $this->session->data['token'] . '&collections_id=' . $result['collections_id'] . $url, 'SSL')
 			);
@@ -446,6 +447,14 @@ class ControllerDesigncollections extends Controller
 			$data['sort_order'] = $collections_info['sort_order'];
 		} else {
 			$data['sort_order'] = 0;
+		}
+                
+                if (isset($this->request->post['youtube'])) {
+			$data['youtube'] = $this->request->post['youtube'];
+		} elseif (!empty($collections_info)) {
+			$data['youtube'] = $collections_info['youtube'];
+		} else {
+			$data['youtube'] = '';
 		}
 
 		if (isset($this->request->post['status'])) {
