@@ -3,6 +3,8 @@ class ControllerCommonMenu extends Controller {
 	public function index() {
 		$this->load->language('common/menu');
 
+        $data['text_blog'] = $this->language->get('text_blog');
+        
 		$data['text_analytics'] = $this->language->get('text_analytics');
 		$data['text_affiliate'] = $this->language->get('text_affiliate');
 		$data['text_api'] = $this->language->get('text_api');
@@ -26,6 +28,8 @@ class ControllerCommonMenu extends Controller {
 		$data['text_paypal'] = $this->language->get('text_paypal');
 		$data['text_paypal_search'] = $this->language->get('text_paypal_search');
 		$data['text_design'] = $this->language->get('text_design');
+		$data['text_special_offers'] = "LookBook";
+		$data['text_collections'] = "Коллекции";
 		$data['text_download'] = $this->language->get('text_download');
 		$data['text_error_log'] = $this->language->get('text_error_log');
 		$data['text_extension'] = $this->language->get('text_extension');
@@ -107,7 +111,11 @@ class ControllerCommonMenu extends Controller {
 		$data['text_openbay_links'] = $this->language->get('text_openbay_links');
 		$data['text_openbay_report_price'] = $this->language->get('text_openbay_report_price');
 		$data['text_openbay_order_import'] = $this->language->get('text_openbay_order_import');
+        $data['text_blog'] = $this->language->get('text_blog');
 
+        $data['blog'] = $this->url->link('extension/blog', 'token=' . $this->session->data['token'], 'SSL');
+        $data['news'] = $this->url->link('extension/news', 'token=' . $this->session->data['token'], 'SSL');
+        
 		$data['analytics'] = $this->url->link('extension/analytics', 'token=' . $this->session->data['token'], true);
 		$data['home'] = $this->url->link('common/dashboard', 'token=' . $this->session->data['token'], true);
 		$data['affiliate'] = $this->url->link('marketing/affiliate', 'token=' . $this->session->data['token'], true);
@@ -117,6 +125,8 @@ class ControllerCommonMenu extends Controller {
 		$data['backup'] = $this->url->link('tool/backup', 'token=' . $this->session->data['token'], true);
 		$data['banner'] = $this->url->link('design/banner', 'token=' . $this->session->data['token'], true);
 		$data['captcha'] = $this->url->link('extension/captcha', 'token=' . $this->session->data['token'], true);
+		$data['special_offers'] = $this->url->link('design/special_offers', 'token=' . $this->session->data['token'], 'SSL');
+		$data['collections'] = $this->url->link('design/collections', 'token=' . $this->session->data['token'], 'SSL');
 		$data['category'] = $this->url->link('catalog/category', 'token=' . $this->session->data['token'], true);
 		$data['country'] = $this->url->link('localisation/country', 'token=' . $this->session->data['token'], true);
 		$data['contact'] = $this->url->link('marketing/contact', 'token=' . $this->session->data['token'], true);

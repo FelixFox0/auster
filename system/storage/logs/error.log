@@ -1060,3 +1060,95 @@
 2017-04-21 14:59:37 - PHP Notice:  Undefined index: href in D:\OpenServer\domains\opencart-base.loc\catalog\view\theme\cosyone\template\account\order_list.tpl on line 48
 2017-04-21 14:59:38 - PHP Notice:  Undefined index: href in D:\OpenServer\domains\opencart-base.loc\catalog\view\theme\cosyone\template\account\order_list.tpl on line 48
 2017-04-21 14:59:53 - PHP Notice:  Undefined index: href in D:\OpenServer\domains\opencart-base.loc\catalog\view\theme\cosyone\template\account\order_list.tpl on line 48
+2017-05-18 17:50:12 - PHP Notice:  Undefined variable: footer_modules in D:\OpenServer\domains\auster-stone.loc\catalog\view\theme\cosyone\template\common\footer.tpl on line 2
+2017-05-18 17:50:12 - PHP Notice:  Undefined variable: cosyone_footer_custom_block_title in D:\OpenServer\domains\auster-stone.loc\catalog\view\theme\cosyone\template\common\footer.tpl on line 6
+2017-05-18 17:50:12 - PHP Notice:  Undefined variable: cosyone_footer_custom_block in D:\OpenServer\domains\auster-stone.loc\catalog\view\theme\cosyone\template\common\footer.tpl on line 9
+2017-05-18 17:50:12 - PHP Notice:  Undefined variable: cosyone_footer_payment_icon in D:\OpenServer\domains\auster-stone.loc\catalog\view\theme\cosyone\template\common\footer.tpl on line 46
+2017-05-18 17:50:12 - PHP Notice:  Undefined variable: cosyone_use_retina in D:\OpenServer\domains\auster-stone.loc\catalog\view\theme\cosyone\template\common\footer.tpl on line 63
+2017-05-18 17:50:12 - PHP Notice:  Undefined variable: live_search in D:\OpenServer\domains\auster-stone.loc\catalog\view\theme\cosyone\template\common\footer.tpl on line 66
+2017-05-18 17:50:12 - PHP Notice:  Undefined variable: cosyone_cookie in D:\OpenServer\domains\auster-stone.loc\catalog\view\theme\cosyone\template\common\footer.tpl on line 67
+2017-05-18 17:50:12 - PHP Notice:  Undefined variable: cosyone_default_product_style in D:\OpenServer\domains\auster-stone.loc\catalog\view\theme\cosyone\template\common\header.tpl on line 43
+2017-05-18 17:50:12 - PHP Notice:  Undefined variable: cosyone_use_custom in D:\OpenServer\domains\auster-stone.loc\catalog\view\theme\cosyone\template\common\header.tpl on line 43
+2017-05-18 17:50:12 - PHP Notice:  Undefined variable: cosyone_use_breadcrumb in D:\OpenServer\domains\auster-stone.loc\catalog\view\theme\cosyone\template\common\header.tpl on line 43
+2017-05-18 17:50:12 - PHP Notice:  Undefined variable: header_login in D:\OpenServer\domains\auster-stone.loc\catalog\view\theme\cosyone\template\common\header.tpl on line 55
+2017-05-18 17:50:12 - PHP Notice:  Undefined variable: cosyone_header_cart in D:\OpenServer\domains\auster-stone.loc\catalog\view\theme\cosyone\template\common\header.tpl on line 61
+2017-05-18 17:50:12 - PHP Notice:  Undefined variable: cosyone_text_mobile_menu in D:\OpenServer\domains\auster-stone.loc\catalog\view\theme\cosyone\template\common\header.tpl on line 87
+2017-05-18 17:50:12 - PHP Notice:  Undefined variable: cosyone_show_home_icon in D:\OpenServer\domains\auster-stone.loc\catalog\view\theme\cosyone\template\common\header.tpl on line 89
+2017-05-18 17:50:12 - PHP Notice:  Undefined index: category_1_id in D:\OpenServer\domains\auster-stone.loc\catalog\view\theme\cosyone\template\common\header.tpl on line 92
+2017-05-18 17:50:12 - PHP Notice:  Undefined variable: category_1_id in D:\OpenServer\domains\auster-stone.loc\catalog\view\theme\cosyone\template\common\header.tpl on line 92
+2017-05-18 17:50:12 - PHP Notice:  Undefined variable: cosyone_menu_mega_second_thumb in D:\OpenServer\domains\auster-stone.loc\catalog\view\theme\cosyone\template\common\header.tpl on line 103
+2017-05-18 17:50:12 - PHP Notice:  Undefined index: children in D:\OpenServer\domains\auster-stone.loc\catalog\view\theme\cosyone\template\common\header.tpl on line 106
+2017-05-18 17:50:12 - PHP Notice:  Undefined variable: cosyone_menu_mega_second_thumb in D:\OpenServer\domains\auster-stone.loc\catalog\view\theme\cosyone\template\common\header.tpl on line 103
+2017-05-18 17:50:12 - PHP Notice:  Undefined index: children in D:\OpenServer\domains\auster-stone.loc\catalog\view\theme\cosyone\template\common\header.tpl on line 106
+2017-05-18 17:50:12 - PHP Notice:  Undefined variable: cosyone_menu_mega_second_thumb in D:\OpenServer\domains\auster-stone.loc\catalog\view\theme\cosyone\template\common\header.tpl on line 103
+2017-05-18 17:50:12 - PHP Notice:  Undefined index: children in D:\OpenServer\domains\auster-stone.loc\catalog\view\theme\cosyone\template\common\header.tpl on line 106
+2017-05-18 17:50:12 - PHP Notice:  Undefined variable: cosyone_menu_mega_second_thumb in D:\OpenServer\domains\auster-stone.loc\catalog\view\theme\cosyone\template\common\header.tpl on line 103
+2017-05-18 17:50:12 - PHP Notice:  Undefined index: children in D:\OpenServer\domains\auster-stone.loc\catalog\view\theme\cosyone\template\common\header.tpl on line 106
+2017-05-18 17:50:12 - PHP Notice:  Undefined variable: cosyone_menu_mega_second_thumb in D:\OpenServer\domains\auster-stone.loc\catalog\view\theme\cosyone\template\common\header.tpl on line 103
+2017-05-18 17:50:12 - PHP Notice:  Undefined index: children in D:\OpenServer\domains\auster-stone.loc\catalog\view\theme\cosyone\template\common\header.tpl on line 106
+2017-05-18 17:50:12 - PHP Notice:  Undefined variable: cosyone_menu_mega_second_thumb in D:\OpenServer\domains\auster-stone.loc\catalog\view\theme\cosyone\template\common\header.tpl on line 103
+2017-05-18 17:50:12 - PHP Notice:  Undefined index: children in D:\OpenServer\domains\auster-stone.loc\catalog\view\theme\cosyone\template\common\header.tpl on line 106
+2017-05-18 17:50:12 - PHP Notice:  Undefined variable: cosyone_menu_mega_second_thumb in D:\OpenServer\domains\auster-stone.loc\catalog\view\theme\cosyone\template\common\header.tpl on line 103
+2017-05-18 17:50:12 - PHP Notice:  Undefined index: children in D:\OpenServer\domains\auster-stone.loc\catalog\view\theme\cosyone\template\common\header.tpl on line 106
+2017-05-18 17:50:12 - PHP Notice:  Undefined variable: cosyone_menu_mega_second_thumb in D:\OpenServer\domains\auster-stone.loc\catalog\view\theme\cosyone\template\common\header.tpl on line 103
+2017-05-18 17:50:12 - PHP Notice:  Undefined index: children in D:\OpenServer\domains\auster-stone.loc\catalog\view\theme\cosyone\template\common\header.tpl on line 106
+2017-05-18 17:50:12 - PHP Notice:  Undefined variable: cosyone_custom_menu_block in D:\OpenServer\domains\auster-stone.loc\catalog\view\theme\cosyone\template\common\header.tpl on line 124
+2017-05-18 17:50:12 - PHP Notice:  Undefined variable: cosyone_custom_menu_title1 in D:\OpenServer\domains\auster-stone.loc\catalog\view\theme\cosyone\template\common\header.tpl on line 130
+2017-05-18 17:50:12 - PHP Notice:  Undefined variable: cosyone_custom_menu_title2 in D:\OpenServer\domains\auster-stone.loc\catalog\view\theme\cosyone\template\common\header.tpl on line 133
+2017-05-18 17:50:12 - PHP Notice:  Undefined variable: cosyone_custom_menu_title3 in D:\OpenServer\domains\auster-stone.loc\catalog\view\theme\cosyone\template\common\header.tpl on line 136
+2017-05-18 17:50:12 - PHP Notice:  Undefined variable: cosyone_custom_menu_title4 in D:\OpenServer\domains\auster-stone.loc\catalog\view\theme\cosyone\template\common\header.tpl on line 139
+2017-05-18 17:50:12 - PHP Notice:  Undefined variable: cosyone_custom_menu_title5 in D:\OpenServer\domains\auster-stone.loc\catalog\view\theme\cosyone\template\common\header.tpl on line 142
+2017-05-18 17:50:12 - PHP Notice:  Undefined variable: cosyone_custom_menu_title6 in D:\OpenServer\domains\auster-stone.loc\catalog\view\theme\cosyone\template\common\header.tpl on line 145
+2017-05-18 17:50:12 - PHP Notice:  Undefined variable: home_top_top in D:\OpenServer\domains\auster-stone.loc\catalog\view\theme\cosyone\template\common\home.tpl on line 7
+2017-05-18 17:50:12 - PHP Notice:  Undefined variable: home_top_left in D:\OpenServer\domains\auster-stone.loc\catalog\view\theme\cosyone\template\common\home.tpl on line 9
+2017-05-18 17:50:12 - PHP Notice:  Undefined variable: home_top_center in D:\OpenServer\domains\auster-stone.loc\catalog\view\theme\cosyone\template\common\home.tpl on line 9
+2017-05-18 17:50:12 - PHP Notice:  Undefined variable: home_top_right in D:\OpenServer\domains\auster-stone.loc\catalog\view\theme\cosyone\template\common\home.tpl on line 9
+2017-05-18 17:50:12 - PHP Notice:  Undefined variable: content_bottom_half in D:\OpenServer\domains\auster-stone.loc\catalog\view\theme\cosyone\template\common\home.tpl on line 21
+2017-05-21 20:13:31 - PHP Notice:  Undefined variable: label in D:\OpenServer\domains\auster-stone.loc\vqmod\vqcache\vq2-admin_view_template_common_menu.tpl on line 24
+2017-05-21 20:13:31 - PHP Notice:  Undefined variable: text_label in D:\OpenServer\domains\auster-stone.loc\vqmod\vqcache\vq2-admin_view_template_common_menu.tpl on line 24
+2017-05-21 20:13:46 - PHP Notice:  Undefined variable: label in D:\OpenServer\domains\auster-stone.loc\vqmod\vqcache\vq2-admin_view_template_common_menu.tpl on line 24
+2017-05-21 20:13:46 - PHP Notice:  Undefined variable: text_label in D:\OpenServer\domains\auster-stone.loc\vqmod\vqcache\vq2-admin_view_template_common_menu.tpl on line 24
+2017-05-21 20:13:53 - PHP Notice:  Undefined variable: label in D:\OpenServer\domains\auster-stone.loc\vqmod\vqcache\vq2-admin_view_template_common_menu.tpl on line 24
+2017-05-21 20:13:53 - PHP Notice:  Undefined variable: text_label in D:\OpenServer\domains\auster-stone.loc\vqmod\vqcache\vq2-admin_view_template_common_menu.tpl on line 24
+2017-05-21 20:13:57 - PHP Notice:  Undefined variable: label in D:\OpenServer\domains\auster-stone.loc\vqmod\vqcache\vq2-admin_view_template_common_menu.tpl on line 24
+2017-05-21 20:13:57 - PHP Notice:  Undefined variable: text_label in D:\OpenServer\domains\auster-stone.loc\vqmod\vqcache\vq2-admin_view_template_common_menu.tpl on line 24
+2017-05-21 20:24:30 - PHP Notice:  Error: Could not load template D:/OpenServer/domains/auster-stone.loc/catalog/view/theme/default/template/default/template/module/special_offers.tpl! in D:\OpenServer\domains\auster-stone.loc\vqmod\vqcache\vq2-system_library_template_basic.php on line 26
+2017-05-21 20:27:17 - PHP Notice:  Error: Could not load template D:/OpenServer/domains/auster-stone.loc/catalog/view/theme/default/template/module/collections_widget.tpl! in D:\OpenServer\domains\auster-stone.loc\vqmod\vqcache\vq2-system_library_template_basic.php on line 26
+2017-05-21 20:28:05 - PHP Notice:  Error: Could not load template D:/OpenServer/domains/auster-stone.loc/catalog/view/theme/default/template/module/collections_widget.tpl! in D:\OpenServer\domains\auster-stone.loc\vqmod\vqcache\vq2-system_library_template_basic.php on line 26
+2017-05-21 20:28:14 - PHP Notice:  Error: Could not load template D:/OpenServer/domains/auster-stone.loc/catalog/view/theme/default/template/module/collections_widget.tpl! in D:\OpenServer\domains\auster-stone.loc\vqmod\vqcache\vq2-system_library_template_basic.php on line 26
+2017-05-21 20:29:10 - PHP Notice:  Error: Could not load template D:/OpenServer/domains/auster-stone.loc/catalog/view/theme/default/template/module/collections_widget.tpl! in D:\OpenServer\domains\auster-stone.loc\vqmod\vqcache\vq2-system_library_template_basic.php on line 26
+2017-05-21 20:30:00 - PHP Notice:  Error: Could not load template D:/OpenServer/domains/auster-stone.loc/catalog/view/theme/default/template/module/collections_widget.tpl! in D:\OpenServer\domains\auster-stone.loc\vqmod\vqcache\vq2-system_library_template_basic.php on line 26
+2017-05-21 20:30:48 - PHP Notice:  Error: Could not load template D:/OpenServer/domains/auster-stone.loc/catalog/view/theme/default/template/module/collections_widget.tpl! in D:\OpenServer\domains\auster-stone.loc\vqmod\vqcache\vq2-system_library_template_basic.php on line 26
+2017-05-21 20:31:25 - PHP Notice:  Undefined variable: image in D:\OpenServer\domains\auster-stone.loc\catalog\view\theme\cosyone\template\blog\special_offers-single.tpl on line 34
+2017-05-21 20:33:02 - PHP Notice:  Error: Could not load template D:/OpenServer/domains/auster-stone.loc/catalog/view/theme/default/template/module/collections_widget.tpl! in D:\OpenServer\domains\auster-stone.loc\vqmod\vqcache\vq2-system_library_template_basic.php on line 26
+2017-05-21 20:59:58 - PHP Notice:  Undefined index: category_id in D:\OpenServer\domains\auster-stone.loc\catalog\controller\module\collections_widget.php on line 33
+2017-05-21 20:59:58 - PHP Notice:  Undefined index: category_id in D:\OpenServer\domains\auster-stone.loc\catalog\controller\module\collections_widget.php on line 33
+2017-05-21 20:59:58 - PHP Notice:  Undefined index: category_id in D:\OpenServer\domains\auster-stone.loc\catalog\controller\module\collections_widget.php on line 33
+2017-05-21 20:59:58 - PHP Notice:  Undefined index: category_id in D:\OpenServer\domains\auster-stone.loc\catalog\controller\module\collections_widget.php on line 33
+2017-05-21 20:59:58 - PHP Notice:  Undefined index: category_id in D:\OpenServer\domains\auster-stone.loc\catalog\controller\module\collections_widget.php on line 33
+2017-05-21 21:05:48 - PHP Notice:  Undefined index: category_id in D:\OpenServer\domains\auster-stone.loc\catalog\controller\module\collections_widget.php on line 33
+2017-05-21 21:05:48 - PHP Notice:  Undefined index: category_id in D:\OpenServer\domains\auster-stone.loc\catalog\controller\module\collections_widget.php on line 33
+2017-05-21 21:05:48 - PHP Notice:  Undefined index: category_id in D:\OpenServer\domains\auster-stone.loc\catalog\controller\module\collections_widget.php on line 33
+2017-05-21 21:05:48 - PHP Notice:  Undefined index: category_id in D:\OpenServer\domains\auster-stone.loc\catalog\controller\module\collections_widget.php on line 33
+2017-05-21 21:05:48 - PHP Notice:  Undefined index: category_id in D:\OpenServer\domains\auster-stone.loc\catalog\controller\module\collections_widget.php on line 33
+2017-05-21 21:06:13 - PHP Notice:  Undefined index: category_id in D:\OpenServer\domains\auster-stone.loc\catalog\controller\module\collections_widget.php on line 33
+2017-05-21 21:06:13 - PHP Notice:  Undefined index: category_id in D:\OpenServer\domains\auster-stone.loc\catalog\controller\module\collections_widget.php on line 33
+2017-05-21 21:06:13 - PHP Notice:  Undefined index: category_id in D:\OpenServer\domains\auster-stone.loc\catalog\controller\module\collections_widget.php on line 33
+2017-05-21 21:06:13 - PHP Notice:  Undefined index: category_id in D:\OpenServer\domains\auster-stone.loc\catalog\controller\module\collections_widget.php on line 33
+2017-05-21 21:06:13 - PHP Notice:  Undefined index: category_id in D:\OpenServer\domains\auster-stone.loc\catalog\controller\module\collections_widget.php on line 33
+2017-05-21 21:11:13 - PHP Notice:  Undefined index: category_id in D:\OpenServer\domains\auster-stone.loc\catalog\controller\module\collections_widget.php on line 33
+2017-05-21 21:11:13 - PHP Notice:  Undefined index: category_id in D:\OpenServer\domains\auster-stone.loc\catalog\controller\module\collections_widget.php on line 33
+2017-05-21 21:11:13 - PHP Notice:  Undefined index: category_id in D:\OpenServer\domains\auster-stone.loc\catalog\controller\module\collections_widget.php on line 33
+2017-05-21 21:11:13 - PHP Notice:  Undefined index: category_id in D:\OpenServer\domains\auster-stone.loc\catalog\controller\module\collections_widget.php on line 33
+2017-05-21 21:11:13 - PHP Notice:  Undefined index: category_id in D:\OpenServer\domains\auster-stone.loc\catalog\controller\module\collections_widget.php on line 33
+2017-05-21 21:34:57 - PHP Notice:  Undefined variable: button_remove in D:\OpenServer\domains\auster-stone.loc\admin\view\template\design\special_offers_form.tpl on line 132
+2017-05-21 21:34:57 - PHP Notice:  Undefined variable: button_remove in D:\OpenServer\domains\auster-stone.loc\admin\view\template\design\special_offers_form.tpl on line 132
+2017-05-21 21:34:57 - PHP Notice:  Undefined variable: button_remove in D:\OpenServer\domains\auster-stone.loc\admin\view\template\design\special_offers_form.tpl on line 132
+2017-05-21 21:34:57 - PHP Notice:  Undefined variable: button_remove in D:\OpenServer\domains\auster-stone.loc\admin\view\template\design\special_offers_form.tpl on line 132
+2017-05-21 21:34:57 - PHP Notice:  Undefined variable: button_remove in D:\OpenServer\domains\auster-stone.loc\admin\view\template\design\special_offers_form.tpl on line 132
+2017-05-21 21:34:57 - PHP Notice:  Undefined variable: button_remove in D:\OpenServer\domains\auster-stone.loc\admin\view\template\design\special_offers_form.tpl on line 132
+2017-05-21 21:34:57 - PHP Notice:  Undefined variable: button_remove in D:\OpenServer\domains\auster-stone.loc\admin\view\template\design\special_offers_form.tpl on line 132
+2017-05-21 21:34:57 - PHP Notice:  Undefined variable: button_remove in D:\OpenServer\domains\auster-stone.loc\admin\view\template\design\special_offers_form.tpl on line 132
+2017-05-21 21:34:57 - PHP Notice:  Undefined variable: button_remove in D:\OpenServer\domains\auster-stone.loc\admin\view\template\design\special_offers_form.tpl on line 132
+2017-05-21 21:34:57 - PHP Notice:  Undefined variable: button_remove in D:\OpenServer\domains\auster-stone.loc\admin\view\template\design\special_offers_form.tpl on line 132
+2017-05-21 21:34:57 - PHP Notice:  Undefined variable: button_remove in D:\OpenServer\domains\auster-stone.loc\admin\view\template\design\special_offers_form.tpl on line 216
