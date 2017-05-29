@@ -1,8 +1,7 @@
 <?php
 $_['text_blog'] = 'Blog';
 $_['heading_title'] = 'Фотогалерея';
-$_['back_to_galery'] = 'Вернутся в галерею';
-
+$_['back_to_galery'] = 'Повернутися до галереї';
 
 $_['text_author']  = '<i class="fa fa-edit"></i>&nbsp;Author: ';
 $_['text_tag']  = '<i class="fa fa-tags"></i>&nbsp;Tags: ';

@@ -293,3 +293,8 @@
 2017-05-23 18:34:20 - PHP Notice:  Undefined variable: cosyone_custom_menu_title5 in D:\OpenServer\domains\auster-stone.loc\catalog\view\theme\cosyone\template\common\header.tpl on line 142
 2017-05-23 18:34:20 - PHP Notice:  Undefined variable: cosyone_custom_menu_title6 in D:\OpenServer\domains\auster-stone.loc\catalog\view\theme\cosyone\template\common\header.tpl on line 145
 2017-05-27 23:05:43 - PHP Warning:  Division by zero in C:\OPENSERVER\OpenServer\domains\auster.loc\catalog\controller\module\adv_ajaxfilter.php on line 396
+2017-05-30 0:32:49 - PHP Notice:  Undefined variable: image in D:\OpenServer\domains\auster-stone.loc\catalog\view\theme\cosyone\template\blog\special_offers-single.tpl on line 34
+2017-05-30 0:38:18 - PHP Notice:  Undefined variable: image in D:\OpenServer\domains\auster-stone.loc\catalog\view\theme\cosyone\template\blog\special_offers-single.tpl on line 34
+2017-05-30 0:45:22 - PHP Notice:  Undefined variable: image in D:\OpenServer\domains\auster-stone.loc\catalog\view\theme\cosyone\template\blog\special_offers-single.tpl on line 34
+2017-05-30 0:45:22 - PHP Notice:  Undefined variable: back_to_galery in D:\OpenServer\domains\auster-stone.loc\catalog\view\theme\cosyone\template\blog\special_offers-single.tpl on line 78
+2017-05-30 0:47:34 - PHP Notice:  Undefined variable: image in D:\OpenServer\domains\auster-stone.loc\catalog\view\theme\cosyone\template\blog\special_offers-single.tpl on line 34

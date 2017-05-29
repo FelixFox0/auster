@@ -13,10 +13,10 @@ class ControllerBlogspecialoffers extends Controller
         $data['text_date_added'] = $this->language->get('text_date_added');
         $data['text_read'] = $this->language->get('text_read');
 //        var_dump($data);
-
+        $data['heading_title'] = $this->language->get('heading_title');
 //            $this->load->language('blog/special_offers');
 
-            $this->document->setTitle("Lookbook");
+            $this->document->setTitle($data['heading_title']);
 
             $data['breadcrumbs'] = array();
 
@@ -26,11 +26,11 @@ class ControllerBlogspecialoffers extends Controller
             );
 
             $data['breadcrumbs'][] = array(
-                'text' => "Lookbook",
+                'text' => $data['heading_title'],
                 'href' => $this->url->link('blog/special_offers')
             );
 
-            $data['heading_title'] = $this->language->get('heading_title');
+            
         if(!isset($this->request->get['path'])) {
 
             // get all blog data
@@ -132,10 +132,10 @@ class ControllerBlogspecialoffers extends Controller
         } else {
             
             $this->load->language('blog/special_offers');
-            $this->document->setTitle("Lookbook");
+            $this->document->setTitle($data['heading_title']);
             $this->load->model('tool/image');
             $data['heading_title'] = $this->language->get('heading_title');
-
+            $data['back_to_galery'] = $this->language->get('back_to_galery');
             // get all blog data
             $this->load->model('blog/special_offers');
 
@@ -167,12 +167,15 @@ class ControllerBlogspecialoffers extends Controller
                 'href' => $this->url->link('blog/special_offers')
             );
             
+            
+            
             $data['column_left'] = $this->load->controller('common/column_left');
             $data['column_right'] = $this->load->controller('common/column_right');
             $data['content_top'] = $this->load->controller('common/content_top');
             $data['content_bottom'] = $this->load->controller('common/content_bottom');
             $data['footer'] = $this->load->controller('common/footer');
             $data['header'] = $this->load->controller('common/header');
+            
             
             if (file_exists(DIR_TEMPLATE . $this->config->get('config_template') . '/template/special_offers/special_offers-single.tpl')) {
                 $this->response->setOutput($this->load->view($this->config->get('config_template') . '/template/blog/special_offers-single.tpl', $data));
