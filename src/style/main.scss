@@ -685,6 +685,67 @@ body {
 		text-align: center;
 	}
 }
+
+.certificates {
+	padding: 125px 0;
+
+	&__inner {
+		display: flex;
+	}
+	&__col {
+		width: 470px;
+
+		&:first-child {
+			margin-right: 50px;
+		}
+	}
+
+	&__text {
+		line-height: 25px;
+
+		&:not(:last-child) {
+			margin-bottom: 40px;
+		}
+	}
+
+	&__carousel-item {
+		margin: 0 18px;
+	}
+
+	.owl-buttons,
+	.owl-controls {
+		display: flex;
+		justify-content: space-between;
+		width: 100%;
+		position: absolute;
+		left: 0;
+		top: 50%;
+
+	}
+
+	&__left,
+	&__right {
+		border: 10px solid transparent;
+		display: block;
+		opacity: 0.5;
+
+		&:hover {
+			opacity: 1;
+		}
+	}
+
+	&__right {
+		position: relative;
+		left: 25px;
+		border-left: 10px solid $brand2;
+	}
+
+	&__left {
+		position: relative;
+		right: 25px;
+		border-right: 10px solid $brand2;
+	}
+}
  
 
 @import "partials/media.scss";

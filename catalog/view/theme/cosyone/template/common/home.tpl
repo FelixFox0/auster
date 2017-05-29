@@ -59,12 +59,40 @@
         </div>
       </div>
       <div class="certificates__col">
-        
+        <div class="owl-carousel certificates__carousel">
+          <div class="item certificates__carousel-item">
+            <img src="/image/cert.png" alt="cert">
+          </div>
+          <div class="item certificates__carousel-item">
+            <img src="/image/cert.png" alt="cert">
+          </div>
+          <div class="item certificates__carousel-item">
+            <img src="/image/cert.png" alt="cert">
+          </div>
+          <div class="item certificates__carousel-item">
+            <img src="/image/cert.png" alt="cert">
+          </div>
+        </div>
       </div>
     </div>
     
   </div>
 </div>
+
+<script>
+  $('.certificates__carousel').owlCarousel({
+  items: 2,
+  slideSpeed:750,
+  navigation: true,
+  responsive: true,
+  addClassActive: true,
+  navigationText: [
+  "<i class=' certificates__left'></i>",
+  "<i class=' certificates__right'></i>"
+  ],
+});
+</script>
+
 
 <div class="consult">
   <div class="container no-clearfix consult__container">
