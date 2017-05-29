@@ -40,4 +40,11 @@
     <?php echo $column_right; ?>
     </div>
 </div>
+<div class="oficial-destr">
+  <div class="container oficial-destr__container">
+    <div class="title oficial-destr__title">
+      <h2>официальные дистрибьюторы линейных диффузоров</h2>
+    </div>
+  </div>
+</div>
 <?php echo $footer; ?> 
