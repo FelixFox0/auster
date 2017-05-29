@@ -40,10 +40,27 @@
     <?php echo $column_right; ?>
     </div>
 </div>
+
+<div class="consult">
+  <div class="container consult__container">
+    <div class="consult__question">
+      <h2>Есть <span>вопросы</span></h2>
+      <p>Наши специалисты с удовольствием ответят на любой ваш вопрос!</p>
+    </div>
+    <div class="consult__form">
+      
+    </div>
+  </div>
+</div>
+
 <div class="oficial-destr">
   <div class="container oficial-destr__container">
     <div class="title oficial-destr__title">
       <h2>официальные дистрибьюторы линейных диффузоров</h2>
+    </div>
+    <div class="oficial-destr__images">
+      <img src="/image/distributor.jpg" alt="distributor">
+      <img src="/image/distributor2.png" alt="distributor">
     </div>
   </div>
 </div>

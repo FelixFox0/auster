@@ -33,11 +33,24 @@ body {
 }
 
 .title {
+	margin-bottom: 80px;
 
 	h2 {
 		font-size: 30px;
 		font-family: "Osw-bold";
 		text-transform: uppercase;
+		color: $brand;
+		position: relative;
+		margin: 0;
+
+		&:after {
+			content: "";
+			position: absolute;
+			left: 0;
+			top: calc(100% + 10px);
+			border: 7px solid transparent;
+			border-top: 10px solid #d6c193;
+		}
 	}
 }
 
@@ -539,7 +552,36 @@ body {
 
 .oficial-destr {
 	padding: 130px 0;
+	border-top: 2px solid #b7b7b7;
 
+	&__images {
+		display: flex;
+		align-items: center;
+
+		img:last-child {
+			position: relative;
+			left: -60px;
+		}
+	}
+}
+
+.consult {
+	padding: 85px 0;
+	border-top: 2px solid #b7b7b7;
+
+	&__question {
+		h2 {
+			font-size: 90px;
+			font-family: "Rob-bold";
+			color: #4a443e;
+			text-transform: uppercase;
+
+			span {
+				font-size: 39px;
+				color: #fff;
+			}
+		}
+	}
 }
  
 
