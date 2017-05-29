@@ -343,3 +343,6 @@ catalog\controller\module\featured.php
 catalog\language\en-gb\module\featured.php
 catalog\language\ru-ru\module\featured.php
 catalog\view\theme\default\template\module\featured.tpl
+catalog\controller\module\slideshow.php
+catalog\model\design\banner.php
+catalog\view\theme\cosyone\template\module\slideshow.tpl
