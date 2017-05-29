@@ -15,8 +15,8 @@
             <?php } ?>
           </ul>
           <div class="title-cs">
-            <h1><?php //echo ucfirst($blog['name']); ?>
-              lookbook 
+            <h1><?php echo ucfirst($blog['name']); ?>
+              
               <div class="bubles">
                 <span></span>
                 <span></span>
@@ -75,7 +75,7 @@
   </div>
   
 </div>
-
+    <a href="/<?php echo $breadcrumbs[1]['href'] ?>"><?php echo $back_to_galery ?></a>
     
 <?php if(false){ ?>    
   <section class="main-title">
