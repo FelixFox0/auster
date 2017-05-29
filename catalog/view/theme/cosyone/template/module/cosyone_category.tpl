@@ -6,11 +6,11 @@
        <?php if ($category_1['category_1_id'] == $category_1_id) { ?>
          <li class="open active"><a href="<?php echo $category_1['href']; ?>" ><?php echo $category_1['name']; ?></a>
           <?php } else { ?>
-          <li><a href="<?php echo $category_1['href']; ?>" ><?php echo $category_1['name']; ?></a> 
+          <li class="open"><a href="<?php echo $category_1['href']; ?>" ><?php echo $category_1['name']; ?></a> 
           <?php } ?>
           <?php if ($category_1['children']) { ?>
           <div class="sign"><span class="plus">+</span><span class="minus">-</span></div>
-          <ul>
+          <ul style="display: block;">
             <?php foreach ($category_1['children'] as $category_2) { ?>
             <?php if ($category_2['category_2_id'] == $category_2_id) { ?>
             <li class="open active"><a href="<?php echo $category_2['href']; ?>"><?php echo $category_2['name']; ?></a>
