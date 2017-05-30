@@ -1,28 +1,15 @@
 <?php echo $header; ?>
 <div class="look-book">
-<div class="content">
-  <div class="container special-offers">
-    <div class="row">
+<div class="content look-book__inner">
+  <div class="container">
       <div class="content__inner">  
         <div id="content" class="content__right">
-          <div class="breadcrumb_wrapper"></div>
-          <ul class="breadcrumb">
-            <?php foreach ($breadcrumbs as $breadcrumb) { ?>
-            <li><a href="<?php echo $breadcrumb['href']; ?>"><?php echo $breadcrumb['text']; ?></a></li>
-            <?php } ?>
-          </ul>
-          <div class="title-cs">
+        <div class="title title--white">
             <h1><?php echo $heading_title; ?>
-              
-              <div class="bubles">
-                <span></span>
-                <span></span>
-                <span></span>
-              </div>
             </h1>
-            
           </div>
-          <div class="special-offers__container">
+
+          <div class="look-book__container">
             <?php if(isset($blog) && $blog) : ?>
              
               <?php foreach ($blog as $key=>$post) : 
@@ -30,8 +17,7 @@
                else { $class="look-h5-l";  }
               ?>
 
-              <div class="special-offers__item special-offers__item--full-width">
-                      
+              <div class="look-book__item ">
                           <div class="info">                            
                             <div class="img">
                             <a href="<?php echo HTTP_SERVER; ?>index.php?route=blog/special_offers&amp;path=<?php echo $post['blog_id']; ?>" style="background-image: url('/image/<?php echo $post['image']; ?>');">
@@ -58,7 +44,7 @@
                                 </div>
                               <?php endif; ?>
                           </div>
-                          <div class="title">
+                          <div class="look-book__title">
                               <a href="<?php echo HTTP_SERVER; ?>index.php?route=blog/special_offers&amp;path=<?php echo $post['blog_id']; ?>" class="look-sp-title <?php echo $class; ?>"><?php echo ucfirst($post['name']); ?></a>
                           </div>
                          
@@ -81,7 +67,6 @@
               <?php echo $pagination; ?>
           </div>
         </div>
-      </div>
     </div>
   </div>
   
