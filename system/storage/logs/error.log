@@ -298,3 +298,5 @@
 2017-05-30 0:45:22 - PHP Notice:  Undefined variable: image in D:\OpenServer\domains\auster-stone.loc\catalog\view\theme\cosyone\template\blog\special_offers-single.tpl on line 34
 2017-05-30 0:45:22 - PHP Notice:  Undefined variable: back_to_galery in D:\OpenServer\domains\auster-stone.loc\catalog\view\theme\cosyone\template\blog\special_offers-single.tpl on line 78
 2017-05-30 0:47:34 - PHP Notice:  Undefined variable: image in D:\OpenServer\domains\auster-stone.loc\catalog\view\theme\cosyone\template\blog\special_offers-single.tpl on line 34
+2017-05-30 2:52:01 - PHP Notice:  Undefined variable: back_to_galery in D:\OpenServer\domains\auster-stone.loc\catalog\view\theme\cosyone\template\blog\collections-single.tpl on line 44
+2017-05-30 2:53:22 - PHP Notice:  Undefined variable: back_to_galery in D:\OpenServer\domains\auster-stone.loc\catalog\view\theme\cosyone\template\blog\collections-single.tpl on line 44
