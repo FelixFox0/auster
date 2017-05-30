@@ -3,25 +3,25 @@
     <div class="footer__logo">
       <a href="#"><img src="/image/catalog/logoo2.png" alt=""></a>
     </div>
-    <div class="footer__losung">покупай у отечественного производителя</div>
+    <div class="footer__losung"><?php echo $text_0; ?></div>
     <div class="footer__info">
       <div class="footer__column">
         <div class="footer__column-title">
         <i class="ic-cart"></i>
-        <span>ПРОДУКЦИЯ</span>
+        <span><?php echo $text_1; ?></span>
         </div>
         <ul class="footer__list">
           <li class="footer__list-item">
-            <a href="#">Вентиляционный решетки "Auster "</a>
+            <a href="#"><?php echo $text_2; ?></a>
           </li>
           <li class="footer__list-item">
-            <a href="#">Решетки переливные для бассейнов " Wester "</a>
+            <a href="#"><?php echo $text_3; ?></a>
           </li>
           <li class="footer__list-item">
-            <a href="#">Нержавеющие решетки для водоотвода "Fluxe "</a>
+            <a href="#"><?php echo $text_4; ?></a>
           </li>
           <li class="footer__list-item">
-            <a href="#">Ревизионные и сантехнические люки - невидимки"</a>
+            <a href="#"><?php echo $text_5; ?></a>
           </li>
         </ul>
       </div>
@@ -29,19 +29,20 @@
       <div class="footer__column ">
         <div class="footer__column-title">
         <i class="ic-location"></i>
-        <span>контакты</span>
+        <span><?php echo $text_contact; ?></span>
         </div>
         <div class="footer__contacts">
           <div class="footer__contacts-address">
-            <a href="#">Україна, м. Київ, ул. Визволителів, 17</a>
+            <a href="#"><?php echo $address; ?></a>
           </div>
           <div class="footer__contacts-mail">
-            <a href="mailto:StonehengeKiev@gmail.com">StonehengeKiev@gmail.com</a>
+            <a href="mailto:<?php echo $email; ?>"><?php echo $email; ?></a>
           </div>
           <div class="footer__contacts-address">
-            <a href="tel:+380 98-480-45-03">+380 98-480-45-03</a>
-            <a href="tel:+380 66-922-69-70">+380 66-922-69-70</a>
-            <a href="tel:+380 66-922-69-70">+380 66-922-69-70</a>
+            <?php foreach($phone as $tel){ ?>
+            <a href="tel:<?php echo $tel; ?>"><?php echo $tel; ?></a>
+            <?php } ?>
+            
           </div>
         </div>
         
@@ -49,7 +50,7 @@
     </div>
   </div>
   <div class="footer__copy">
-    © Stonehenge company, 2017. Все права защищены
+    © Stonehenge company, 2017. <?php echo $text_all; ?>
   </div>
 
   <?php if(false): ?>
