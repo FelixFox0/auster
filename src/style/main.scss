@@ -91,6 +91,14 @@ body {
 .ic-send {
 	@include sprite($send);
 }
+
+.ic-cart2 {
+	@include sprite($cart2);
+}
+
+.ic-bage {
+	@include sprite($bage);
+}
  
 .header {
 
@@ -418,6 +426,7 @@ body {
 }
 
 .product-grid {
+
 	.item {
 		padding: 22px 45px;
 		position: relative;
@@ -552,6 +561,26 @@ body {
 .product-home {
 	padding: 100px 0;
 	border-bottom: 1px solid #b7b7b7;
+
+	&__inner {
+		display: flex;
+	}
+
+	&__products {
+		display: flex;
+		flex-wrap: wrap;
+	}
+
+	&__left-column {
+		flex-shrink: 0;
+		margin-right: 15px;
+		width: 25%;
+
+		#column-left {
+			width: 100%;
+			padding-left: 0;
+		}
+	}
 }
 
 .oficial-destr {
@@ -746,6 +775,97 @@ body {
 		border-right: 10px solid $brand2;
 	}
 }
- 
+
+
+.product-layout  {
+	width: calc(33.3% - 11px);
+	border: 1px solid #dfdfdf;
+	border-radius: 2px;
+	margin-bottom: 29px;
+	padding: 21px 27px 35px;
+
+	&:not(:nth-child(3n)) {
+		margin-right: 16px;
+	} 
+
+	.image {
+		margin-bottom: 25px;
+
+		a {
+			height: 173px;
+			display: block;
+		}
+
+		img {
+			width: 100%;
+			height: 100%;
+			object-fit: contain;
+		}
+	}
+
+	h4 {
+		a {
+			color: #323232;
+			font-size: 15px;
+			font-family: "Rob-reg";
+			text-transform: uppercase;
+		}
+	}
+
+	.price {
+		display: flex;
+		align-items: center;
+		margin-top: 20px;
+		color: #d85b10;
+		font-family: "Rob-bold";
+		font-size: 17px;
+		.price-new {
+			color: #d85b10;
+			font-family: "Rob-bold";
+			margin-right: 10px;
+		}
+
+		i {
+			margin-right: 8px;
+		}
+	}
+
+	.caption {
+		width: 100%;
+	}
+
+	.button-group {
+		display: flex;
+		align-items: center;
+		margin-top: 25px;
+		a {
+			flex-grow: 1;
+			display: flex;
+			height: 40px;
+			justify-content: center;
+			align-items: center;
+			font-size: 15px;
+			color: #fff;
+			background-color: $brand;
+			&:hover {
+				background-color: $brand2;
+			}
+		}
+
+		button {
+			height: 40px;
+			width: 40px;
+			background-color: $brand2;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			border: none;
+			margin-left: 15px;
+			&:hover {
+				background-color: $brand;
+			}
+		}
+	}
+}
 
 @import "partials/media.scss";

@@ -2023,7 +2023,6 @@ table.radio tr.highlight td {
 
 
 .grid2 .product-grid .item {width:50%;}
-.grid3 .product-grid .item {width:33.33%;}
 .grid4 .product-grid .item {width:25%;}
 .grid5 .product-grid .item {width:20%;}
 
@@ -2116,18 +2115,7 @@ table.radio tr.highlight td {
 .style-1 .product-grid .item:hover .brand {
 	
 }
-.product-grid .price {
-	float:right;
-	text-align:right;
-	width:37%;
-	font-size:16px;
-}
-.product-grid .price-old {
-	display:block;
-}
-.product-grid .price-new {
-	
-}
+
 .product-grid .price .price-tax {
 	display: none;
 }
