@@ -87,6 +87,10 @@ body {
 .ic-cart {
 	@include sprite($cart);
 }
+
+.ic-send {
+	@include sprite($send);
+}
  
 .header {
 
@@ -568,19 +572,178 @@ body {
 .consult {
 	padding: 85px 0;
 	border-top: 2px solid #b7b7b7;
+	
+	&__container {
+		display: flex;
+	}
 
 	&__question {
+		width: 650px;
+		height: 523px;
+		background-image: url("/image/questions.jpg");
+		background-repeat: no-repeat;
+		background-size: auto 100%;
+		background-position: right top;
 		h2 {
 			font-size: 90px;
 			font-family: "Rob-bold";
 			color: #4a443e;
 			text-transform: uppercase;
+			padding: 65px 0 0 66px;
 
 			span {
 				font-size: 39px;
 				color: #fff;
 			}
 		}
+		p {
+			width: 287px;
+			text-align: right;
+			font-size: 14px;
+			color: #4d5967;
+			font-family: "Rob-light";
+		}
+	}
+
+	&__form {
+		width: calc(100% - 650px);
+		padding: 0 63px;
+
+		h3 {
+			margin: 0 0 5px 0;
+			padding: 5px 0;
+			font-size: 22px;
+			text-transform: uppercase;
+			font-family: "Rob-bold";
+			border-bottom: 1px solid #e1e1e1;
+			color: $brand;
+			text-align: center;
+			span {
+				color: $brand2;
+			}
+		}
+
+		p {
+			font-size: 13px;
+			color: #bfbebe;
+			text-align: center;
+		}
+
+		form {
+			margin-top: 40px;
+			display: block;
+		}
+	}
+
+	&__input {
+		margin-bottom: 25px;
+		label {
+			font-size: 13px;
+			color: #525252;
+			margin-bottom: 10px;
+		}
+		input {
+			height: 33px;
+			padding: 5px 11px;
+			border: none;
+			box-shadow: none;
+			border-bottom: 1px solid $brand;
+			width: 100%;
+			font-size: 13px;
+			font-style: italic;
+			&:focus {
+				outline: none;
+				border-bottom-color: $brand2;
+			}
+		}
+
+		button {
+			height: 56px;
+			padding: 0px 32px;
+			background-color: $brand2;
+			color: #fff;
+			border: none;
+			box-shadow: none;
+			letter-spacing: 1px;
+			display: flex;
+			align-items: center;
+			margin: 0 auto;
+
+			&:hover {
+				background-color: $brand;
+			}
+
+			i {
+				margin-right: 15px;
+			}
+		}
+	}
+
+	&__txt {
+		font-size: 10px;
+		color: #bfbebe;
+		text-align: center;
+	}
+}
+
+.certificates {
+	padding: 125px 0;
+
+	&__inner {
+		display: flex;
+	}
+	&__col {
+		width: 470px;
+
+		&:first-child {
+			margin-right: 50px;
+		}
+	}
+
+	&__text {
+		line-height: 25px;
+
+		&:not(:last-child) {
+			margin-bottom: 40px;
+		}
+	}
+
+	&__carousel-item {
+		margin: 0 18px;
+	}
+
+	.owl-buttons,
+	.owl-controls {
+		display: flex;
+		justify-content: space-between;
+		width: 100%;
+		position: absolute;
+		left: 0;
+		top: 50%;
+
+	}
+
+	&__left,
+	&__right {
+		border: 10px solid transparent;
+		display: block;
+		opacity: 0.5;
+
+		&:hover {
+			opacity: 1;
+		}
+	}
+
+	&__right {
+		position: relative;
+		left: 25px;
+		border-left: 10px solid $brand2;
+	}
+
+	&__left {
+		position: relative;
+		right: 25px;
+		border-right: 10px solid $brand2;
 	}
 }
  
