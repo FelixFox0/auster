@@ -12,11 +12,12 @@ class ControllerBlogCollections extends Controller
         $data['text_error'] = $this->language->get('not_found');
         $data['text_date_added'] = $this->language->get('text_date_added');
         $data['text_read'] = $this->language->get('text_read');
+        $data['heading_title'] = $this->language->get('heading_title_video');
 //        var_dump($data);
 
 //            $this->load->language('blog/collections');
 
-            $this->document->setTitle("Коллекции");
+            $this->document->setTitle($data['heading_title']);
 
             $data['breadcrumbs'] = array();
 
@@ -26,11 +27,11 @@ class ControllerBlogCollections extends Controller
             );
 
             $data['breadcrumbs'][] = array(
-                'text' => "Коллекции",
+                'text' => $data['heading_title'],
                 'href' => $this->url->link('blog/collections')
             );
 
-            $data['heading_title'] = $this->language->get('heading_title');
+            
         if(!isset($this->request->get['path'])) {
 
             // get all blog data
@@ -133,10 +134,10 @@ class ControllerBlogCollections extends Controller
         } else {
             
             $this->load->language('blog/collections');
-            $this->document->setTitle("Коллекции");
+            $this->document->setTitle($data['heading_title']);
             $this->load->model('tool/image');
             $data['heading_title'] = $this->language->get('heading_title');
-
+            $data['back_to_galery'] = $this->language->get('back_to_galery');
             // get all blog data
             $this->load->model('blog/collections');
 

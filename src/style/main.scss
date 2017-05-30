@@ -246,7 +246,7 @@ body {
 				margin-right: 30px;
 				position: relative;
 				
-				&:after {
+				&:not(:last-child):after {
 					content: "";
 					height: 12px;
 					width: 1px;
@@ -258,7 +258,7 @@ body {
 
 				& > a {
 					font-size: 15px;
-					color: #fff;
+					color: rgba(255,255,255,.6);
 					padding: 10px 3px;
 					font-family: "Rob-thin";
 					display: inline-block;
@@ -809,6 +809,9 @@ body {
 			font-size: 15px;
 			font-family: "Rob-reg";
 			text-transform: uppercase;
+			&:hover {
+				color: $brand2;
+			}
 		}
 	}
 
@@ -864,6 +867,46 @@ body {
 			&:hover {
 				background-color: $brand;
 			}
+		}
+	}
+}
+
+.special-offers {
+	padding: 125px 0;
+
+	&__left {
+		width: 472px;
+	}
+
+	&__inner {
+		display: flex;
+		align-items: flex-end;
+	}
+
+	&__title {
+		h5 {
+			margin: 0;
+			font-size: 16px;
+			font-family: "Rob-bold";
+			margin-bottom: 28px;
+		}
+	}
+
+	&__right {
+		padding-left: 100px;
+
+		iframe {
+			width: 173px;
+			height: 117px;
+			margin-right: 25px;
+		}
+	}
+
+	&__item {
+		display: flex;
+		padding: 0;
+		&:not(:last-child) {
+			margin-bottom: 30px;
 		}
 	}
 }

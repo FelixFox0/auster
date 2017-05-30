@@ -12,8 +12,7 @@
             <?php } ?>
           </ul>
           <div class="title-cs">
-            <h1><?php //echo $heading_title; ?>
-              Коллекции
+            <h1><?php echo $heading_title; ?>
               <div class="bubles">
                 <span></span>
                 <span></span>

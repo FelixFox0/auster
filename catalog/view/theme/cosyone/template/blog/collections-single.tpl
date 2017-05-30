@@ -72,7 +72,7 @@
   <?php endif; ?>
 </div>
 
-
+<a href="/<?php echo $breadcrumbs[1]['href'] ?>"><?php echo $back_to_galery ?></a>
 
 
 

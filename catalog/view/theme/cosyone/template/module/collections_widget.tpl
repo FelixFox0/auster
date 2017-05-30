@@ -30,31 +30,43 @@
 
 <?php if(true){ ?>
 <div id="collections<?php echo $module; ?>" class="special-offers">
-    <div class="special-offers__title">
-        <span>Акции и спецпредложения</span>
-    </div>
-    <div class="special-offers__container">
-        <?php foreach ($collections as $special_offer) { ?>
-
-        <div class="panel-body special-offers__item">
-                <div class="title">
-                    <h5><?php echo $special_offer['title']; ?></h5>
-                </div>
-                <div class="info">
-                    <p><span>youtube</span><?php echo $special_offer['youtube']; ?></p>
-                    <div class="img">
-                        <img src="<?php echo $special_offer['image']; ?>" />
-                    </div>
-                    <div class="descr">
-                        <p><?php echo $special_offer['description']; ?></p>
-                        <a href="<?php echo $special_offer['link']; ?>">Подробнее</a>
-                    </div>
-                </div>
+    <div class="container special-offers__container">
+        <div class="title">
+            <h2>видео о люках</h2>
         </div>
-        <?php } ?>
-    </div>
-    <div class="special-offers__show-more">
-        <a  class="text-medium" href="/index.php?route=blog/collections">Просмотреть все акции и спецпредложения</a>
+        <div class="special-offers__inner">
+            <?php foreach ($collections as $key => $special_offer) { ?>
+            
+            <?php if ($key === 0) { ?>
+                <div class="special-offers__left">
+                    <div class="special-offers__title">
+                        <h5><?php echo $special_offer['title']; ?></h5>
+                    </div>
+                    <iframe width="470" height="315" src="<?php echo $special_offer['youtube']; ?>" frameborder="0" allowfullscreen></iframe>
+                </div>
+                <div class="special-offers__right">
+            <?php } else { ?>
+                <div class="panel-body special-offers__item">
+                    <div class="special-offers__video">
+                        <iframe width="470" height="315" src="<?php echo $special_offer['youtube']; ?>" frameborder="0" allowfullscreen></iframe>
+                    </div>
+                    <div class="special-offers__info">
+                        <div class="special-offers__title">
+                            <h5><?php echo $special_offer['title']; ?></h5>
+                        </div>
+                        <div class="special-offers__descr">
+                            <p><?php echo $special_offer['description']; ?></p>
+                        </div>
+                    </div>
+                  
+                </div>
+            <?php } ?>
+
+
+            
+            <?php } ?>
+            </div>
+        </div>
     </div>
 </div>
 <?php } ?>

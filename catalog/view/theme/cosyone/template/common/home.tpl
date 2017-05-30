@@ -6,10 +6,6 @@
     </div>
   </div>
 </div>
-<script type="text/javascript">
-	$("li.home").addClass("current");
-	$(".breadcrumb_wrapper").hide();
-</script>
 <div class="main">
   <div class="home_top_wrapper">
 <?php echo $home_top_left; ?><?php echo $home_top_center; ?><?php echo $home_top_right; ?>
@@ -31,8 +27,6 @@
           <?php $class = 'col-sm-12'; ?>
           <?php } ?>
         </div>
-        
-
         <div class="col">
           <?php echo $content_top; ?>
         </div>
@@ -42,10 +36,13 @@
   </div>
 </div>
   <div class="row">
-    <div id="content" class="<?php echo $class; ?> homepage">
+    <div id="content" class=" homepage">
     
      <?php echo $content_bottom_half; ?>
-     <?php echo $content_bottom; ?>
+     <div class="home-videos">
+       <?php echo $content_bottom; ?>
+     </div>
+     
      </div>
     <?php echo $column_right; ?>
     </div>

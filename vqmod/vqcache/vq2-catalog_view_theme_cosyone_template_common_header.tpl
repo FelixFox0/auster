@@ -65,19 +65,23 @@
           <?php if ($cosyone_header_cart) { echo $cart; } ?>
         </div>
         <div class="header__callback">
-          <a href="#" class="flex"><i class="ic-phone"></i><span>Обратный звонок</span></a>
+          <a href="#" class="flex"><i class="ic-phone"></i><span><?php echo $text_call_back; ?></span></a>
         </div>
       </div>
       <div class="header__bot">
         <div class="header__contacts">
           <div class="header__mail">
             <i class="ic-mail"></i>
-            <a href="mailto:stonehengekiev@gmail.com">stonehengekiev@gmail.com</a>
+            <a href="mailto:<?php echo $email; ?>"><?php echo $email; ?></a>
           </div>
           <div class="header__phones">
             <i class="ic-phone"></i>
-            <a href="tel:+38 (098) 480-45-03">+38 (098) 480-45-03</a>
-            <a href="tel:+38 (066) 922-69-70">+38 (066) 922-69-70</a>
+            
+            <?php foreach($telephone as $key=>$tel){ ?>
+            <?php if ($key<2){ ?>
+            <a href="tel:<?php echo $tel; ?>"><?php echo $tel; ?></a>
+            <?php } ?>
+            <?php } ?>
           </div>
         </div>
       </div>
