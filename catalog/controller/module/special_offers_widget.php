@@ -28,10 +28,13 @@ class ControllerModuleSpecialOffersWidget extends Controller {
             if (!$result['image']){
                 $result['image']= 'no_image.png';
             }
+            
+            
                         $data['special_offers'][] = array(
 					'title' => $result['name'],
 					'link'  => $this->url->link('blog/special_offers', '', 'SSL') . '&path=' . $result['special_offers_id'],
                     'image' => '/image/' . $result['image'],
+                    'images'=> '/image/' . $result['images'],
 //                    'description'  => $result['description'],
                     'description'  => utf8_substr(strip_tags(html_entity_decode($result['description'], ENT_QUOTES, 'UTF-8')), 0, 200) . '..',
 

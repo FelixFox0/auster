@@ -9,6 +9,10 @@
                 <a class="text-medium" href="<?php echo $special_offer['link']; ?>"><?php echo $special_offer['title']; ?></a>
                 <p><?php echo $special_offer['description']; ?></p>
         </div>
+        <?php foreach($special_offer['images'] as $img){ ?>
+            <img src="/image/<?php echo $img['image']; ?>" />
+            
+        <?php } ?>
         <?php } ?>
     </div>
     <div class="special-offer__show-more">

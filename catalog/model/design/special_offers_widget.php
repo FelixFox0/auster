@@ -9,7 +9,14 @@ class ModelDesignSpecialOffersWidget extends Model {
     public function getSpecialOffer($quantity=5)
 	{
 		$query = $this->db->query("SELECT DISTINCT * FROM " . DB_PREFIX . "special_offers i LEFT JOIN ". DB_PREFIX . "special_offers_description id ON (i.special_offers_id = id.special_offers_id) WHERE id.language_id = '" . (int)$this->config->get('config_language_id') . "' AND i.status = '1' ORDER BY i.date_modified DESC LIMIT 0," . $quantity);
-        
+//                var_dump($query->rows);
+                $images = array();
+                foreach ($query->rows as $key=>$row){
+                    $images = $this->db->query("SELECT DISTINCT * FROM " . DB_PREFIX . "special_offers_images WHERE id_special_offers = '". $row['special_offers_id'] ."' ORDER BY sort_order DESC LIMIT 0," . $quantity);
+                    $query->rows[$key]['images'] = $images->rows;
+                    
+                }
+                
 //        var_dump($query->rows);
 		return $query->rows;
 	}
