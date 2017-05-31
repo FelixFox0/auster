@@ -1,29 +1,15 @@
 
 <?php echo $header; ?>
 <div class="look-book-single">
-<div class="content content-blog-single">
-  <div class="container">
-    <div class="row">
+<div class="content look-book-single__inner">
       <div class="content__inner">
         <div class="aside-wrap">
          
         <div id="content" class="content__right">
-          <div class="breadcrumb_wrapper"></div>
-          <ul class="breadcrumb">
-            <?php foreach ($breadcrumbs as $breadcrumb) { ?>
-            <li><a href="<?php echo $breadcrumb['href']; ?>"><?php echo $breadcrumb['text']; ?></a></li>
-            <?php } ?>
-          </ul>
-          <div class="title-cs">
-            <h1><?php echo ucfirst($blog['name']); ?>
-              
-              <div class="bubles">
-                <span></span>
-                <span></span>
-                <span></span>
-              </div>
-            </h1>
-            
+          <div class="container">
+            <div class="title">
+              <h1><?php echo ucfirst($blog['name']); ?></h1>
+            </div>
           </div>
 
           <?php if($images) : ?>
@@ -37,7 +23,8 @@
                     <a href="/image/<?php echo $image['image']; ?>"><img src="/image/no_image.png" alt="/image/no_image.png" /></a>
                   
                 <?php endif; ?>
-                <?php foreach ($images as $image) : ?>
+                <?php foreach ($images as $key => $image) : ?>
+                  <!-- выводи сюда -->
                   <div class="collection-grid__item">
                     <a href="/image/<?php echo $image['image']; ?>"><img src="/image/<?php echo $image['image']; ?>" alt="img"></a>
                   </div>
@@ -72,9 +59,6 @@
         <?php } ?>  
       </div>
     </div>
-  </div>
-  
-</div>
     <a href="/<?php echo $breadcrumbs[1]['href'] ?>"><?php echo $back_to_galery ?></a>
     
 <?php if(false){ ?>    

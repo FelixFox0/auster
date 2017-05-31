@@ -297,3 +297,7 @@ catalog\language\en-gb\module\cosyone_recently.php
 catalog\language\ru-ru\module\cosyone_recently.php
 catalog\view\theme\cosyone\template\product\review.tpl
 catalog\view\theme\cosyone\template\blog\special_offers-single.tpl
+admin\controller\common\filemanager.php
+admin\language\en-gb\common\filemanager.php
+admin\language\ru-ru\common\filemanager.php
+admin\view\template\common\filemanager.tpl

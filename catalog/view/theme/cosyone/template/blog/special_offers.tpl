@@ -22,9 +22,7 @@
                             <div class="img">
                             <a href="<?php echo HTTP_SERVER; ?>index.php?route=blog/special_offers&amp;path=<?php echo $post['blog_id']; ?>" style="background-image: url('/image/<?php echo $post['image']; ?>');">
                               
-                              <div class="go">
-                                <span>перейти</span>
-                              </div>
+                              <i class="ic-eye"></i>
                             </a>
                              <?php if(false) : ?>
                                 <?php //if($post['images']) : ?>
@@ -36,7 +34,8 @@
                                       break;
                                       }  ?> 
                                     <div class="no-padding col-md-3 look-main">                                          
-                                        <a href="<?php echo HTTP_SERVER; ?>index.php?route=blog/special_offers&amp;path=<?php echo $post['blog_id']; ?>"><img src="/image/<?php echo $image['image']; ?>" alt="img" ></a>                                        
+                                        <a href="<?php echo HTTP_SERVER; ?>index.php?route=blog/special_offers&amp;path=<?php echo $post['blog_id']; ?>"><img src="/image/<?php echo $image['image']; ?>" alt="img" >
+                                        </a>                                        
                                       </div>
                                     
                                     <?php endforeach; ?>
