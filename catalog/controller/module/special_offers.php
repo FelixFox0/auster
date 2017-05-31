@@ -32,6 +32,7 @@ class ControllerModuleSpecialOffers extends Controller {
 					'title' => $result['name'],
 					'link'  => $this->url->link('blog/special_offers', '', 'SSL') . '&path=' . $result['special_offers_id'],
                     'image' => '/image/' . $result['image'],
+                    'images'=> $result['images'],
 //                    'description'  => $result['description'],
                     'description'  => utf8_substr(strip_tags(html_entity_decode($result['description'], ENT_QUOTES, 'UTF-8')), 0, 200) . '..',
 
