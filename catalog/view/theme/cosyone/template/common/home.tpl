@@ -6,10 +6,6 @@
     </div>
   </div>
 </div>
-<script type="text/javascript">
-	$("li.home").addClass("current");
-	$(".breadcrumb_wrapper").hide();
-</script>
 <div class="main">
   <div class="home_top_wrapper">
 <?php echo $home_top_left; ?><?php echo $home_top_center; ?><?php echo $home_top_right; ?>
@@ -17,28 +13,36 @@
 <div class="clearfix product-home">
   <div class="container">
     <div class="col">
-      <div class="title">
-        <h2>Продукция</h2>
+      <div class="product-home__inner">
+        <div class="product-home__left-column">
+          <div class="title">
+            <h2>Продукция</h2>
+          </div>
+          <?php echo $column_left; ?>
+          <?php if ($column_left && $column_right) { ?>
+          <?php $class = 'col-sm-6'; ?>
+          <?php } elseif ($column_left || $column_right) { ?>
+          <?php $class = 'col-sm-9'; ?>
+          <?php } else { ?>
+          <?php $class = 'col-sm-12'; ?>
+          <?php } ?>
+        </div>
+        <div class="col">
+          <?php echo $content_top; ?>
+        </div>
       </div>
-      <?php echo $column_left; ?>
-      <?php if ($column_left && $column_right) { ?>
-      <?php $class = 'col-sm-6'; ?>
-      <?php } elseif ($column_left || $column_right) { ?>
-      <?php $class = 'col-sm-9'; ?>
-      <?php } else { ?>
-      <?php $class = 'col-sm-12'; ?>
-      <?php } ?>
-    </div>
-    <div class="col">
       
     </div>
   </div>
 </div>
   <div class="row">
-    <div id="content" class="<?php echo $class; ?> homepage">
-    <?php echo $content_top; ?>
+    <div id="content" class=" homepage">
+    
      <?php echo $content_bottom_half; ?>
-     <?php echo $content_bottom; ?>
+     <div class="home-videos">
+       <?php echo $content_bottom; ?>
+     </div>
+     
      </div>
     <?php echo $column_right; ?>
     </div>
