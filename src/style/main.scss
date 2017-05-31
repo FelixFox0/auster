@@ -35,7 +35,7 @@ body {
 .title {
 	margin-bottom: 80px;
 
-	h2 {
+	h2,h1 {
 		font-size: 30px;
 		font-family: "Osw-bold";
 		text-transform: uppercase;
@@ -50,6 +50,12 @@ body {
 			top: calc(100% + 10px);
 			border: 7px solid transparent;
 			border-top: 10px solid #d6c193;
+		}
+	}
+
+	&--white {
+		h2,h1 {
+			color: #fff;
 		}
 	}
 }
@@ -512,11 +518,6 @@ body {
 	position: relative;
 	height: 430px;
 
-	&__container {
-		z-index: 999;
-		top: -16px;
-	}
-
 	.owl-carousel.custom .owl-controls {
 		position: absolute;
 	    bottom: auto;
@@ -908,6 +909,26 @@ body {
 		&:not(:last-child) {
 			margin-bottom: 30px;
 		}
+	}
+}
+
+.look-book {
+	
+	&__inner {
+		height: 945px;
+		background-image: url("/image/gallery.jpg");
+		background-repeat: repeat-x;
+		padding: 90px 0 150px;
+	}
+
+	&__container {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-between;
+	}
+
+	&__item {
+		width: calc(50% - 15px);
 	}
 }
 

@@ -843,7 +843,6 @@ a.sq_tag {
 .menu_wrapper {
 	margin:0 auto;	
 	position:relative;
-	z-index:126;
 	line-height:normal;
 	vertical-align:middle;
 }
