@@ -1,6 +1,13 @@
 
 <?php echo $header; ?>
-<?php echo $content_top; ?>
+<div class="home-slider-wrapper">
+  <div class="home-slider">
+    <div class="container home-slider__container">
+      <?php echo $content_top; ?>
+    </div>
+  </div>
+</div>
+
 
 <div class="look-book-single">
 <div class="content look-book-single__inner">
@@ -16,29 +23,22 @@
 
           <?php if($images) : ?>
               <div class="hits__carousel-inner">
-                <div class="hits__carousel">
+                <div class="owl-carousel hits__carousel">
               <!-- <div class="collection-grid__sizer"></div> -->
-                <?php if($blog['image']): ?>
-                  <a href="<?php echo $blog['image']; ?>"><img src="<?php echo $blog['image']; ?>" alt="<?php $blog['image']; ?>"></a>
-                  
-                  <?php else: ?>
-                    <a href="/image/<?php echo $image; ?>"><img src="/image/no_image.png" alt="/image/no_image.png" /></a>
-                  
-                <?php endif; ?>
                 <?php $i=0; ?>
                 <?php foreach ($images as $key => $image) : ?>
                  <?php $i++; ?>
                     
                     <?php if($i==3){ ?>
-                        <div class="collection-grid__item">
-                            <a href="<?php echo $image; ?>"><img src="<?php echo $image; ?>" alt="img"></a>
+                        <div class="collection-grid__item item">
+                            <a href="<?php echo $image; ?>" style="background-image: url(<?php echo $image; ?>);"><i class="ic-eye"></i></a>
                         </div>
                     <?php $i=0; ?>
                     <?php }elseif($i==1){ ?>
-                        <div class="collection-grid__item">
-                            <a href="<?php echo $image; ?>"><img src="<?php echo $image; ?>" alt="img"></a>
+                        <div class="collection-grid__item item">
+                            <a href="<?php echo $image; ?>" style="background-image: url(<?php echo $image; ?>);"><i class="ic-eye"></i></a>
                     <?php }else{ ?>
-                            <a href="<?php echo $image; ?>"><img src="<?php echo $image; ?>" alt="img"></a>
+                            <a href="<?php echo $image; ?>" style="background-image: url(<?php echo $image; ?>);"><i class="ic-eye"></i></a>
                         </div>
                     
                     <?php } ?>
@@ -56,7 +56,6 @@
             <h2><?php echo ucfirst($blog['name']); ?></h2>
           </div>
           <div class="blog-single__date">
-
             <p class="date"><span class="icon-calendar"></span><?php echo $blog['date_added']; ?></p>
            <!-- <p class="time"><span class="icon-clock"></span><?php echo $blog['time_added']; ?></p>-->
           
@@ -77,7 +76,9 @@
         <?php } ?>  
       </div>
     </div>
-    <a href="/<?php echo $breadcrumbs[1]['href'] ?>"><?php echo $back_to_galery ?></a>
+    <div class="text-center">
+      <a class="back-button" href="/<?php echo $breadcrumbs[1]['href'] ?>"><i class="ic-back"></i><?php echo $back_to_galery ?></a>
+    </div>
     
 <?php if(false){ ?>    
   <section class="main-title">
@@ -107,19 +108,20 @@
 <script type="text/javascript">
 $(document).ready(function() {
   $('.hits__carousel').owlCarousel({
-    items: 1,
+    items: 5,
+    margin: 34,
     autoPlay: true,
-    navigation: true,
-    navigationText: ["<span><i class='fa fa-angle-left'></i></span>","<span><i class='fa fa-angle-right'></i></span>"],
+    loop: true,
+    nav: true,
+    navText: ["<span><i class='ic-arrow-left'></i></span>","<span><i class='ic-arrow-right'></i></span>"],
     dots: true,
-    autoHeight: true
   });
 });
 </script> 
 
 
-<!-- <script type="text/javascript">$(document).ready(function() {
-  $('.collection-grid').magnificPopup({
+<script type="text/javascript">$(document).ready(function() {
+  $('.hits__carousel-inner').magnificPopup({
     type:'image',
     delegate: 'a',
     gallery: {
@@ -127,8 +129,7 @@ $(document).ready(function() {
     }
   });
 });
-//</script>  -->
-
+//</script>
 
 
 <?php echo $footer; ?>

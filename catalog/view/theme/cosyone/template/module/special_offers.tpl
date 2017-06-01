@@ -6,11 +6,15 @@
         <?php foreach ($special_offers as $special_offer) { ?>
         <div class="panel-body">
                 <img src="<?php echo $special_offer['image']; ?>" />
-                <a class="text-medium" href="<?php echo $special_offer['link']; ?>"><?php echo $special_offer['title']; ?></a>
+                
                 <p><?php echo $special_offer['description']; ?></p>
         </div>
         <?php foreach($special_offer['images'] as $img){ ?>
-            <img src="<?php echo $img; ?>" />
+            <div>
+                <a class="text-medium" href="<?php echo $special_offer['link']; ?>"><?php echo $special_offer['title']; ?></a>
+                <img src="/image/<?php echo $img['image']; ?>" />
+            </div>
+
             
         <?php } ?>
         <?php } ?>
