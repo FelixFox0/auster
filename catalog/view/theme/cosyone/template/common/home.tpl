@@ -87,10 +87,11 @@
   $('.certificates__carousel').owlCarousel({
   items: 2,
   slideSpeed:750,
-  navigation: true,
+  nav: true,
   responsive: true,
   addClassActive: true,
-  navigationText: [
+  loop: true,
+  navText: [
   "<i class=' certificates__left'></i>",
   "<i class=' certificates__right'></i>"
   ],

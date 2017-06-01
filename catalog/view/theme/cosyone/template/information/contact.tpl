@@ -1,11 +1,8 @@
 <?php echo $header; ?>
-<div class="container">
-  <ul class="breadcrumb">
-    <?php foreach ($breadcrumbs as $breadcrumb) { ?>
-    <li><a href="<?php echo $breadcrumb['href']; ?>"><?php echo $breadcrumb['text']; ?></a></li>
-    <?php } ?>
-  </ul>
-  <div class="row"><?php echo $column_left; ?>
+<div class="contact-page">
+  <div class="contact-page__inner">
+<div class="container ">
+<?php echo $column_left; ?>
     <?php if ($column_left && $column_right) { ?>
     <?php $class = 'col-sm-6'; ?>
     <?php } elseif ($column_left || $column_right) { ?>
@@ -13,136 +10,193 @@
     <?php } else { ?>
     <?php $class = 'col-sm-12'; ?>
     <?php } ?>
-    <div id="content" class="<?php echo $class; ?> margin-b"><?php echo $content_top; ?>
+    <div id="content" class=" margin-b"><?php echo $content_top; ?>
     
-    <h1><?php echo $heading_title; ?></h1>
-      
-      <?php if ($cosyone_google_map) { ?>
-  <div class="contact_map">
-  <?php echo html_entity_decode($cosyone_google_map, ENT_QUOTES, 'UTF-8'); ?>
-   </div>
-  <?php } ?>
-  
-      <div class="box-heading"><?php echo $text_location; ?></div>
-          <div class="row">
-            <?php if ($image) { ?>
-            <div class="col-sm-3 margin-b">
-            <img src="<?php echo $image; ?>" alt="<?php echo $store; ?>" title="<?php echo $store; ?>" />
-            </div>
-            <?php } ?>
-            <div class="col-sm-3 margin-b">
-            <span class="contrast_font"><?php echo $store; ?></span><br />
-			<p><?php echo $address; ?></p>
-            <?php if ($geocode) { ?>
-  			<a href="https://maps.google.com/maps?q=<?php echo urlencode($geocode); ?>&hl=<?php echo $geocode_hl; ?>&t=m&z=15" target="_blank"><i class="fa fa-map-marker"></i> <?php echo $button_map; ?></a>
-  			<?php } ?>
-            </div>
-            <div class="col-sm-3 margin-b">
-            <span class="contrast_font"><?php echo $text_telephone; ?></span><br />
-			<?php echo $telephone; ?><br />
-            <?php if ($fax) { ?>
-  			<br /><span class="contrast_font"><?php echo $text_fax; ?></span><br />
-  			<?php echo $fax; ?>
-  			<?php } ?>
-            </div>
-            <div class="col-sm-3 margin-b">
-            <?php if ($open) { ?>
-            <span class="contrast_font"><?php echo $text_open; ?></span><br />
-			<?php echo $open; ?>
-            <br />
-            <?php } ?>
-            <?php if ($comment) { ?>
-            <br /><span class="contrast_font"><?php echo $text_comment; ?></span><br />
-            <?php echo $comment; ?>
-            <?php } ?>
-            </div>
-          </div>
-      
-      <?php if ($locations) { ?>
-      <div class="box-heading"><?php echo $text_store; ?></div>
-      <div class="panel-group" id="accordion">
-        <?php foreach ($locations as $location) { ?>
-        <div class="panel panel-cosyone">
-          <div class="panel-heading">
-            <h4 class="panel-title"><a href="#collapse-location<?php echo $location['location_id']; ?>" class="accordion-toggle" data-toggle="collapse" data-parent="#accordion"><?php echo $location['name']; ?> <i class="fa fa-caret-down"></i></a></h4>
-          </div>
-          <div class="panel-collapse collapse" id="collapse-location<?php echo $location['location_id']; ?>">
-            <div class="panel-body">
-              <div class="row">
-                <?php if ($location['image']) { ?>
-                <div class="col-sm-3"><img src="<?php echo $location['image']; ?>" alt="<?php echo $location['name']; ?>" title="<?php echo $location['name']; ?>" /></div>
-                <?php } ?>
-                <div class="col-sm-3 margin-b">
-                <span class="contrast_font"><?php echo $location['name']; ?></span><br />
-                  <p><?php echo $location['address']; ?></p>
-                  <?php if ($location['geocode']) { ?>
-                  <a href="https://maps.google.com/maps?q=<?php echo urlencode($location['geocode']); ?>&hl=<?php echo $geocode_hl; ?>&t=m&z=15" target="_blank"><i class="fa fa-map-marker"></i> <?php echo $button_map; ?></a>
-                  <?php } ?>
-                </div>
-                <div class="col-sm-3 margin-b">
-                <span class="contrast_font"><?php echo $text_telephone; ?></span><br>
-                  <?php echo $location['telephone']; ?><br />
-                  <br />
-                  <?php if ($location['fax']) { ?>
-                  <span class="contrast_font"><?php echo $text_fax; ?></span><br>
-                  <?php echo $location['fax']; ?>
-                  <?php } ?>
-                </div>
-                <div class="col-sm-3 margin-b">
-                  <?php if ($location['open']) { ?>
-                  <span class="contrast_font"><?php echo $text_open; ?></span><br />
-                  <?php echo $location['open']; ?><br />
-                  <br />
-                  <?php } ?>
-                  <?php if ($location['comment']) { ?>
-                  <span class="contrast_font"><?php echo $text_comment; ?></span><br />
-                  <?php echo $location['comment']; ?>
-                  <?php } ?>
-                </div>
-              </div>
-            </div>
-          </div>
+    <div class="title title--green">
+      <h1><?php echo $heading_title; ?></h1>
+    </div>
+
+    <div class="contact-page__items">
+      <div class="contact-page__item">
+        <i class="ic-phone"></i>
+        <h5><?php echo $text_telephone; ?></h5>
+        <div>
+          <div><a href="tel:+380 98-480-45-03">+380 98-480-45-03</a></div>
+          <div><a href="tel:+380 66-922-69-70">+380 66-922-69-70</a></div>
+          <div><a href="tel:+380 63-950-28-18">+380 63-950-28-18</a></div>
         </div>
-        <?php } ?>
+        
       </div>
-      <?php } ?>
-      
-      <form action="<?php echo $action; ?>" method="post" enctype="multipart/form-data">
-        <fieldset>
-          <div class="box-heading"><?php echo $text_contact; ?></div>
-          <div class="row">
-          <div class="form-group col-sm-6 required">
-            <label class="control-label" for="input-name"><?php echo $entry_name; ?></label>
-              <input type="text" name="name" value="<?php echo $name; ?>" id="input-name" class="form-control" />
-              <?php if ($error_name) { ?>
-              <div class="text-danger"><?php echo $error_name; ?></div>
-              <?php } ?>
-            </div>
-          <div class="form-group col-sm-6 required">
-            <label class="control-label" for="input-email"><?php echo $entry_email; ?></label>
-              <input type="text" name="email" value="<?php echo $email; ?>" id="input-email" class="form-control" />
-              <?php if ($error_email) { ?>
-              <div class="text-danger"><?php echo $error_email; ?></div>
-              <?php } ?>
-          </div>
-          <div class="form-group col-sm-12 required">
-            <label class="control-label" for="input-enquiry"><?php echo $entry_enquiry; ?></label>
-              <textarea name="enquiry" rows="10" id="input-enquiry" class="form-control"><?php echo $enquiry; ?></textarea>
-              <?php if ($error_enquiry) { ?>
-              <div class="text-danger"><?php echo $error_enquiry; ?></div>
-              <?php } ?>
-          </div>
-          <div class="vertical-captcha">
-          <?php echo $captcha; ?>
-          </div>
-          
-            <div class="col-sm-12 text-right">
-            <input class="btn btn-primary" type="submit" value="<?php echo $button_submit; ?>" />
-          </div>
-          </div>
-        </fieldset>
-      </form>
-      <?php echo $content_bottom; ?></div>
-    <?php echo $column_right; ?></div>
+      <div class="contact-page__item">
+        <i class="ic-mail"></i>
+        <h5>E-mail:</h5>
+        <a href="mailto:Stonehengekiev@gmail.com">Stonehengekiev@gmail.com</a>
+      </div>
+      <div class="contact-page__item">
+        <i class="ic-location2"></i>
+        <h5><?php echo $text_location; ?></h5>
+        <a href="#"><?php echo $address; ?></a>
+      </div>
+    </div>
+
 </div>
+</div>
+</div>
+
+<div class="contact-block">
+  <div class="contact-block__container">
+    <div class="contact-block__col contact-block__map" id="map">
+      
+    </div>
+    <div class="contact-block__col contact-block__form">
+      <div class="consult__form consult__form--white">
+        <h3 class="consult__form-title"><span>Есть вопрос? Задайте его здесь!</span></h3>
+        <p class="consult__form-subtitle">Отправьте заявку и наш консультатнт свяжется 
+  с Вами в ближайшее время</p>
+        <form action="">
+          <div class="consult__input consult__input--white">
+            <label for="">Ваше имя</label>
+            <input type="text" placeholder="Введите имя">
+          </div>
+          <div class="consult__input consult__input--white">
+            <label for="">Номер Вашего телефона</label>
+            <input type="text" placeholder="Введите имя">
+          </div>
+          <div class="consult__input consult__input--white">
+            <label for="">Ваш Е-mail</label>
+            <input type="email" placeholder="Введите имя">
+          </div>
+          <div class="consult__input">
+            <button>
+              <i class="ic-send"></i>
+              <span>Отправить</span>
+            </button>
+          </div>
+          <div class="consult__txt">Мы заботимся о конфиденциальности Ваших данных</div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+
+<script>
+    
+function initMap() {
+
+var map;
+
+      var styles = [
+    {
+        "featureType": "administrative",
+        "elementType": "labels.text.fill",
+        "stylers": [
+            {
+                "color": "#444444"
+            }
+        ]
+    },
+    {
+        "featureType": "landscape",
+        "elementType": "all",
+        "stylers": [
+            {
+                "color": "#f2f2f2"
+            }
+        ]
+    },
+    {
+        "featureType": "poi",
+        "elementType": "all",
+        "stylers": [
+            {
+                "visibility": "off"
+            }
+        ]
+    },
+    {
+        "featureType": "road",
+        "elementType": "all",
+        "stylers": [
+            {
+                "saturation": -100
+            },
+            {
+                "lightness": 45
+            }
+        ]
+    },
+    {
+        "featureType": "road.highway",
+        "elementType": "all",
+        "stylers": [
+            {
+                "visibility": "simplified"
+            }
+        ]
+    },
+    {
+        "featureType": "road.arterial",
+        "elementType": "labels.icon",
+        "stylers": [
+            {
+                "visibility": "off"
+            }
+        ]
+    },
+    {
+        "featureType": "transit",
+        "elementType": "all",
+        "stylers": [
+            {
+                "visibility": "off"
+            }
+        ]
+    },
+    {
+        "featureType": "water",
+        "elementType": "all",
+        "stylers": [
+            {
+                "color": "#46bcec"
+            },
+            {
+                "visibility": "on"
+            }
+        ]
+    }
+]
+
+var myLatlng = new google.maps.LatLng(50.462654, 30.599236);
+
+var options = {
+mapTypeControlOptions: {
+mapTypeIds: ['Styled']
+},
+center: myLatlng,
+zoom: 15,
+disableDefaultUI: true, 
+mapTypeId: 'Styled'
+};
+
+var div = document.getElementById('map');
+var map = new google.maps.Map(div, options);
+var styledMapType = new google.maps.StyledMapType(styles, { name: 'Styled' });
+map.mapTypes.set('Styled', styledMapType);
+
+var marker = new google.maps.Marker({
+    position: myLatlng,
+    icon: '/image/location.png',
+    title: "Strunhange"
+});
+
+// To add the marker to the map, call setMap();
+marker.setMap(map);
+
+}
+
+    </script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBFMJaMmO8Y93QKqpEOCGH6pfJqs52gCLE&callback=initMap"
+    async defer></script>
 <?php echo $footer; ?>

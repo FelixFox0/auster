@@ -1,5 +1,13 @@
 <?php echo $header; ?>
-<?php echo $content_top; ?>
+<div class="home-slider-wrapper">
+  <div class="home-slider">
+    <div class="container home-slider__container">
+      <?php echo $content_top; ?>
+    </div>
+  </div>
+</div>
+
+
 <div class="look-book">
 <div class="content look-book__inner">
   <div class="container">

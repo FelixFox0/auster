@@ -142,7 +142,7 @@ class ControllerBlogspecialoffers extends Controller
             $blog = $this->model_blog_special_offers->getBlogById($this->request->get['path']);
             //var_dump($blog);
             if($blog){
-                $blog['image']= $this->model_tool_image->resize_height($blog['image'], 270);
+                $blog['image']= $this->model_tool_image->resize_height($blog['image'], 670);
                 $data['blog'] = $blog;
             } else {
                 $data['blog'] = array();
@@ -160,7 +160,7 @@ class ControllerBlogspecialoffers extends Controller
             if($images){
                 //$data['images'] = $images;
                 foreach ($images as $value) {
-                    $data['images'][] = $this->model_tool_image->resize_height($value['image'], 270);
+                    $data['images'][] = $this->model_tool_image->resize_height($value['image'], 670);
                 }
                 
             } else {

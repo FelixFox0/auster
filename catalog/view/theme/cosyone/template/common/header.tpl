@@ -27,8 +27,7 @@
 <link href="catalog/view/javascript/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
 <link rel="stylesheet" type="text/css" href="catalog/view/theme/default/css/cabinet.css" />
 <link rel="stylesheet" type="text/css" href="catalog/view/theme/default/css/main.css" />
-
-<script type="text/javascript" src="catalog/view/theme/cosyone/js/owl.carousel.min.js"></script>
+<script type="text/javascript" src="catalog/view/javascript/jquery/magnific/jquery.magnific-popup.min.js"></script>
 <script type="text/javascript" src="catalog/view/theme/cosyone/js/cosyone_common.js"></script>
 <?php foreach ($scripts as $script) { ?>
 <script type="text/javascript" src="<?php echo $script; ?>"></script>
