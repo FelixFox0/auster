@@ -10,11 +10,15 @@
                 <p><?php echo $special_offer['description']; ?></p>
         </div>
         <?php foreach($special_offer['images'] as $img){ ?>
+<<<<<<< HEAD
             <div>
                 <a class="text-medium" href="<?php echo $special_offer['link']; ?>"><?php echo $special_offer['title']; ?></a>
                 <img src="/image/<?php echo $img['image']; ?>" />
             </div>
             
+=======
+            <img src="<?php echo $img; ?>" />
+>>>>>>> 1c3ea59ac021dc3b97ec9e77ca225b6d2808d625
             
         <?php } ?>
         <?php } ?>

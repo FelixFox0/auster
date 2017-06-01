@@ -1,5 +1,7 @@
 
 <?php echo $header; ?>
+<?php echo $content_top; ?>
+
 <div class="look-book-single">
 <div class="content look-book-single__inner">
       <div class="content__inner">
@@ -17,18 +19,34 @@
                 <div class="hits__carousel">
               <!-- <div class="collection-grid__sizer"></div> -->
                 <?php if($blog['image']): ?>
-                  <a href="/image/<?php echo $image['image']; ?>"><img src="/image/<?php echo $blog['image']; ?>" alt="<?php $blog['image']; ?>"></a>
+                  <a href="<?php echo $blog['image']; ?>"><img src="<?php echo $blog['image']; ?>" alt="<?php $blog['image']; ?>"></a>
                   
                   <?php else: ?>
-                    <a href="/image/<?php echo $image['image']; ?>"><img src="/image/no_image.png" alt="/image/no_image.png" /></a>
+                    <a href="/image/<?php echo $image; ?>"><img src="/image/no_image.png" alt="/image/no_image.png" /></a>
                   
                 <?php endif; ?>
+                <?php $i=0; ?>
                 <?php foreach ($images as $key => $image) : ?>
-                  <!-- выводи сюда -->
-                  <div class="collection-grid__item">
-                    <a href="/image/<?php echo $image['image']; ?>"><img src="/image/<?php echo $image['image']; ?>" alt="img"></a>
-                  </div>
+                 <?php $i++; ?>
+                    
+                    <?php if($i==3){ ?>
+                        <div class="collection-grid__item">
+                            <a href="<?php echo $image; ?>"><img src="<?php echo $image; ?>" alt="img"></a>
+                        </div>
+                    <?php $i=0; ?>
+                    <?php }elseif($i==1){ ?>
+                        <div class="collection-grid__item">
+                            <a href="<?php echo $image; ?>"><img src="<?php echo $image; ?>" alt="img"></a>
+                    <?php }else{ ?>
+                            <a href="<?php echo $image; ?>"><img src="<?php echo $image; ?>" alt="img"></a>
+                        </div>
+                    
+                    <?php } ?>
+                    
                 <?php endforeach; ?>
+                <?php if($i==1){ ?>
+                    </div>
+                <?php } ?>
               </div>
             </div>
             </div>
@@ -45,7 +63,7 @@
           <div class="blog-single__container">
                <div class="blog-single__img">
                     <?php if($blog['image']): ?>
-                      <img src="/image/<?php echo $blog['image']; ?>" alt="<?php $blog['image']; ?>">
+                      <img src="<?php echo $blog['image']; ?>" alt="<?php $blog['image']; ?>">
                       <?php else: ?>
                       <img src="/image/no_image.png" alt="/image/no_image.png" />
                     <?php endif; ?>

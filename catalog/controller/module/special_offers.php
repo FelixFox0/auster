@@ -28,11 +28,24 @@ class ControllerModuleSpecialOffers extends Controller {
             if (!$result['image']){
                 $result['image']= 'no_image.png';
             }
+            
+            if($result['images']){
+                foreach ($result['images'] as $value) {
+                    //var_dump($value);
+                    $images[] = $this->model_tool_image->resize_height($value['image'], 270);
+                }
+            } else {
+                $images = array();
+            }
+            
+            
+            
                         $data['special_offers'][] = array(
 					'title' => $result['name'],
 					'link'  => $this->url->link('blog/special_offers', '', 'SSL') . '&path=' . $result['special_offers_id'],
-                    'image' => '/image/' . $result['image'],
-                    'images'=> $result['images'],
+                    //'image' => '/image/' . $result['image'],
+                    'image' => $this->model_tool_image->resize_height($result['image'], 270),
+                    'images'=> $images,
 //                    'description'  => $result['description'],
                     'description'  => utf8_substr(strip_tags(html_entity_decode($result['description'], ENT_QUOTES, 'UTF-8')), 0, 200) . '..',
 

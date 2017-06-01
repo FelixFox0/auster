@@ -1,4 +1,5 @@
 <?php echo $header; ?>
+<?php echo $content_top; ?>
 <div class="look-book">
 <div class="content look-book__inner">
   <div class="container">
@@ -20,7 +21,7 @@
               <div class="look-book__item ">
                           <div class="info">                            
                             <div class="img">
-                            <a href="<?php echo HTTP_SERVER; ?>index.php?route=blog/special_offers&amp;path=<?php echo $post['blog_id']; ?>" style="background-image: url('/image/<?php echo $post['image']; ?>');">
+                            <a href="<?php echo HTTP_SERVER; ?>index.php?route=blog/special_offers&amp;path=<?php echo $post['blog_id']; ?>" style="background-image: url('<?php echo $post['image']; ?>');">
                               
                               <i class="ic-eye"></i>
                             </a>
@@ -34,7 +35,7 @@
                                       break;
                                       }  ?> 
                                     <div class="no-padding col-md-3 look-main">                                          
-                                        <a href="<?php echo HTTP_SERVER; ?>index.php?route=blog/special_offers&amp;path=<?php echo $post['blog_id']; ?>"><img src="/image/<?php echo $image['image']; ?>" alt="img" >
+                                        <a href="<?php echo HTTP_SERVER; ?>index.php?route=blog/special_offers&amp;path=<?php echo $post['blog_id']; ?>"><img src="<?php echo $image['image']; ?>" alt="img" >
                                         </a>                                        
                                       </div>
                                     

@@ -32,7 +32,7 @@ class ControllerBlogspecialoffers extends Controller
 
             
         if(!isset($this->request->get['path'])) {
-
+            $this->load->model('tool/image');
             // get all blog data
             $this->load->model('blog/special_offers');
 
@@ -94,7 +94,7 @@ class ControllerBlogspecialoffers extends Controller
                 }
                 
                 $data['blog'][$b]['name'] = $blog['name'];
-                $data['blog'][$b]['image'] = $blog['image'];
+                $data['blog'][$b]['image'] = $this->model_tool_image->resize_width($blog['image'], 450);
                 $data['blog'][$b]['description'] = $blog['description'];
                 $data['blog'][$b]['day'] = date('j', strtotime($blog['date_added']));
                 $data['blog'][$b]['blog_id'] = $blog['special_offers_id'];                 
@@ -140,8 +140,9 @@ class ControllerBlogspecialoffers extends Controller
             $this->load->model('blog/special_offers');
 
             $blog = $this->model_blog_special_offers->getBlogById($this->request->get['path']);
-
+            //var_dump($blog);
             if($blog){
+                $blog['image']= $this->model_tool_image->resize_height($blog['image'], 270);
                 $data['blog'] = $blog;
             } else {
                 $data['blog'] = array();
@@ -155,8 +156,13 @@ class ControllerBlogspecialoffers extends Controller
             
 //            var_dump($blog);
             $images = $this->model_blog_special_offers->getBlogByIdImages($this->request->get['path']);
+//            var_dump($images);
             if($images){
-                $data['images'] = $images;
+                //$data['images'] = $images;
+                foreach ($images as $value) {
+                    $data['images'][] = $this->model_tool_image->resize_height($value['image'], 270);
+                }
+                
             } else {
                 $data['images'] = array();
             }
