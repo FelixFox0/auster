@@ -316,3 +316,71 @@
 2017-05-31 23:33:39 - PHP Notice:  Undefined variable: cosyone_custom_menu_title5 in C:\OPENSERVER\OpenServer\domains\auster.loc\catalog\view\theme\cosyone\template\common\header.tpl on line 147
 2017-05-31 23:33:39 - PHP Notice:  Undefined variable: cosyone_custom_menu_title6 in C:\OPENSERVER\OpenServer\domains\auster.loc\catalog\view\theme\cosyone\template\common\header.tpl on line 150
 2017-05-31 23:33:39 - PHP Notice:  Undefined variable: image in C:\OPENSERVER\OpenServer\domains\auster.loc\catalog\view\theme\cosyone\template\blog\special_offers-single.tpl on line 20
+2017-06-01 0:46:11 - PHP Notice:  Undefined variable: image in D:\OpenServer\domains\auster-stone.loc\catalog\view\theme\cosyone\template\blog\special_offers-single.tpl on line 20
+2017-06-01 0:47:19 - PHP Notice:  Undefined variable: image in D:\OpenServer\domains\auster-stone.loc\catalog\view\theme\cosyone\template\blog\special_offers-single.tpl on line 20
+2017-06-01 0:56:24 - PHP Notice:  Undefined variable: image in D:\OpenServer\domains\auster-stone.loc\catalog\view\theme\cosyone\template\blog\special_offers-single.tpl on line 20
+2017-06-01 1:01:31 - PHP Notice:  Undefined variable: image in D:\OpenServer\domains\auster-stone.loc\catalog\view\theme\cosyone\template\blog\special_offers-single.tpl on line 20
+2017-06-01 1:04:55 - PHP Notice:  Undefined variable: image in D:\OpenServer\domains\auster-stone.loc\catalog\view\theme\cosyone\template\blog\special_offers-single.tpl on line 20
+2017-06-01 1:06:33 - PHP Notice:  Undefined variable: image in D:\OpenServer\domains\auster-stone.loc\catalog\view\theme\cosyone\template\blog\special_offers-single.tpl on line 20
+2017-06-01 1:08:45 - PHP Notice:  Undefined variable: image in D:\OpenServer\domains\auster-stone.loc\catalog\view\theme\cosyone\template\blog\special_offers-single.tpl on line 20
+2017-06-01 1:11:04 - PHP Notice:  Undefined variable: image in D:\OpenServer\domains\auster-stone.loc\catalog\view\theme\cosyone\template\blog\special_offers-single.tpl on line 20
+2017-06-01 1:15:41 - PHP Notice:  Undefined variable: image in D:\OpenServer\domains\auster-stone.loc\catalog\view\theme\cosyone\template\blog\special_offers-single.tpl on line 20
+2017-06-01 1:19:28 - PHP Notice:  Undefined variable: image in D:\OpenServer\domains\auster-stone.loc\catalog\view\theme\cosyone\template\blog\special_offers-single.tpl on line 20
+2017-06-01 1:19:36 - PHP Notice:  Undefined variable: image in D:\OpenServer\domains\auster-stone.loc\catalog\view\theme\cosyone\template\blog\special_offers-single.tpl on line 20
+2017-06-01 1:20:10 - PHP Notice:  Undefined variable: image in D:\OpenServer\domains\auster-stone.loc\catalog\view\theme\cosyone\template\blog\special_offers-single.tpl on line 20
+2017-06-01 1:20:46 - PHP Notice:  Undefined variable: image in D:\OpenServer\domains\auster-stone.loc\catalog\view\theme\cosyone\template\blog\special_offers-single.tpl on line 20
+2017-06-01 1:21:25 - PHP Notice:  Undefined variable: image in D:\OpenServer\domains\auster-stone.loc\catalog\view\theme\cosyone\template\blog\special_offers-single.tpl on line 20
+2017-06-01 1:23:27 - PHP Notice:  Undefined variable: image in D:\OpenServer\domains\auster-stone.loc\catalog\view\theme\cosyone\template\blog\special_offers-single.tpl on line 20
+2017-06-01 1:32:26 - PHP Notice:  Undefined variable: image in D:\OpenServer\domains\auster-stone.loc\catalog\view\theme\cosyone\template\blog\special_offers-single.tpl on line 24
+2017-06-01 1:33:18 - PHP Notice:  Undefined variable: image in D:\OpenServer\domains\auster-stone.loc\catalog\view\theme\cosyone\template\blog\special_offers-single.tpl on line 24
+2017-06-01 1:33:48 - PHP Notice:  Undefined variable: image in D:\OpenServer\domains\auster-stone.loc\catalog\view\theme\cosyone\template\blog\special_offers-single.tpl on line 24
+2017-06-01 1:36:41 - PHP Notice:  Undefined variable: image in D:\OpenServer\domains\auster-stone.loc\catalog\view\theme\cosyone\template\blog\special_offers-single.tpl on line 24
+2017-06-01 1:37:06 - PHP Notice:  Undefined variable: image in D:\OpenServer\domains\auster-stone.loc\catalog\view\theme\cosyone\template\blog\special_offers-single.tpl on line 24
+2017-06-01 1:44:10 - PHP Notice:  Undefined variable: image in D:\OpenServer\domains\auster-stone.loc\catalog\view\theme\cosyone\template\blog\special_offers-single.tpl on line 24
+2017-06-01 1:44:20 - PHP Notice:  Undefined variable: image in D:\OpenServer\domains\auster-stone.loc\catalog\view\theme\cosyone\template\blog\special_offers-single.tpl on line 24
+2017-06-01 1:44:58 - PHP Notice:  Undefined variable: image in D:\OpenServer\domains\auster-stone.loc\catalog\view\theme\cosyone\template\blog\special_offers-single.tpl on line 24
+2017-06-01 1:45:04 - PHP Notice:  Undefined variable: image in D:\OpenServer\domains\auster-stone.loc\catalog\view\theme\cosyone\template\blog\special_offers-single.tpl on line 24
+2017-06-01 1:45:16 - PHP Notice:  Undefined variable: image in D:\OpenServer\domains\auster-stone.loc\catalog\view\theme\cosyone\template\blog\special_offers-single.tpl on line 24
+2017-06-01 1:46:14 - PHP Notice:  Undefined variable: image in D:\OpenServer\domains\auster-stone.loc\catalog\view\theme\cosyone\template\blog\special_offers-single.tpl on line 24
+2017-06-01 1:47:35 - PHP Notice:  Undefined variable: image in D:\OpenServer\domains\auster-stone.loc\catalog\view\theme\cosyone\template\blog\special_offers-single.tpl on line 20
+2017-06-01 1:48:01 - PHP Notice:  Undefined variable: image in D:\OpenServer\domains\auster-stone.loc\catalog\view\theme\cosyone\template\blog\special_offers-single.tpl on line 20
+2017-06-01 1:48:47 - PHP Notice:  Undefined variable: image in D:\OpenServer\domains\auster-stone.loc\catalog\view\theme\cosyone\template\blog\special_offers-single.tpl on line 20
+2017-06-01 2:30:10 - PHP Notice:  Undefined variable: result in D:\OpenServer\domains\auster-stone.loc\catalog\controller\blog\special_offers.php on line 161
+2017-06-01 2:30:10 - PHP Warning:  Invalid argument supplied for foreach() in D:\OpenServer\domains\auster-stone.loc\catalog\controller\blog\special_offers.php on line 161
+2017-06-01 2:30:10 - PHP Notice:  Undefined variable: images in D:\OpenServer\domains\auster-stone.loc\catalog\view\theme\cosyone\template\blog\special_offers-single.tpl on line 15
+2017-06-01 2:30:32 - PHP Warning:  Illegal string offset 'image' in D:\OpenServer\domains\auster-stone.loc\catalog\view\theme\cosyone\template\blog\special_offers-single.tpl on line 37
+2017-06-01 2:30:32 - PHP Warning:  Illegal string offset 'image' in D:\OpenServer\domains\auster-stone.loc\catalog\view\theme\cosyone\template\blog\special_offers-single.tpl on line 37
+2017-06-01 2:30:32 - PHP Warning:  Illegal string offset 'image' in D:\OpenServer\domains\auster-stone.loc\catalog\view\theme\cosyone\template\blog\special_offers-single.tpl on line 39
+2017-06-01 2:30:32 - PHP Warning:  Illegal string offset 'image' in D:\OpenServer\domains\auster-stone.loc\catalog\view\theme\cosyone\template\blog\special_offers-single.tpl on line 39
+2017-06-01 2:30:32 - PHP Warning:  Illegal string offset 'image' in D:\OpenServer\domains\auster-stone.loc\catalog\view\theme\cosyone\template\blog\special_offers-single.tpl on line 32
+2017-06-01 2:30:32 - PHP Warning:  Illegal string offset 'image' in D:\OpenServer\domains\auster-stone.loc\catalog\view\theme\cosyone\template\blog\special_offers-single.tpl on line 32
+2017-06-01 2:30:32 - PHP Warning:  Illegal string offset 'image' in D:\OpenServer\domains\auster-stone.loc\catalog\view\theme\cosyone\template\blog\special_offers-single.tpl on line 37
+2017-06-01 2:30:32 - PHP Warning:  Illegal string offset 'image' in D:\OpenServer\domains\auster-stone.loc\catalog\view\theme\cosyone\template\blog\special_offers-single.tpl on line 37
+2017-06-01 2:30:32 - PHP Warning:  Illegal string offset 'image' in D:\OpenServer\domains\auster-stone.loc\catalog\view\theme\cosyone\template\blog\special_offers-single.tpl on line 39
+2017-06-01 2:30:32 - PHP Warning:  Illegal string offset 'image' in D:\OpenServer\domains\auster-stone.loc\catalog\view\theme\cosyone\template\blog\special_offers-single.tpl on line 39
+2017-06-01 2:30:32 - PHP Warning:  Illegal string offset 'image' in D:\OpenServer\domains\auster-stone.loc\catalog\view\theme\cosyone\template\blog\special_offers-single.tpl on line 32
+2017-06-01 2:30:32 - PHP Warning:  Illegal string offset 'image' in D:\OpenServer\domains\auster-stone.loc\catalog\view\theme\cosyone\template\blog\special_offers-single.tpl on line 32
+2017-06-01 2:30:32 - PHP Warning:  Illegal string offset 'image' in D:\OpenServer\domains\auster-stone.loc\catalog\view\theme\cosyone\template\blog\special_offers-single.tpl on line 37
+2017-06-01 2:30:32 - PHP Warning:  Illegal string offset 'image' in D:\OpenServer\domains\auster-stone.loc\catalog\view\theme\cosyone\template\blog\special_offers-single.tpl on line 37
+2017-06-01 2:30:32 - PHP Warning:  Illegal string offset 'image' in D:\OpenServer\domains\auster-stone.loc\catalog\view\theme\cosyone\template\blog\special_offers-single.tpl on line 39
+2017-06-01 2:30:32 - PHP Warning:  Illegal string offset 'image' in D:\OpenServer\domains\auster-stone.loc\catalog\view\theme\cosyone\template\blog\special_offers-single.tpl on line 39
+2017-06-01 2:30:32 - PHP Warning:  Illegal string offset 'image' in D:\OpenServer\domains\auster-stone.loc\catalog\view\theme\cosyone\template\blog\special_offers-single.tpl on line 32
+2017-06-01 2:30:32 - PHP Warning:  Illegal string offset 'image' in D:\OpenServer\domains\auster-stone.loc\catalog\view\theme\cosyone\template\blog\special_offers-single.tpl on line 32
+2017-06-01 2:31:19 - PHP Warning:  Illegal string offset 'image' in D:\OpenServer\domains\auster-stone.loc\catalog\view\theme\cosyone\template\blog\special_offers-single.tpl on line 37
+2017-06-01 2:31:19 - PHP Warning:  Illegal string offset 'image' in D:\OpenServer\domains\auster-stone.loc\catalog\view\theme\cosyone\template\blog\special_offers-single.tpl on line 37
+2017-06-01 2:31:19 - PHP Warning:  Illegal string offset 'image' in D:\OpenServer\domains\auster-stone.loc\catalog\view\theme\cosyone\template\blog\special_offers-single.tpl on line 39
+2017-06-01 2:31:19 - PHP Warning:  Illegal string offset 'image' in D:\OpenServer\domains\auster-stone.loc\catalog\view\theme\cosyone\template\blog\special_offers-single.tpl on line 39
+2017-06-01 2:31:19 - PHP Warning:  Illegal string offset 'image' in D:\OpenServer\domains\auster-stone.loc\catalog\view\theme\cosyone\template\blog\special_offers-single.tpl on line 32
+2017-06-01 2:31:19 - PHP Warning:  Illegal string offset 'image' in D:\OpenServer\domains\auster-stone.loc\catalog\view\theme\cosyone\template\blog\special_offers-single.tpl on line 32
+2017-06-01 2:31:19 - PHP Warning:  Illegal string offset 'image' in D:\OpenServer\domains\auster-stone.loc\catalog\view\theme\cosyone\template\blog\special_offers-single.tpl on line 37
+2017-06-01 2:31:19 - PHP Warning:  Illegal string offset 'image' in D:\OpenServer\domains\auster-stone.loc\catalog\view\theme\cosyone\template\blog\special_offers-single.tpl on line 37
+2017-06-01 2:31:19 - PHP Warning:  Illegal string offset 'image' in D:\OpenServer\domains\auster-stone.loc\catalog\view\theme\cosyone\template\blog\special_offers-single.tpl on line 39
+2017-06-01 2:31:19 - PHP Warning:  Illegal string offset 'image' in D:\OpenServer\domains\auster-stone.loc\catalog\view\theme\cosyone\template\blog\special_offers-single.tpl on line 39
+2017-06-01 2:31:19 - PHP Warning:  Illegal string offset 'image' in D:\OpenServer\domains\auster-stone.loc\catalog\view\theme\cosyone\template\blog\special_offers-single.tpl on line 32
+2017-06-01 2:31:19 - PHP Warning:  Illegal string offset 'image' in D:\OpenServer\domains\auster-stone.loc\catalog\view\theme\cosyone\template\blog\special_offers-single.tpl on line 32
+2017-06-01 2:31:19 - PHP Warning:  Illegal string offset 'image' in D:\OpenServer\domains\auster-stone.loc\catalog\view\theme\cosyone\template\blog\special_offers-single.tpl on line 37
+2017-06-01 2:31:19 - PHP Warning:  Illegal string offset 'image' in D:\OpenServer\domains\auster-stone.loc\catalog\view\theme\cosyone\template\blog\special_offers-single.tpl on line 37
+2017-06-01 2:31:19 - PHP Warning:  Illegal string offset 'image' in D:\OpenServer\domains\auster-stone.loc\catalog\view\theme\cosyone\template\blog\special_offers-single.tpl on line 39
+2017-06-01 2:31:19 - PHP Warning:  Illegal string offset 'image' in D:\OpenServer\domains\auster-stone.loc\catalog\view\theme\cosyone\template\blog\special_offers-single.tpl on line 39
+2017-06-01 2:31:19 - PHP Warning:  Illegal string offset 'image' in D:\OpenServer\domains\auster-stone.loc\catalog\view\theme\cosyone\template\blog\special_offers-single.tpl on line 32
+2017-06-01 2:31:19 - PHP Warning:  Illegal string offset 'image' in D:\OpenServer\domains\auster-stone.loc\catalog\view\theme\cosyone\template\blog\special_offers-single.tpl on line 32

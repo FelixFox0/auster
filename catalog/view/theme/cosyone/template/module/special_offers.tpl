@@ -10,7 +10,7 @@
                 <p><?php echo $special_offer['description']; ?></p>
         </div>
         <?php foreach($special_offer['images'] as $img){ ?>
-            <img src="/image/<?php echo $img['image']; ?>" />
+            <img src="<?php echo $img; ?>" />
             
         <?php } ?>
         <?php } ?>
