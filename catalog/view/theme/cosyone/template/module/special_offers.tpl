@@ -1,25 +1,35 @@
 <div id="special_offers<?php echo $module; ?>" class="special-offer">
-    <div class="special-offer__title">
-        <span class="icon-present"></span> Акции и спецпредложения
-    </div>
-    <div class="special-offer__container">
-        <?php foreach ($special_offers as $special_offer) { ?>
-        <div class="panel-body">
-                <img src="<?php echo $special_offer['image']; ?>" />
-                
-                <p><?php echo $special_offer['description']; ?></p>
+    <div class="container">
+        <div class="title title--white">
+            <h2>Фотогалерея</h2>
         </div>
+    </div>
+    <div class="special-offer__container owl-carousel">
+        <?php foreach ($special_offers as $special_offer) { ?>
+
         <?php foreach($special_offer['images'] as $img){ ?>
-            <div>
-                <a class="text-medium" href="<?php echo $special_offer['link']; ?>"><?php echo $special_offer['title']; ?></a>
-                <img src="/image/<?php echo $img['image']; ?>" />
+            <div class="special-offer__item">
+                <a class="text-medium" href="<?php echo $special_offer['link']; ?>">
+                    <span><?php echo $special_offer['title']; ?></span>
+                    <i class="ic-eye"></i>
+                </a>
+                <img src="<?php echo $img; ?>" alt="qwe"/>
             </div>
 
             
         <?php } ?>
         <?php } ?>
     </div>
-    <div class="special-offer__show-more">
-        <a  class="text-medium" href="/index.php?route=blog/special_offers">Просмотреть все акции и спецпредложения</a>
-    </div>
 </div>
+
+
+<script>
+    $('.special-offer__container').owlCarousel({
+        margin:5,
+        loop:true,
+        autoWidth:true,
+        items:5,
+        nav: true,
+        navText: ["<span><i class='ic-arrow-left'></i></span>","<span><i class='ic-arrow-right'></i></span>"],
+    })
+</script>
