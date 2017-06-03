@@ -540,7 +540,10 @@ class ControllerCatalogProduct extends Controller {
 
 		$data['entry_name'] = $this->language->get('entry_name');
 		$data['entry_description'] = $this->language->get('entry_description');
+		$data['entry_dot_char'] = $this->language->get('entry_dot_char');
+		$data['entry_dostavka'] = $this->language->get('entry_dostavka');
 		$data['entry_meta_title'] = $this->language->get('entry_meta_title');
+		$data['entry_meta_h1'] = $this->language->get('entry_meta_h1');
 		$data['entry_meta_description'] = $this->language->get('entry_meta_description');
 		$data['entry_meta_keyword'] = $this->language->get('entry_meta_keyword');
 		$data['entry_keyword'] = $this->language->get('entry_keyword');
@@ -583,6 +586,7 @@ class ControllerCatalogProduct extends Controller {
 		$data['entry_option_value'] = $this->language->get('entry_option_value');
 		$data['entry_required'] = $this->language->get('entry_required');
 		$data['entry_sort_order'] = $this->language->get('entry_sort_order');
+		$data['entry_product_curs'] = $this->language->get('entry_product_curs');
 		$data['entry_status'] = $this->language->get('entry_status');
 		$data['entry_date_start'] = $this->language->get('entry_date_start');
 		$data['entry_date_end'] = $this->language->get('entry_date_end');
@@ -629,6 +633,10 @@ class ControllerCatalogProduct extends Controller {
 		$data['tab_discount'] = $this->language->get('tab_discount');
 		$data['tab_special'] = $this->language->get('tab_special');
 		$data['tab_image'] = $this->language->get('tab_image');
+		$data['tab_chert'] = $this->language->get('tab_chert');
+		$data['tab_sert'] = $this->language->get('tab_sert');
+		$data['entry_chert'] = $this->language->get('entry_chert');
+		$data['entry_sert'] = $this->language->get('entry_sert');
 		$data['tab_links'] = $this->language->get('tab_links');
 		$data['tab_reward'] = $this->language->get('tab_reward');
 		$data['tab_design'] = $this->language->get('tab_design');
@@ -735,6 +743,60 @@ class ControllerCatalogProduct extends Controller {
 		} else {
 			$data['product_description'] = array();
 		}
+//start
+		if (isset($this->request->post['image'])) {
+			$data['image'] = $this->request->post['image'];
+		} elseif (!empty($product_info)) {
+			$data['image'] = $product_info['image'];
+		} else {
+			$data['image'] = '';
+		}
+                
+                if (isset($this->request->post['dop_img'])) {
+			$data['dop_img'] = $this->request->post['dop_img'];
+		} elseif (!empty($product_info)) {
+			$data['dop_img'] = $product_info['dop_img'];
+		} else {
+			$data['dop_img'] = '';
+		}
+                
+                if (isset($this->request->post['tab_img'])) {
+			$data['tab_img'] = $this->request->post['tab_img'];
+		} elseif (!empty($product_info)) {
+			$data['tab_img'] = $product_info['tab_img'];
+		} else {
+			$data['tab_img'] = '';
+		}
+
+		$this->load->model('tool/image');
+                
+                
+		if (isset($this->request->post['dop_img']) && is_file(DIR_IMAGE . $this->request->post['dop_img'])) {
+			$data['thumb_dop_img'] = $this->model_tool_image->resize($this->request->post['dop_img'], 100, 100);
+		} elseif (!empty($product_info) && is_file(DIR_IMAGE . $product_info['dop_img'])) {
+			$data['thumb_dop_img'] = $this->model_tool_image->resize($product_info['dop_img'], 100, 100);
+		} else {
+			$data['thumb_dop_img'] = $this->model_tool_image->resize('no_image.png', 100, 100);
+		}
+                
+                if (isset($this->request->post['tab_img']) && is_file(DIR_IMAGE . $this->request->post['tab_img'])) {
+			$data['thumb_tab_img'] = $this->model_tool_image->resize($this->request->post['tab_img'], 100, 100);
+		} elseif (!empty($product_info) && is_file(DIR_IMAGE . $product_info['tab_img'])) {
+			$data['thumb_tab_img'] = $this->model_tool_image->resize($product_info['tab_img'], 100, 100);
+		} else {
+			$data['thumb_tab_img'] = $this->model_tool_image->resize('no_image.png', 100, 100);
+		}
+//                var_dump($data);
+                if (isset($this->request->post['image']) && is_file(DIR_IMAGE . $this->request->post['image'])) {
+			$data['thumb'] = $this->model_tool_image->resize($this->request->post['image'], 100, 100);
+		} elseif (!empty($product_info) && is_file(DIR_IMAGE . $product_info['image'])) {
+			$data['thumb'] = $this->model_tool_image->resize($product_info['image'], 100, 100);
+		} else {
+			$data['thumb'] = $this->model_tool_image->resize('no_image.png', 100, 100);
+		}
+
+		$data['placeholder'] = $this->model_tool_image->resize('no_image.png', 100, 100);
+//end
 
 		if (isset($this->request->post['model'])) {
 			$data['model'] = $this->request->post['model'];
@@ -898,6 +960,86 @@ class ControllerCatalogProduct extends Controller {
 			$data['sort_order'] = $product_info['sort_order'];
 		} else {
 			$data['sort_order'] = 1;
+		}
+                if (isset($this->request->post['product_curs'])) {
+			$data['product_curs'] = $this->request->post['product_curs'];
+		} elseif (!empty($product_info)) {
+			$data['product_curs'] = $product_info['product_curs'];
+		} else {
+			$data['product_curs'] = 1;
+		}
+              
+                if(!empty($product_info) && isset($product_info['val_baz_dlin'])){
+                    $klio1 = unserialize($product_info['val_baz_dlin']);
+                    foreach ($klio1 as $key=>$val){
+                        $data[$key]=$val;
+                    }
+                }else{
+                    $data['val_baz_dlin']= 500;
+                    $data['val_baz_shir']= 250;
+                }
+                
+                if (isset($this->request->post['val_baz_dlin'])) {
+			$data['val_baz_dlin'] = $this->request->post['val_baz_dlin'];
+		}
+                if (isset($this->request->post['val_baz_shir'])) {
+			$data['val_baz_shir'] = $this->request->post['val_baz_shir'];
+		}
+                
+                if(!empty($product_info) && isset($product_info['price_resh'])){
+                    $klio = unserialize($product_info['price_resh']);
+                    foreach ($klio as $key=>$val){
+                        $data[$key]=$val;
+                    }
+                }else{
+                    $data['val_1_shch']=$data['val_2_shch']=$data['val_3_shch']=$data['val_4_shch']=0;
+                }
+                
+                
+                
+                
+                
+                
+                if (isset($this->request->post['val_1_shch'])) {
+			$data['val_1_shch'] = $this->request->post['val_1_shch'];
+		}
+                
+                if (isset($this->request->post['val_2_shch'])) {
+			$data['val_2_shch'] = $this->request->post['val_2_shch'];
+		}
+                
+                 if (isset($this->request->post['val_3_shch'])) {
+			$data['val_3_shch'] = $this->request->post['val_3_shch'];
+		}
+                
+                if (isset($this->request->post['val_4_shch'])) {
+			$data['val_4_shch'] = $this->request->post['val_4_shch'];
+		}
+                
+                
+                if (isset($this->request->post['luk_price'])) {
+			$data['luk_price'] = $this->request->post['luk_price'];
+		} elseif (!empty($product_info)) {
+			$data['luk_price'] = unserialize($product_info['luk_price']);
+		} else {
+			$data['luk_price'] = NULL;
+		}
+                
+                if (isset($this->request->post['green_field'])) {
+			$data['green_field'] = $this->request->post['green_field'];
+		} elseif (!empty($product_info)) {
+			$data['green_field'] = unserialize($product_info['green_field']);
+		} else {
+			$data['green_field'] = NULL;
+		}
+                
+                
+                if (isset($this->request->post['type_product'])) {
+			$data['type_product'] = $this->request->post['type_product'];
+		} elseif (!empty($product_info)) {
+			$data['type_product'] = $product_info['product_type'];
+		} else {
+			$data['type_product'] = 1;
 		}
 
 		$this->load->model('localisation/stock_status');
@@ -1201,8 +1343,25 @@ class ControllerCatalogProduct extends Controller {
 		} else {
 			$product_images = array();
 		}
+                if (isset($this->request->post['chert_image'])) {
+			$chert_images = $this->request->post['chert_image'];
+		} elseif (isset($this->request->get['product_id'])) {
+			$chert_images = $this->model_catalog_product->getProductChert($this->request->get['product_id']);
+		} else {
+			$chert_images = array();
+		}
+                
+                 if (isset($this->request->post['sert_image'])) {
+			$sert_images = $this->request->post['sert_image'];
+		} elseif (isset($this->request->get['product_id'])) {
+			$sert_images = $this->model_catalog_product->getProductSert($this->request->get['product_id']);
+		} else {
+			$sert_images = array();
+		}
 
 		$data['product_images'] = array();
+		$data['chert_images'] = array();
+		$data['sert_images'] = array();
 
 		foreach ($product_images as $product_image) {
 			if (is_file(DIR_IMAGE . $product_image['image'])) {
@@ -1216,8 +1375,44 @@ class ControllerCatalogProduct extends Controller {
 			$data['product_images'][] = array(
 				'image'      => $image,
 				'thumb'      => $this->model_tool_image->resize($thumb, 100, 100),
-				'sort_order' => $product_image['sort_order']
+				'sort_order' => $product_image['sort_order'],
+                                'number_of_slots' => $product_image['number_of_slots'],
+                                'lattice_type' => $product_image['lattice_type'],
 			);
+		}
+                
+                foreach ($chert_images as $product_image) {
+			if (is_file(DIR_IMAGE . $product_image['image_chert'])) {
+				$image = $product_image['image_chert'];
+				$thumb = $product_image['image_chert'];
+			} else {
+				$image = '';
+				$thumb = 'no_image.png';
+			}
+
+			$data['chert_images'][] = array(
+				'image'      => $image,
+				'thumb'      => $this->model_tool_image->resize($thumb, 100, 100),
+				'sort_order' => $product_image['sort_order_chert']
+			);
+                        
+		}
+                
+                foreach ($sert_images as $product_image) {
+			if (is_file(DIR_IMAGE . $product_image['image_sert'])) {
+				$image = $product_image['image_sert'];
+				$thumb = $product_image['image_sert'];
+			} else {
+				$image = '';
+				$thumb = 'no_image.png';
+			}
+
+			$data['sert_images'][] = array(
+				'image'      => $image,
+				'thumb'      => $this->model_tool_image->resize($thumb, 100, 100),
+				'sort_order' => $product_image['sort_order_sert']
+			);
+                        
 		}
 
 		// Downloads
@@ -1272,6 +1467,16 @@ class ControllerCatalogProduct extends Controller {
 		} else {
 			$data['points'] = '';
 		}
+                
+                
+
+		if (!empty($product_info['tabs'])) {
+			$data['all_tab'] = json_decode($product_info['tabs'],1);
+		} else {
+			$data['all_tab'] = '';
+		}
+                
+                
 
 		if (isset($this->request->post['product_reward'])) {
 			$data['product_reward'] = $this->request->post['product_reward'];

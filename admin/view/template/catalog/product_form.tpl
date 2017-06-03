@@ -37,6 +37,10 @@
             <li><a href="#tab-image" data-toggle="tab"><?php echo $tab_image; ?></a></li>
             <li><a href="#tab-reward" data-toggle="tab"><?php echo $tab_reward; ?></a></li>
             <li><a href="#tab-design" data-toggle="tab"><?php echo $tab_design; ?></a></li>
+
+	    <li><a href="#tab-chert" data-toggle="tab"><?php echo $tab_chert; ?></a></li>
+            <li><a href="#tab-sert" data-toggle="tab"><?php echo $tab_sert; ?></a></li>
+
           </ul>
           <div class="tab-content">
             <div class="tab-pane active" id="tab-general">
@@ -64,12 +68,40 @@
                     </div>
                   </div>
                   <div class="form-group required">
+                    <label class="col-sm-2 control-label" for="input-description<?php echo $language['language_id']; ?>"><?php echo $entry_dot_char; ?></label>
+                    <div class="col-sm-10">
+                      <textarea name="product_description[<?php echo $language['language_id']; ?>][dop_char]" placeholder="<?php echo $entry_dot_char; ?>" id="input-description-dop<?php echo $language['language_id']; ?>"><?php echo isset($product_description[$language['language_id']]) ? $product_description[$language['language_id']]['dop_char'] : ''; ?></textarea>
+                    </div>
+                  </div>
+                    <div class="form-group">
+                    <label class="col-sm-2 control-label" for="input-dostavka<?php echo $language['language_id']; ?>"><?php echo $entry_dostavka; ?></label>
+                    <div class="col-sm-10">
+                      <textarea name="product_description[<?php echo $language['language_id']; ?>][dostavka]" placeholder="<?php echo $entry_dostavka; ?>" id="input-description-dostavka<?php echo $language['language_id']; ?>"><?php echo isset($product_description[$language['language_id']]) ? $product_description[$language['language_id']]['dostavka'] : ''; ?></textarea>
+                    </div>
+                  </div>
+                    
+                    
+                  <div class="form-group">
+                    <label class="col-sm-2 control-label" for="input-description<?php echo $language['language_id']; ?>">Дополнительно</label>
+                    <div class="col-sm-10">
+                      <textarea name="product_description[<?php echo $language['language_id']; ?>][dop_field]" placeholder="Дополнительно" id="input-description-dop<?php echo $language['language_id']; ?>"><?php echo isset($product_description[$language['language_id']]) ? $product_description[$language['language_id']]['dop_field'] : ''; ?></textarea>
+                    </div>
+                  </div>
+                    
+                   
+                  <div class="form-group">
                     <label class="col-sm-2 control-label" for="input-meta-title<?php echo $language['language_id']; ?>"><?php echo $entry_meta_title; ?></label>
                     <div class="col-sm-10">
                       <input type="text" name="product_description[<?php echo $language['language_id']; ?>][meta_title]" value="<?php echo isset($product_description[$language['language_id']]) ? $product_description[$language['language_id']]['meta_title'] : ''; ?>" placeholder="<?php echo $entry_meta_title; ?>" id="input-meta-title<?php echo $language['language_id']; ?>" class="form-control" />
                       <?php if (isset($error_meta_title[$language['language_id']])) { ?>
                       <div class="text-danger"><?php echo $error_meta_title[$language['language_id']]; ?></div>
                       <?php } ?>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="col-sm-2 control-label" for="input-meta-h1<?php echo $language['language_id']; ?>"><?php echo $entry_meta_h1; ?></label>
+                    <div class="col-sm-10">
+                      <input type="text" name="product_description[<?php echo $language['language_id']; ?>][meta_h1]" value="<?php echo isset($product_description[$language['language_id']]) ? $product_description[$language['language_id']]['meta_h1'] : ''; ?>" placeholder="<?php echo $entry_meta_h1; ?>" id="input-meta-h1<?php echo $language['language_id']; ?>" class="form-control" />
                     </div>
                   </div>
                   <div class="form-group">
@@ -95,6 +127,92 @@
               </div>
             </div>
             <div class="tab-pane" id="tab-data">
+                <?php //var_dump($all_tab); ?>
+                
+                <div class="form-group">
+                <label class="col-sm-2 control-label" for="input-date-available">Кастомные табы</label>
+                <div class="col-sm-10">
+                    
+                  <?php if(isset($all_tab['chert'])){ ?>
+                    
+                    <?php if(isset($all_tab['tab'][0])){ ?>
+                    <input type="checkbox" name="all_tab[tab][0]" value="1" checked="checked">Использовать "Описание"<br/>
+                    <?php } else { ?>
+                    <input type="checkbox" name="all_tab[tab][0]" value="1">Использовать "Описание"<br/>
+                    <?php } ?>
+                    
+                    
+                    <?php if(isset($all_tab['tab'][1])){ ?>
+                    <input type="checkbox" name="all_tab[tab][1]" value="1" checked="checked">Использовать "Таблица размеров"<br/>
+                    <?php } else { ?>
+                    <input type="checkbox" name="all_tab[tab][1]" value="1" >Использовать "Таблица размеров"<br/>
+                    <?php } ?>
+                    
+                    
+                    <?php if(isset($all_tab['tab'][2])){ ?>
+                    <input type="checkbox" name="all_tab[tab][2]" value="1" checked="checked">Использовать "Чертежи/Инструкция"<br/>
+                    <?php } else { ?>
+                    <input type="checkbox" name="all_tab[tab][2]" value="1">Использовать "Чертежи/Инструкция"<br/>
+                    <?php } ?>
+                    
+                    <?php if($all_tab['chert'] == 1){ ?>
+                    <input type="radio" name="all_tab[chert]" checked="checked" value="1" />Чертежи <input name="all_tab[chert]" type="radio" value="2"/>Инструкция<br/>
+                    <?php } else { ?>
+                    <input type="radio" name="all_tab[chert]" value="1" />Чертежи <input name="all_tab[chert]" type="radio"  checked="checked" value="2"/>Инструкция<br/>    
+                    <?php } ?>
+                    
+                    <?php if(isset($all_tab['tab'][3])){ ?>
+                    <input type="checkbox" name="all_tab[tab][3]" value="1" checked="checked">Использовать "Сертификаты"<br/>
+                    <?php } else { ?>
+                    <input type="checkbox" name="all_tab[tab][3]" value="1">Использовать "Сертификаты"<br/>
+                    <?php } ?>
+                    
+                    
+                    <?php if(isset($all_tab['tab'][4])){ ?>
+                    <input type="checkbox" name="all_tab[tab][4]" value="1" checked="checked">Использовать "Доставка"<br/>
+                    <?php } else { ?>
+                    <input type="checkbox" name="all_tab[tab][4]" value="1">Использовать "Доставка"<br/>
+                    <?php } ?>
+                    
+                    
+                    
+                  <?php } else { ?>
+                  <input type="checkbox" name="all_tab[tab][0]" value="1" checked="checked">Использовать "Описание"<br/>
+                  <input type="checkbox" name="all_tab[tab][1]" value="1" checked="checked">Использовать "Таблица размеров"<br/>
+                  <input type="checkbox" name="all_tab[tab][2]" value="1" checked="checked">Использовать "Чертежи/Инструкция"<br/>
+                  <input type="radio" name="all_tab[chert]" checked="checked" value="1" />Чертежи <input name="all_tab[chert]" type="radio" value="2"/>Инструкция<br/>
+                  <input type="checkbox" name="all_tab[tab][3]" value="1" checked="checked">Использовать "Сертификаты"<br/>
+                  <input type="checkbox" name="all_tab[tab][4]" value="1" checked="checked">Использовать "Доставка"<br/>
+                  <?php } ?>
+                </div>
+              </div>
+                
+              <div class="form-group">
+                <label class="col-sm-2 control-label" for="input-image"><?php echo $entry_image; ?></label>
+                <div class="col-sm-10">
+                  <a href="" id="thumb-image" data-toggle="image" class="img-thumbnail"><img src="<?php echo $thumb; ?>" alt="" title="" data-placeholder="<?php echo $placeholder; ?>" /></a>
+                  <input type="hidden" name="image" value="<?php echo $image; ?>" id="input-image" />
+                </div>
+              </div>
+              
+                
+              <div class="form-group">
+                <label class="col-sm-2 control-label" for="input-image">Доп. изображение</label>
+                <div class="col-sm-10">
+                  <a href="" id="thumb_dop_img" data-toggle="image" class="img-thumbnail"><img src="<?php echo $thumb_dop_img; ?>" alt="" title="" data-placeholder="<?php echo $placeholder; ?>" /></a>
+                  <input type="hidden" name="dop_img" value="<?php echo $dop_img; ?>" id="dop_img" />
+                </div>
+              </div>
+                
+              <div class="form-group">
+                <label class="col-sm-2 control-label" for="input-image">Таблица изображение</label>
+                <div class="col-sm-10">
+                  <a href="" id="thumb_tab_img" data-toggle="image" class="img-thumbnail"><img src="<?php echo $thumb_tab_img; ?>" alt="" title="" data-placeholder="<?php echo $placeholder; ?>" /></a>
+                  <input type="hidden" name="tab_img" value="<?php echo $tab_img; ?>" id="tab_img" />
+                </div>
+              </div>
+                
+                
               <div class="form-group required">
                 <label class="col-sm-2 control-label" for="input-model"><?php echo $entry_model; ?></label>
                 <div class="col-sm-10">
@@ -319,7 +437,125 @@
                   <input type="text" name="sort_order" value="<?php echo $sort_order; ?>" placeholder="<?php echo $entry_sort_order; ?>" id="input-sort-order" class="form-control" />
                 </div>
               </div>
+	      <div class="form-group">
+                <label class="col-sm-2 control-label" for="product_curs"><?php echo $entry_product_curs; ?></label>
+                <div class="col-sm-10">
+                  <input type="text" name="product_curs" value="<?php echo $product_curs; ?>" placeholder="<?php echo $entry_product_curs; ?>" id="product_curs" class="form-control" />
+                </div>
+              </div>
+	      
+	      
+	      
+	      <div class="form-group">
+                <label class="col-sm-2 control-label"><?php echo $entry_type_prod; ?></label>
+                <div class="col-sm-10">
+                  <label class="radio-inline">
+                      <input type="radio" name="type_product" value="1" <?php if($type_product < 2)echo 'checked'; ?> /><?php echo $text_normal; ?>
+                  </label>
+                  <label class="radio-inline">
+                   <input type="radio" id='rad_luki' name="type_product" value="2" <?php if($type_product == 2)echo 'checked'; ?> /><?php echo $text_luki; ?>
+                  </label>
+                    <label class="radio-inline">
+                   <input type="radio" id='rad_luki' name="type_product" value="3" <?php if($type_product == 3)echo 'checked'; ?> /><?php echo $text_reshot; ?>
+                  </label>
+                    <label class="radio-inline">
+                   <input type="radio" id='rad_luki' name="type_product" value="4" <?php if($type_product == 4)echo 'checked'; ?> /><?php echo $text_reshot1; ?>
+                  </label>
+                    <label class="radio-inline">
+                   <input type="radio" id='rad_luki' name="type_product" value="5" <?php if($type_product == 5)echo 'checked'; ?> /><?php echo $text_reshot_per; ?>
+                  </label>
+                </div>
+              </div>
+              
+               <div class="form-group big_prices <?php if($type_product != 2)echo 'hide'; ?>">
+                   <div class='col-sm-1 pre_p_fp_asd'>
+                       <?php for($i=200;$i<=2000;$i+=50){
+                                        echo '<p class="p_fp_asd">'.$i.'</p>';
+                                    } ?>
+                   </div>
+                   <div class='col-sm-11 ov_x_sc'>
+                        <table width='100%'>
+                       <tbody>
+                        <tr>
+                            <th></th>
+                            <?php   for($a=250;$a<=2000;$a+=50){
+                                echo '<th>'.$a.'</th>';
+                            } ?>
+                        <tr>
+                            <?php for($b=200;$b<=2000;$b+=50){
+                                echo '<tr>';
+                                echo '<td></td>';
+                                    for($c=250;$c<=2000;$c+=50){
+                                        echo '<td><span class="width_span_stein"><input type="text" name="luk_price['.$c.']['.$b.']" value="';
+                                        if(isset($data['luk_price'][$c][$b])){
+                                            echo $data['luk_price'][$c][$b];
+                                        }else{
+                                            echo 0; 
+                                        }
+                                        echo '"><input type="checkbox" name="green_field['.$c.']['.$b.']" '; 
+                                        if(isset($data['green_field'][$c][$b])){
+                                            echo 'checked';
+                                        }
+                                        echo '></span></td>';
+                                    } 
+                                echo '</tr>';
+                            } ?>
+                       </tbody>
+                   </table>
+                   </div>
+                  
+               </div>
+                
+                <div class='col-sm-11 resh14 <?php if($type_product != 3 && $type_product != 4)echo 'hide'; ?>'>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="text_1_shch"><?php echo $text_1_shch; ?></label>
+                        <div class="col-sm-10">
+                          <input type="text" name="val_1_shch" value="<?php echo $val_1_shch; ?>" placeholder="<?php echo $text_1_shch; ?>" id="text_1_shch" class="form-control" />
+                        </div>
+                      </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="text_2_shch"><?php echo $text_2_shch; ?></label>
+                        <div class="col-sm-10">
+                          <input type="text" name="val_2_shch" value="<?php echo $val_2_shch; ?>" placeholder="<?php echo $text_2_shch; ?>" id="text_2_shch" class="form-control" />
+                        </div>
+                      </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="text_3_shch"><?php echo $text_3_shch; ?></label>
+                        <div class="col-sm-10">
+                          <input type="text" name="val_3_shch" value="<?php echo $val_3_shch; ?>" placeholder="<?php echo $text_3_shch; ?>" id="text_3_shch" class="form-control" />
+                        </div>
+                      </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="text_4_shch"><?php echo $text_4_shch; ?></label>
+                        <div class="col-sm-10">
+                          <input type="text" name="val_4_shch" value="<?php echo $val_4_shch; ?>" placeholder="<?php echo $text_4_shch; ?>" id="text_4_shch" class="form-control" />
+                        </div>
+                      </div>
+                </div>
+                
+                <div class="col-sm-11 pereliv <?php if($type_product != 5)echo 'hide'; ?>">
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="text_baz_dlin"><?php echo $text_baz_dlin; ?></label>
+                        <div class="col-sm-10">
+                          <input type="text" name="val_baz_dlin" value="<?php echo $val_baz_dlin; ?>" placeholder="<?php echo $text_baz_dlin; ?>" id="text_baz_dlin" class="form-control" />
+                        </div>
+                      </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="text_baz_shir"><?php echo $text_baz_shir; ?></label>
+                        <div class="col-sm-10">
+                          <input type="text" name="val_baz_shir" value="<?php echo $val_baz_shir; ?>" placeholder="<?php echo $text_baz_dlin; ?>" id="text_baz_shir" class="form-control" />
+                        </div>
+                      </div>
+                </div>
+	      
+	      
+	      
             </div>
+	    
+	    
+	    
+	    
+	    
             <div class="tab-pane" id="tab-links">
               <div class="form-group">
                 <label class="col-sm-2 control-label" for="input-manufacturer"><span data-toggle="tooltip" title="<?php echo $help_manufacturer; ?>"><?php echo $entry_manufacturer; ?></span></label>
@@ -827,6 +1063,8 @@
                       <td class="text-left"><?php echo $entry_additional_image; ?></td>
                       <td class="text-right"><?php echo $entry_sort_order; ?></td>
                       <td></td>
+                      <td></td>
+                      <td></td>
                     </tr>
                   </thead>
                   <tbody>
@@ -835,6 +1073,8 @@
                     <tr id="image-row<?php echo $image_row; ?>">
                       <td class="text-left"><a href="" id="thumb-image<?php echo $image_row; ?>" data-toggle="image" class="img-thumbnail"><img src="<?php echo $product_image['thumb']; ?>" alt="" title="" data-placeholder="<?php echo $placeholder; ?>" /></a><input type="hidden" name="product_image[<?php echo $image_row; ?>][image]" value="<?php echo $product_image['image']; ?>" id="input-image<?php echo $image_row; ?>" /></td>
                       <td class="text-right"><input type="text" name="product_image[<?php echo $image_row; ?>][sort_order]" value="<?php echo $product_image['sort_order']; ?>" placeholder="<?php echo $entry_sort_order; ?>" class="form-control" /></td>
+                      <td class="text-right"><input type="text" name="product_image[<?php echo $image_row; ?>][number_of_slots]" value="<?php echo $product_image['number_of_slots']; ?>" placeholder="Кличество щелей" class="form-control" /></td>
+                      <td class="text-right"><input type="text" name="product_image[<?php echo $image_row; ?>][lattice_type]" value="<?php echo $product_image['lattice_type']; ?>" placeholder="Тип решетки" class="form-control" /></td>
                       <td class="text-left"><button type="button" onclick="$('#image-row<?php echo $image_row; ?>').remove();" data-toggle="tooltip" title="<?php echo $button_remove; ?>" class="btn btn-danger"><i class="fa fa-minus-circle"></i></button></td>
                     </tr>
                     <?php $image_row++; ?>
@@ -842,7 +1082,7 @@
                   </tbody>
                   <tfoot>
                     <tr>
-                      <td colspan="2"></td>
+                      <td colspan="4"></td>
                       <td class="text-left"><button type="button" onclick="addImage();" data-toggle="tooltip" title="<?php echo $button_image_add; ?>" class="btn btn-primary"><i class="fa fa-plus-circle"></i></button></td>
                     </tr>
                   </tfoot>
@@ -917,6 +1157,74 @@
                 </table>
               </div>
             </div>
+ <div class="tab-pane" id="tab-chert">
+              <div class="table-responsive">
+                <table id="cherts" class="table table-striped table-bordered table-hover">
+                  <thead>
+                    <tr>
+                      <td class="text-left"><?php echo $entry_chert; ?></td>
+                      <td class="text-right"><?php echo $entry_sort_order; ?></td>
+                      <td></td>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <?php $chert_row = 0; ?>
+                    <?php foreach ($chert_images as $product_image) {    ?>
+                    <tr id="chert-row<?php echo $chert_row; ?>">
+                      <td class="text-left">
+                          <a href="" id="chert-image<?php echo $chert_row; ?>" data-toggle="image" class="img-thumbnail"><img src="<?php echo $product_image['thumb']; ?>" alt="" title="" data-placeholder="<?php echo $placeholder; ?>" /></a>
+                            <input type="hidden" name="chert_image[<?php echo $chert_row; ?>][image_chert]" value="<?php echo $product_image['image']; ?>" id="input-chert<?php echo $chert_row; ?>" /></td>
+                      <td class="text-right"><input type="text" name="chert_image[<?php echo $chert_row; ?>][sort_order_chert]" value="<?php echo $product_image['sort_order']; ?>" placeholder="<?php echo $entry_sort_order; ?>" class="form-control" /></td>
+                      <td class="text-left"><button type="button" onclick="$('#chert-row<?php echo $chert_row; ?>').remove();" data-toggle="tooltip" title="<?php echo $button_remove; ?>" class="btn btn-danger"><i class="fa fa-minus-circle"></i></button></td>
+                    </tr>
+                    <?php $chert_row++; ?>
+                    <?php } ?>
+                  </tbody>
+                  <tfoot>
+                    <tr>
+                      <td colspan="2"></td>
+                      <td class="text-left"><button type="button" onclick="addImageChert();" data-toggle="tooltip" title="<?php echo $button_image_add; ?>" class="btn btn-primary"><i class="fa fa-plus-circle"></i></button></td>
+                    </tr>
+                  </tfoot>
+                </table>
+              </div>
+            </div>
+              
+              
+              
+              <div class="tab-pane" id="tab-sert">
+              <div class="table-responsive">
+                <table id="serts" class="table table-striped table-bordered table-hover">
+                  <thead>
+                    <tr>
+                      <td class="text-left"><?php echo $entry_sert; ?></td>
+                      <td class="text-right"><?php echo $entry_sort_order; ?></td>
+                      <td></td>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <?php $sert_row = 0; ?>
+                    <?php foreach ($sert_images as $product_image) {    ?>
+                    <tr id="sert-row<?php echo $sert_row; ?>">
+                      <td class="text-left">
+                          <a href="" id="sert-image<?php echo $sert_row; ?>" data-toggle="image" class="img-thumbnail"><img src="<?php echo $product_image['thumb']; ?>" alt="" title="" data-placeholder="<?php echo $placeholder; ?>" /></a>
+                            <input type="hidden" name="sert_image[<?php echo $sert_row; ?>][image_sert]" value="<?php echo $product_image['image']; ?>" id="input-sert<?php echo $sert_row; ?>" /></td>
+                      <td class="text-right"><input type="text" name="sert_image[<?php echo $sert_row; ?>][sort_order_sert]" value="<?php echo $product_image['sort_order']; ?>" placeholder="<?php echo $entry_sort_order; ?>" class="form-control" /></td>
+                      <td class="text-left"><button type="button" onclick="$('#sert-row<?php echo $sert_row; ?>').remove();" data-toggle="tooltip" title="<?php echo $button_remove; ?>" class="btn btn-danger"><i class="fa fa-minus-circle"></i></button></td>
+                    </tr>
+                    <?php $sert_row++; ?>
+                    <?php } ?>
+                  </tbody>
+                  <tfoot>
+                    <tr>
+                      <td colspan="2"></td>
+                      <td class="text-left"><button type="button" onclick="addImageSert();" data-toggle="tooltip" title="<?php echo $button_image_add; ?>" class="btn btn-primary"><i class="fa fa-plus-circle"></i></button></td>
+                    </tr>
+                  </tfoot>
+                </table>
+              </div>
+            </div>
+	    
           </div>
         </form>
       </div>
@@ -1353,7 +1661,9 @@ function addImage() {
 	html  = '<tr id="image-row' + image_row + '">';
 	html += '  <td class="text-left"><a href="" id="thumb-image' + image_row + '"data-toggle="image" class="img-thumbnail"><img src="<?php echo $placeholder; ?>" alt="" title="" data-placeholder="<?php echo $placeholder; ?>" /></a><input type="hidden" name="product_image[' + image_row + '][image]" value="" id="input-image' + image_row + '" /></td>';
 	html += '  <td class="text-right"><input type="text" name="product_image[' + image_row + '][sort_order]" value="" placeholder="<?php echo $entry_sort_order; ?>" class="form-control" /></td>';
-	html += '  <td class="text-left"><button type="button" onclick="$(\'#image-row' + image_row  + '\').remove();" data-toggle="tooltip" title="<?php echo $button_remove; ?>" class="btn btn-danger"><i class="fa fa-minus-circle"></i></button></td>';
+	html += '  <td class="text-right"><input type="text" name="product_image[' + image_row + '][number_of_slots]" value="" placeholder="Количество щелей" class="form-control" /></td>';
+        html += '  <td class="text-right"><input type="text" name="product_image[' + image_row + '][lattice_type]" value="" placeholder="Тип решетки" class="form-control" /></td>';
+        html += '  <td class="text-left"><button type="button" onclick="$(\'#image-row' + image_row  + '\').remove();" data-toggle="tooltip" title="<?php echo $button_remove; ?>" class="btn btn-danger"><i class="fa fa-minus-circle"></i></button></td>';
 	html += '</tr>';
 
 	$('#images tbody').append(html);
@@ -1362,6 +1672,12 @@ function addImage() {
 }
 //--></script>
   <script type="text/javascript"><!--
+  
+  
+  
+  
+  
+  
 var recurring_row = <?php echo $recurring_row; ?>;
 
 function addRecurring() {
@@ -1390,6 +1706,37 @@ function addRecurring() {
 
 	$('#tab-recurring table tbody').append(html);
 }
+
+var chert_row = <?php echo $chert_row; ?>;
+
+function addImageChert() {
+                html  = '<tr id="chert-row' + chert_row + '">';
+                html += '  <td class="text-left"><a href="" id="chert-image' + chert_row + '"data-toggle="image" class="img-thumbnail"><img src="<?php echo $placeholder; ?>" alt="" title="" data-placeholder="<?php echo $placeholder; ?>" /><input type="hidden" name="chert_image[' + chert_row + '][image_chert]" value="" id="input-chert' + chert_row + '" /></td>';
+                html += '  <td class="text-right"><input type="text" name="chert_image[' + chert_row + '][sort_order_chert]" value="" placeholder="<?php echo $entry_sort_order; ?>" class="form-control" /></td>';
+                html += '  <td class="text-left"><button type="button" onclick="$(\'#chert-row' + chert_row  + '\').remove();" data-toggle="tooltip" title="<?php echo $button_remove; ?>" class="btn btn-danger"><i class="fa fa-minus-circle"></i></button></td>';
+                html += '</tr>';
+
+                $('#cherts tbody').append(html);
+
+                chert_row++;
+        }
+        
+        
+        
+var sert_row = <?php echo $sert_row; ?>;
+
+function addImageSert() {
+                html  = '<tr id="sert-row' + sert_row + '">';
+                html += '  <td class="text-left"><a href="" id="sert-image' + sert_row + '"data-toggle="image" class="img-thumbnail"><img src="<?php echo $placeholder; ?>" alt="" title="" data-placeholder="<?php echo $placeholder; ?>" /><input type="hidden" name="sert_image[' + sert_row + '][image_sert]" value="" id="input-sert' + sert_row + '" /></td>';
+                html += '  <td class="text-right"><input type="text" name="sert_image[' + sert_row + '][sort_order_sert]" value="" placeholder="<?php echo $entry_sort_order; ?>" class="form-control" /></td>';
+                html += '  <td class="text-left"><button type="button" onclick="$(\'#sert-row' + sert_row  + '\').remove();" data-toggle="tooltip" title="<?php echo $button_remove; ?>" class="btn btn-danger"><i class="fa fa-minus-circle"></i></button></td>';
+                html += '</tr>';
+
+                $('#serts tbody').append(html);
+
+                sert_row++;
+        }
+
 //--></script>
   <script type="text/javascript"><!--
 $('.date').datetimepicker({
