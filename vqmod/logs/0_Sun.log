@@ -1,4 +1,4 @@
----------- Date: 2017-06-04 15:04:52 ~ IP : 127.0.0.1 ----------
+---------- Date: 2017-06-04 23:36:52 ~ IP : 127.0.0.1 ----------
 REQUEST URI : /
 MOD DETAILS:
    modFile   : C:\OPENSERVER\OpenServer\domains\auster.loc\vqmod/xml/cosyone_blog.xml
@@ -9,48 +9,6 @@ MOD DETAILS:
 
 File Name    : catalog/controller/startup/seo_url.php(4)
 VQModObject::applyMod - SEARCH NOT FOUND (SKIPPED): ($data['route'] == 'information/information' && $key == 'information_id'))
-MOD DETAILS:
-   modFile   : C:\OPENSERVER\OpenServer\domains\auster.loc\vqmod/xml/all.install.ocmod.xml
-   id        : 
-   version   : OpenCart Version 2.2
-   vqmver    : 2.0.0
-   author    : Rupak Nepali
-
-File Name    : catalog/view/theme/*/template/common/header.tpl(0)
-VQModObject::applyMod - SEARCH NOT FOUND (ABORTING MOD): <ul class="nav navbar-nav">
-----------------------------------------------------------------------
-
-
----------- Date: 2017-06-04 20:26:37 ~ IP : 127.0.0.1 ----------
-REQUEST URI : /
-MOD DETAILS:
-   modFile   : C:\OPENSERVER\OpenServer\domains\auster.loc\vqmod/xml/all.install.ocmod.xml
-   id        : 
-   version   : OpenCart Version 2.2
-   vqmver    : 2.0.0
-   author    : Rupak Nepali
-
-File Name    : catalog/view/theme/*/template/common/header.tpl(0)
-VQModObject::applyMod - SEARCH NOT FOUND (ABORTING MOD): <ul class="nav navbar-nav">
-----------------------------------------------------------------------
-
-
----------- Date: 2017-06-04 21:25:05 ~ IP : 127.0.0.1 ----------
-REQUEST URI : /
-MOD DETAILS:
-   modFile   : C:\OPENSERVER\OpenServer\domains\auster.loc\vqmod/xml/all.install.ocmod.xml
-   id        : 
-   version   : OpenCart Version 2.2
-   vqmver    : 2.0.0
-   author    : Rupak Nepali
-
-File Name    : catalog/view/theme/*/template/common/header.tpl(0)
-VQModObject::applyMod - SEARCH NOT FOUND (ABORTING MOD): <ul class="nav navbar-nav">
-----------------------------------------------------------------------
-
-
----------- Date: 2017-06-04 21:25:24 ~ IP : 127.0.0.1 ----------
-REQUEST URI : /
 MOD DETAILS:
    modFile   : C:\OPENSERVER\OpenServer\domains\auster.loc\vqmod/xml/all.install.ocmod.xml
    id        : 
