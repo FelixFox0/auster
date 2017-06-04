@@ -529,6 +529,16 @@ class ControllerCatalogProduct extends Controller {
 		$data['text_none'] = $this->language->get('text_none');
 		$data['text_yes'] = $this->language->get('text_yes');
 		$data['text_no'] = $this->language->get('text_no');
+		$data['text_normal'] = $this->language->get('text_normal');
+		$data['text_luki'] = $this->language->get('text_luki');
+		$data['text_reshot'] = $this->language->get('text_reshot');
+		$data['text_reshot1'] = $this->language->get('text_reshot1');
+		$data['text_reshot_per'] = $this->language->get('text_reshot_per');
+                
+		$data['text_1_shch'] = $this->language->get('text_1_shch');
+		$data['text_2_shch'] = $this->language->get('text_2_shch');
+		$data['text_3_shch'] = $this->language->get('text_3_shch');
+		$data['text_4_shch'] = $this->language->get('text_4_shch');
 		$data['text_plus'] = $this->language->get('text_plus');
 		$data['text_minus'] = $this->language->get('text_minus');
 		$data['text_default'] = $this->language->get('text_default');
@@ -557,6 +567,7 @@ class ControllerCatalogProduct extends Controller {
 		$data['entry_location'] = $this->language->get('entry_location');
 		$data['entry_minimum'] = $this->language->get('entry_minimum');
 		$data['entry_shipping'] = $this->language->get('entry_shipping');
+		$data['entry_type_prod'] = $this->language->get('entry_type_prod');
 		$data['entry_date_available'] = $this->language->get('entry_date_available');
 		$data['entry_quantity'] = $this->language->get('entry_quantity');
 		$data['entry_stock_status'] = $this->language->get('entry_stock_status');

@@ -1755,5 +1755,28 @@ $('.datetime').datetimepicker({
   <script type="text/javascript"><!--
 $('#language a:first').tab('show');
 $('#option a:first').tab('show');
+
+
+/////////таблица люко в админке
+    $('input[name="type_product"]').on('change',function(){
+        if($(this).val() == 2 ){
+            $('.big_prices').removeClass('hide');
+        }else{
+             $('.big_prices').addClass('hide');
+        }
+        
+        if($(this).val() == 3 || $(this).val() == 4){
+            $('.resh14').removeClass('hide');
+        }else{
+             $('.resh14').addClass('hide');
+        }
+        
+        if($(this).val() == 5){
+            $('.pereliv').removeClass('hide');
+        }else{
+             $('.pereliv').addClass('hide');
+        }
+    })
+
 //--></script></div>
 <?php echo $footer; ?>

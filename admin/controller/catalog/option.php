@@ -372,6 +372,14 @@ class ControllerCatalogOption extends Controller {
 		} else {
 			$data['sort_order'] = '';
 		}
+                              
+                if (isset($this->request->post['element_id'])) {
+			$data['element_id'] = $this->request->post['element_id'];
+		} elseif (!empty($option_info)) {
+			$data['element_id'] = $option_info['element_id'];
+		} else {
+			$data['element_id'] = '';
+		}
 
 		if (isset($this->request->post['option_value'])) {
 			$option_values = $this->request->post['option_value'];
