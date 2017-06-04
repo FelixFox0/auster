@@ -42,13 +42,20 @@
                     <div class="special-offers__title">
                         <h5><?php echo $special_offer['title']; ?></h5>
                     </div>
-                    <iframe width="470" height="315" src="<?php echo $special_offer['youtube']; ?>" frameborder="0" allowfullscreen></iframe>
+                    <a href="<?php echo $special_offer['youtube']; ?>" class="image popup-youtube" style="background-image: url(<?php echo $special_offer['image']; ?>)"></a>
                 </div>
                 <div class="special-offers__right">
             <?php } else { ?>
                 <div class="panel-body special-offers__item">
                     <div class="special-offers__video">
-                        <iframe width="470" height="315" src="<?php echo $special_offer['youtube']; ?>" frameborder="0" allowfullscreen></iframe>
+                        <?php if($special_offer['image']): ?>
+
+                            <a href="<?php echo $special_offer['youtube']; ?>" class="image popup-youtube" style="background-image: url(<?php echo $special_offer['image']; ?>)"></a>
+
+                        <?php else: ?>
+                            <a href="<?php echo $special_offer['youtube']; ?>" class="image" style="background-image: url(/image/video-social-seo.png)">
+                        <?php endif; ?>
+                        
                     </div>
                     <div class="special-offers__info">
                         <div class="special-offers__title">
@@ -70,3 +77,11 @@
     </div>
 </div>
 <?php } ?>
+
+
+ <script>
+    $('.popup-youtube').magnificPopup({
+    type: 'iframe',
+
+});
+</script>

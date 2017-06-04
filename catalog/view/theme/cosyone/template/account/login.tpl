@@ -1,10 +1,5 @@
 <?php echo $header; ?>
-<div class="container">
-  <ul class="breadcrumb">
-    <?php foreach ($breadcrumbs as $breadcrumb) { ?>
-    <li><a href="<?php echo $breadcrumb['href']; ?>"><?php echo $breadcrumb['text']; ?></a></li>
-    <?php } ?>
-  </ul>
+<div class="container account-page">
   <?php if ($success) { ?>
   <div class="alert alert-success"><i class="fa fa-check-circle"></i> <?php echo $success; ?></div>
   <?php } ?>
@@ -21,7 +16,9 @@
     <?php } ?>
     <div id="content" class="<?php echo $class; ?>">
     <div id="social_login_content_holder"></div>
-  <h1><?php echo $heading_title; ?></h1>
+  <div class="title">
+    <h1><?php echo $heading_title; ?></h1>
+  </div>
   <?php echo $content_top; ?>
       <div class="row">
         <div class="col-sm-6 margin-b">

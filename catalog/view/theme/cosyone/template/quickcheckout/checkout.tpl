@@ -1,10 +1,6 @@
 <?php echo $header; ?>
 <div class="container">
-  <ul class="breadcrumb">
-    <?php foreach ($breadcrumbs as $breadcrumb) { ?>
-    <li><a href="<?php echo $breadcrumb['href']; ?>"><?php echo $breadcrumb['text']; ?></a></li>
-    <?php } ?>
-  </ul>
+
   <div class="row"><?php echo $column_left; ?>
     <?php if ($column_left && $column_right) { ?>
     <?php $class = 'col-sm-6'; ?>
@@ -15,7 +11,9 @@
     <?php } ?>
     <div id="content" class="<?php echo $class; ?>"><?php echo $content_top; ?>
     <div id="social_login_content_holder"></div>
-      <h1><?php echo $heading_title; ?></h1>
+      <div class="title title--green">
+      	<h1><?php echo $heading_title; ?></h1>
+      </div>
 	  <!-- Start -->
 	  <div id="warning-messages"></div>
 	  <div id="success-messages"></div>
@@ -36,7 +34,6 @@
 
 	  <?php if (!$logged && $login_module) { ?>
       
-      <p class="contrast_font"><a class="login_trigger" data-toggle="collapse" href="#login-box" aria-expanded="false"><?php echo $text_already_have_account; ?></a></p>
   <div class="quickcheckoutmid collapse" id="login-box">
     <div id="checkout">
 	  <div class="quickcheckout-heading box-heading"><?php echo $text_checkout_option; ?></div>
@@ -53,7 +50,7 @@
 	  <div class="checkout-column">
 		<?php if (!$logged) { ?>
 		<div id="payment-address">
-		  <div class="quickcheckout-heading box-heading"><span><?php echo $text_checkout_account; ?></span></div>
+		  <div class="quickcheckout-heading box-heading"><span><?php echo $text_checkout_account; ?></span><a class="login_trigger" data-toggle="collapse" href="#login-box" aria-expanded="false"><?php echo $text_already_have_account; ?></a></div>
 		  <div class="quickcheckout-content"></div>
 		</div>
 		<?php } else { ?>

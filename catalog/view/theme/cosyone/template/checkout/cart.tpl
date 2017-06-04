@@ -1,10 +1,5 @@
 <?php echo $header; ?>
 <div class="container">
-  <ul class="breadcrumb">
-    <?php foreach ($breadcrumbs as $breadcrumb) { ?>
-    <li><a href="<?php echo $breadcrumb['href']; ?>"><?php echo $breadcrumb['text']; ?></a></li>
-    <?php } ?>
-  </ul>
   <?php if ($attention) { ?>
   <div class="alert alert-info"><i class="fa fa-info-circle"></i> <?php echo $attention; ?>
     <button type="button" class="close" data-dismiss="alert">&times;</button>
@@ -29,11 +24,13 @@
     <?php $class = 'col-sm-12'; ?>
     <?php } ?>
     <div id="content" class="<?php echo $class; ?>"><?php echo $content_top; ?>
-      <h1><?php echo $heading_title; ?>
-        <?php if ($weight) { ?>
-        &nbsp;(<?php echo $weight; ?>)
-        <?php } ?>
-      </h1>
+      <div class="title title--green">
+        <h1><?php echo $heading_title; ?>
+          <?php if ($weight) { ?>
+          &nbsp;(<?php echo $weight; ?>)
+          <?php } ?>
+        </h1>
+      </div>
       <form action="<?php echo $action; ?>" method="post" enctype="multipart/form-data" id="basket">
         <div class="cart-info-wrapper">
     	<div class="cart-info">
@@ -78,8 +75,10 @@
                 <td class="model mobile_hide"><?php echo $product['model']; ?></td>
                 <td class="unit_price mobile_hide"><?php echo $product['price']; ?></td>
                 <td class="quantity">
-            <input type="text" name="quantity[<?php echo $product['cart_id']; ?>]" value="<?php echo $product['quantity']; ?>" size="1" />
-             <a onclick="$('#basket').submit();" data-tooltip="<?php echo $button_update; ?>" class="sq_icon"><i class="fa fa-refresh"></i></a>
+                <div>
+                  <input type="text" name="quantity[<?php echo $product['cart_id']; ?>]" value="<?php echo $product['quantity']; ?>" size="1" />
+                  <a onclick="$('#basket').submit();" data-tooltip="<?php echo $button_update; ?>" class="sq_icon"><i class="fa fa-refresh"></i></a>
+                </div>
              </td>
                 <td class="price total mobile_hide"><?php echo $product['total']; ?></td>
                 <td class="remove mobile_hide">
@@ -104,7 +103,7 @@
               <?php } ?>
             </tbody>
           </table>
-          <div class="cart_bottom_line"><a href="<?php echo $continue; ?>" class="button contrast"><?php echo $button_shopping; ?></a></div>
+          <div class="cart_bottom_line"><a href="<?php echo $continue; ?>" class="button contrast"><i class="ic-back "></i><?php echo $button_shopping; ?></a></div>
           </div>
         </div>
       </form>
@@ -132,7 +131,7 @@
       <?php } ?>
     </table>
     <div class="cart-total-bottom">
-    <a href="<?php echo $checkout; ?>" class="button active checkout"><?php echo $button_checkout; ?></a>
+    <a href="<?php echo $checkout; ?>" class="button button--primary checkout"></i><?php echo $button_checkout; ?><i class="ic-back _reverse"></i></a>
     </div>
        </div>
       </div>

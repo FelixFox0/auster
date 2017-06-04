@@ -6,4 +6,4 @@
   <input type="checkbox" name="agree" value="1" />
   <?php } ?>
 <?php } ?></label>
-<div class="confirm"><a id="button-payment-method" class="button active"><?php echo $button_continue; ?></a></div>
+<div class="confirm text-right"><a id="button-payment-method" class="button back-button"><i class="ic-back _reverse"></i><?php echo $button_continue; ?></a></div>
