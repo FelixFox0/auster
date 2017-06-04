@@ -109,6 +109,12 @@
               <input type="text" name="sort_order" value="<?php echo $sort_order; ?>" placeholder="<?php echo $entry_sort_order; ?>" id="input-sort-order" class="form-control" />
             </div>
           </div>
+          <div class="form-group">
+            <label class="col-sm-2 control-label" for="input-element_id">id элемента</label>
+            <div class="col-sm-10">
+              <input type="text" name="element_id" value="<?php echo $element_id; ?>" id="input-element_id" class="form-control" />
+            </div>
+          </div>
           <table id="option-value" class="table table-striped table-bordered table-hover">
             <thead>
               <tr>

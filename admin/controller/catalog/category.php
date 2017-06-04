@@ -77,6 +77,13 @@ class ControllerCatalogCategory extends Controller {
 			if (isset($this->request->get['page'])) {
 				$url .= '&page=' . $this->request->get['page'];
 			}
+//                      Пересчет курса начало
+/*                        $this->load->model('catalog/kurs');
+                        $this->request->post['kurs']= str_replace(',', '.', $this->request->post['kurs']);
+                        foreach ($this->model_catalog_kurs->GetProductCategory($this->request->get['category_id']) as $value) {
+                            $this->model_catalog_kurs->editKursProduct($value['product_id'], $this->request->post['kurs']);
+                        }*/
+//                      Пересчет курса конец                        
 
 			$this->response->redirect($this->url->link('catalog/category', 'token=' . $this->session->data['token'] . $url, true));
 		}
@@ -207,7 +214,24 @@ class ControllerCatalogCategory extends Controller {
 				'delete'      => $this->url->link('catalog/category/delete', 'token=' . $this->session->data['token'] . '&category_id=' . $result['category_id'] . $url, true)
 			);
 		}
+/*
+		if (isset($this->request->get['path'])) {
+			if ($this->request->get['path'] != '') {
+				$this->path = explode('_', $this->request->get['path']);
+				$this->category_id = end($this->path);
+				$this->session->data['path'] = $this->request->get['path'];
+			} else {
+				unset($this->session->data['path']);
+			}
+		} elseif (isset($this->session->data['path'])) {
+			$this->path = explode('_', $this->session->data['path']);
+			$this->category_id = end($this->path);
+		}
 
+		$data['categories'] = $this->getCategories(0);
+
+		$category_total = count($data['categories']);
+*/
 		$data['heading_title'] = $this->language->get('heading_title');
 
 		$data['text_list'] = $this->language->get('text_list');
@@ -527,8 +551,11 @@ class ControllerCatalogCategory extends Controller {
 		$data['header'] = $this->load->controller('common/header');
 		$data['column_left'] = $this->load->controller('common/column_left');
 		$data['footer'] = $this->load->controller('common/footer');
-
-		$this->response->setOutput($this->load->view('catalog/category_form', $data));
+                if(isset($this->request->get['category_id'])){
+                    $data['category_id'] = $this->request->get['category_id'];
+                }
+//                var_dump($data);
+		$this->response->setOutput($this->load->view('catalog/category_form.tpl', $data));
 	}
 
 	protected function validateForm() {
