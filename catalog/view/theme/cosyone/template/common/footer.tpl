@@ -101,6 +101,9 @@
    <?php } ?>
    <div class="clearfix"></div>
   </div>
+
+
+  
 <?php endif; ?>
 <!--
 OpenCart is open source software and you are free to remove the powered by OpenCart if you want, but its generally accepted practise to make a small donation.
@@ -117,6 +120,15 @@ Please donate via PayPal to donate@opencart.com
 <?php if($cosyone_use_retina) { ?>
 <script type="text/javascript" src="catalog/view/theme/cosyone/js/retina.min.js"></script>
 <?php } ?>
+
+<script>
+  $(document).ready(function() {
+  $('.header__callback a').magnificPopup({
+    type:'inline',
+  });
+});
+</script>
+
 <?php echo $live_search; ?>
 <?php echo $cosyone_cookie; ?>
 </body></html>

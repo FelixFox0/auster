@@ -2,7 +2,7 @@
   	<div class="box-heading products"><?php echo $heading_title; ?></div>
     <div class="<?php echo $grid; ?>">
     <div class="grid_holder">
-    <div class="product-grid">
+    <div class="product-grid owl-carousel">
       <?php foreach ($products as $product) { ?>
       <div class="item contrast_font">
         <div class="image">

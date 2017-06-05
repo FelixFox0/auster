@@ -699,6 +699,11 @@ function ralcolorpicker () {
   
 	<li class="active"><a href="#tab-description" data-toggle="tab"><?php echo $tab_description; ?></a></li>
                 
+
+			<?php if ($question_status) { ?>
+            <li id="product-question"><a href="#tab-questions" data-toggle="tab"><?php echo $tab_questions; ?> (<?php echo $questions_total; ?>)</a></li>
+            <?php } ?>
+			
     <?php if ($attribute_groups) { ?>
     <li><a href="#tab-specification" data-toggle="tab"><?php echo $tab_attribute; ?></a></li>
     <?php } ?>
@@ -718,6 +723,13 @@ function ralcolorpicker () {
   </ul>
   
   <div class="tab-content">
+
+			<?php if ($question_status) { ?>
+          	<div class="tab-pane" id="tab-questions">
+          	<?php echo $product_questions; ?>
+			</div>
+          	<?php } ?>
+			
   
   <div class="tab-pane active" id="tab-description"><?php echo $description; ?>
   <?php if ($tags) { ?>
