@@ -158,14 +158,18 @@
       <div class="options contrast_font">
       <h2><?php echo $text_option; ?></h2>
         <?php foreach ($options as $option) { ?>
+        <?php //var_dump($option); ?>
                 
         <?php if ($option['type'] == 'select') { ?>
             <div class="form-group<?php echo ($option['required'] ? ' required' : ''); ?>">
               <label class="control-label" for="input-option<?php echo $option['product_option_id']; ?>"><?php echo $option['name']; ?></label>
-              <select name="option[<?php echo $option['product_option_id']; ?>]" id="input-option<?php echo $option['product_option_id']; ?>" class="form-control">
+              <!--<select name="option[<?php echo $option['product_option_id']; ?>]" id="input-option<?php echo $option['product_option_id']; ?>" class="form-control">-->
+              <select name="<?php echo $option['element_id']; ?>" id="<?php echo $option['element_id']; ?>" class="form-control">
+  
                 <option value=""><?php echo $text_select; ?></option>
                 <?php foreach ($option['product_option_value'] as $option_value) { ?>
-                <option value="<?php echo $option_value['product_option_value_id']; ?>"><?php echo $option_value['name']; ?>
+                <!--<option value="<?php echo $option_value['product_option_value_id']; ?>"><?php echo $option_value['name']; ?>-->
+                <option value="<?php echo $option_value['name_el']; ?>"><?php echo $option_value['name']; ?>
                 <?php if ($option_value['price']) { ?>
                 (<?php echo $option_value['price_prefix']; ?><?php echo $option_value['price']; ?>)
                 <?php } ?>
@@ -182,7 +186,9 @@
                 <?php foreach ($option['product_option_value'] as $option_value) { ?>
                 <div class="radio">
                   <label>
-                    <input type="radio" name="option[<?php echo $option['product_option_id']; ?>]" value="<?php echo $option_value['product_option_value_id']; ?>" />
+                    <!--<input type="radio" name="option[<?php echo $option['product_option_id']; ?>]" value="<?php echo $option_value['product_option_value_id']; ?>" />-->
+                    <input type="radio" name="<?php echo $option['element_id']; ?>" value="<?php echo $option_value['name_el']; ?>" />
+                    
                     <?php echo $option_value['name']; ?>
                     <?php if ($option_value['price']) { ?>
                     (<?php echo $option_value['price_prefix']; ?><?php echo $option_value['price']; ?>)
@@ -250,7 +256,7 @@
         <?php if ($option['type'] == 'text') { ?>
             <div class="form-group<?php echo ($option['required'] ? ' required' : ''); ?>">
               <label class="control-label" for="input-option<?php echo $option['product_option_id']; ?>"><?php echo $option['name']; ?></label>
-              <input type="text" name="option[<?php echo $option['product_option_id']; ?>]" value="<?php echo $option['value']; ?>" placeholder="<?php echo $option['name']; ?>" id="input-option<?php echo $option['product_option_id']; ?>" class="form-control" />
+              <input type="text" name="<?php echo $option['element_id']; ?>" value="<?php echo $option['value']; ?>" placeholder="<?php echo $option['name']; ?>" id="<?php echo $option['element_id']; ?>" class="form-control" />
             </div>
             <?php } ?>
             
@@ -300,7 +306,57 @@
         <?php } ?>
       </div> <!-- .options ends -->
       <?php } ?> 
-      
+      <div class="dop-character">
+                              <div>
+                                  <div><?php echo $text_dln_dif; ?></div>
+                                  <div id="dln_dif" class="green"></div>
+                              </div>
+                              
+                              <div class="rashod">
+                                  <div><?php echo $text_dln_dif2; ?></div>
+                                  <div id="dln_dif2" class="green"></div>
+                              </div>
+                              
+                              <div>
+                                  <div><?php echo $text_vis_dif; ?></div>
+                                  <div id="vis_dif" class="green"></div>
+                              </div>
+                              
+                              
+                              <div>
+                                  <div><?php echo $text_zgiv_sech; ?></div>
+                                  <div id="zgiv_sech" class="green"></div>
+                              </div>
+                              
+                              <div class="dlina">
+                                  <div><?php echo $text_vozn_rash_vozd; ?></div>
+                                  <div id="vozn_rash_vozd" class="green"></div>
+                              </div>
+                              
+                              
+                              
+                              
+                              <div>
+                                  <div><?php echo $text_skor_vozd; ?></div>
+                                  <div id="skor_vozd" class="green"></div>
+                              </div>
+                              
+                              <div>
+                                  <div><?php echo $text_skor_vih_vozd; ?></div>
+                                  <div id="skor_vih_vozd" class="green"></div>
+                              </div>
+                              <div>
+                                  <div><?php echo $text_razn_t; ?></div>
+                                  <div id="razn_t" class="green"></div>
+                              </div>
+                              
+                              <div>
+                                  <div><?php echo $text_pot_dav; ?></div>
+                                  <div id="pot_dav" class="green"></div>
+                              </div>
+                              
+                          </div>
+						</div>
       <div class="cart">
          
       <?php if ($price) { ?> 
@@ -875,6 +931,194 @@ $('#button-review').on('click', function() {
 	});
 });
 //--></script>
+<script>
+                        $('input[name=\'check_type\']').on('change',function(){
+                        //console.log($(this).val());
+                        if($('input[name=\'check_type\']:checked').val()==="dlina"){
+                            $('.dlina').show();
+                            $('.rashod').hide();
+                        }else{
+                            $('.dlina').hide();
+                            $('.rashod').show();
+                        }
+                        
+                        $('#rash_vozd').trigger('change');
+                        });
+                        
+                        $('#count_shcheley, #dlin_resh, #rash_vozd, #t_out_dif, #t_out_dif2, #rast_ot_pov, #type_resh, #quantity, #dlin_proz, #s_vozd_iz_rasp').on('change keyup',function(){
+                            //console.log($(this).val());
+                            var treb_ziv_sech = ($('#rash_vozd').val() / $('#quantity').val())/(3600* $('#s_vozd_iz_rasp').val());
+                            //console.log(treb_ziv_sech);
+
+                            
+                            if($('#count_shcheley').val()==="1"){
+                                var m = 2.19;
+                                var n = 2.03;
+                            }
+                            if($('#count_shcheley').val()==="2"){
+                                var m = 2.47;
+                                var n = 1.673;        
+                            }
+                            if($('#count_shcheley').val()==="3"){
+                                var m = 1.92;
+                                var n = 1.68;
+                            }
+                            if($('#count_shcheley').val()==="4"){
+                                var m = 1.61;
+                                var n = 1.17;
+                            }
+                            
+                            //console.log($('input[name=\'check_type\']:checked').val());
+                            if($('input[name=\'check_type\']:checked').val()==="dlina"){
+                                
+                            
+                                if(($('#type_resh').val()==="SHR") || ($('#type_resh').val()==="SHL")){
+                                    var dln_dif = $('#dlin_resh').val()-28;
+                                }else{
+                                    var dln_dif = $('#dlin_resh').val()-28*2;
+                                }
+                            
+                            }else{
+                            
+                                var dln_dif = Math.ceil((treb_ziv_sech *1000000)/($('#dlin_proz').val()*$('#count_shcheley').val())/100)*100-10;
+                            }
+                            
+                            $('#dln_dif').html(dln_dif);
+                            
+                            
+                            if(($('#type_resh').val()==="SHR") || ($('#type_resh').val()==="SHL")){
+                                $('#dln_dif2').html(dln_dif+28);
+                            } else if ($('#type_resh').val()==="SHD") {
+                                $('#dln_dif2').html(dln_dif+28*2);
+                            }else{
+                                $('#dln_dif2').html(dln_dif);
+                            }
+                            
+                            var vis_dif = $('#count_shcheley').val() * $('#dlin_proz').val() + 20 * ($('#count_shcheley').val()-1) + 28*2;
+                            $('#vis_dif').html(vis_dif);
+                            
+                            var zgiv_sech = (dln_dif*$('#dlin_proz').val()*$('#count_shcheley').val())/1000000;
+                            $('#zgiv_sech').html(zgiv_sech.toFixed(5));
+                            
+                            var vozn_rash_vozd = (parseFloat($('#s_vozd_iz_rasp').val())*3600*zgiv_sech);
+                            
+                            //$('#vozn_rash_vozd').html(vozn_rash_vozd);
+                            vozn_rash_vozd = Math.ceil(vozn_rash_vozd/10)*10
+                            $('#vozn_rash_vozd').html(vozn_rash_vozd);
+                            
+                            
+                            if($('input[name=\'check_type\']:checked').val()==="dlina"){
+                                var skor_vozd = vozn_rash_vozd/(zgiv_sech * 3600);
+                            }else{
+                                var skor_vozd = parseFloat($('#rash_vozd').val())/(zgiv_sech * 3600);
+                            }
+            
+                            $('#skor_vozd').html(skor_vozd.toFixed(2));
+                            
+                            
+                            
+                            
+                                var skor_vih_vozd = skor_vozd * m *(Math.pow((((parseFloat($('#dlin_proz').val())* parseFloat($('#count_shcheley').val()))/1000)/parseFloat($('#rast_ot_pov').val())),0.5));
+                            
+            
+                            if(skor_vih_vozd>0.5){
+                                skor_vih_vozd = skor_vih_vozd.toFixed(2) + ' Значение не должно превышать 0,5 м/с';
+                            }else{
+                                skor_vih_vozd = skor_vih_vozd.toFixed(2);
+                            }
+                            $('#skor_vih_vozd').html(skor_vih_vozd);
+                            
+                            var razn_t = Math.abs($('#t_out_dif2').val() - $('#t_out_dif').val()) * n *(Math.pow(((parseFloat($('#count_shcheley').val())/50)/parseFloat($('#rast_ot_pov').val())),0.5));
+                            if(razn_t>1.5){
+                                razn_t = 'Значение не должно превышать 1,5 ?С';
+                            }else{
+                                razn_t = razn_t.toFixed(2);
+                            }
+                            $('#razn_t').html(razn_t);
+                            
+                            if($('input[name=\'check_type\']:checked').val()==="dlina"){
+                                s_vozdvvoda = (vozn_rash_vozd/($('#quantity').val()))/14400;
+                            }else{
+                                s_vozdvvoda = (parseFloat($('#rash_vozd').val())/($('#quantity').val()))/14400;
+                            }
+                            
+                            var dzeta = 2.0213+2.6795/Math.pow((zgiv_sech/s_vozdvvoda),1.756);
+                            
+                            if($('input[name=\'check_type\']:checked').val()==="dlina"){
+                                var pot_dav = dzeta*(1.2 * Math.pow((vozn_rash_vozd/$('#quantity').val()/(3600 * s_vozdvvoda)),2))/2
+                            }else{
+                                var pot_dav = dzeta*(1.2 * Math.pow((parseFloat($('#rash_vozd').val())/$('#quantity').val()/(3600 * s_vozdvvoda)),2))/2
+                            }
+                            
+                            $('#pot_dav').html(pot_dav.toFixed(2));
+                            
+                            /*
+                            var zgiv_sech = ($('#count_shcheley').val()/50000)*($('#dlin_resh').val()-(28*2));
+                            $('#zgiv_sech').html(zgiv_sech.toFixed(5));
+                            var skor_vozd = $('#rash_vozd').val()/3600/parseFloat($('#s_vozdvvoda').val());
+                            $('#skor_vozd').html(skor_vozd.toFixed(2));
+                            var dzeta = 2.0213+2.6795/Math.pow((zgiv_sech/parseFloat($('#s_vozdvvoda').val())),1.756);
+                            //var azaz = zgiv_sech/parseFloat($('#s_vozdvvoda').val());
+                            //console.log(azaz);
+                            //console.log(Math.pow(azaz,1.756));
+                            //console.log(dzeta);
+                            var ro = 353/(273+parseFloat($('#t_out_dif').val()));
+                            //console.log(ro);
+                            //var pot_dav = ((2.0213+(2.6795/(zgiv_sech/$('#s_vozdvvoda').val())^1.756))*(353/(273+$('#t_out_dif').val()))*(skor_vozd^2))/2;
+                            var pot_dav = (dzeta*ro*skor_vozd*skor_vozd)/2;
+//console.log(pot_dav);
+                            $('#pot_dav').html(pot_dav.toFixed(2));
+                            
+                            
+                            
+                            
+                            var skor_vih_vozd = $('#rash_vozd').val()/3600/zgiv_sech * m *(Math.pow(((parseFloat($('#count_shcheley').val())/50)/parseFloat($('#rast_ot_pov').val())),0.5));
+                            //console.log(Math.pow(((parseFloat($('#count_shcheley').val())/500)/parseFloat($('#rast_ot_pov').val())),0.5));
+                            //console.log($('#count_shcheley').val()/50);
+                            //console.log(parseFloat($('#rast_ot_pov').val()));
+                            //console.log(($('#count_shcheley').val()/50)/(parseFloat($('#rast_ot_pov').val()));
+                            
+                            if(skor_vih_vozd>0.5){
+                                skor_vih_vozd = skor_vih_vozd.toFixed(2) + ' Значение не должно превышать 0,5 м/с';
+                            }else{
+                                skor_vih_vozd = skor_vih_vozd.toFixed(2);
+                            }
+                            $('#skor_vih_vozd').html(skor_vih_vozd);
+                            
+                            var razn_t = Math.abs($('#t_out_dif2').val() - $('#t_out_dif').val()) * n *(Math.pow(((parseFloat($('#count_shcheley').val())/50)/parseFloat($('#rast_ot_pov').val())),0.5));
+                            if(razn_t>1.5){
+                                razn_t = 'Значение не должно превышать 1,5 ?С';
+                            }else{
+                                razn_t = razn_t.toFixed(2);
+                            }
+                            $('#razn_t').html(razn_t);
+                            */
+                            
+                        });
+                        
+                        
+                        $('#count_shcheley, #type_resh').on('change',function(){
+                            $.ajax({
+                                url: 'index.php?route=product/product/changeimage&product_id=<?php echo $product_id; ?>',
+                                type: 'post',
+                                data: 'number_of_slots=' + $('#count_shcheley').val() + '&lattice_type=' + $('#type_resh').val(),
+                                dataType: 'json',
+                                success: function(json){
+                                    //console.log(json);
+                                    $('.next_img').remove();
+                                    
+                                    var arr = $.map(json, function(el) { return el; })
+                                    arr.forEach(function(element, index, arr){
+                                        //console.log(element);
+                                        //console.log(index);
+                                        $('li.first_img').after('<li class="image-additional next_img"><a class="thumbnail" href="'+ element['popup'] +'" title="<?php echo $heading_title; ?>"> <img src="'+ element['popup'] +'" title="<?php echo $heading_title; ?>" alt="<?php echo $heading_title; ?>" /></a></li>');
+                                        
+                                    });
+                                }
+                            });
+                        });
+                     </script> 
+
 <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js"></script>
 </div>
 <?php echo $footer; ?>

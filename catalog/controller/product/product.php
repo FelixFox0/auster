@@ -475,8 +475,8 @@ if ($product_info['dop_img']) {
 
 			foreach ($this->model_catalog_product->getProductOptions($this->request->get['product_id']) as $option) {
 				$product_option_value_data = array();
-
 				foreach ($option['product_option_value'] as $option_value) {
+                                    
 					if (!$option_value['subtract'] || ($option_value['quantity'] > 0)) {
 						if ((($this->config->get('config_customer_price') && $this->customer->isLogged()) || !$this->config->get('config_customer_price')) && (float)$option_value['price']) {
 							$price = $this->currency->format($this->tax->calculate($option_value['price'], $product_info['tax_class_id'], $this->config->get('config_tax') ? 'P' : false), $this->session->data['currency']);
@@ -490,7 +490,8 @@ if ($product_info['dop_img']) {
 							'name'                    => $option_value['name'],
 							'image'                   => $this->model_tool_image->resize($option_value['image'], 50, 50),
 							'price'                   => $price,
-							'price_prefix'            => $option_value['price_prefix']
+							'price_prefix'            => $option_value['price_prefix'],
+                                                        'name_el'                    => $option_value['name_el']
 						);
 					}
 				}
@@ -502,7 +503,8 @@ if ($product_info['dop_img']) {
 					'name'                 => $option['name'],
 					'type'                 => $option['type'],
 					'value'                => $option['value'],
-					'required'             => $option['required']
+					'required'             => $option['required'],
+                                        'element_id'           => $option['element_id'],
 				);
 			}
 
@@ -663,7 +665,7 @@ if ($product_info['dop_img']) {
                         $data['text_dln_dif2'] = $this->language->get('text_dln_dif2');
                         $data['text_vis_dif'] = $this->language->get('text_vis_dif');
                         $data['text_vozn_rash_vozd'] = $this->language->get('text_vozn_rash_vozd');
-
+//                        var_dump($data);
 			if (file_exists(DIR_TEMPLATE . $this->config->get('config_template') . '/template/product/product.tpl')) {
 				$this->response->setOutput($this->load->view($this->config->get('config_template') . '/template/product/product.tpl', $data));
 			} else {
