@@ -271,7 +271,7 @@ a.sq_tag {
 	border-right: 5px solid transparent;
 	border-left: 5px solid transparent;
 	content: " ";
-	font-size: 0;
+	;
 	line-height: 0;
 }
 [data-tooltip]:hover:before,
@@ -733,22 +733,7 @@ a.sq_tag {
 
 /* Mini cart dropdown */
 #cart .content {
-	position:absolute; /* Safari fix */
-	text-align:left;
-	left:auto;
-	right:0;
-	border-top:2px solid #ffffff;
-	background:#F0F0F2;
-	width:260px;
-	color:#222222;
-	clear: both;
-	padding: 0px;
-	min-height: 40px;
-	margin-top:15px;
-	opacity:0;
-	visibility:hidden;
-	transition: margin-top 300ms, opacity 200ms, visibility 200ms;
-	z-index: 50;
+	display: none;
 }
 #cart:hover .content {
 	margin-top:0px;
@@ -1465,61 +1450,7 @@ table.radio tr.highlight td {
 	margin-bottom: 25px;
 }
 /* module heading in content */
-.box-heading {
-	padding: 10px 10px 10px 0px;
-	border-bottom:1px solid #dddddd;
-	position:relative;
-	text-transform:uppercase;
-	font-size:16px;
-	margin-bottom:20px;
-}
-.box-heading.short {
-	margin-bottom:15px;
-}
-#column-left .box-heading, 
-#column-right .box-heading, 
-#footer .box-heading,  
-.footer_modules .box-heading {
-	margin-bottom:25px;
-	color:#222222;
-}
-.box-heading.product-tabs {
-	padding-bottom:0;
-	padding-right:35px;
-}
-/* Border below heading */
-.box-heading:after, .box-heading .nav li.active:after {
-	width:70px;
-	height:1px;
-	content:" ";
-	background:#222222;
-	left:0;
-	bottom:-1px;
-	position:absolute;
-}
-.box-heading .nav li.active:after {
-	width:100%;
-}
-/* Tabs on product listing module */
-.box-heading.product-tabs:after {
-	display:none;
-}
-.box-heading.product-tabs .nav {
-	border-color: transparent;
-}
-.box-heading.product-tabs .nav li {
-	margin-right:33px;
-}
-.box-heading .nav li a, .box-heading .nav li a:hover, .box-heading .nav li a:focus {
-	padding:0 0 10px 0;
-	position:relative;
-	color:#8c8c8c;
-	font-weight:inherit;
-	border:none;
-}
-.box-heading .nav li a:hover, .box-heading .nav li.active a {
-	color:#222222;
-}
+
 .box .box-content {
 	padding: 0px;
 	position:relative;
@@ -3006,7 +2937,7 @@ table.radio tr.highlight td {
 }
 .cart-total td {
 	padding: 12px 5px 12px 15px;
-	border-bottom:1px solid #f0f0f2;
+
 }
 .cart-total .right.amounts {
 	color:#222222;

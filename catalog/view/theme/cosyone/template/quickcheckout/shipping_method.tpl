@@ -29,9 +29,10 @@ foreach ($shipping_methods as $shipping_method) {
       <input type="radio" name="shipping_method" value="<?php echo $quote['code']; ?>" id="<?php echo $quote['code']; ?>" checked="checked" />
       <?php } else { ?>
       <input type="radio" name="shipping_method" value="<?php echo $quote['code']; ?>" id="<?php echo $quote['code']; ?>" />
-      <?php } ?></td>
-    <td><label for="<?php echo $quote['code']; ?>"><?php echo $quote['title']; ?></label></td>
-    <td style="text-align: right;" class="rtl-left"><label for="<?php echo $quote['code']; ?>"><span class="shipping-sum"><?php echo $quote['text']; ?></span></label></td>
+      <?php } ?>
+		<label for="<?php echo $quote['code']; ?>"><span class="shipping-sum"><?php echo $quote['text']; ?></span></label>
+
+      </td>
   </tr>
   <?php } ?>
   <?php } else { ?>

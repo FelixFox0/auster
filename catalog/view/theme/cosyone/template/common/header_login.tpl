@@ -1,11 +1,9 @@
 <?php if($cosyone_header_login == 'enabled'){ ?>
 <?php if (!$logged) { ?>
 
-	<span><?php echo $text_login; ?></span>
+	<a href="/login" class="flex"><i class="ic-man"></i><span><?php echo $text_login; ?></span></a>
 
 <?php } else { ?>
-	<div class="login_drop_heading contrast_font">
-  	<a class="log_link" href="<?php echo $logout_link; ?>"><i class="fa fa-user"></i> <?php echo $text_logout; ?></a>
-    </div>
+  	<a class="log_link flex" href="<?php echo $logout_link; ?>"><i class="ic-man"></i><span><?php echo $text_logout; ?></span></a>
 <?php } ?>
 <?php } ?>

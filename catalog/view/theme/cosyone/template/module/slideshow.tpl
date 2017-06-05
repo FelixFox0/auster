@@ -12,10 +12,14 @@
 <script type="text/javascript"><!--
 $('#slideshow<?php echo $module; ?>').owlCarousel({
 	items: 1,
+  animateOut: 'fadeOut',
+  animateIn: 'fadeIn',
 	singleItem: true,
 	slideSpeed:750,
 	pagination: true,
-  responsive: true,
-  addClassActive: true,
+  loop: true,
+  smartSpeed:450,
+  autoplay: 3000,
+  mouseDrag: false
 });
 --></script>

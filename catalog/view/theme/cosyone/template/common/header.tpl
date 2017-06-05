@@ -52,7 +52,7 @@
     <div class="header__info">
       <div class="header__top">
         <div class="header__login">
-          <a href="/login" class="flex"><i class="ic-man"></i><span><?php echo $header_login; ?></span></a>
+          <?php echo $header_login; ?>
         </div>
         <div class="header__lang">
           <?php echo $language; ?>
@@ -94,9 +94,9 @@
        <?php if ($categories) { ?>
        <?php foreach ($categories as $category_1) { ?>
         <?php if ($category_1['category_1_id'] == $category_1_id) { ?>
-    <li class="col<?php echo $category_1['column']; ?> current"><a href="<?php echo $category_1['href']; ?>" ><?php echo $category_1['name']; ?><i class="fa fa-sort-desc"></i></a>
+    <li class="col<?php echo $category_1['column']; ?> current"><a href="<?php echo $category_1['href']; ?>" ><?php echo $category_1['name']; ?></a>
          <?php } else { ?>
-         <li class="col<?php echo $category_1['column']; ?>"><a href="<?php echo $category_1['href']; ?>" ><?php echo $category_1['name']; ?><i class="fa fa-sort-desc"></i></a>
+         <li class="col<?php echo $category_1['column']; ?>"><a href="<?php echo $category_1['href']; ?>" ><?php echo $category_1['name']; ?></a>
          <?php } ?>
           <?php if ($category_1['children']) { ?>
           <div class="menu_drop_down" style="width: <?php echo ((($category_1['column']) * (195)) + (10)); ?>px">
@@ -126,7 +126,7 @@
         <?php } ?>
         <?php } ?>
         <?php if($cosyone_custom_menu_block == 'enabled'){ ?>
-    <li class="withsubs custom_block"><a><?php echo $cosyone_custom_menu_block_title; ?><i class="fa fa-sort-desc"></i></a>
+    <li class="withsubs custom_block"><a><?php echo $cosyone_custom_menu_block_title; ?></i></a>
         <div class="menu_drop_down" style="width:<?php echo $cosyone_menu_block_width; ?>px">
         <?php echo $cosyone_menu_custom_block_content; ?>
         </div></li>

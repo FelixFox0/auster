@@ -1,5 +1,7 @@
-<div class="box">
-  <div class="box-heading short"><?php echo $heading_title; ?></div>
+<div class="box account-menu">
+  <div class="title title--green">
+    <h2><?php echo $heading_title; ?></h2>
+  </div>
   <div class="box-content box-category">
     <ul>
       <?php if (!$logged) { ?>
