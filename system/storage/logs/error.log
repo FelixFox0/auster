@@ -157,3 +157,27 @@
 2017-06-04 21:34:39 - PHP Notice:  Undefined index: href in C:\OPENSERVER\OpenServer\domains\auster.loc\catalog\view\theme\cosyone\template\account\order_list.tpl on line 46
 2017-06-04 21:34:45 - PHP Notice:  Undefined index: href in C:\OPENSERVER\OpenServer\domains\auster.loc\catalog\view\theme\cosyone\template\account\order_list.tpl on line 46
 2017-06-04 21:35:11 - PHP Notice:  Undefined index: href in C:\OPENSERVER\OpenServer\domains\auster.loc\catalog\view\theme\cosyone\template\account\order_list.tpl on line 46
+2017-06-05 0:06:19 - PHP Warning:  imagecreatetruecolor(): Invalid image dimensions in C:\OPENSERVER\OpenServer\domains\auster.loc\system\library\image.php on line 105
+2017-06-05 0:06:19 - PHP Warning:  imagealphablending() expects parameter 1 to be resource, boolean given in C:\OPENSERVER\OpenServer\domains\auster.loc\system\library\image.php on line 108
+2017-06-05 0:06:19 - PHP Warning:  imagesavealpha() expects parameter 1 to be resource, boolean given in C:\OPENSERVER\OpenServer\domains\auster.loc\system\library\image.php on line 109
+2017-06-05 0:06:19 - PHP Warning:  imagecolorallocatealpha() expects parameter 1 to be resource, boolean given in C:\OPENSERVER\OpenServer\domains\auster.loc\system\library\image.php on line 110
+2017-06-05 0:06:19 - PHP Warning:  imagecolortransparent() expects parameter 1 to be resource, boolean given in C:\OPENSERVER\OpenServer\domains\auster.loc\system\library\image.php on line 111
+2017-06-05 0:06:19 - PHP Warning:  imagefilledrectangle() expects parameter 1 to be resource, boolean given in C:\OPENSERVER\OpenServer\domains\auster.loc\system\library\image.php on line 116
+2017-06-05 0:06:19 - PHP Warning:  imagecopyresampled() expects parameter 1 to be resource, boolean given in C:\OPENSERVER\OpenServer\domains\auster.loc\system\library\image.php on line 118
+2017-06-05 0:06:20 - PHP Warning:  Cannot modify header information - headers already sent by (output started at C:\OPENSERVER\OpenServer\domains\auster.loc\catalog\controller\startup\error.php:34) in C:\OPENSERVER\OpenServer\domains\auster.loc\catalog\controller\module\cosyone_recently.php on line 47
+2017-06-05 0:07:19 - PHP Warning:  imagecreatetruecolor(): Invalid image dimensions in C:\OPENSERVER\OpenServer\domains\auster.loc\system\library\image.php on line 105
+2017-06-05 0:07:19 - PHP Warning:  imagealphablending() expects parameter 1 to be resource, boolean given in C:\OPENSERVER\OpenServer\domains\auster.loc\system\library\image.php on line 108
+2017-06-05 0:07:19 - PHP Warning:  imagesavealpha() expects parameter 1 to be resource, boolean given in C:\OPENSERVER\OpenServer\domains\auster.loc\system\library\image.php on line 109
+2017-06-05 0:07:19 - PHP Warning:  imagecolorallocatealpha() expects parameter 1 to be resource, boolean given in C:\OPENSERVER\OpenServer\domains\auster.loc\system\library\image.php on line 110
+2017-06-05 0:07:19 - PHP Warning:  imagecolortransparent() expects parameter 1 to be resource, boolean given in C:\OPENSERVER\OpenServer\domains\auster.loc\system\library\image.php on line 111
+2017-06-05 0:07:19 - PHP Warning:  imagefilledrectangle() expects parameter 1 to be resource, boolean given in C:\OPENSERVER\OpenServer\domains\auster.loc\system\library\image.php on line 116
+2017-06-05 0:07:19 - PHP Warning:  imagecopyresampled() expects parameter 1 to be resource, boolean given in C:\OPENSERVER\OpenServer\domains\auster.loc\system\library\image.php on line 118
+2017-06-05 0:07:19 - PHP Warning:  Cannot modify header information - headers already sent by (output started at C:\OPENSERVER\OpenServer\domains\auster.loc\catalog\controller\startup\error.php:34) in C:\OPENSERVER\OpenServer\domains\auster.loc\catalog\controller\module\cosyone_recently.php on line 47
+2017-06-05 0:08:01 - PHP Warning:  imagecreatetruecolor(): Invalid image dimensions in C:\OPENSERVER\OpenServer\domains\auster.loc\system\library\image.php on line 105
+2017-06-05 0:08:01 - PHP Warning:  imagealphablending() expects parameter 1 to be resource, boolean given in C:\OPENSERVER\OpenServer\domains\auster.loc\system\library\image.php on line 108
+2017-06-05 0:08:01 - PHP Warning:  imagesavealpha() expects parameter 1 to be resource, boolean given in C:\OPENSERVER\OpenServer\domains\auster.loc\system\library\image.php on line 109
+2017-06-05 0:08:01 - PHP Warning:  imagecolorallocatealpha() expects parameter 1 to be resource, boolean given in C:\OPENSERVER\OpenServer\domains\auster.loc\system\library\image.php on line 110
+2017-06-05 0:08:01 - PHP Warning:  imagecolortransparent() expects parameter 1 to be resource, boolean given in C:\OPENSERVER\OpenServer\domains\auster.loc\system\library\image.php on line 111
+2017-06-05 0:08:01 - PHP Warning:  imagefilledrectangle() expects parameter 1 to be resource, boolean given in C:\OPENSERVER\OpenServer\domains\auster.loc\system\library\image.php on line 116
+2017-06-05 0:08:01 - PHP Warning:  imagecopyresampled() expects parameter 1 to be resource, boolean given in C:\OPENSERVER\OpenServer\domains\auster.loc\system\library\image.php on line 118
+2017-06-05 0:08:01 - PHP Warning:  Cannot modify header information - headers already sent by (output started at C:\OPENSERVER\OpenServer\domains\auster.loc\catalog\controller\startup\error.php:34) in C:\OPENSERVER\OpenServer\domains\auster.loc\catalog\controller\module\cosyone_recently.php on line 47

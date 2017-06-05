@@ -117,6 +117,10 @@ class ControllerProductProduct extends Controller {
 			if (isset($this->request->get['description'])) {
 				$url .= '&description=' . $this->request->get['description'];
 			}
+                        
+                        if (isset($this->request->get['dostavka'])) {
+				$url .= '&dostavka=' . $this->request->get['dostavka'];
+			}
 
 			if (isset($this->request->get['category_id'])) {
 				$url .= '&category_id=' . $this->request->get['category_id'];
@@ -184,6 +188,10 @@ class ControllerProductProduct extends Controller {
 			if (isset($this->request->get['description'])) {
 				$url .= '&description=' . $this->request->get['description'];
 			}
+                        
+                        if (isset($this->request->get['dostavka'])) {
+				$url .= '&dostavka=' . $this->request->get['dostavka'];
+			}
 
 			if (isset($this->request->get['category_id'])) {
 				$url .= '&category_id=' . $this->request->get['category_id'];
@@ -243,6 +251,9 @@ class ControllerProductProduct extends Controller {
 			$data['text_related'] = $this->language->get('text_related');
 			$data['text_payment_recurring'] = $this->language->get('text_payment_recurring');
 			$data['text_loading'] = $this->language->get('text_loading');
+			$data['text_shirina'] = $this->language->get('text_shirina');
+			$data['text_dlina'] = $this->language->get('text_dlina');
+			$data['text_dop_char'] = $this->language->get('text_dop_char');
 
 			$data['entry_qty'] = $this->language->get('entry_qty');
 			$data['entry_name'] = $this->language->get('entry_name');
@@ -250,6 +261,12 @@ class ControllerProductProduct extends Controller {
 			$data['entry_rating'] = $this->language->get('entry_rating');
 			$data['entry_good'] = $this->language->get('entry_good');
 			$data['entry_bad'] = $this->language->get('entry_bad');
+                        
+			$data['text_old_pr'] = $this->language->get('text_old_pr');
+			$data['text_skidka'] = $this->language->get('text_skidka');
+			$data['text_now_pr'] = $this->language->get('text_now_pr');
+			$data['text_ekonom'] = $this->language->get('text_ekonom');
+			$data['text_to_cart'] = $this->language->get('text_to_cart');
 
 			$data['button_cart'] = $this->language->get('button_cart');
 			$data['button_wishlist'] = $this->language->get('button_wishlist');
@@ -258,8 +275,30 @@ class ControllerProductProduct extends Controller {
 			$data['button_continue'] = $this->language->get('button_continue');
 
 			$this->load->model('catalog/review');
-
+                        
+                        $data['tabs']=  json_decode($product_info['tabs'],1);
+//                        var_dump($data['tabs']);
+                        
+                        if ($data['tabs']['chert']){
+//                        var_dump($data['tabs']);
+                            if ($data['tabs']['chert'] == 1){
+                                $data['tab_chertezi'] = $this->language->get('tab_chertezi');
+                            } else {
+                                $data['tab_chertezi'] = $this->language->get('tab_inst');
+                            }
+                        
+                        } else {
+                        
+                        $data['tab_chertezi'] = $this->language->get('tab_chertezi');
+//                        $data['tab_inst'] = $this->language->get('tab_inst');
+                            
+                        }
+                        
 			$data['tab_description'] = $this->language->get('tab_description');
+			$data['tab_razmeri'] = $this->language->get('tab_razmeri');
+			$data['tab_sertificati'] = $this->language->get('tab_sertificati');
+			$data['tab_delivery'] = $this->language->get('tab_delivery');
+                        
 			$data['tab_attribute'] = $this->language->get('tab_attribute');
 			$data['tab_review'] = sprintf($this->language->get('tab_review'), $product_info['reviews']);
 
@@ -270,7 +309,10 @@ class ControllerProductProduct extends Controller {
 			$data['reward'] = $product_info['reward'];
 			$data['points'] = $product_info['points'];
 			$data['description'] = html_entity_decode($product_info['description'], ENT_QUOTES, 'UTF-8');
-
+			$data['dostavka'] = html_entity_decode($product_info['dostavka'], ENT_QUOTES, 'UTF-8');
+			$data['dop_char'] = html_entity_decode($product_info['dop_char'], ENT_QUOTES, 'UTF-8');
+                        $data['dop_field'] = html_entity_decode($product_info['dop_field'], ENT_QUOTES, 'UTF-8');
+                        
 			if ($product_info['quantity'] <= 0) {
 				$data['stock'] = $product_info['stock_status'];
 			} elseif ($this->config->get('config_stock_display')) {
@@ -300,7 +342,70 @@ class ControllerProductProduct extends Controller {
 			} else {
 				$data['thumb'] = '';
 			}
-
+                        
+if ($product_info['dop_img']) {
+				$data['dop_img'] = 'image/' . $product_info['dop_img'];
+			} else {
+				$data['dop_img'] = $this->model_tool_image->resize('no_image.png', $this->config->get('config_image_thumb_width'), $this->config->get('config_image_thumb_height'));
+			}
+                        
+                        if ($product_info['tab_img']) {
+				$data['tab_img'] = 'image/' . $product_info['tab_img'];
+			} else {
+				$data['tab_img'] = 'image/' . 'no_image.png';
+			}
+                        
+                        $data['product_type'] = $product_info['product_type'];
+                        $data['product_color_ral'] = $this->url->link('information/information','information_id=12');
+                        $data['product_curs'] = $product_info['product_curs'];
+                        if($product_info['product_type'] == 2){
+                            if($product_info['luk_price']){
+                              $data['luk_price'] = unserialize($product_info['luk_price']);  
+                            }else{
+                                $data['luk_price'] = NULL;
+                            }
+                            $pritem = $data['luk_price'][250][200]; 
+                        }elseif($product_info['product_type'] == 3 || $product_info['product_type'] == 4  ){
+                            if($product_info['price_resh']){
+                              $data['luk_price'] = unserialize($product_info['price_resh']);  
+                            }else{
+                                $data['luk_price'] = NULL;
+                            }
+                            $pritem = $data['luk_price']['val_1_shch'] * 0.75;
+                            
+                            $data['pr_f_tab'] = array();
+                            foreach($data['luk_price'] as $key=>$val){
+                                $data['pr_f_tab'][$key] = $val*$data['product_curs'];
+                            }
+                            
+                            
+                        }else{
+                            $pritem = $product_info['price'];
+                        }
+                        
+//                        if($data['skidka']){
+//                            $full_price=$pritem*$data['product_curs'];
+//                            $econom = ($full_price/100)*$data['skidka'];
+//                            $n_price = $full_price-$econom;
+//                            
+//                            $data['full_price'] = $this->recountPrice($full_price);
+//                            $data['econom'] = $this->recountPrice($econom);
+//                            $data['n_price'] = $this->recountPrice($n_price);
+//                        }else{
+                           
+                               $r_pr = $pritem*$data['product_curs'];
+                                $data['luk_price_fist']= $this->recountPrice($r_pr);
+                           
+//                        }
+                        
+                        if($product_info['green_field']){
+                          $data['green_field'] = unserialize($product_info['green_field']);  
+                        }else{
+                            $data['green_field'] = NULL;
+                        }
+                        
+                        $data['green_field'] = unserialize($product_info['green_field']);
+                        
 // Start cloud zoom
 if ($product_info['image']) {
 $data['small'] = $this->model_tool_image->resize($product_info['image'], $this->config->get('theme_default_image_additional_width'), $this->config->get('theme_default_image_additional_height'));
@@ -312,9 +417,47 @@ $data['small'] = '';
 			$data['images'] = array();
 
 			$results = $this->model_catalog_product->getProductImages($this->request->get['product_id']);
-
+			$resultschert = $this->model_catalog_product->getProductChert($this->request->get['product_id']);
+			$resultssert = $this->model_catalog_product->getProductSert($this->request->get['product_id']);
+                        
+                        
+                        $data['chert'] = array();
+                        foreach ($resultschert as $chert) {
+				$data['chert'][] = array(
+					'popup' =>  $this->config->get('config_ssl') . 'image/' .$chert['image_chert'],
+					'thumb' => $this->config->get('config_ssl') . 'image/' .$chert['image_chert']
+				);
+			}
+                        
+                        $data['sert'] = array();
+                        foreach ($resultssert as $sert) {
+				$data['sert'][] = array(
+					'popup' =>  $this->config->get('config_ssl') . 'image/' .$sert['image_sert'],
+					'thumb' => $this->config->get('config_ssl') . 'image/' .$sert['image_sert']
+				);
+			}
+                        
+                        //var_dump($results);
+                        //var_dump($product_info['product_type']);
+                        
 			foreach ($results as $result) {
-				$data['images'][] = array(
+                            if(($product_info['product_type']==3) || ($product_info['product_type']==4)){
+                                if(($result['number_of_slots'] == 1) || ($result['lattice_type'] == 'SHD')){
+                                    $data['images'][] = array(
+                                            'popup' => $this->model_tool_image->resize($result['image'], $this->config->get($this->config->get('config_theme') . '_image_popup_width'), $this->config->get($this->config->get('config_theme') . '_image_popup_height')),
+                                            // Cloud zoom thumb start
+'small' => $this->model_tool_image->resize($result['image'], $this->config->get('theme_default_image_additional_width'), $this->config->get('theme_default_image_additional_height')),
+//Cloud zoom thumb ends
+// New thumb function
+'thumb' => $this->model_tool_image->resize($result['image'], $this->config->get('theme_default_image_thumb_width'), $this->config->get('theme_default_image_thumb_height'))
+// Cosyone ends
+
+//                                            'popup' => $this->model_tool_image->resize($product_info['image'], $this->config->get($this->config->get('config_theme') . '_image_popup_width'), $this->config->get($this->config->get('config_theme') . '_image_popup_height'));
+
+                                    );
+                                }
+                            }else{
+                                $data['images'][] = array(
 					'popup' => $this->model_tool_image->resize($result['image'], $this->config->get($this->config->get('config_theme') . '_image_popup_width'), $this->config->get($this->config->get('config_theme') . '_image_popup_height')),
 					// Cloud zoom thumb start
 'small' => $this->model_tool_image->resize($result['image'], $this->config->get('theme_default_image_additional_width'), $this->config->get('theme_default_image_additional_height')),
@@ -324,8 +467,9 @@ $data['small'] = '';
 // Cosyone ends
 
 				);
-			}
-
+                            }
+                        }
+                        
 			if ($this->customer->isLogged() || !$this->config->get('config_customer_price')) {
 				$data['price'] = $this->currency->format($this->tax->calculate($product_info['price'], $product_info['tax_class_id'], $this->config->get('config_tax')), $this->session->data['currency']);
 			} else {
@@ -532,6 +676,7 @@ for( $i=1; $i< 6; $i++) {
 					'thumb'       => $image,
 					'name'        => $result['name'],
 					'description' => utf8_substr(strip_tags(html_entity_decode($result['description'], ENT_QUOTES, 'UTF-8')), 0, $this->config->get($this->config->get('config_theme') . '_product_description_length')) . '..',
+					'dostavka' => utf8_substr(strip_tags(html_entity_decode($result['dostavka'], ENT_QUOTES, 'UTF-8')), 0, $this->config->get('config_product_description_length')) . '..',
 					'price'       => $price,
 					'special'     => $special,
 
@@ -581,8 +726,62 @@ for( $i=1; $i< 6; $i++) {
 			$data['content_bottom'] = $this->load->controller('common/content_bottom');
 			$data['footer'] = $this->load->controller('common/footer');
 			$data['header'] = $this->load->controller('common/header');
+                        
+                        
+                        $data['text_titsep'] = $this->language->get('text_titsep');
+                        $data['text_desc_our'] = $this->language->get('text_desc_our');
+                        $data['text_odnschel'] = $this->language->get('text_odnschel');
+                        $data['text_mnschel'] = $this->language->get('text_mnschel');
+                        $data['text_catalog'] = $this->language->get('text_catalog');
+                        $data['text_dlin_resh'] = $this->language->get('text_dlin_resh');
+                        $data['text_count_shcheley'] = $this->language->get('text_count_shcheley');
+                        $data['text_schel'] = $this->language->get('text_schel');
+                        $data['text_quantity'] = $this->language->get('text_quantity');
+                        $data['text_type_resh'] = $this->language->get('text_type_resh');
 
+                        $data['text_sd'] = $this->language->get('text_sd');
+                        $data['text_sn'] = $this->language->get('text_sn');
+                        $data['text_sl'] = $this->language->get('text_sl');
+                        $data['text_sr'] = $this->language->get('text_sr');
+
+                        $data['text_dlin_proz'] = $this->language->get('text_dlin_proz');
+                        $data['text_color_d'] = $this->language->get('text_color_d');
+                        $data['text_b'] = $this->language->get('text_b');
+                        $data['text_w'] = $this->language->get('text_w');
+                        $data['text_ral_color'] = $this->language->get('text_ral_color');
+                        $data['text_placeholder'] = $this->language->get('text_placeholder');
+                        $data['text_dlina'] = $this->language->get('text_dlina');
+                        $data['text_shirina'] = $this->language->get('text_shirina');
+                        $data['text_now_pr'] = $this->language->get('text_now_pr');
+                        $data['text_loading_text'] = $this->language->get('text_loading-text');
+                        
+                        
+                        $data['text_rash_vozd'] = $this->language->get('text_rash_vozd');
+                        $data['text_t_out_dif'] = $this->language->get('text_t_out_dif');
+                        $data['text_t_out_dif2'] = $this->language->get('text_t_out_dif2');
+                        $data['text_s_vozdvvoda'] = $this->language->get('text_s_vozdvvoda');
+                        $data['text_rast_ot_pov'] = $this->language->get('text_rast_ot_pov');
+                        
+                        $data['text_zgiv_sech'] = $this->language->get('text_zgiv_sech');
+                        $data['text_skor_vozd'] = $this->language->get('text_skor_vozd');
+                        $data['text_pot_dav'] = $this->language->get('text_pot_dav');
+                        $data['text_skor_vih_vozd'] = $this->language->get('text_skor_vih_vozd');
+                        $data['text_razn_t'] = $this->language->get('text_razn_t');
+                        
+                        $data['text_vib_spos'] = $this->language->get('text_vib_spos');
+                        $data['text_po_dlin'] = $this->language->get('text_po_dlin');
+                        $data['text_po_rash'] = $this->language->get('text_po_rash');
+                        $data['text_s_vozd_iz_rasp'] = $this->language->get('text_s_vozd_iz_rasp');
+                        $data['text_dln_dif'] = $this->language->get('text_dln_dif');
+                        $data['text_dln_dif2'] = $this->language->get('text_dln_dif2');
+                        $data['text_vis_dif'] = $this->language->get('text_vis_dif');
+                        $data['text_vozn_rash_vozd'] = $this->language->get('text_vozn_rash_vozd');
+
+			if (file_exists(DIR_TEMPLATE . $this->config->get('config_template') . '/template/product/product.tpl')) {
+				$this->response->setOutput($this->load->view($this->config->get('config_template') . '/template/product/product.tpl', $data));
+			} else {
 			$this->response->setOutput($this->load->view('product/product', $data));
+			}
 		} else {
 			$url = '';
 
@@ -608,6 +807,10 @@ for( $i=1; $i< 6; $i++) {
 
 			if (isset($this->request->get['description'])) {
 				$url .= '&description=' . $this->request->get['description'];
+			}
+                        
+                        if (isset($this->request->get['dostavka'])) {
+				$url .= '&dostavka=' . $this->request->get['dostavka'];
 			}
 
 			if (isset($this->request->get['category_id'])) {
@@ -802,4 +1005,331 @@ for( $i=1; $i< 6; $i++) {
 		$this->response->addHeader('Content-Type: application/json');
 		$this->response->setOutput(json_encode($json));
 	}
+        
+        
+        public function reloadRrice() {
+            $this->load->model('catalog/product');
+            $product_info = $this->model_catalog_product->getProduct($this->request->post['product_id']);
+            /*������*/
+            if($this->customer->isLogged()){
+                $user_id_t = $this->customer->getId();
+                $test_user_skidka = $this->model_catalog_product->test_user_skidka($user_id_t);
+            }else{
+                $test_user_skidka = false;
+            }
+
+            $test_categ_skidka = $this->model_catalog_product->test_categ_skidka($this->request->post['product_id']);
+
+            if($test_user_skidka && $test_categ_skidka){
+                if($test_user_skidka['razmer_skidki']>$test_categ_skidka['razmer_skidki']){
+                    $data['skidka'] = $test_user_skidka['razmer_skidki'];
+                }elseif($test_user_skidka['razmer_skidki']<$test_categ_skidka['razmer_skidki']){
+                    $data['skidka'] = $test_categ_skidka['razmer_skidki'];
+                }else{
+                    $data['skidka'] = $test_categ_skidka['razmer_skidki'];
+                }
+            }elseif($test_user_skidka){
+                $data['skidka'] = $test_user_skidka['razmer_skidki'];
+            }elseif($test_categ_skidka){
+                $data['skidka'] = $test_categ_skidka['razmer_skidki'];
+            }else{
+                $data['skidka'] = false;
+            }
+
+            /*����� ������*/
+            $data['product_type'] = $product_info['product_type'];
+            $data['product_curs'] = $product_info['product_curs'];
+            if($data['product_type'] == 2){
+                if($product_info['luk_price']){
+                  $data['luk_price'] = unserialize($product_info['luk_price']);  
+                }else{
+                    $data['luk_price'] = NULL;
+                }
+                $shirina = ceil($this->request->post['shirina']/50)*50;
+                $dlina = ceil($this->request->post['dlina']/50)*50;
+                $pritem = $data['luk_price'][$shirina][$dlina]; 
+            }elseif($data['product_type'] == 3 || $data['product_type'] == 4  ){
+                if($product_info['price_resh']){
+                  $data['luk_price'] = unserialize($product_info['price_resh']);  
+                }else{
+                    $data['luk_price'] = NULL;
+                }
+//                var_dump($data['luk_price']);
+//                die();
+                 switch ($this->request->post['count_shcheley']){
+                    case 1: $ind_count_r = $data['luk_price']['val_1_shch']; break;
+                    case 2: $ind_count_r = $data['luk_price']['val_2_shch']; break;
+                    case 3: $ind_count_r = $data['luk_price']['val_3_shch']; break;
+                    case 4: $ind_count_r = $data['luk_price']['val_4_shch']; break;
+                    default : $ind_count_r =1;
+                }
+//		var_dump($ind_count_r); 	
+//                die();
+                $dlin_resh = $this->request->post['dlin_resh'];
+                
+                $mod_dlin_resh = $dlin_resh%1000;
+                
+                /*
+//            var_dump($ind_count_r);
+                if($dlin_resh<500){
+                    switch ($this->request->post['count_shcheley']){
+                        case 1: $ind_percent = 35; break;
+                        case 2: $ind_percent = 40; break;
+                        case 3: $ind_percent = 45; break;
+                        case 4: $ind_percent = 50; break;
+                        default : $ind_percent =1;
+                    }
+                      $final_r = $ind_count_r - $ind_count_r/100*$ind_percent;
+                              
+                  }elseif(($dlin_resh>=500) && ($dlin_resh<900)){
+                    switch ($this->request->post['count_shcheley']){
+                        case 1: $ind_percent = 25; break;
+                        case 2: $ind_percent = 30; break;
+                        case 3: $ind_percent = 35; break;
+                        case 4: $ind_percent = 40; break;
+                        default : $ind_percent =1;
+                    }
+                      $final_r = $ind_count_r - $ind_count_r/100*$ind_percent;
+                      
+                  }elseif(($dlin_resh>=900) && ($dlin_resh<1100)){ 
+                      $final_r = $ind_count_r;
+                  }elseif(($dlin_resh>=1100)&&($dlin_resh<1200)){
+                      $final_r = ($ind_count_r * $mod_dlin_resh) - ($ind_count_r * $mod_dlin_resh/100*5);
+                  }elseif(($dlin_resh>=1200)&&($dlin_resh<1400)){
+                      $final_r = ($ind_count_r * $mod_dlin_resh) - ($ind_count_r * $mod_dlin_resh/100*8);
+                  }elseif(($dlin_resh>=1400)&&($dlin_resh<1600)){
+                      $final_r = ($ind_count_r * $mod_dlin_resh) - ($ind_count_r * $mod_dlin_resh/100*15);
+                  }elseif(($dlin_resh>=1600)&&($dlin_resh<1900)){
+                      $final_r = ($ind_count_r * $mod_dlin_resh) - ($ind_count_r * $mod_dlin_resh/100*20);
+                  }elseif(($dlin_resh>=1900)&&($dlin_resh<2100)){
+                      $final_r = ($ind_count_r * 2) - ($ind_count_r * 2/100*5);
+                  }elseif(($dlin_resh>=2100)&&($dlin_resh<2200)){
+                      $final_r = ($ind_count_r * $mod_dlin_resh) - ($ind_count_r * $mod_dlin_resh/100*5);
+                  }elseif(($dlin_resh>=2200)&&($dlin_resh<2400)){
+
+                  }elseif(($dlin_resh>=2400)&&($dlin_resh<2600)){
+  
+                  }elseif(($dlin_resh>=2600)&&($dlin_resh<2900)){
+                      
+                  }elseif(($dlin_resh>=2900)&&($dlin_resh<3100)){
+
+                  }elseif(($dlin_resh>=3100)&&($dlin_resh<3200)){
+                      
+                  }elseif(($dlin_resh>=3200)&&($dlin_resh<3400)){
+
+                  }elseif(($dlin_resh>=3400)&&($dlin_resh<3600)){
+  
+                  }elseif(($dlin_resh>=3600)&&($dlin_resh<3900)){
+                      
+                  }elseif(($dlin_resh>=3900)&&($dlin_resh<4100)){
+
+                  }elseif(($dlin_resh>=4100)&&($dlin_resh<4200)){
+                      
+                  }elseif(($dlin_resh>6000)){
+
+                  }
+                */
+                
+                
+                
+                
+                  if($dlin_resh<500){
+                      /*$final_r = $ind_count_r;
+//                      var_dump($ind_count_r);
+                      $final_r = $final_r - $final_r/100*25;*/
+                      
+                    switch ($this->request->post['count_shcheley']){
+                        case 1: $ind_percent = 35; break;
+                        case 2: $ind_percent = 40; break;
+                        case 3: $ind_percent = 45; break;
+                        case 4: $ind_percent = 50; break;
+                        default : $ind_percent =1;
+                    }
+                    $final_r = $ind_count_r - $ind_count_r/100*$ind_percent;
+                      
+                      
+                  }elseif(($dlin_resh>=500) && ($dlin_resh<900)){
+                    switch ($this->request->post['count_shcheley']){
+                        case 1: $ind_percent = 25; break;
+                        case 2: $ind_percent = 30; break;
+                        case 3: $ind_percent = 35; break;
+                        case 4: $ind_percent = 40; break;
+                        default : $ind_percent =1;
+                    }
+                    $final_r = $ind_count_r - $ind_count_r/100*$ind_percent;
+                      
+                  }elseif(($dlin_resh>=900) && ($dlin_resh<1100)){
+                      $final_r = $ind_count_r;   
+                  
+                  }elseif(($mod_dlin_resh<100)){
+                      $koef=floor($dlin_resh/1000);
+                      $final_r = $ind_count_r * $koef;
+                      $final_r = $final_r - $final_r/100*20;
+                      
+//                      var_dump($koef);
+                  }elseif(($mod_dlin_resh>=100)&&($mod_dlin_resh<200)){
+                      $final_r = ($ind_count_r*($dlin_resh/1000));
+                      $final_r = $final_r - $final_r/100*5;
+                  }elseif(($mod_dlin_resh>=200)&&($mod_dlin_resh<400)){
+                      $final_r = ($ind_count_r*($dlin_resh/1000));
+                      $final_r = $final_r - $final_r/100*8;
+                  }elseif(($mod_dlin_resh>=400)&&($mod_dlin_resh<600)){
+                      $final_r = ($ind_count_r*($dlin_resh/1000));
+                      $final_r = $final_r - $final_r/100*15;
+                  }elseif(($mod_dlin_resh>=600)&&($mod_dlin_resh<=900)){
+                      $final_r = ($ind_count_r*($dlin_resh/1000));
+                      $final_r = $final_r - $final_r/100*20;
+                  }elseif(($mod_dlin_resh>900)){
+                      
+                      $koef=ceil($dlin_resh/1000);
+                      
+                      $final_r = $ind_count_r * $koef;
+                      $final_r = $final_r - $final_r/100*20;
+                  }
+                  
+                  
+                  
+                  
+                      
+                  /*
+                      
+                  }elseif(($dlin_resh>=1100)&&($dlin_resh<1200)){
+                      $final_r = ($ind_count_r*($dlin_resh/1000));
+                      $final_r = $final_r - $final_r/100*5;
+                  }elseif(($dlin_resh>=1200)&&($dlin_resh<1400)){
+                      $final_r = ($ind_count_r*($dlin_resh/1000));
+                      $final_r = $final_r - $final_r/100*8;
+                  }elseif(($dlin_resh>=1400)&&($dlin_resh<1600)){
+                      $final_r = ($ind_count_r*($dlin_resh/1000));
+                      $final_r = $final_r - $final_r/100*15;
+                  }elseif(($dlin_resh>=1600)&&($dlin_resh<=1900)){
+                      $final_r = ($ind_count_r*($dlin_resh/1000));
+                      $final_r = $final_r - $final_r/100*20;
+                  }elseif(($dlin_resh>1900)&&($dlin_resh<=10000)){
+                      if($dlin_resh%1000>=100){
+                          $koef=ceil($dlin_resh/1000);
+                      } else{
+                          $koef=floor($dlin_resh/1000);
+                      }
+//                      $final_r = $ind_count_r * ceil($dlin_resh/1000);
+                      $final_r = $ind_count_r * $koef;
+                      $final_r = $final_r - $final_r/100*20;
+                  }
+                  
+                  */
+                  
+                  
+                  
+                  
+                  
+//                  var_dump($dlin_resh%1000>=100);
+//		  var_dump($final_r);
+//                  die();
+                  
+//                  var_dump(ceil($dlin_resh/1000));
+//                die();
+//                if($dlin_resh>=100 && $dlin_resh<500){
+//                    $final_r = $ind_count_r * 0.75;
+//                }elseif($dlin_resh>=500 && $dlin_resh<900){
+//                    $final_r = $ind_count_r * 0.8;
+//                }elseif($dlin_resh>=900 && $dlin_resh<=1100){
+//                    $final_r = $ind_count_r;
+//                }elseif($dlin_resh == 10100){
+//                    $final_r = $ind_count_r*($a+1)*0.8;
+//                }
+//                var_dump($final_r);
+//                die();
+//                 if(!isset($final_r)){
+//                    for($a=1;$a<=9;$a++){
+//                        if($dlin_resh>($a.'100')*1 && $dlin_resh<($a.'200')*1){
+//                            $final_r = $ind_count_r*$dlin_resh/1000*0.95;
+//                        }elseif($dlin_resh>=($a.'200')*1 && $dlin_resh<($a.'900')*1){
+//                            $final_r = $ind_count_r*$dlin_resh/1000*0.8;
+//                        }elseif($dlin_resh>=($a.'900')*1 && $dlin_resh<=(($a+1).'100')*1){
+//                            $final_r = $ind_count_r*($a+1)*0.8;
+//                        }
+//                       
+//                    }
+//                }
+                $pritem = $final_r;
+            }else{
+                $pritem = $product_info['price'];
+            }
+
+            if($data['skidka']){
+                $full_price=$pritem*$data['product_curs']*$this->request->post['quantity'];
+                $econom = ($full_price/100)*$data['skidka'];
+                $n_price = $full_price-$econom;
+
+                $data['full_price'] = $this->recountPrice($full_price);
+                $data['econom'] = $this->recountPrice($econom);
+                $data['n_price'] = $this->recountPrice($n_price);
+            }else{
+                   $r_pr = $pritem*$data['product_curs']*$this->request->post['quantity'];
+                    $data['luk_price_fist']= $this->recountPrice($r_pr);
+                
+            }
+            
+           echo json_encode($data);
+            
+            
+        }
+        
+        public function recountPrice($param) {
+             $data = explode('.',round($param,2));
+                if(!isset($data[1])){
+                    $data[1] = '00';
+                }elseif(strlen($data[1]) == 1){
+                    $data[1].='0';
+                }
+                
+                return $data;
+                
+        }
+        
+        public function changeimage() {
+            //var_dump($this->request->get);
+            //var_dump($this->request->post);
+            
+            $this->load->model('catalog/product');
+            $this->load->model('tool/image');
+
+			if (file_exists('catalog/view/theme/cosyone/js/countdown/jquery.countdown_' . $this->language->get('code') . '.js')) {
+			$this->document->addScript('catalog/view/theme/cosyone/js/countdown/jquery.countdown_' . $this->language->get('code') . '.js');
+			} else {
+			$this->document->addScript('catalog/view/theme/cosyone/js/countdown/jquery.countdown_en.js');
+			}
+			$data['direction'] = $this->language->get('direction');
+			
+            
+// Start cloud zoom
+if ($product_info['image']) {
+$data['small'] = $this->model_tool_image->resize($product_info['image'], $this->config->get('theme_default_image_additional_width'), $this->config->get('theme_default_image_additional_height'));
+} else {
+$data['small'] = '';
+}
+// Cosyone ends
+
+            $data['images'] = array();
+            $results = array_reverse($this->model_catalog_product->getProductImages($this->request->get['product_id']));    
+                
+            
+            foreach ($results as $result) {
+
+                    if(($result['number_of_slots'] == $this->request->post['number_of_slots']) || ($result['lattice_type'] == $this->request->post['lattice_type'])){
+                        $data['images'][] = array(
+                                'popup' => $this->model_tool_image->resize($result['image'], $this->config->get('config_image_popup_width'), $this->config->get('config_image_popup_height')),
+                                'thumb' => $this->model_tool_image->resize($result['image'], $this->config->get('config_image_additional_width'), $this->config->get('config_image_additional_height'))
+                        );
+                    }
+ 
+            }
+
+
+            //var_dump($data['images']);
+            //die();
+            $this->response->setOutput(json_encode($data));
+        }
+        
+        
 }
