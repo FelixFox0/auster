@@ -466,10 +466,12 @@
                   </label>
                 </div>
               </div>
-              
+
                <div class="form-group big_prices <?php if($type_product != 2)echo 'hide'; ?>">
                    <div class='col-sm-1 pre_p_fp_asd'>
-                       <?php for($i=200;$i<=2000;$i+=50){
+                       <?php
+                       //for($i=200;$i<=2000;$i+=50){
+                       for($i=200;$i<=1000;$i+=50){
                                         echo '<p class="p_fp_asd">'.$i.'</p>';
                                     } ?>
                    </div>
@@ -478,14 +480,19 @@
                        <tbody>
                         <tr>
                             <th></th>
-                            <?php   for($a=250;$a<=2000;$a+=50){
+                            <?php  
+                            // for($a=250;$a<=2000;$a+=50){
+                            for($a=250;$a<=1000;$a+=50){
                                 echo '<th>'.$a.'</th>';
                             } ?>
                         <tr>
-                            <?php for($b=200;$b<=2000;$b+=50){
+                            <?php 
+                            //for($b=200;$b<=2000;$b+=50){
+                            for($b=200;$b<=1000;$b+=50){
                                 echo '<tr>';
                                 echo '<td></td>';
-                                    for($c=250;$c<=2000;$c+=50){
+                                    //for($c=250;$c<=2000;$c+=50){
+                                    for($c=250;$c<=1000;$c+=50){
                                         echo '<td><span class="width_span_stein"><input type="text" name="luk_price['.$c.']['.$b.']" value="';
                                         if(isset($data['luk_price'][$c][$b])){
                                             echo $data['luk_price'][$c][$b];
@@ -501,6 +508,7 @@
                                 echo '</tr>';
                             } ?>
                        </tbody>
+                       
                    </table>
                    </div>
                   
@@ -548,7 +556,7 @@
                       </div>
                 </div>
 	      
-	      
+	      <?php //} ?>
 	      
             </div>
 	    
