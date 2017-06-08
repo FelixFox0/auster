@@ -161,6 +161,7 @@ class ControllerProductProduct extends Controller {
 		$this->load->model('catalog/product');
 
 		$product_info = $this->model_catalog_product->getProduct($product_id);
+//var_dump($product_info);
 
 		if ($product_info) {
 			$url = '';
@@ -338,7 +339,7 @@ class ControllerProductProduct extends Controller {
 if ($product_info['dop_img']) {
 				$data['dop_img'] = 'image/' . $product_info['dop_img'];
 			} else {
-				$data['dop_img'] = $this->model_tool_image->resize('no_image.png', $this->config->get('config_image_thumb_width'), $this->config->get('config_image_thumb_height'));
+				$data['dop_img'] = $this->model_tool_image->resize('no_image.png', $this->config->get($this->config->get('config_theme') . '_image_thumb_width'), $this->config->get($this->config->get('config_theme') . '_image_thumb_height'));
 			}
                         
                         if ($product_info['tab_img']) {
@@ -897,9 +898,11 @@ if ($product_info['dop_img']) {
         
         
         public function reloadRrice() {
+            var_dump($this->request->post);
             $this->load->model('catalog/product');
             $product_info = $this->model_catalog_product->getProduct($this->request->post['product_id']);
             /*������*/
+            /*
             if($this->customer->isLogged()){
                 $user_id_t = $this->customer->getId();
                 $test_user_skidka = $this->model_catalog_product->test_user_skidka($user_id_t);
@@ -924,7 +927,7 @@ if ($product_info['dop_img']) {
             }else{
                 $data['skidka'] = false;
             }
-
+*/
             /*����� ������*/
             $data['product_type'] = $product_info['product_type'];
             $data['product_curs'] = $product_info['product_curs'];
@@ -1145,7 +1148,7 @@ if ($product_info['dop_img']) {
                 $pritem = $product_info['price'];
             }
 
-            if($data['skidka']){
+            /*if($data['skidka']){
                 $full_price=$pritem*$data['product_curs']*$this->request->post['quantity'];
                 $econom = ($full_price/100)*$data['skidka'];
                 $n_price = $full_price-$econom;
@@ -1153,11 +1156,11 @@ if ($product_info['dop_img']) {
                 $data['full_price'] = $this->recountPrice($full_price);
                 $data['econom'] = $this->recountPrice($econom);
                 $data['n_price'] = $this->recountPrice($n_price);
-            }else{
+            }else{*/
                    $r_pr = $pritem*$data['product_curs']*$this->request->post['quantity'];
                     $data['luk_price_fist']= $this->recountPrice($r_pr);
                 
-            }
+            /*}*/
             
            echo json_encode($data);
             
@@ -1179,28 +1182,28 @@ if ($product_info['dop_img']) {
         public function changeimage() {
             //var_dump($this->request->get);
             //var_dump($this->request->post);
-            
+            $product_info['image']=false;
             $this->load->model('catalog/product');
             $this->load->model('tool/image');
             
             $data['images'] = array();
             $results = array_reverse($this->model_catalog_product->getProductImages($this->request->get['product_id']));    
-                
+//                var_dump(getProductImages($this->request->get['product_id']));
             
             foreach ($results as $result) {
 
                     if(($result['number_of_slots'] == $this->request->post['number_of_slots']) || ($result['lattice_type'] == $this->request->post['lattice_type'])){
                         $data['images'][] = array(
-                                'popup' => $this->model_tool_image->resize($result['image'], $this->config->get('config_image_popup_width'), $this->config->get('config_image_popup_height')),
-                                'thumb' => $this->model_tool_image->resize($result['image'], $this->config->get('config_image_additional_width'), $this->config->get('config_image_additional_height'))
+                                'popup' => $this->model_tool_image->resize($result['image'], $this->config->get($this->config->get('config_theme') . '_image_popup_width'), $this->config->get($this->config->get('config_theme') . '_image_popup_height')),
+                                'thumb' => $this->model_tool_image->resize($result['image'], $this->config->get($this->config->get('config_theme') . '_image_additional_width'), $this->config->get($this->config->get('config_theme') . '_image_additional_height')),
                         );
                     }
  
             }
 
 
-            //var_dump($data['images']);
-            //die();
+//            var_dump($data['images']);
+//            die();
             $this->response->setOutput(json_encode($data));
         }
         

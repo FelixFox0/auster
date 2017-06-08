@@ -288,7 +288,8 @@ class ControllerCheckoutCart extends Controller {
 		$this->load->language('checkout/cart');
 
 		$json = array();
-
+//                var_dump($this->request->post);
+//                die();
 		if (isset($this->request->post['product_id'])) {
 			$product_id = (int)$this->request->post['product_id'];
 		} else {
@@ -319,7 +320,7 @@ class ControllerCheckoutCart extends Controller {
 					$json['error']['option'][$product_option['product_option_id']] = sprintf($this->language->get('error_required'), $product_option['name']);
 				}
 			}
-
+//                        var_dump($json['error']);
 			if (isset($this->request->post['recurring_id'])) {
 				$recurring_id = $this->request->post['recurring_id'];
 			} else {

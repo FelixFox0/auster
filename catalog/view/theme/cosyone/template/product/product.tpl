@@ -281,7 +281,7 @@ function ralcolorpicker () {
 
 ?>
 
-<div class="prod container">
+<div id="product1" class="prod container">
 
    <div class="row"><?php echo $column_left; ?>
    <?php if ($column_left && $column_right) { ?>
@@ -299,7 +299,6 @@ function ralcolorpicker () {
     <div class="left">
       <?php if ($thumb) { ?>
       <div class="image">
-      
       <?php if ($cosyone_product_zoom) { ?>
       <a href="<?php echo $popup; ?>" title="<?php echo $heading_title; ?>" class="cloud-zoom" style="cursor:move" rel="position:'inside', showTitle: false" id='zoom1'><img itemprop="image" src="<?php echo $thumb; ?>" title="<?php echo $heading_title; ?>" alt="<?php echo $heading_title; ?>" /></a>
       <!-- zoom link-->
@@ -459,9 +458,11 @@ function ralcolorpicker () {
       </div> 
      </span> <!-- rich snippet ends -->
       <?php } ?>
-
+<input type='hidden' name='product_type' value='<?php echo $product_type; ?>'>
+<input type='hidden' name='product_id' value='<?php echo $product_id; ?>'>
     <?php if ($options) { ?>
 
+    
     <div class="params-product__options">
       <div class="options contrast_font">
       <h2><?php echo $text_option; ?></h2>
@@ -472,7 +473,7 @@ function ralcolorpicker () {
             <div class="form-group<?php echo ($option['required'] ? ' required' : ''); ?>">
               <label class="control-label" for="input-option<?php echo $option['product_option_id']; ?>"><?php echo $option['name']; ?></label>
               <!--<select name="option[<?php echo $option['product_option_id']; ?>]" id="input-option<?php echo $option['product_option_id']; ?>" class="form-control">-->
-              <select name="<?php echo $option['element_id']; ?>" id="<?php echo $option['element_id']; ?>" class="form-control">
+              <select name="option[<?php echo $option['product_option_id']; ?>]" id="<?php echo $option['element_id']; ?>" class="form-control">
   
                 <option value=""><?php echo $text_select; ?></option>
                 <?php foreach ($option['product_option_value'] as $option_value) { ?>
@@ -490,12 +491,12 @@ function ralcolorpicker () {
         <?php if ($option['type'] == 'radio') { ?>
             <div class="form-group<?php echo ($option['required'] ? ' required' : ''); ?>">
               <label class="control-label"><?php echo $option['name']; ?></label>
-              <div id="input-option<?php echo $option['product_option_id']; ?>">
+              <div id="input-option<?php echo $option['product_option_id']; ?>" class="<?php echo $option['element_id']; ?>">
                 <?php foreach ($option['product_option_value'] as $option_value) { ?>
                 <div class="radio">
                   <label>
                     <!--<input type="radio" name="option[<?php echo $option['product_option_id']; ?>]" value="<?php echo $option_value['product_option_value_id']; ?>" />-->
-                    <input type="radio" name="<?php echo $option['element_id']; ?>" value="<?php echo $option_value['name_el']; ?>" />
+                    <input type="radio" name="option[<?php echo $option['product_option_id']; ?>]" value="<?php echo $option_value['name_el']; ?>" />
                     <i></i>
                     
                     <?php echo $option_value['name']; ?>
@@ -565,7 +566,9 @@ function ralcolorpicker () {
         <?php if ($option['type'] == 'text') { ?>
             <div class="form-group<?php echo ($option['required'] ? ' required' : ''); ?>">
               <label class="control-label" for="input-option<?php echo $option['product_option_id']; ?>"><?php echo $option['name']; ?></label>
-              <input type="text" name="<?php echo $option['element_id']; ?>" value="<?php echo $option['value']; ?>" placeholder="<?php echo $option['name']; ?>" id="<?php echo $option['element_id']; ?>" class="form-control" />
+              <!--<input type="text" name="<?php echo $option['element_id']; ?>" value="<?php echo $option['value']; ?>" placeholder="<?php echo $option['name']; ?>" id="<?php echo $option['element_id']; ?>" class="form-control" />-->
+            <input type="text" name="option[<?php echo $option['product_option_id']; ?>]" value="<?php echo $option['value']; ?>" placeholder="<?php echo $option['name']; ?>" id="<?php echo $option['element_id']; ?>" class="form-control" />
+            
             </div>
             <?php } ?>
             
@@ -642,8 +645,8 @@ function ralcolorpicker () {
         
         <div class="dop-character">
             <div>
-                <div><?php echo $text_dln_dif; ?>qweqweqwe</div>
-                <div id="dln_dif" class="green">qweqweqwe</div>
+                <div><?php echo $text_dln_dif; ?></div>
+                <div id="dln_dif" class="green"></div>
             </div>
             
             <div class="rashod">
@@ -697,7 +700,7 @@ function ralcolorpicker () {
   
   <ul class="nav nav-tabs product-page">
   
-	<li class="active"><a href="#tab-description" data-toggle="tab"><?php echo $tab_description; ?></a></li>
+	<?php /* ?><li class="active"><a href="#tab-description" data-toggle="tab"><?php echo $tab_description; ?></a></li><?php */ ?>
                 
     <?php if ($attribute_groups) { ?>
     <li><a href="#tab-specification" data-toggle="tab"><?php echo $tab_attribute; ?></a></li>
@@ -706,6 +709,47 @@ function ralcolorpicker () {
     <?php if ($review_status) { ?>
     <li><a href="#tab-review" data-toggle="tab"><?php echo $tab_review; ?></a></li>
     <?php } ?>
+    
+    
+    
+    
+    <?php if($tabs['chert']){ ?>
+                    
+                    <?php if($tabs['tab'][0]){ ?>
+                    <li class=""><a href="#tab-description" data-toggle="tab"><?php echo $tab_description; ?></a></li>
+                    <?php } ?>
+                    
+                    
+                    <?php if($tabs['tab'][1]){ ?>
+                    <li><a href="#tab-razmeri" data-toggle="tab"><?php echo $tab_razmeri; ?></a></li>
+                    <?php } ?>
+                    
+                    
+                    <?php if($tabs['tab'][2]){ ?>
+                    <li><a href="#tab-chertezi" data-toggle="tab"><?php echo $tab_chertezi; ?></a></li>
+                    <?php } ?>
+                   
+                    
+                    <?php if($tabs['tab'][3]){ ?>
+                    <li><a href="#tab-sertificati" data-toggle="tab"><?php echo $tab_sertificati; ?></a></li>
+                    <?php } ?>
+                    
+                    
+                    <?php if($tabs['tab'][4]){ ?>
+                    <li><a href="#tab-delivery" data-toggle="tab"><?php echo $tab_delivery; ?></a></li>
+                    <?php } ?>
+                    
+                    
+                    <?php } else { ?>
+                    
+                        <li class=""><a href="#tab-description" data-toggle="tab"><?php echo $tab_description; ?></a></li>
+                        <li><a href="#tab-razmeri" data-toggle="tab"><?php echo $tab_razmeri; ?></a></li>
+                        <li><a href="#tab-chertezi" data-toggle="tab"><?php echo $tab_chertezi; ?></a></li>
+                        <li><a href="#tab-sertificati" data-toggle="tab"><?php echo $tab_sertificati; ?></a></li>
+                        <li><a href="#tab-delivery" data-toggle="tab"><?php echo $tab_delivery; ?></a></li>
+                    <?php } ?>
+    
+    
     
     
     <?php if ($product_tabs_5) { ?>
@@ -718,6 +762,135 @@ function ralcolorpicker () {
   </ul>
   
   <div class="tab-content">
+      
+      <div class="tab-pane" id="tab-razmeri">
+                        <?php if($product_type == 2 && $luk_price){ ?>
+                        <table class='table_class_lik'>
+                            <tbody>
+                                <tr>
+                                    <td rowspan="100" class="tablename sideA">
+                                        <div class="sideA-vertical">
+                                            <strong><?php echo $text_dlina; ?></strong>
+                                        </div>
+                                    </td>
+                                    <td colspan="100" class="tablename sideB">
+                                        <strong><?php echo $text_shirina; ?></strong>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th></th>
+                                    <?php for($a=250;$a<=1000;$a+=50){
+                                        echo "<th>$a</th>";
+                                    } ?>
+                                </tr>
+                                <?php  for($b=200;$b<=1000;$b+=50){
+                                echo '<tr>';
+                                echo '<td>'.$b.'</td>';
+                                    for($c=250;$c<=1000;$c+=50){
+                                        echo '<td';
+                                        if(isset($green_field[$c][$b])){
+                                            echo' class="green_td" ';
+                                        }
+                                        echo '>'.$product_curs*$luk_price[$c][$b].'грн.</td>';
+                                    }
+                                echo '</tr>';
+                            }  ?>
+                            </tbody>
+                        </table>
+                        <?php }elseif($product_type == 3){
+                            ?>
+                             <table class='table_class_lik'>
+                            <tbody>
+                                <tr>
+                                    <td></td>
+                                    <td>1000 мм</td>
+                                    <td>2000 мм</td>
+                                    <td>3000 мм</td>
+                                    <td>4000 мм</td>
+                                    <td>5000 мм</td>
+                                    <td>6000 мм</td>
+                                    <!--<td>7000 мм</td>
+                                    <td>8000 мм</td>
+                                    <td>9000 мм</td>
+                                    <td>10000 мм</td>-->
+                                </tr>
+                                <?php
+                                for($a=1;$a<=4;$a++){ ?>
+                                <tr>
+                                    <td><?php echo $a; ?>-<?php echo $text_schel; ?></td>
+                                    <td><?php echo $pr_f_tab['val_'.$a.'_shch']; ?> грн.</td>
+                                    <?php
+                                        for($b=2;$b<=6;$b++){ ?>
+                                            <td><?php echo $pr_f_tab['val_'.$a.'_shch']*$b*0.8; ?> грн.</td>
+                                        <?php }
+                                    ?>
+                                </tr>
+                                <?php } ?>
+
+                            </tbody>
+                             </table>
+
+                        <?php }elseif($product_type == 4){ ?>
+                             <table class='table_class_lik'>
+                            <tbody>
+                                <tr>
+                                    <td></td>
+                                    <td>1000 мм</td>
+                                    <td>2000 мм</td>
+                                    <td>3000 мм</td>
+                                    <td>4000 мм</td>
+                                    <td>5000 мм</td>
+                                    <td>6000 мм</td>
+                                    <!--<td>7000 мм</td>
+                                    <td>8000 мм</td>
+                                    <td>9000 мм</td>
+                                    <td>10000 мм</td>-->
+                                </tr>
+
+                                <tr>
+                                    <td>1-щелевая</td>
+                                    <td><?php echo $pr_f_tab['val_1_shch']; ?> грн.</td>
+                                    <?php
+                                        /* for($b=2;$b<=10;$b++){ */
+                                        for($b=2;$b<=6;$b++){ ?>
+                                            <td><?php echo $pr_f_tab['val_1_shch']*$b*0.8; ?> грн.</td>
+                                        <?php }
+                                    ?>
+                                </tr>
+
+
+                            </tbody>
+                             </table>
+                        <?php } ?>
+
+                    </div>
+                    <div class="tab-pane" id="tab-chertezi">
+                         <?php if ($chert) { ?>
+                    <ul class="thumbnails">
+
+
+                      <?php foreach ($chert as $image) { ?>
+                      <li class="image-additional"><a class="thumbnail" href="<?php echo $image['popup']; ?>" title="<?php echo $heading_title; ?>"> <img src="<?php echo $image['thumb']; ?>" title="<?php echo $heading_title; ?>" alt="<?php echo $heading_title; ?>" /></a></li>
+                      <?php } ?>
+
+                    </ul>
+                    <?php } ?>
+                    </div>
+                    <div class="tab-pane" id="tab-sertificati">
+                         <?php if ($sert) { ?>
+                    <ul class="thumbnails">
+
+
+                      <?php foreach ($sert as $image) { ?>
+                      <li class="image-additional"><a class="thumbnail" href="<?php echo $image['popup']; ?>" title="<?php echo $heading_title; ?>"> <img src="<?php echo $image['thumb']; ?>" title="<?php echo $heading_title; ?>" alt="<?php echo $heading_title; ?>" /></a></li>
+                      <?php } ?>
+
+                    </ul>
+                    <?php } ?>
+                    </div>
+                    <div class="tab-pane" id="tab-delivery"><?php echo $dostavka; ?></div>
+      
+      
   
   <div class="tab-pane active" id="tab-description"><?php echo $description; ?>
   <?php if ($tags) { ?>
@@ -970,7 +1143,7 @@ $('#button-cart').on('click', function() {
 	$.ajax({
 		url: 'index.php?route=checkout/cart/add',
 		type: 'post',
-		data: $('#product input[type=\'text\'], #product input[type=\'hidden\'], #product input[type=\'radio\']:checked, #product input[type=\'checkbox\']:checked, #product select, #product textarea'),
+		data: $('#product1 input[type=\'text\'], #product1 input[type=\'hidden\'], #product1 input[type=\'radio\']:checked, #product1 input[type=\'checkbox\']:checked, #product1 select, #product1 textarea'),
 		dataType: 'json',
 		beforeSend: function() {
 			$('#button-cart').button('loading');
@@ -1134,9 +1307,11 @@ $('#button-review').on('click', function() {
 });
 //--></script>
 <script>
-                        $('input[name=\'check_type\']').on('change',function(){
+                        //$('.check_type input').on('change',function(){
+                        $('.check_type input').on('change',function(){
                         //console.log($(this).val());
-                        if($('input[name=\'check_type\']:checked').val()==="dlina"){
+                        if($('.check_type input:checked').val()==="dlina"){
+                            console.log($(this).val());
                             $('.dlina').show();
                             $('.rashod').hide();
                         }else{
@@ -1147,9 +1322,9 @@ $('#button-review').on('click', function() {
                         $('#rash_vozd').trigger('change');
                         });
                         
-                        $('#count_shcheley, #dlin_resh, #rash_vozd, #t_out_dif, #t_out_dif2, #rast_ot_pov, #type_resh, #quantity, #dlin_proz, #s_vozd_iz_rasp').on('change keyup',function(){
+                        $('#count_shcheley, #dlin_resh, #rash_vozd, #t_out_dif, #t_out_dif2, #rast_ot_pov, #type_resh, #input-quantity, #dlin_proz, #s_vozd_iz_rasp').on('change keyup',function(){
                             //console.log($(this).val());
-                            var treb_ziv_sech = ($('#rash_vozd').val() / $('#quantity').val())/(3600* $('#s_vozd_iz_rasp').val());
+                            var treb_ziv_sech = ($('#rash_vozd').val() / $('#input-quantity').val())/(3600* $('#s_vozd_iz_rasp').val());
                             //console.log(treb_ziv_sech);
 
                             
@@ -1170,8 +1345,8 @@ $('#button-review').on('click', function() {
                                 var n = 1.17;
                             }
                             
-                            //console.log($('input[name=\'check_type\']:checked').val());
-                            if($('input[name=\'check_type\']:checked').val()==="dlina"){
+                            //console.log($('.check_type input:checked').val());
+                            if($('.check_type input:checked').val()==="dlina"){
                                 
                             
                                 if(($('#type_resh').val()==="SHR") || ($('#type_resh').val()==="SHL")){
@@ -1179,10 +1354,11 @@ $('#button-review').on('click', function() {
                                 }else{
                                     var dln_dif = $('#dlin_resh').val()-28*2;
                                 }
-                            
+                            console.log(dln_dif);
                             }else{
                             
                                 var dln_dif = Math.ceil((treb_ziv_sech *1000000)/($('#dlin_proz').val()*$('#count_shcheley').val())/100)*100-10;
+                            console.log(dln_dif);
                             }
                             
                             $('#dln_dif').html(dln_dif);
@@ -1209,7 +1385,7 @@ $('#button-review').on('click', function() {
                             $('#vozn_rash_vozd').html(vozn_rash_vozd);
                             
                             
-                            if($('input[name=\'check_type\']:checked').val()==="dlina"){
+                            if($('.check_type input:checked').val()==="dlina"){
                                 var skor_vozd = vozn_rash_vozd/(zgiv_sech * 3600);
                             }else{
                                 var skor_vozd = parseFloat($('#rash_vozd').val())/(zgiv_sech * 3600);
@@ -1224,7 +1400,7 @@ $('#button-review').on('click', function() {
                             
             
                             if(skor_vih_vozd>0.5){
-                                skor_vih_vozd = skor_vih_vozd.toFixed(2) + ' Çíà÷åíèå íå äîëæíî ïðåâûøàòü 0,5 ì/ñ';
+                                skor_vih_vozd = skor_vih_vozd.toFixed(2) + ' Значение не должно превышать 0,5 м/с';
                             }else{
                                 skor_vih_vozd = skor_vih_vozd.toFixed(2);
                             }
@@ -1232,24 +1408,24 @@ $('#button-review').on('click', function() {
                             
                             var razn_t = Math.abs($('#t_out_dif2').val() - $('#t_out_dif').val()) * n *(Math.pow(((parseFloat($('#count_shcheley').val())/50)/parseFloat($('#rast_ot_pov').val())),0.5));
                             if(razn_t>1.5){
-                                razn_t = 'Çíà÷åíèå íå äîëæíî ïðåâûøàòü 1,5 ?Ñ';
+                                razn_t = 'Значение не должно превышать 1,5 ⁰С';
                             }else{
                                 razn_t = razn_t.toFixed(2);
                             }
                             $('#razn_t').html(razn_t);
                             
-                            if($('input[name=\'check_type\']:checked').val()==="dlina"){
-                                s_vozdvvoda = (vozn_rash_vozd/($('#quantity').val()))/14400;
+                            if($('.check_type input:checked').val()==="dlina"){
+                                s_vozdvvoda = (vozn_rash_vozd/($('#input-quantity').val()))/14400;
                             }else{
-                                s_vozdvvoda = (parseFloat($('#rash_vozd').val())/($('#quantity').val()))/14400;
+                                s_vozdvvoda = (parseFloat($('#rash_vozd').val())/($('#input-quantity').val()))/14400;
                             }
                             
                             var dzeta = 2.0213+2.6795/Math.pow((zgiv_sech/s_vozdvvoda),1.756);
                             
-                            if($('input[name=\'check_type\']:checked').val()==="dlina"){
-                                var pot_dav = dzeta*(1.2 * Math.pow((vozn_rash_vozd/$('#quantity').val()/(3600 * s_vozdvvoda)),2))/2
+                            if($('.check_type input:checked').val()==="dlina"){
+                                var pot_dav = dzeta*(1.2 * Math.pow((vozn_rash_vozd/$('#input-quantity').val()/(3600 * s_vozdvvoda)),2))/2
                             }else{
-                                var pot_dav = dzeta*(1.2 * Math.pow((parseFloat($('#rash_vozd').val())/$('#quantity').val()/(3600 * s_vozdvvoda)),2))/2
+                                var pot_dav = dzeta*(1.2 * Math.pow((parseFloat($('#rash_vozd').val())/$('#input-quantity').val()/(3600 * s_vozdvvoda)),2))/2
                             }
                             
                             $('#pot_dav').html(pot_dav.toFixed(2));
@@ -1281,7 +1457,7 @@ $('#button-review').on('click', function() {
                             //console.log(($('#count_shcheley').val()/50)/(parseFloat($('#rast_ot_pov').val()));
                             
                             if(skor_vih_vozd>0.5){
-                                skor_vih_vozd = skor_vih_vozd.toFixed(2) + ' Çíà÷åíèå íå äîëæíî ïðåâûøàòü 0,5 ì/ñ';
+                                skor_vih_vozd = skor_vih_vozd.toFixed(2) + ' Значение не должно превышать 0,5 м/с';
                             }else{
                                 skor_vih_vozd = skor_vih_vozd.toFixed(2);
                             }
@@ -1289,17 +1465,18 @@ $('#button-review').on('click', function() {
                             
                             var razn_t = Math.abs($('#t_out_dif2').val() - $('#t_out_dif').val()) * n *(Math.pow(((parseFloat($('#count_shcheley').val())/50)/parseFloat($('#rast_ot_pov').val())),0.5));
                             if(razn_t>1.5){
-                                razn_t = 'Çíà÷åíèå íå äîëæíî ïðåâûøàòü 1,5 ?Ñ';
+                                razn_t = 'Значение не должно превышать 1,5 ⁰С';
                             }else{
                                 razn_t = razn_t.toFixed(2);
                             }
                             $('#razn_t').html(razn_t);
                             */
-                            
+                           //research_t(); 
                         });
                         
                         
                         $('#count_shcheley, #type_resh').on('change',function(){
+                            console.log(this);
                             $.ajax({
                                 url: 'index.php?route=product/product/changeimage&product_id=<?php echo $product_id; ?>',
                                 type: 'post',
@@ -1307,19 +1484,44 @@ $('#button-review').on('click', function() {
                                 dataType: 'json',
                                 success: function(json){
                                     //console.log(json);
-                                    $('.next_img').remove();
+                                    $('div.owl-item').remove();
                                     
                                     var arr = $.map(json, function(el) { return el; })
                                     arr.forEach(function(element, index, arr){
                                         //console.log(element);
                                         //console.log(index);
-                                        $('li.first_img').after('<li class="image-additional next_img"><a class="thumbnail" href="'+ element['popup'] +'" title="<?php echo $heading_title; ?>"> <img src="'+ element['popup'] +'" title="<?php echo $heading_title; ?>" alt="<?php echo $heading_title; ?>" /></a></li>');
-                                        
+                                        //$('li.first_img').after('<li class="image-additional next_img"><a class="thumbnail" href="'+ element['popup'] +'" title="<?php echo $heading_title; ?>"> <img src="'+ element['popup'] +'" title="<?php echo $heading_title; ?>" alt="<?php echo $heading_title; ?>" /></a></li>');
+                                       <?php /* $('ul.image_carousel').append('<li class="item"><a href="'+ element['popup'] +'" title="<?php echo $heading_title; ?>" class="cloud-zoom-gallery colorbox" rel="useZoom: 'zoom1', smallImage: '+ element['small'] +'"><img src="'+ element['small'] +'" title="<?php echo $heading_title; ?>" width="<?php echo $additional_width; ?>" height="<?php echo $additional_height; ?>" alt="<?php echo $heading_title; ?>" /></a></li>');
+                                       */ ?>
                                     });
                                 }
                             });
                         });
-                     </script>
+    <?php if(false){ ?>                    
+    function research_t(){
+        $.ajax({
+                url: 'index.php?route=product/product/reloadRrice',
+                type: 'post',
+		//data: $('.params-product').serialize(),
+                data: $('#product1 input[type=\'text\'], #product1 input[type=\'hidden\'], #product1 input[type=\'radio\']:checked, #product1 input[type=\'checkbox\']:checked, #product1 select, #product1 textarea'),
+
+                success: function(result){
+                    console.log(result);
+                   /*var outtext = $.parseJSON(result);
+                    if(outtext.full_price != undefined){
+                       $('.text_old_pr_count').html(outtext.full_price[0]+'<span class="kop">'+outtext.full_price[1]+'</span>грн.');
+                       $('.text_econom_count').html(outtext.econom[0]+'<span class="kop">'+outtext.econom[1]+'</span>грн.');
+                       $('.text_now_pr_count').html(outtext.n_price[0]+'<span class="kop">'+outtext.n_price[1]+'</span>грн.');
+                       $('.text_skidka_count').html(outtext.skidka+'%');
+                    }else{
+                        $('.text_now_pr_count').html(outtext.luk_price_fist[0]+'<span class="kop">'+outtext.luk_price_fist[1]+'</span>грн.');
+                    }*/
+                    //
+                }
+            });
+    }
+    <?php } ?>                    
+                     </script> 
 
 <script type="text/javascript"><!--
 $('.product-grid').owlCarousel({
