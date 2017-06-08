@@ -96,7 +96,20 @@
   "<i class=' certificates__right'></i>"
   ],
 });
+
+$('.special-offer__container').owlCarousel({
+    margin:5,
+    loop:true,
+    autoWidth:true,
+    items:5,
+    nav: true,
+    navText: ["<span><i class='ic-arrow-left'></i></span>","<span><i class='ic-arrow-right'></i></span>"],
+})
+
+
+  
 </script>
+
 
 
 <div class="consult">

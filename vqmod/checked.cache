@@ -258,3 +258,8 @@ catalog\controller\error\not_found.php
 catalog\language\en-gb\error\not_found.php
 catalog\language\ru-ru\error\not_found.php
 catalog\view\theme\default\template\error\not_found.tpl
+catalog\language\uk-ua\blog\category.php
+catalog\language\uk-ua\information\contact.php
+catalog\language\uk-ua\module\category.php
+catalog\language\uk-ua\module\featured.php
+catalog\language\uk-ua\product\product.php
