@@ -268,11 +268,11 @@ function ralcolorpicker () {
 
     $output = '<select class="ralcp-select">';
     foreach($ralclassic as $optgroup) {
-        if($atts['headers'] == 1) { $output .= '<optgroup label="'.$optgroup['name'].'">'; }
+        //if($atts['headers'] == 1) { $output .= '<optgroup label="'.$optgroup['name'].'">'; }
         foreach($optgroup['colors'] as $color) {
             $output .= '<option value="'.$color['name'].'" style="background-color:'.$color['hex'].'">'.$color['name'].'</option>';
         }
-        if($atts['headers'] == 1) { $output .= '</optgroup>'; }
+        //if($atts['headers'] == 1) { $output .= '</optgroup>'; }
     }
     $output .= '</select>';
 
@@ -280,7 +280,7 @@ function ralcolorpicker () {
 }
 
 ?>
-
+<?php echo ralcolorpicker() ?>
 <div id="product1" class="prod container">
 
    <div class="row"><?php echo $column_left; ?>

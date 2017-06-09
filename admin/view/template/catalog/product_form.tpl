@@ -1049,7 +1049,8 @@
               </div>
             </div>
             <div class="tab-pane" id="tab-image">
-              <div class="table-responsive">
+              <?php if(false){ ?>
+                <div class="table-responsive">
                 <table class="table table-striped table-bordered table-hover">
                   <thead>
                     <tr>
@@ -1064,6 +1065,7 @@
                   </tbody>
                 </table>
               </div>
+              <?php } ?>
               <div class="table-responsive">
                 <table id="images" class="table table-striped table-bordered table-hover">
                   <thead>
