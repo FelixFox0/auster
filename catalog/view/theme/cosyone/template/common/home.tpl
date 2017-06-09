@@ -96,7 +96,34 @@
   "<i class=' certificates__right'></i>"
   ],
 });
+
+$('.special-offer__container').owlCarousel({
+    margin:5,
+    loop:true,
+    autoWidth:true,
+    items:5,
+    nav: true,
+    navText: ["<span><i class='ic-arrow-left'></i></span>","<span><i class='ic-arrow-right'></i></span>"],
+    onInitialized: fixOwl,
+    onRefreshed: fixOwl
+})
+
+function fixOwl() {
+    var $stage = $('.owl-stage'),
+        stageW = $stage.width(),
+        $el = $('.owl-item'),
+        elW = 0;
+    $el.each(function() {
+        elW += $(this).width()+ +($(this).css("margin-right").slice(0, -2))
+    });
+    if ( elW > stageW ) {
+        $stage.width( elW );
+    };
+}
+
+
 </script>
+
 
 
 <div class="consult">
