@@ -27,7 +27,10 @@ $_['column_action']		= 'Действие';
 // Entry
 $_['entry_name']             = 'Название товара';
 $_['entry_description']      = 'Описание';
+$_['entry_dot_char']         = 'Дополнительные характеристики:';
+$_['entry_dostavka']         = 'Доставка:';
 $_['entry_meta_title'] 	     = 'Мета-тег Title';
+$_['entry_meta_h1']             = 'HTML-тег H1';
 $_['entry_meta_keyword'] 	 = 'Мета-тег Keyword';
 $_['entry_meta_description'] = 'Мета-тег Description';
 $_['entry_keyword']          = 'SEO URL';
@@ -40,6 +43,19 @@ $_['entry_isbn']             = 'ISBN';
 $_['entry_mpn']              = 'MPN';
 $_['entry_location']         = 'Расположение';
 $_['entry_shipping']         = 'Необходима доставка';
+$_['entry_type_prod']          	= 'Тип продукта';
+$_['text_normal']          	= 'Обычный';
+$_['text_luki']          	= 'Люки';
+$_['text_reshot']          	= 'Вентиляционные решётки (1-4 щелевая)';
+$_['text_reshot1']          	= 'Вентиляционные решётки (1 щелевая)';
+$_['text_reshot_per']          	= 'Переливные решётки для бассейна/Решётки нержавеющие';
+
+$_['text_1_shch']               = '1-щелевая';
+$_['text_2_shch']               = '2-щелевая';
+$_['text_3_shch']               = '3-щелевая';
+$_['text_4_shch']               = '4-щелевая';
+$_['text_baz_dlin']               = 'Базовая длина';
+$_['text_baz_shir']               = 'Базовая ширина';
 $_['entry_manufacturer']     = 'Производитель';
 $_['entry_store']            = 'Магазины';
 $_['entry_date_available']   = 'Дата поступления';
@@ -98,6 +114,10 @@ $_['help_filter']				= '(Автозаполнение)';
 $_['help_download']		= '(Автозаполнение)';
 $_['help_related']			= '(Автозаполнение)';
 $_['help_tag']					= 'теги разделяются запятой';
+$_['tab_chert']          		= 'Чертежи';
+$_['tab_sert']          		= 'Сертификаты';
+$_['entry_sert']          		= 'Сертификаты';
+$_['entry_chert']          		= 'Чертежи';
 
 // Error
 $_['error_warning']				= 'Внимательно проверьте форму на ошибки!';

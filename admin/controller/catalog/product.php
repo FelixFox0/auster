@@ -20,6 +20,8 @@ class ControllerCatalogProduct extends Controller {
 		$this->load->model('catalog/product');
 
 		if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validateForm()) {
+//                    var_dump($this->request->post);
+//                    die();
 			$this->model_catalog_product->addProduct($this->request->post);
 
 			$this->session->data['success'] = $this->language->get('text_success');
@@ -72,7 +74,7 @@ class ControllerCatalogProduct extends Controller {
 		$this->load->model('catalog/product');
 
 		if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validateForm()) {
-//                    var_dump($this->request->post);
+                    //var_dump($this->request->post);
 			$this->model_catalog_product->editProduct($this->request->get['product_id'], $this->request->post);
 
 			$this->session->data['success'] = $this->language->get('text_success');
@@ -540,6 +542,10 @@ class ControllerCatalogProduct extends Controller {
 		$data['text_2_shch'] = $this->language->get('text_2_shch');
 		$data['text_3_shch'] = $this->language->get('text_3_shch');
 		$data['text_4_shch'] = $this->language->get('text_4_shch');
+                
+                $data['text_baz_dlin'] = $this->language->get('text_baz_dlin');
+                $data['text_baz_shir'] = $this->language->get('text_baz_shir');
+                
 		$data['text_plus'] = $this->language->get('text_plus');
 		$data['text_minus'] = $this->language->get('text_minus');
 		$data['text_default'] = $this->language->get('text_default');
@@ -548,6 +554,8 @@ class ControllerCatalogProduct extends Controller {
 		$data['text_select'] = $this->language->get('text_select');
 		$data['text_percent'] = $this->language->get('text_percent');
 		$data['text_amount'] = $this->language->get('text_amount');
+		$data['text_select_all'] = $this->language->get('text_select_all');
+		$data['text_unselect_all'] = $this->language->get('text_unselect_all');
 
 		$data['entry_name'] = $this->language->get('entry_name');
 		$data['entry_description'] = $this->language->get('entry_description');
@@ -973,6 +981,7 @@ class ControllerCatalogProduct extends Controller {
 		} else {
 			$data['sort_order'] = 1;
 		}
+                
                 if (isset($this->request->post['product_curs'])) {
 			$data['product_curs'] = $this->request->post['product_curs'];
 		} elseif (!empty($product_info)) {

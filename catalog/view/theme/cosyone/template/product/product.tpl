@@ -1,10 +1,10 @@
 <?php echo $header; ?>
 <script type="text/javascript" src="catalog/view/javascript/jquery/owl-carousel/owl.carousel.min.js"></script>
 
-
+ 
 <?php 
 
-function ralcolorpicker () {
+//function ralcolorpicker () {
 
     $ralclassic = [
         'yellow_and_beige' => [
@@ -265,8 +265,8 @@ function ralcolorpicker () {
             ],
         ],
     ];
-
-    $output = '<select class="ralcp-select">';
+    $output = '';
+    //$output = '<select class="ralcp-select">';
     foreach($ralclassic as $optgroup) {
         //if($atts['headers'] == 1) { $output .= '<optgroup label="'.$optgroup['name'].'">'; }
         foreach($optgroup['colors'] as $color) {
@@ -274,13 +274,16 @@ function ralcolorpicker () {
         }
         //if($atts['headers'] == 1) { $output .= '</optgroup>'; }
     }
-    $output .= '</select>';
+    //$output .= '</select>';
 
-    echo $output;
-}
+    
+//}
 
 ?>
-<?php echo ralcolorpicker() ?>
+<?php //echo $output; ?>
+<?php //echo ralcolorpicker(); ?>
+
+
 <div id="product1" class="prod container">
 
    <div class="row"><?php echo $column_left; ?>
@@ -1059,6 +1062,7 @@ $(document).ready(function() {
 	  rel:'gallery',
     opacity: 0.5
 }); 
+$('#ral_color').html('<?php echo $output; ?>');
 });
 //--></script>
 <script type="text/javascript">
@@ -1520,6 +1524,10 @@ $('#button-review').on('click', function() {
                 }
             });
     }
+    
+    
+    
+    
     <?php } ?>                    
                      </script> 
 

@@ -74,6 +74,8 @@ class ControllerCheckoutCart extends Controller {
 			$data['products'] = array();
 
 			$products = $this->cart->getProducts();
+//                        var_dump($products);
+//                        die();
 
 			foreach ($products as $product) {
 				$product_total = 0;
@@ -95,7 +97,7 @@ class ControllerCheckoutCart extends Controller {
 				}
 
 				$option_data = array();
-
+                                
 				foreach ($product['option'] as $option) {
 					if ($option['type'] != 'file') {
 						$value = $option['value'];
@@ -114,7 +116,9 @@ class ControllerCheckoutCart extends Controller {
 						'value' => (utf8_strlen($value) > 20 ? utf8_substr($value, 0, 20) . '..' : $value)
 					);
 				}
-
+//                                var_dump($product['option']) ;
+//                                die();
+//var_dump($option_data);
 				// Display prices
 				if ($this->customer->isLogged() || !$this->config->get('config_customer_price')) {
 					$price = $this->currency->format($this->tax->calculate($product['price'], $product['tax_class_id'], $this->config->get('config_tax')), $this->session->data['currency']);
@@ -312,9 +316,9 @@ class ControllerCheckoutCart extends Controller {
 			} else {
 				$option = array();
 			}
-
+                        //var_dump($option);
 			$product_options = $this->model_catalog_product->getProductOptions($this->request->post['product_id']);
-
+//                        var_dump($product_options);
 			foreach ($product_options as $product_option) {
 				if ($product_option['required'] && empty($option[$product_option['product_option_id']])) {
 					$json['error']['option'][$product_option['product_option_id']] = sprintf($this->language->get('error_required'), $product_option['name']);

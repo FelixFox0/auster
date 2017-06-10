@@ -28,8 +28,8 @@ class ControllerCommonMenu extends Controller {
 		$data['text_paypal'] = $this->language->get('text_paypal');
 		$data['text_paypal_search'] = $this->language->get('text_paypal_search');
 		$data['text_design'] = $this->language->get('text_design');
-		$data['text_special_offers'] = "LookBook";
-		$data['text_collections'] = "Êîëëåêöèè";
+		$data['text_special_offers'] = "Ð¤Ð¾Ñ‚Ð¾Ð³Ð°Ð»ÐµÑ€ÐµÑ";
+		$data['text_collections'] = "Ð’Ð¸Ð´ÐµÐ¾";
 		$data['text_download'] = $this->language->get('text_download');
 		$data['text_error_log'] = $this->language->get('text_error_log');
 		$data['text_extension'] = $this->language->get('text_extension');
