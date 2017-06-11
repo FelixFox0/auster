@@ -2058,6 +2058,7 @@ textarea.form-control {
 			& + .form-group {
 				display: flex;
 				align-items: center;
+				flex-wrap: wrap;
 				width: 100%;
 
 				.control-label {
@@ -2091,8 +2092,8 @@ textarea.form-control {
 					align-items: center;
 					margin-left: 20px;
 					.radio {
-						margin: 0!important;
-						margin-right: 10!important;
+						margin: 0 !important;
+						margin-right: 10px !important;
 						padding: 10px 15px;
 						border-radius: 21px;
 						background-color: #4d5967;
@@ -2265,12 +2266,7 @@ textarea.form-control {
 }
 
 .show-catalog {
-	color: $brand2;
-	text-decoration: underline !important;
 	margin-bottom: 25px;
-	&:hover {
-		text-decoration: none !important;
-	}
 }
 
 .popup-zakaz{
