@@ -602,7 +602,7 @@ body {
 .product-grid {
 
 	.item {
-		padding: 22px 45px;
+		padding: 22px 30px;
 		position: relative;
 
 		.image,
@@ -642,8 +642,9 @@ body {
 			font-family: "Rob-reg";
 			font-size: 12px;
 			text-transform: uppercase;
-			padding: 7px 14px;
+			padding: 10px 14px;
 			border-bottom: 1px solid #fff;
+			line-height: 25px;
 			&:hover {
 				background-color: $brand2;
 			}
@@ -651,7 +652,7 @@ body {
 
 		ul {
 			a {
-				padding: 7px 28px;
+				padding: 7px 23px;
 			}
 
 			ul {
@@ -991,6 +992,7 @@ body {
 			font-size: 15px;
 			font-family: "Rob-reg";
 			text-transform: uppercase;
+			height: 48px;
 			&:hover {
 				color: $brand2;
 			}
@@ -1910,6 +1912,7 @@ textarea.form-control {
 		text-transform: uppercase;
 		color: #323232;
 		margin-bottom: 65px;
+		font-family: "Rob-bold";
 	}
 
 	#zoom-btn {
@@ -2201,9 +2204,9 @@ textarea.form-control {
 
 		.dop-character {
 			& > div {
-				padding-bottom: 10px;
+				padding-bottom: 6px;
 				border-bottom: 1px solid #717a85;
-				margin-bottom: 10px;
+				margin-bottom: 6px;
 				& > div:first-child {
 					font-size: 13px;
 					font-family: "Rob-light";
@@ -2280,6 +2283,54 @@ textarea.form-control {
 	}
 }
 
+.tab-pane {
+	.table_class_lik {
+		width: 100%;
+
+		tbody {
+			tr:first-child td {
+				padding: 5px;
+				background-color: $brand;
+				color: #fff;
+				font-family: "Rob-bold";
+			}
+			tr {
+				td:first-child {
+					padding: 5px;
+					background-color: $brand;
+					color: #fff;
+					font-family: "Rob-bold";
+				}
+			}
+			tr {
+				td {
+					padding: 5px;
+					background-color: $brand2;
+					color: #fff;
+					font-family: "Rob-bold";
+					text-align: center;
+					border: 1px solid #fff;
+				}
+			}
+		}
+	}
+
+	.thumbnails {
+		padding-left: 0;
+		list-style-type: none;
+		display: flex;
+		flex-wrap: wrap;
+
+		.image-additional {
+			width: 25%;
+			padding: 0px 15px;
+			img {
+				width: 100%;
+				height: auto;
+			}
+		}
+	}
+}
 
 
 @import "partials/media.scss";

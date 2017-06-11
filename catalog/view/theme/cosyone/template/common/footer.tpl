@@ -126,7 +126,23 @@ Please donate via PayPal to donate@opencart.com
   $('.header__callback a').magnificPopup({
     type:'inline',
   });
+
+
+  $('.tab-pane').each(function() { // the containers for all your galleries
+    $(this).magnificPopup({
+          delegate: 'a', // the selector for gallery item
+          type: 'image',
+          gallery: {
+            enabled:true
+          }
+      });
+  });
+
+
 });
+
+
+
 </script>
 
 <?php echo $live_search; ?>

@@ -42,3 +42,13 @@
 2017-06-10 15:54:41 - PHP Notice:  Undefined index: href in C:\OPENSERVER\OpenServer\domains\auster.loc\catalog\view\theme\cosyone\template\account\order_list.tpl on line 46
 2017-06-10 15:54:46 - PHP Notice:  Undefined index: href in C:\OPENSERVER\OpenServer\domains\auster.loc\catalog\view\theme\cosyone\template\account\order_list.tpl on line 46
 2017-06-10 15:54:46 - PHP Notice:  Undefined index: href in C:\OPENSERVER\OpenServer\domains\auster.loc\catalog\view\theme\cosyone\template\account\order_list.tpl on line 46
+2017-06-12 0:36:31 - PHP Notice:  Undefined offset: 4 in C:\OPENSERVER\OpenServer\domains\auster.loc\vqmod\vqcache\vq2-catalog_view_theme_cosyone_template_product_product.tpl on line 747
+2017-06-12 0:37:07 - PHP Notice:  Undefined offset: 4 in C:\OPENSERVER\OpenServer\domains\auster.loc\vqmod\vqcache\vq2-catalog_view_theme_cosyone_template_product_product.tpl on line 747
+2017-06-12 0:37:30 - PHP Notice:  Undefined offset: 4 in C:\OPENSERVER\OpenServer\domains\auster.loc\vqmod\vqcache\vq2-catalog_view_theme_cosyone_template_product_product.tpl on line 747
+2017-06-12 0:37:47 - PHP Notice:  Undefined offset: 4 in C:\OPENSERVER\OpenServer\domains\auster.loc\vqmod\vqcache\vq2-catalog_view_theme_cosyone_template_product_product.tpl on line 747
+2017-06-12 0:38:02 - PHP Notice:  Undefined offset: 4 in C:\OPENSERVER\OpenServer\domains\auster.loc\vqmod\vqcache\vq2-catalog_view_theme_cosyone_template_product_product.tpl on line 747
+2017-06-12 0:38:47 - PHP Notice:  Undefined offset: 4 in C:\OPENSERVER\OpenServer\domains\auster.loc\vqmod\vqcache\vq2-catalog_view_theme_cosyone_template_product_product.tpl on line 747
+2017-06-12 0:40:42 - PHP Notice:  Undefined variable: option_value in C:\OPENSERVER\OpenServer\domains\auster.loc\admin\view\template\catalog\option_form.tpl on line 187
+2017-06-12 1:07:33 - PHP Notice:  Undefined offset: 1 in C:\OPENSERVER\OpenServer\domains\auster.loc\vqmod\vqcache\vq2-catalog_view_theme_cosyone_template_product_product.tpl on line 732
+2017-06-12 1:07:33 - PHP Notice:  Undefined offset: 2 in C:\OPENSERVER\OpenServer\domains\auster.loc\vqmod\vqcache\vq2-catalog_view_theme_cosyone_template_product_product.tpl on line 737
+2017-06-12 1:07:33 - PHP Notice:  Undefined offset: 3 in C:\OPENSERVER\OpenServer\domains\auster.loc\vqmod\vqcache\vq2-catalog_view_theme_cosyone_template_product_product.tpl on line 742
