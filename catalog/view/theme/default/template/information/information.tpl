@@ -32,18 +32,18 @@
         <h3 class="consult__form-title"><span>Есть вопрос? Задайте его здесь!</span></h3>
         <p class="consult__form-subtitle">Отправьте заявку и наш консультатнт свяжется 
   с Вами в ближайшее время</p>
-        <form action="">
+        <form action="" type="POST" id="form3">
           <div class="consult__input consult__input--white">
             <label for="">Ваше имя</label>
-            <input type="text" placeholder="Введите имя">
+            <input type="text" name="name" placeholder="Введите имя">
           </div>
           <div class="consult__input consult__input--white">
             <label for="">Номер Вашего телефона</label>
-            <input type="text" placeholder="Введите имя">
+            <input type="text" name="phone" placeholder="Введите имя">
           </div>
           <div class="consult__input consult__input--white">
             <label for="">Ваш Е-mail</label>
-            <input type="email" placeholder="Введите имя">
+            <input type="email" name="mail" placeholder="Введите имя">
           </div>
           <div class="consult__input">
             <button>

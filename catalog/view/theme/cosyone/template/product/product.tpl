@@ -322,7 +322,7 @@
       
       <?php if ($images) { ?>
 
-      <div class="image-additional" style="width:<?php echo $thumb_width; ?>px; height:<?php echo $additional_height; ?>px">      
+      <div class="image-additional prod" style="width:<?php echo $thumb_width; ?>px; height:<?php echo $additional_height; ?>px">      
       <ul class="image_carousel owl-carousel">
        <!-- Additional images -->
         <?php foreach ($images as $image) { ?>
@@ -1487,7 +1487,7 @@ $('#button-review').on('click', function() {
                         });
                         
                         
-                        $('#count_shcheley, #type_resh').on('change',function(){
+                       /* $('#count_shcheley, #type_resh').on('change',function(){
                             console.log(this);
                             $.ajax({
                                 url: 'index.php?route=product/product/changeimage&product_id=<?php echo $product_id; ?>',
@@ -1496,19 +1496,52 @@ $('#button-review').on('click', function() {
                                 dataType: 'json',
                                 success: function(json){
                                     //console.log(json);
-                                    $('div.owl-item').remove();
+                                    // $('.image-additional.prod .owl-item').remove();
+                                    console.log(json);
                                     
-                                    var arr = $.map(json, function(el) { return el; })
-                                    arr.forEach(function(element, index, arr){
-                                        //console.log(element);
-                                        //console.log(index);
-                                        //$('li.first_img').after('<li class="image-additional next_img"><a class="thumbnail" href="'+ element['popup'] +'" title="<?php echo $heading_title; ?>"> <img src="'+ element['popup'] +'" title="<?php echo $heading_title; ?>" alt="<?php echo $heading_title; ?>" /></a></li>');
-                                       <?php /* $('ul.image_carousel').append('<li class="item"><a href="'+ element['popup'] +'" title="<?php echo $heading_title; ?>" class="cloud-zoom-gallery colorbox" rel="useZoom: 'zoom1', smallImage: '+ element['small'] +'"><img src="'+ element['small'] +'" title="<?php echo $heading_title; ?>" width="<?php echo $additional_width; ?>" height="<?php echo $additional_height; ?>" alt="<?php echo $heading_title; ?>" /></a></li>');
-                                       */ ?>
-                                    });
+                                    //var arr = $.map(json, function(el) { return el; })
+
+                                    if(json.images.length) {
+                                        var carousel = $(".prod .image_carousel");
+                                        carousel.data('owl.carousel').destroy();
+                                        var html = "";
+                                        json.images.map(function(elem, index) {
+                                          return html +='<li class="item">'
+                                          + '<a href="'+elem.popup+'" title="" class="cloud-zoom-gallery colorbox" rel="useZoom: \'zoom1\', smallImage: '+elem.thumb+'">'
+                                          + '<img src="'+elem.small+'" title="" alt="img" />'
+                                          +'</li>' 
+                                          
+                                        });
+
+                                        carousel.html(html);
+                                        carousel.owlCarousel({
+                                          items: 3,
+                                          autoPlay: 3000,
+                                          nav: false,
+                                          margin: 15
+                                        });
+
+                                        jQuery(function($) {
+                                            Product thumbnails
+                                            
+                                            $(".cloud-zoom-gallery").click(function() {
+                                                $("#zoom-btn").attr('href', $(this).attr('href'));
+                                                $("#zoom-btn").attr('title', $(this).attr('title'));
+                                            
+                                                        $(".cloud-zoom-gallery").each(function() {
+                                                        $(this).addClass("cboxElement");
+                                                    });
+                                                    $(this).removeClass("cboxElement");
+                                                            });
+                                            
+                                        });
+                                        
+                                    }
+
+                                    
                                 }
                             });
-                        });
+                        });*/
     <?php if(false){ ?>                    
     function research_t(){
         $.ajax({

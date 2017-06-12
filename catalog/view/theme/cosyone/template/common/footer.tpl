@@ -141,6 +141,37 @@ Please donate via PayPal to donate@opencart.com
 
 });
 
+$(document).ready(function($) {
+  $("#formx, #main-form, #form-contact").submit(function(event) {
+    event.preventDefault();
+
+    var msg   = $(this).serialize();
+    console.log(msg);
+        $.ajax({
+          type: 'POST',
+          url: 'sendMail.php',
+          data: msg,
+          success: function(data) {
+            $.magnificPopup.open({
+              items: {
+                src: '.popup-success'
+              },
+              type: 'inline'
+            });
+          },
+          error:  function(xhr, str){
+      $.magnificPopup.open({
+              items: {
+                src: '.popup-success'
+              },
+              type: 'inline'
+            });
+          }
+        });
+  });
+});
+
+
 
 
 </script>

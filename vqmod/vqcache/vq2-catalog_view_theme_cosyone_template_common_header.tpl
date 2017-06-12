@@ -46,19 +46,29 @@
 <div class="outer_container <?php echo $cosyone_default_product_style; ?> <?php if($cosyone_use_custom){ echo $cosyone_container_layout; } ?> <?php echo $cosyone_use_breadcrumb; ?>">
 <div class="popup-zakaz mfp-hide">
     <i class="popup__close icon-close"></i>
-    <form action="" id="main-form">
+    <form action="" id="main-form" type="POST">
       <div class="input input--blue">
-        <input type="text" placeholder="Ваше имя" name="name">
+        <input type="text" placeholder="Ваше имя" name="name" required>
       </div>
       <div class="input input--blue">
-        <input type="text" placeholder="Номер телефона" name="phone">
+        <input type="text" placeholder="Номер телефона" name="phone" required>
       </div>
       <div class="input input--blue">
-        <input type="text" placeholder="E-mail" name="email">
+        <input type="text" placeholder="E-mail" name="mail">
       </div>
       <button class="cant-get__button button button--primary send-form">Заказать</button>
     </form>
   </div>
+
+  <div class="popup-success text-center mfp-hide">
+    <div class="title title--green">
+      <h2>Отправленно</h2>
+    </div>
+    <p class="consult__form-subtitle">Наш консультатнт свяжется 
+с Вами в ближайшее время</p>
+  </div>
+
+
 
 <header class="header">
   <div class="container header__container">
