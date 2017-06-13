@@ -65,16 +65,13 @@
       <div class="certificates__col">
         <div class="owl-carousel certificates__carousel">
           <div class="item certificates__carousel-item">
-            <img src="/image/cert.png" alt="cert">
+            <a href="/image/cert1.jpg"><img src="/image/cert1.jpg" alt="cert"></a>
           </div>
           <div class="item certificates__carousel-item">
-            <img src="/image/cert.png" alt="cert">
+            <a href="/image/cert2.jpg"><img src="/image/cert2.jpg" alt="cert"></a>
           </div>
           <div class="item certificates__carousel-item">
-            <img src="/image/cert.png" alt="cert">
-          </div>
-          <div class="item certificates__carousel-item">
-            <img src="/image/cert.png" alt="cert">
+            <a href="/image/cert3.jpg"><img src="/image/cert3.jpg" alt="cert"></a>
           </div>
         </div>
       </div>
@@ -95,6 +92,14 @@
   "<i class=' certificates__left'></i>",
   "<i class=' certificates__right'></i>"
   ],
+});
+
+$(".certificates__col").magnificPopup({
+    delegate: 'a', 
+    type: 'image',
+    gallery: {
+      enabled:true
+    }
 });
 
 $('.special-offer__container').owlCarousel({
@@ -136,18 +141,18 @@ function fixOwl() {
       <h3 class="consult__form-title">Консультация <span>эксперта</span></h3>
       <p class="consult__form-subtitle">Отправьте заявку и наш консультатнт свяжется 
 с Вами в ближайшее время</p>
-      <form action="">
+      <form action="" id="formx" type="POST">
         <div class="consult__input">
           <label for="">Ваше имя</label>
-          <input type="text" placeholder="Введите имя">
+          <input type="text" name="name" placeholder="Введите имя">
         </div>
         <div class="consult__input">
           <label for="">Номер Вашего телефона</label>
-          <input type="text" placeholder="Введите имя">
+          <input type="text" name="phone" placeholder="Введите имя">
         </div>
         <div class="consult__input">
           <label for="">Ваш Е-mail</label>
-          <input type="email" placeholder="Введите имя">
+          <input type="email" name="mail" placeholder="Введите имя">
         </div>
         <div class="consult__input">
           <button>

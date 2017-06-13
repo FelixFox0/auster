@@ -1927,6 +1927,10 @@ textarea.form-control {
 		}
 	}
 
+	.image {
+		border: 1px solid $brand;
+	}
+
 	.image-additional {
 		padding: 0;
 	}
@@ -2272,7 +2276,8 @@ textarea.form-control {
 	margin-bottom: 25px;
 }
 
-.popup-zakaz{
+.popup-zakaz,
+.popup-success{
 	padding: 60px 50px;
 	background-color: #fff;
 	max-width: 627px;
@@ -2329,6 +2334,44 @@ textarea.form-control {
 				height: auto;
 			}
 		}
+	}
+}
+
+
+.luk-container {
+	padding: 25px 30px;
+	display: flex;
+	margin-bottom: 60px;
+	box-shadow: 0 0 7px rgba(0,0,0,.2);
+	flex-wrap: wrap;
+
+	&__inner {
+		display: flex;
+		flex: 1 1 auto;
+		margin-bottom: 30px;
+	}
+
+	&__col {
+		width: 33.333%;
+		.form-group {
+			padding: 0 15px;
+		}
+	}
+
+	&__info {
+		margin-bottom: 30px;
+		h3 {
+			margin: 0 0 20px 0;
+		}
+	}
+
+	.cart{
+		width: 100%;
+	}
+
+	.discount {
+		color: $brand2;
+		font-family: "Rob-bold";
 	}
 }
 

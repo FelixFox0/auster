@@ -322,7 +322,7 @@
       
       <?php if ($images) { ?>
 
-      <div class="image-additional" style="width:<?php echo $thumb_width; ?>px; height:<?php echo $additional_height; ?>px">      
+      <div class="image-additional prod" style="width:<?php echo $thumb_width; ?>px; height:<?php echo $additional_height; ?>px">      
       <ul class="image_carousel owl-carousel">
        <!-- Additional images -->
         <?php foreach ($images as $image) { ?>
@@ -360,7 +360,131 @@
    <div class="right" style="margin-<?php if ($direction == 'rtl') { echo 'right'; } else { echo 'left'; } ?>:<?php echo $thumb_width; ?>px">
       
       <h1 itemprop="name"><?php echo $heading_title; ?></h1>
+
+
+      <!-- тут условие нужно поставить на СШД 24 и СШД 20 -->
       <p><a class="btn show-catalog" target="_blank" href="http://auster-stone.com.ua/shd20">Смотреть каталог </a></p>
+      <p><a class="btn show-catalog" target="_blank" href="http://auster-stone.com.ua/shd24">Смотреть каталог </a></p>
+
+      
+
+      <div class="luk-container">
+          <div class="luk-container__inner">
+              <div class="luk-container__col">
+                  <div class="form-group">
+                      <label for="#">Сторона А, мм</label>
+                      <select name="" id="" class="form-control select new">
+                          <option value="">300</option>
+                          <option value="">400</option>
+                          <option value="">500</option>
+                          <option value="">600</option>
+                          <option value="">700</option>
+                      </select>
+                  </div>
+              </div>
+              <div class="luk-container__col">
+                  <div class="form-group">
+                      <label for="#">Сторона В, мм</label>
+                      <select name="" id="" class="form-control select new">
+                          <option value="">300</option>
+                          <option value="">400</option>
+                          <option value="">500</option>
+                          <option value="">600</option>
+                          <option value="">700</option>
+                      </select>
+                  </div>
+              </div>
+              <div class="luk-container__col">
+                  <div class="form-group">
+                      <label for="#">Количество</label>
+                      <input type="number" id="count-new" min="1" value="1" class="form-control">
+                  </div>
+              </div>
+          </div>
+
+          <div class="luk-container__info">
+            <h3>Дополнительные характеристики</h3>
+            <p><strong>Сторона А</strong> - сторона расположения петли и замков</p>
+            <p><strong>Сторона В</strong> - другая сторона</p>
+            <p>Однодверный люк</p>
+          </div>
+
+        <div class="cart">
+         
+      <?php if ($price) { ?> 
+      <div class="price">
+        
+        <?php if (!$special) { ?>
+        <i class="ic-bage"></i><span itemprop="price"><?php echo $price; ?></span>
+        <?php } else { ?>
+        <?php if (!$cosyone_product_yousave) { ?>
+        <i class="ic-bage"></i><span class="price-old"><?php echo $price; ?></span> <span class="price-new" itemprop="price"><?php echo $special; ?></span>
+        <?php } ?>
+        <?php } ?>
+          
+      </div> 
+     </span> <!-- rich snippet ends -->
+      <?php } ?>
+        
+          
+          <div class="cart__inner">
+            <div class="counter">
+              <a class="quantity_button minus icon">-</a><input type="text" name="quantity" value="<?php echo $minimum; ?>" size="2" id="input-quantity" class="quantity" /><a class="quantity_button plus icon">+</a>
+           
+            <input type="hidden" name="product_id" value="<?php echo $product_id; ?>" />
+            </div>
+
+            <button type="submit" id="button-cart" data-loading-text="<?php echo $text_loading; ?>" class="button contrast"><i class="fa fa-shopping-cart"></i> <?php echo $button_cart; ?></button>
+          </div>
+        
+        
+        
+       </div> <!-- Cart ends -->
+        
+        <?php if ($price) { ?>
+        <meta itemprop="currency" content="<?php echo $currency_code; ?>" />
+        <span itemprop="offerDetails" itemscope itemtype="http://data-vocabulary.org/Offer"><!-- Rich snippets start -->
+        <?php if (($special) && ($cosyone_product_yousave)) { ?>
+        
+        <div class="extended_offer">
+        
+        <div class="price-new"><?php echo $text_special_price; ?><span class="amount contrast_font" itemprop="price"><?php echo $special; ?></span></div>
+        <div class="price-old"><?php echo $text_old_price; ?><span class="amount contrast_font"><?php echo $price; ?></span></div>
+        <div class="price-save"><?php echo $text_you_save; ?><span class="amount contrast_font"><?php echo $yousave; ?></span> </div>
+        </div>
+
+        <?php } ?>
+        
+        <?php if (($special_date_end > 0) && ($cosyone_product_countdown)) { ?>
+        <div class="contrast_font"><div class="offer"></div></div> 
+        
+        <?php if ($cosyone_product_hurry) { ?>
+        <div class="hurry">
+        <span class="items_left contrast_color"><?php echo $text_stock_quantity; ?></span>
+        <span class="items_sold"><?php echo $text_items_sold; ?></span>
+        </div>
+        <?php } ?>
+        <?php } ?>
+        <?php } ?>
+       
+      
+        <?php if ($minimum > 1) { ?>
+        <div class="minimum"><?php echo $text_minimum; ?></div>
+        <?php } ?>
+        <?php if ($price) { ?>
+        <?php if ($points) { ?>
+        <div class="reward"><?php echo $text_points; ?> <?php echo $points; ?></div>
+        <?php } ?>
+       <?php if ($discounts) { ?>
+        <div class="discount">
+          <?php foreach ($discounts as $discount) { ?>
+          <span><?php echo $discount['quantity']; ?><?php echo $text_discount; ?><?php echo $discount['price']; ?></span>
+          <?php } ?>
+        </div>
+        <?php } ?>
+        <?php } ?>
+        
+      </div>
 
 
 
@@ -1095,8 +1219,19 @@ $('#ral_color').on('change ready', function(event) {
 $('.quantity_button.plus').on('click', function(){
         var oldVal = $('input.quantity').val();
         var newVal = (parseInt($('input.quantity').val(),10) +1);
-      $('input.quantity').val(newVal);
+      $('input.quantity,#count-new').val(newVal);
     });
+$('#count-new').on('keyup change', function(){
+        var oldVal = $(this).val();
+        var newVal = (parseInt($(this).val(),10) +1);
+
+        if(isNaN(newVal)) {
+            newVal = 1;
+        } 
+         
+      $('input.quantity,#count-new').val(newVal);
+    });
+
 
     $('.quantity_button.minus').on('click', function(){
         var oldVal = $('input.quantity').val();
@@ -1108,7 +1243,7 @@ $('.quantity_button.plus').on('click', function(){
         {
             newVal = 1;
         }
-        $('input.quantity').val(newVal);
+        $('input.quantity, #count-new').val(newVal);
     });
 </script>
 <?php if ($special_date_end > 0) { ?>
@@ -1487,7 +1622,7 @@ $('#button-review').on('click', function() {
                         });
                         
                         
-                        $('#count_shcheley, #type_resh').on('change',function(){
+                       /* $('#count_shcheley, #type_resh').on('change',function(){
                             console.log(this);
                             $.ajax({
                                 url: 'index.php?route=product/product/changeimage&product_id=<?php echo $product_id; ?>',
@@ -1496,19 +1631,52 @@ $('#button-review').on('click', function() {
                                 dataType: 'json',
                                 success: function(json){
                                     //console.log(json);
-                                    $('div.owl-item').remove();
+                                    // $('.image-additional.prod .owl-item').remove();
+                                    console.log(json);
                                     
-                                    var arr = $.map(json, function(el) { return el; })
-                                    arr.forEach(function(element, index, arr){
-                                        //console.log(element);
-                                        //console.log(index);
-                                        //$('li.first_img').after('<li class="image-additional next_img"><a class="thumbnail" href="'+ element['popup'] +'" title="<?php echo $heading_title; ?>"> <img src="'+ element['popup'] +'" title="<?php echo $heading_title; ?>" alt="<?php echo $heading_title; ?>" /></a></li>');
-                                       <?php /* $('ul.image_carousel').append('<li class="item"><a href="'+ element['popup'] +'" title="<?php echo $heading_title; ?>" class="cloud-zoom-gallery colorbox" rel="useZoom: 'zoom1', smallImage: '+ element['small'] +'"><img src="'+ element['small'] +'" title="<?php echo $heading_title; ?>" width="<?php echo $additional_width; ?>" height="<?php echo $additional_height; ?>" alt="<?php echo $heading_title; ?>" /></a></li>');
-                                       */ ?>
-                                    });
+                                    //var arr = $.map(json, function(el) { return el; })
+
+                                    if(json.images.length) {
+                                        var carousel = $(".prod .image_carousel");
+                                        carousel.data('owl.carousel').destroy();
+                                        var html = "";
+                                        json.images.map(function(elem, index) {
+                                          return html +='<li class="item">'
+                                          + '<a href="'+elem.popup+'" title="" class="cloud-zoom-gallery colorbox" rel="useZoom: \'zoom1\', smallImage: '+elem.thumb+'">'
+                                          + '<img src="'+elem.small+'" title="" alt="img" />'
+                                          +'</li>' 
+                                          
+                                        });
+
+                                        carousel.html(html);
+                                        carousel.owlCarousel({
+                                          items: 3,
+                                          autoPlay: 3000,
+                                          nav: false,
+                                          margin: 15
+                                        });
+
+                                        jQuery(function($) {
+                                            Product thumbnails
+                                            
+                                            $(".cloud-zoom-gallery").click(function() {
+                                                $("#zoom-btn").attr('href', $(this).attr('href'));
+                                                $("#zoom-btn").attr('title', $(this).attr('title'));
+                                            
+                                                        $(".cloud-zoom-gallery").each(function() {
+                                                        $(this).addClass("cboxElement");
+                                                    });
+                                                    $(this).removeClass("cboxElement");
+                                                            });
+                                            
+                                        });
+                                        
+                                    }
+
+                                    
                                 }
                             });
-                        });
+                        });*/
     <?php if(false){ ?>                    
     function research_t(){
         $.ajax({
