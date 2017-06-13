@@ -29,40 +29,26 @@ class Cart {
 			}
 		}
 	}
-        
-         public function recountPrice($param) {
-             $data = explode('.',round($param,2));
-                if(!isset($data[1])){
-                    $data[1] = '00';
-                }elseif(strlen($data[1]) == 1){
-                    $data[1].='0';
-                }
-                
-                return $data;
-                
-        }
-        
+
 	public function getProducts() {
 		$product_data = array();
 
 		$cart_query = $this->db->query("SELECT * FROM " . DB_PREFIX . "cart WHERE customer_id = '" . (int)$this->customer->getId() . "' AND session_id = '" . $this->db->escape($this->session->getId()) . "'");
-                
-		foreach ($cart_query->rows as $cart) {
-                    
-                    
-                    
-                    $stock = true;
 
-			$product_query = $this->db->query("SELECT * FROM " . DB_PREFIX . "product_to_store p2s LEFT JOIN ".DB_PREFIX."product_spec_price psp ON (p2s.product_id = psp.product_id) LEFT JOIN " . DB_PREFIX . "product p ON (p2s.product_id = p.product_id) LEFT JOIN " . DB_PREFIX . "product_description pd ON (p.product_id = pd.product_id) WHERE p2s.store_id = '" . (int)$this->config->get('config_store_id') . "' AND p2s.product_id = '" . (int)$cart['product_id'] . "' AND pd.language_id = '" . (int)$this->config->get('config_language_id') . "' AND p.date_available <= NOW() AND p.status = '1'");
-                        
+		foreach ($cart_query->rows as $cart) {
+			$stock = true;
+
+			$product_query = $this->db->query("SELECT * FROM " . DB_PREFIX . "product_to_store p2s LEFT JOIN " . DB_PREFIX . "product p ON (p2s.product_id = p.product_id) LEFT JOIN " . DB_PREFIX . "product_description pd ON (p.product_id = pd.product_id) WHERE p2s.store_id = '" . (int)$this->config->get('config_store_id') . "' AND p2s.product_id = '" . (int)$cart['product_id'] . "' AND pd.language_id = '" . (int)$this->config->get('config_language_id') . "' AND p.date_available <= NOW() AND p.status = '1'");
+
 			if ($product_query->num_rows && ($cart['quantity'] > 0)) {
 				$option_price = 0;
 				$option_points = 0;
 				$option_weight = 0;
 
 				$option_data = array();
-
+//                                var_dump(json_decode($cart['option']));
 				foreach (json_decode($cart['option']) as $product_option_id => $value) {
+                                    
 					$option_query = $this->db->query("SELECT po.product_option_id, po.option_id, od.name, o.type FROM " . DB_PREFIX . "product_option po LEFT JOIN `" . DB_PREFIX . "option` o ON (po.option_id = o.option_id) LEFT JOIN " . DB_PREFIX . "option_description od ON (o.option_id = od.option_id) WHERE po.product_option_id = '" . (int)$product_option_id . "' AND po.product_id = '" . (int)$cart['product_id'] . "' AND od.language_id = '" . (int)$this->config->get('config_language_id') . "'");
                                         
 					if ($option_query->num_rows) {
@@ -109,7 +95,25 @@ class Cart {
 									'weight'                  => $option_value_query->row['weight'],
 									'weight_prefix'           => $option_value_query->row['weight_prefix']
 								);
-							}
+                                                        }else{
+                                                            $option_data[] = array(
+								'product_option_id'       => $product_option_id,
+								'product_option_value_id' => '',
+								'option_id'               => $option_query->row['option_id'],
+								'option_value_id'         => '',
+								'name'                    => $option_query->row['name'],
+								'value'                   => $value,
+								'type'                    => $option_query->row['type'],
+								'quantity'                => '',
+								'subtract'                => '',
+								'price'                   => '',
+								'price_prefix'            => '',
+								'points'                  => '',
+								'points_prefix'           => '',
+								'weight'                  => '',
+								'weight_prefix'           => ''
+                                                            );
+                                                        }
 						} elseif ($option_query->row['type'] == 'checkbox' && is_array($value)) {
 							foreach ($value as $product_option_value_id) {
 								$option_value_query = $this->db->query("SELECT pov.option_value_id, ovd.name, pov.quantity, pov.subtract, pov.price, pov.price_prefix, pov.points, pov.points_prefix, pov.weight, pov.weight_prefix FROM " . DB_PREFIX . "product_option_value pov LEFT JOIN " . DB_PREFIX . "option_value ov ON (pov.option_value_id = ov.option_value_id) LEFT JOIN " . DB_PREFIX . "option_value_description ovd ON (ov.option_value_id = ovd.option_value_id) WHERE pov.product_option_value_id = '" . (int)$product_option_value_id . "' AND pov.product_option_id = '" . (int)$product_option_id . "' AND ovd.language_id = '" . (int)$this->config->get('config_language_id') . "'");
@@ -178,189 +182,12 @@ class Cart {
 					}
 				}
 
-                                
-                                
-                                /**/
-                                
-                                $opts = json_decode($cart['option']);
-                                
-                               
-                                /*
-                                
-                                if($this->customer->isLogged()){
-                                    $user_id_t = $this->customer->getId();
-                                    $test_user_skidka = $this->test_user_skidka($user_id_t);
-                                }else{
-                                    $test_user_skidka = false;
-                                }
-                                $test_categ_skidka = $this->test_categ_skidka($cart['product_id']);
-
-                                if($test_user_skidka && $test_categ_skidka){
-                                    if($test_user_skidka['razmer_skidki']>$test_categ_skidka['razmer_skidki']){
-                                        $data['skidka'] = $test_user_skidka['razmer_skidki'];
-                                    }elseif($test_user_skidka['razmer_skidki']<$test_categ_skidka['razmer_skidki']){
-                                        $data['skidka'] = $test_categ_skidka['razmer_skidki'];
-                                    }else{
-                                        $data['skidka'] = $test_categ_skidka['razmer_skidki'];
-                                    }
-                                }elseif($test_user_skidka){
-                                    $data['skidka'] = $test_user_skidka['razmer_skidki'];
-                                }elseif($test_categ_skidka){
-                                    $data['skidka'] = $test_categ_skidka['razmer_skidki'];
-                                }else{
-                                    $data['skidka'] = false;
-                                }
-                                */
-                                
-                                
-                                if(isset($opts->product_type)){
-                                    $data['product_type'] = $opts->product_type;
-                                }else{
-                                    $data['product_type'] = 1;
-                                }
-                                
-                                $data['product_curs'] = $product_query->row['product_curs'];
-                                if($data['product_type'] == 2){
-                                    if($product_query->row['luk_price']){
-                                      $data['luk_price'] = unserialize($product_query->row['luk_price']);  
-                                    }else{
-                                        $data['luk_price'] = NULL;
-                                    }
-                                    //$opts 
-                                    $shirina = ceil($opts->shirina/50)*50;
-                                    $dlina = ceil($opts->dlina/50)*50;
-                                    $pritem = $data['luk_price'][$shirina][$dlina]*$data['product_curs']; 
-                                }elseif($data['product_type'] == 3 || $data['product_type'] == 4  ){
-                                    if($product_query->row['price_resh']){
-                                      $data['luk_price'] = unserialize($product_query->row['price_resh']);  
-                                    }else{
-                                        $data['luk_price'] = NULL;
-                                    }
-                                     switch ($opts->count_shcheley){
-                                        case 1: $ind_count_r = $data['luk_price']['val_1_shch']; break;
-                                        case 2: $ind_count_r = $data['luk_price']['val_2_shch']; break;
-                                        case 3: $ind_count_r = $data['luk_price']['val_3_shch']; break;
-                                        case 4: $ind_count_r = $data['luk_price']['val_4_shch']; break;
-                                        default : $ind_count_r =1;
-                                    }
-                                    
-                                    $dlin_resh = $opts->dlin_resh;
-                                    
-                                    $mod_dlin_resh = $dlin_resh%1000;
-                
-                                    if($dlin_resh<500){
-                      /*$final_r = $ind_count_r;
-//                      var_dump($ind_count_r);
-                      $final_r = $final_r - $final_r/100*25;*/
-                      
-                    switch ($opts->count_shcheley){
-                        case 1: $ind_percent = 35; break;
-                        case 2: $ind_percent = 40; break;
-                        case 3: $ind_percent = 45; break;
-                        case 4: $ind_percent = 50; break;
-                        default : $ind_percent =1;
-                    }
-                    $final_r = $ind_count_r - $ind_count_r/100*$ind_percent;
-                      
-                      
-                  }elseif(($dlin_resh>=500) && ($dlin_resh<900)){
-                    switch ($opts->count_shcheley){
-                        case 1: $ind_percent = 25; break;
-                        case 2: $ind_percent = 30; break;
-                        case 3: $ind_percent = 35; break;
-                        case 4: $ind_percent = 40; break;
-                        default : $ind_percent =1;
-                    }
-                    $final_r = $ind_count_r - $ind_count_r/100*$ind_percent;
-
-                                    }elseif(($dlin_resh>=900) && ($dlin_resh<1100)){
-                                        $final_r = $ind_count_r;   
-
-                                    }elseif(($mod_dlin_resh<100)){
-                                        $koef=floor($dlin_resh/1000);
-                                        $final_r = $ind_count_r * $koef;
-                                        $final_r = $final_r - $final_r/100*20;
-
-                  //                      var_dump($koef);
-                                    }elseif(($mod_dlin_resh>=100)&&($mod_dlin_resh<200)){
-                                        $final_r = ($ind_count_r*($dlin_resh/1000));
-                                        $final_r = $final_r - $final_r/100*5;
-                                    }elseif(($mod_dlin_resh>=200)&&($mod_dlin_resh<400)){
-                                        $final_r = ($ind_count_r*($dlin_resh/1000));
-                                        $final_r = $final_r - $final_r/100*8;
-                                    }elseif(($mod_dlin_resh>=400)&&($mod_dlin_resh<600)){
-                                        $final_r = ($ind_count_r*($dlin_resh/1000));
-                                        $final_r = $final_r - $final_r/100*15;
-                                    }elseif(($mod_dlin_resh>=600)&&($mod_dlin_resh<=900)){
-                                        $final_r = ($ind_count_r*($dlin_resh/1000));
-                                        $final_r = $final_r - $final_r/100*20;
-                                    }elseif(($mod_dlin_resh>900)){
-
-                                        $koef=ceil($dlin_resh/1000);
-
-                                        $final_r = $ind_count_r * $koef;
-                                        $final_r = $final_r - $final_r/100*20;
-                                    }
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    /*
-                                    if($dlin_resh>=100 && $dlin_resh<500){
-                                        $final_r = $ind_count_r * 0.75;
-                                    }elseif($dlin_resh>=500 && $dlin_resh<900){
-                                        $final_r = $ind_count_r * 0.8;
-                                    }elseif($dlin_resh>=900 && $dlin_resh<=1100){
-                                        $final_r = $ind_count_r;
-                                    }elseif($dlin_resh == 10100){
-                                        $final_r = $ind_count_r*($a+1)*0.8;
-                                    }
-
-                                     if(!isset($final_r)){
-										for($a=1;$a<=9;$a++){
-											if($dlin_resh>($a.'100')*1 && $dlin_resh<($a.'200')*1){
-												$final_r = $ind_count_r*$dlin_resh/1000*0.95;
-											}elseif($dlin_resh>=($a.'200')*1 && $dlin_resh<($a.'900')*1){
-												$final_r = $ind_count_r*$dlin_resh/1000*0.8;
-											}elseif($dlin_resh>=($a.'900')*1 && $dlin_resh<=(($a+1).'100')*1){
-												$final_r = $ind_count_r*($a+1)*0.8;
-											}
-										}
-									}
-                                                                        */
-                                                                        
-                                                                        
-                                    $pritem = $final_r*$data['product_curs'];
-                                }else{
-                                    $pritem = $product_query->row['price']*$data['product_curs'];
-                                }
-                                
-                                if(isset($data['skidka']) && $data['skidka']){
-                                    $prev_pr = ($pritem/100)*$data['skidka'];
-                                    $aft_pr = $pritem-$prev_pr;
-                                }else{
-                                    $aft_pr = $pritem;
-                                }
-                                
-                                /**/
-                                
-                                
-                                
-                                
-				//$price = $product_query->row['price'];
-				$price = $aft_pr;
+				$price = $product_query->row['price'];
 
 				// Product Discounts
 				$discount_quantity = 0;
 
-				$cart_2_query = $this->db->query("SELECT * FROM " . DB_PREFIX . "cart WHERE customer_id = '" . (int)$this->customer->getId() . "' AND session_id = '" . $this->db->escape($this->session->getId()) . "'");
-
-				foreach ($cart_2_query->rows as $cart_2) {
+				foreach ($cart_query->rows as $cart_2) {
 					if ($cart_2['product_id'] == $cart['product_id']) {
 						$discount_quantity += $cart_2['quantity'];
 					}
@@ -462,6 +289,8 @@ class Cart {
 	}
 
 	public function add($product_id, $quantity = 1, $option = array(), $recurring_id = 0) {
+//            var_dump($option);
+//            die();
 		$query = $this->db->query("SELECT COUNT(*) AS total FROM " . DB_PREFIX . "cart WHERE customer_id = '" . (int)$this->customer->getId() . "' AND session_id = '" . $this->db->escape($this->session->getId()) . "' AND product_id = '" . (int)$product_id . "' AND recurring_id = '" . (int)$recurring_id . "' AND `option` = '" . $this->db->escape(json_encode($option)) . "'");
 
 		if (!$query->row['total']) {
@@ -596,72 +425,4 @@ class Cart {
 
 		return false;
 	}
-	public function test_user_skidka($user_id) {
-            $res = $this->db->query("SELECT * FROM ".DB_PREFIX."skidki WHERE `type_skidki`=0");
-            if($res->num_rows > 0){
-                foreach ($res->rows as $skid) {
-                   $users = unserialize($skid['users_skidki']);
-                   if(in_array($user_id,$users)){
-                       if($skid['type_time_skidki']==1){
-                            if(!isset($skidki) || $skidki['razmer_skidki']< $skid['razmer_skidki']){
-                                $skidki=$skid;
-                            }
-                        }else{
-                            $timesmap_d = strtotime($skid['time_skidki']);
-                            if($timesmap_d > time() && (!isset($skidki) || $skidki['razmer_skidki']< $skid['razmer_skidki'])){
-                                 $skidki=$skid;
-                            }
-                        }
-                    }
-                }
-                if(isset($skidki)){
-                       return $skidki;
-                   }else{
-                       return false;
-                   }
-            }else{
-                return false;
-            }
-        }
-        
-        public function test_categ_skidka($product_id){
-            $categs = $this->db->query("SELECT category_id FROM ".DB_PREFIX."product_to_category WHERE `product_id`='".$product_id."'");
-            if($categs->num_rows > 0){
-                $categories = array();
-                foreach ($categs->rows as $cat) {
-                    $categories[]=$cat['category_id'];
-                }
-                $res = $this->db->query("SELECT * FROM ".DB_PREFIX."skidki WHERE `type_skidki`=1");
-                
-                if($res->num_rows > 0 && isset($categories)){
-                    foreach ($res->rows as $skid) {
-                       $cats_t = unserialize($skid['categs_skidki']);
-                       $tes_ar = array_intersect($categories,$cats_t);
-                       if(!empty($tes_ar)){
-                           if($skid['type_time_skidki']==1){
-                               
-                                if(!isset($skidki) || $skidki['razmer_skidki']< $skid['razmer_skidki']){
-                                    $skidki=$skid;
-                                }
-                            }else{
-                                $timesmap_d = strtotime($skid['time_skidki']);
-                                if($timesmap_d > time() && (!isset($skidki) || $skidki['razmer_skidki']< $skid['razmer_skidki'])){
-                                     $skidki=$skid;
-                                }
-                            }
-                         }
-                    }
-                    if(isset($skidki)){
-                           return $skidki;
-                       }else{
-                           return false;
-                       }
-                }else{
-                    return false;
-                }
-                
-            }else {
-               return false; 
-            }
-        }
 }

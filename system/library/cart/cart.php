@@ -29,17 +29,29 @@ class Cart {
 			}
 		}
 	}
-
+        
+         public function recountPrice($param) {
+             $data = explode('.',round($param,2));
+                if(!isset($data[1])){
+                    $data[1] = '00';
+                }elseif(strlen($data[1]) == 1){
+                    $data[1].='0';
+                }
+                
+                return $data;
+                
+        }
+        
 	public function getProducts() {
 		$product_data = array();
 
 		$cart_query = $this->db->query("SELECT * FROM " . DB_PREFIX . "cart WHERE customer_id = '" . (int)$this->customer->getId() . "' AND session_id = '" . $this->db->escape($this->session->getId()) . "'");
-
+//                var_dump($cart_query);
 		foreach ($cart_query->rows as $cart) {
 			$stock = true;
 
-			$product_query = $this->db->query("SELECT * FROM " . DB_PREFIX . "product_to_store p2s LEFT JOIN " . DB_PREFIX . "product p ON (p2s.product_id = p.product_id) LEFT JOIN " . DB_PREFIX . "product_description pd ON (p.product_id = pd.product_id) WHERE p2s.store_id = '" . (int)$this->config->get('config_store_id') . "' AND p2s.product_id = '" . (int)$cart['product_id'] . "' AND pd.language_id = '" . (int)$this->config->get('config_language_id') . "' AND p.date_available <= NOW() AND p.status = '1'");
-
+			$product_query = $this->db->query("SELECT * FROM " . DB_PREFIX . "product_to_store p2s LEFT JOIN ".DB_PREFIX."product_spec_price psp ON (p2s.product_id = psp.product_id) LEFT JOIN " . DB_PREFIX . "product p ON (p2s.product_id = p.product_id) LEFT JOIN " . DB_PREFIX . "product_description pd ON (p.product_id = pd.product_id) WHERE p2s.store_id = '" . (int)$this->config->get('config_store_id') . "' AND p2s.product_id = '" . (int)$cart['product_id'] . "' AND pd.language_id = '" . (int)$this->config->get('config_language_id') . "' AND p.date_available <= NOW() AND p.status = '1'");
+                        
 			if ($product_query->num_rows && ($cart['quantity'] > 0)) {
 				$option_price = 0;
 				$option_points = 0;
@@ -182,12 +194,200 @@ class Cart {
 					}
 				}
 
-				$price = $product_query->row['price'];
+                                
+                                
+                                /**/
+                                
+                                $opts = json_decode($cart['option']);
+                                //var_dump($opts);
+                                
+                                $obj = [];
+                                foreach ($opts as $key => $value) {
+                                    //var_dump($value);
+                                    $opts_el = $this->db->query("SELECT * FROM " . DB_PREFIX . "product_option a, " . DB_PREFIX . "option b WHERE a.product_option_id = " . $key . " AND b.option_id=a.option_id");
+                                    $obj[$opts_el->row['element_id']] = $value;
+                                    //var_dump($opts_el->row['element_id']);
+//                                    $opts_array[];
+                                }
+                                //var_dump((object) $obj);
+                                $opts = (object) $obj;
+                                /*
+                                
+                                if($this->customer->isLogged()){
+                                    $user_id_t = $this->customer->getId();
+                                    $test_user_skidka = $this->test_user_skidka($user_id_t);
+                                }else{
+                                    $test_user_skidka = false;
+                                }
+                                $test_categ_skidka = $this->test_categ_skidka($cart['product_id']);
+
+                                if($test_user_skidka && $test_categ_skidka){
+                                    if($test_user_skidka['razmer_skidki']>$test_categ_skidka['razmer_skidki']){
+                                        $data['skidka'] = $test_user_skidka['razmer_skidki'];
+                                    }elseif($test_user_skidka['razmer_skidki']<$test_categ_skidka['razmer_skidki']){
+                                        $data['skidka'] = $test_categ_skidka['razmer_skidki'];
+                                    }else{
+                                        $data['skidka'] = $test_categ_skidka['razmer_skidki'];
+                                    }
+                                }elseif($test_user_skidka){
+                                    $data['skidka'] = $test_user_skidka['razmer_skidki'];
+                                }elseif($test_categ_skidka){
+                                    $data['skidka'] = $test_categ_skidka['razmer_skidki'];
+                                }else{
+                                    $data['skidka'] = false;
+                                }
+                                */
+                               
+                               
+                                
+                                if(isset($opts->product_type)){
+                                    $data['product_type'] = $opts->product_type;
+                                }else{
+                                    $data['product_type'] = 3;
+                                }
+                                
+                                $data['product_curs'] = $product_query->row['product_curs'];
+                                if($data['product_type'] == 2){
+                                    if($product_query->row['luk_price']){
+                                      $data['luk_price'] = unserialize($product_query->row['luk_price']);  
+                                    }else{
+                                        $data['luk_price'] = NULL;
+                                    }
+                                    //$opts 
+                                    $shirina = ceil($opts->shirina/50)*50;
+                                    $dlina = ceil($opts->dlina/50)*50;
+                                    $pritem = $data['luk_price'][$shirina][$dlina]*$data['product_curs']; 
+                                }elseif($data['product_type'] == 3 || $data['product_type'] == 4  ){
+                                    if($product_query->row['price_resh']){
+                                      $data['luk_price'] = unserialize($product_query->row['price_resh']);  
+                                    }else{
+                                        $data['luk_price'] = NULL;
+                                    }
+                                     switch ($opts->count_shcheley){
+                                        case 1: $ind_count_r = $data['luk_price']['val_1_shch']; break;
+                                        case 2: $ind_count_r = $data['luk_price']['val_2_shch']; break;
+                                        case 3: $ind_count_r = $data['luk_price']['val_3_shch']; break;
+                                        case 4: $ind_count_r = $data['luk_price']['val_4_shch']; break;
+                                        default : $ind_count_r =1;
+                                    }
+                                    
+                                    $dlin_resh = $opts->dlin_resh;
+                                    
+                                    $mod_dlin_resh = $dlin_resh%1000;
+                
+                                    if($dlin_resh<500){
+                      /*$final_r = $ind_count_r;
+//                      var_dump($ind_count_r);
+                      $final_r = $final_r - $final_r/100*25;*/
+                      
+                    switch ($opts->count_shcheley){
+                        case 1: $ind_percent = 35; break;
+                        case 2: $ind_percent = 40; break;
+                        case 3: $ind_percent = 45; break;
+                        case 4: $ind_percent = 50; break;
+                        default : $ind_percent =1;
+                    }
+                    $final_r = $ind_count_r - $ind_count_r/100*$ind_percent;
+                      
+                      
+                  }elseif(($dlin_resh>=500) && ($dlin_resh<900)){
+                    switch ($opts->count_shcheley){
+                        case 1: $ind_percent = 25; break;
+                        case 2: $ind_percent = 30; break;
+                        case 3: $ind_percent = 35; break;
+                        case 4: $ind_percent = 40; break;
+                        default : $ind_percent =1;
+                    }
+                    $final_r = $ind_count_r - $ind_count_r/100*$ind_percent;
+
+                                    }elseif(($dlin_resh>=900) && ($dlin_resh<1100)){
+                                        $final_r = $ind_count_r;   
+
+                                    }elseif(($mod_dlin_resh<100)){
+                                        $koef=floor($dlin_resh/1000);
+                                        $final_r = $ind_count_r * $koef;
+                                        $final_r = $final_r - $final_r/100*20;
+
+                  //                      var_dump($koef);
+                                    }elseif(($mod_dlin_resh>=100)&&($mod_dlin_resh<200)){
+                                        $final_r = ($ind_count_r*($dlin_resh/1000));
+                                        $final_r = $final_r - $final_r/100*5;
+                                    }elseif(($mod_dlin_resh>=200)&&($mod_dlin_resh<400)){
+                                        $final_r = ($ind_count_r*($dlin_resh/1000));
+                                        $final_r = $final_r - $final_r/100*8;
+                                    }elseif(($mod_dlin_resh>=400)&&($mod_dlin_resh<600)){
+                                        $final_r = ($ind_count_r*($dlin_resh/1000));
+                                        $final_r = $final_r - $final_r/100*15;
+                                    }elseif(($mod_dlin_resh>=600)&&($mod_dlin_resh<=900)){
+                                        $final_r = ($ind_count_r*($dlin_resh/1000));
+                                        $final_r = $final_r - $final_r/100*20;
+                                    }elseif(($mod_dlin_resh>900)){
+
+                                        $koef=ceil($dlin_resh/1000);
+
+                                        $final_r = $ind_count_r * $koef;
+                                        $final_r = $final_r - $final_r/100*20;
+                                    }
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    /*
+                                    if($dlin_resh>=100 && $dlin_resh<500){
+                                        $final_r = $ind_count_r * 0.75;
+                                    }elseif($dlin_resh>=500 && $dlin_resh<900){
+                                        $final_r = $ind_count_r * 0.8;
+                                    }elseif($dlin_resh>=900 && $dlin_resh<=1100){
+                                        $final_r = $ind_count_r;
+                                    }elseif($dlin_resh == 10100){
+                                        $final_r = $ind_count_r*($a+1)*0.8;
+                                    }
+
+                                     if(!isset($final_r)){
+										for($a=1;$a<=9;$a++){
+											if($dlin_resh>($a.'100')*1 && $dlin_resh<($a.'200')*1){
+												$final_r = $ind_count_r*$dlin_resh/1000*0.95;
+											}elseif($dlin_resh>=($a.'200')*1 && $dlin_resh<($a.'900')*1){
+												$final_r = $ind_count_r*$dlin_resh/1000*0.8;
+											}elseif($dlin_resh>=($a.'900')*1 && $dlin_resh<=(($a+1).'100')*1){
+												$final_r = $ind_count_r*($a+1)*0.8;
+											}
+										}
+									}
+                                                                        */
+                                                                        
+                                                                        
+                                    $pritem = $final_r*$data['product_curs'];
+                                }else{
+                                    $pritem = $product_query->row['price']*$data['product_curs'];
+                                }
+                                
+                                if(isset($data['skidka']) && $data['skidka']){
+                                    $prev_pr = ($pritem/100)*$data['skidka'];
+                                    $aft_pr = $pritem-$prev_pr;
+                                }else{
+                                    $aft_pr = $pritem;
+                                }
+                                
+                                /**/
+                                
+                                
+                                
+                                
+				//$price = $product_query->row['price'];
+				$price = $aft_pr;
 
 				// Product Discounts
 				$discount_quantity = 0;
 
-				foreach ($cart_query->rows as $cart_2) {
+				$cart_2_query = $this->db->query("SELECT * FROM " . DB_PREFIX . "cart WHERE customer_id = '" . (int)$this->customer->getId() . "' AND session_id = '" . $this->db->escape($this->session->getId()) . "'");
+
+				foreach ($cart_2_query->rows as $cart_2) {
 					if ($cart_2['product_id'] == $cart['product_id']) {
 						$discount_quantity += $cart_2['quantity'];
 					}
@@ -425,4 +625,72 @@ class Cart {
 
 		return false;
 	}
+	public function test_user_skidka($user_id) {
+            $res = $this->db->query("SELECT * FROM ".DB_PREFIX."skidki WHERE `type_skidki`=0");
+            if($res->num_rows > 0){
+                foreach ($res->rows as $skid) {
+                   $users = unserialize($skid['users_skidki']);
+                   if(in_array($user_id,$users)){
+                       if($skid['type_time_skidki']==1){
+                            if(!isset($skidki) || $skidki['razmer_skidki']< $skid['razmer_skidki']){
+                                $skidki=$skid;
+                            }
+                        }else{
+                            $timesmap_d = strtotime($skid['time_skidki']);
+                            if($timesmap_d > time() && (!isset($skidki) || $skidki['razmer_skidki']< $skid['razmer_skidki'])){
+                                 $skidki=$skid;
+                            }
+                        }
+                    }
+                }
+                if(isset($skidki)){
+                       return $skidki;
+                   }else{
+                       return false;
+                   }
+            }else{
+                return false;
+            }
+        }
+        
+        public function test_categ_skidka($product_id){
+            $categs = $this->db->query("SELECT category_id FROM ".DB_PREFIX."product_to_category WHERE `product_id`='".$product_id."'");
+            if($categs->num_rows > 0){
+                $categories = array();
+                foreach ($categs->rows as $cat) {
+                    $categories[]=$cat['category_id'];
+                }
+                $res = $this->db->query("SELECT * FROM ".DB_PREFIX."skidki WHERE `type_skidki`=1");
+                
+                if($res->num_rows > 0 && isset($categories)){
+                    foreach ($res->rows as $skid) {
+                       $cats_t = unserialize($skid['categs_skidki']);
+                       $tes_ar = array_intersect($categories,$cats_t);
+                       if(!empty($tes_ar)){
+                           if($skid['type_time_skidki']==1){
+                               
+                                if(!isset($skidki) || $skidki['razmer_skidki']< $skid['razmer_skidki']){
+                                    $skidki=$skid;
+                                }
+                            }else{
+                                $timesmap_d = strtotime($skid['time_skidki']);
+                                if($timesmap_d > time() && (!isset($skidki) || $skidki['razmer_skidki']< $skid['razmer_skidki'])){
+                                     $skidki=$skid;
+                                }
+                            }
+                         }
+                    }
+                    if(isset($skidki)){
+                           return $skidki;
+                       }else{
+                           return false;
+                       }
+                }else{
+                    return false;
+                }
+                
+            }else {
+               return false; 
+            }
+        }
 }
