@@ -448,23 +448,40 @@ if ($product_info['dop_img']) {
 			} else {
 				$data['price'] = false;
 			}
-
+                        
+//                        var_dump($data['price']);
 			if ((float)$product_info['special']) {
 				$data['special'] = $this->currency->format($this->tax->calculate($product_info['special'], $product_info['tax_class_id'], $this->config->get('config_tax')), $this->session->data['currency']);
 			} else {
 				$data['special'] = false;
 			}
-
+//                        var_dump($data['special']);
 			if ($this->config->get('config_tax')) {
 				$data['tax'] = $this->currency->format((float)$product_info['special'] ? $product_info['special'] : $product_info['price'], $this->session->data['currency']);
 			} else {
 				$data['tax'] = false;
 			}
-
+                        
 			$discounts = $this->model_catalog_product->getProductDiscounts($this->request->get['product_id']);
 
 			$data['discounts'] = array();
 
+                        
+                        if ($this->customer->isLogged() || !$this->config->get('config_customer_price')) {
+				$data['price'] = $this->currency->format($this->tax->calculate($product_info['price']*$product_info['product_curs'], $product_info['tax_class_id'], $this->config->get('config_tax')), $this->session->data['currency']);
+			} else {
+				$data['price'] = false;
+			}
+                        
+//                        var_dump($data['price']);
+			if ((float)$product_info['special']) {
+				$data['special'] = $this->currency->format($this->tax->calculate($product_info['special']*$product_info['product_curs'], $product_info['tax_class_id'], $this->config->get('config_tax')), $this->session->data['currency']);
+                                $data['yousave'] = $this->currency->format($this->tax->calculate($product_info['price']*$product_info['product_curs']-$product_info['special']*$product_info['product_curs'], $product_info['tax_class_id'], $this->config->get('config_tax')), $this->session->data['currency']);
+                                
+                        } else {
+				$data['special'] = false;
+			}
+                        
 			foreach ($discounts as $discount) {
 				$data['discounts'][] = array(
 					'quantity' => $discount['quantity'],
@@ -898,8 +915,15 @@ if ($product_info['dop_img']) {
         
         
         public function reloadRrice() {
-            var_dump($this->request->post);
+            //var_dump($this->request->post['option']);
+
+            
+            
+            
             $this->load->model('catalog/product');
+            $opt = $this->model_catalog_product->getNameOptions($this->request->post['option']);
+            $this->request->post += $opt;
+//            var_dump($this->request->post);
             $product_info = $this->model_catalog_product->getProduct($this->request->post['product_id']);
             /*������*/
             /*
@@ -961,70 +985,7 @@ if ($product_info['dop_img']) {
                 
                 $mod_dlin_resh = $dlin_resh%1000;
                 
-                /*
-//            var_dump($ind_count_r);
-                if($dlin_resh<500){
-                    switch ($this->request->post['count_shcheley']){
-                        case 1: $ind_percent = 35; break;
-                        case 2: $ind_percent = 40; break;
-                        case 3: $ind_percent = 45; break;
-                        case 4: $ind_percent = 50; break;
-                        default : $ind_percent =1;
-                    }
-                      $final_r = $ind_count_r - $ind_count_r/100*$ind_percent;
-                              
-                  }elseif(($dlin_resh>=500) && ($dlin_resh<900)){
-                    switch ($this->request->post['count_shcheley']){
-                        case 1: $ind_percent = 25; break;
-                        case 2: $ind_percent = 30; break;
-                        case 3: $ind_percent = 35; break;
-                        case 4: $ind_percent = 40; break;
-                        default : $ind_percent =1;
-                    }
-                      $final_r = $ind_count_r - $ind_count_r/100*$ind_percent;
-                      
-                  }elseif(($dlin_resh>=900) && ($dlin_resh<1100)){ 
-                      $final_r = $ind_count_r;
-                  }elseif(($dlin_resh>=1100)&&($dlin_resh<1200)){
-                      $final_r = ($ind_count_r * $mod_dlin_resh) - ($ind_count_r * $mod_dlin_resh/100*5);
-                  }elseif(($dlin_resh>=1200)&&($dlin_resh<1400)){
-                      $final_r = ($ind_count_r * $mod_dlin_resh) - ($ind_count_r * $mod_dlin_resh/100*8);
-                  }elseif(($dlin_resh>=1400)&&($dlin_resh<1600)){
-                      $final_r = ($ind_count_r * $mod_dlin_resh) - ($ind_count_r * $mod_dlin_resh/100*15);
-                  }elseif(($dlin_resh>=1600)&&($dlin_resh<1900)){
-                      $final_r = ($ind_count_r * $mod_dlin_resh) - ($ind_count_r * $mod_dlin_resh/100*20);
-                  }elseif(($dlin_resh>=1900)&&($dlin_resh<2100)){
-                      $final_r = ($ind_count_r * 2) - ($ind_count_r * 2/100*5);
-                  }elseif(($dlin_resh>=2100)&&($dlin_resh<2200)){
-                      $final_r = ($ind_count_r * $mod_dlin_resh) - ($ind_count_r * $mod_dlin_resh/100*5);
-                  }elseif(($dlin_resh>=2200)&&($dlin_resh<2400)){
-
-                  }elseif(($dlin_resh>=2400)&&($dlin_resh<2600)){
-  
-                  }elseif(($dlin_resh>=2600)&&($dlin_resh<2900)){
-                      
-                  }elseif(($dlin_resh>=2900)&&($dlin_resh<3100)){
-
-                  }elseif(($dlin_resh>=3100)&&($dlin_resh<3200)){
-                      
-                  }elseif(($dlin_resh>=3200)&&($dlin_resh<3400)){
-
-                  }elseif(($dlin_resh>=3400)&&($dlin_resh<3600)){
-  
-                  }elseif(($dlin_resh>=3600)&&($dlin_resh<3900)){
-                      
-                  }elseif(($dlin_resh>=3900)&&($dlin_resh<4100)){
-
-                  }elseif(($dlin_resh>=4100)&&($dlin_resh<4200)){
-                      
-                  }elseif(($dlin_resh>6000)){
-
-                  }
-                */
-                
-                
-                
-                
+              
                   if($dlin_resh<500){
                       /*$final_r = $ind_count_r;
 //                      var_dump($ind_count_r);
@@ -1078,71 +1039,7 @@ if ($product_info['dop_img']) {
                       $final_r = $ind_count_r * $koef;
                       $final_r = $final_r - $final_r/100*20;
                   }
-                  
-                  
-                  
-                  
-                      
-                  /*
-                      
-                  }elseif(($dlin_resh>=1100)&&($dlin_resh<1200)){
-                      $final_r = ($ind_count_r*($dlin_resh/1000));
-                      $final_r = $final_r - $final_r/100*5;
-                  }elseif(($dlin_resh>=1200)&&($dlin_resh<1400)){
-                      $final_r = ($ind_count_r*($dlin_resh/1000));
-                      $final_r = $final_r - $final_r/100*8;
-                  }elseif(($dlin_resh>=1400)&&($dlin_resh<1600)){
-                      $final_r = ($ind_count_r*($dlin_resh/1000));
-                      $final_r = $final_r - $final_r/100*15;
-                  }elseif(($dlin_resh>=1600)&&($dlin_resh<=1900)){
-                      $final_r = ($ind_count_r*($dlin_resh/1000));
-                      $final_r = $final_r - $final_r/100*20;
-                  }elseif(($dlin_resh>1900)&&($dlin_resh<=10000)){
-                      if($dlin_resh%1000>=100){
-                          $koef=ceil($dlin_resh/1000);
-                      } else{
-                          $koef=floor($dlin_resh/1000);
-                      }
-//                      $final_r = $ind_count_r * ceil($dlin_resh/1000);
-                      $final_r = $ind_count_r * $koef;
-                      $final_r = $final_r - $final_r/100*20;
-                  }
-                  
-                  */
-                  
-                  
-                  
-                  
-                  
-//                  var_dump($dlin_resh%1000>=100);
-//		  var_dump($final_r);
-//                  die();
-                  
-//                  var_dump(ceil($dlin_resh/1000));
-//                die();
-//                if($dlin_resh>=100 && $dlin_resh<500){
-//                    $final_r = $ind_count_r * 0.75;
-//                }elseif($dlin_resh>=500 && $dlin_resh<900){
-//                    $final_r = $ind_count_r * 0.8;
-//                }elseif($dlin_resh>=900 && $dlin_resh<=1100){
-//                    $final_r = $ind_count_r;
-//                }elseif($dlin_resh == 10100){
-//                    $final_r = $ind_count_r*($a+1)*0.8;
-//                }
-//                var_dump($final_r);
-//                die();
-//                 if(!isset($final_r)){
-//                    for($a=1;$a<=9;$a++){
-//                        if($dlin_resh>($a.'100')*1 && $dlin_resh<($a.'200')*1){
-//                            $final_r = $ind_count_r*$dlin_resh/1000*0.95;
-//                        }elseif($dlin_resh>=($a.'200')*1 && $dlin_resh<($a.'900')*1){
-//                            $final_r = $ind_count_r*$dlin_resh/1000*0.8;
-//                        }elseif($dlin_resh>=($a.'900')*1 && $dlin_resh<=(($a+1).'100')*1){
-//                            $final_r = $ind_count_r*($a+1)*0.8;
-//                        }
-//                       
-//                    }
-//                }
+
                 $pritem = $final_r;
             }else{
                 $pritem = $product_info['price'];
@@ -1158,10 +1055,30 @@ if ($product_info['dop_img']) {
                 $data['n_price'] = $this->recountPrice($n_price);
             }else{*/
                    $r_pr = $pritem*$data['product_curs']*$this->request->post['quantity'];
-                    $data['luk_price_fist']= $this->recountPrice($r_pr);
+                   $r_pr = $pritem*$data['product_curs'];
+                   if($product_info['special']){
+                       $data['old'] = $this->currency->format($this->tax->calculate($r_pr, $product_info['tax_class_id'], $this->config->get('config_tax')), $this->session->data['currency']);
+                       $data['yousave'] = $r_pr;
+                       $r_pr = $r_pr * $product_info['special'] / $product_info['price'];
+                       $data['yousave'] = $this->currency->format($this->tax->calculate($data['yousave'] - $r_pr, $product_info['tax_class_id'], $this->config->get('config_tax')), $this->session->data['currency']);
+                   }
+                   
+                    $data['luk_price_fist']= $this->currency->format($this->tax->calculate($r_pr, $product_info['tax_class_id'], $this->config->get('config_tax')), $this->session->data['currency']);
+                    
                 
             /*}*/
-            
+//            var_dump($data);
+//            var_dump();
+//            die();
+            /*
+            if ((float)$product_info['special']) {
+                    $data['special'] = $this->currency->format($this->tax->calculate($product_info['special']*$product_info['product_curs'], $product_info['tax_class_id'], $this->config->get('config_tax')), $this->session->data['currency']);
+                    $data['yousave'] = $this->currency->format($this->tax->calculate($product_info['price']*$product_info['product_curs']-$product_info['special']*$product_info['product_curs'], $product_info['tax_class_id'], $this->config->get('config_tax')), $this->session->data['currency']);
+
+            } else {
+                    $data['special'] = false;
+            }
+            */
            echo json_encode($data);
             
             

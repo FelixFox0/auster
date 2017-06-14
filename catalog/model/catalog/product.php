@@ -562,4 +562,16 @@ class ModelCatalogProduct extends Model {
 			return 0;
 		}
 	}
+        
+        public function getNameOptions($opts) {
+            foreach ($opts as $key => $value) {
+                                    //var_dump($value);
+                $opts_el = $this->db->query("SELECT * FROM " . DB_PREFIX . "product_option a, " . DB_PREFIX . "option b WHERE a.product_option_id = " . $key . " AND b.option_id=a.option_id");
+                $obj[$opts_el->row['element_id']] = $value;
+                //var_dump($opts_el->row['element_id']);
+//                                    $opts_array[];
+            }
+            //var_dump((object) $obj);
+            return $obj;
+	}
 }

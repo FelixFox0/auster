@@ -48,6 +48,7 @@ class Cart {
 		$cart_query = $this->db->query("SELECT * FROM " . DB_PREFIX . "cart WHERE customer_id = '" . (int)$this->customer->getId() . "' AND session_id = '" . $this->db->escape($this->session->getId()) . "'");
 //                var_dump($cart_query);
 		foreach ($cart_query->rows as $cart) {
+                    
 			$stock = true;
 
 			$product_query = $this->db->query("SELECT * FROM " . DB_PREFIX . "product_to_store p2s LEFT JOIN ".DB_PREFIX."product_spec_price psp ON (p2s.product_id = psp.product_id) LEFT JOIN " . DB_PREFIX . "product p ON (p2s.product_id = p.product_id) LEFT JOIN " . DB_PREFIX . "product_description pd ON (p.product_id = pd.product_id) WHERE p2s.store_id = '" . (int)$this->config->get('config_store_id') . "' AND p2s.product_id = '" . (int)$cart['product_id'] . "' AND pd.language_id = '" . (int)$this->config->get('config_language_id') . "' AND p.date_available <= NOW() AND p.status = '1'");
@@ -237,14 +238,15 @@ class Cart {
                                     $data['skidka'] = false;
                                 }
                                 */
-                               
-                               
+//                               var_dump($cart);
+//                               var_dump($product_query->row);
                                 
-                                if(isset($opts->product_type)){
-                                    $data['product_type'] = $opts->product_type;
+                                if(isset($product_query->row['product_type'])){
+                                    $data['product_type'] = $product_query->row['product_type'];
                                 }else{
-                                    $data['product_type'] = 3;
+                                    $data['product_type'] = 1;
                                 }
+//                                var_dump($data['product_type']);
                                 
                                 $data['product_curs'] = $product_query->row['product_curs'];
                                 if($data['product_type'] == 2){
@@ -367,12 +369,12 @@ class Cart {
                                     $pritem = $product_query->row['price']*$data['product_curs'];
                                 }
                                 
-                                if(isset($data['skidka']) && $data['skidka']){
-                                    $prev_pr = ($pritem/100)*$data['skidka'];
-                                    $aft_pr = $pritem-$prev_pr;
-                                }else{
+//                                if(isset($data['skidka']) && $data['skidka']){
+//                                    $prev_pr = ($pritem/100)*$data['skidka'];
+//                                    $aft_pr = $pritem-$prev_pr;
+//                                }else{
                                     $aft_pr = $pritem;
-                                }
+//                                }
                                 
                                 /**/
                                 
@@ -398,14 +400,17 @@ class Cart {
 				if ($product_discount_query->num_rows) {
 					$price = $product_discount_query->row['price'];
 				}
-
+//                                var_dump($product_query->row['price']);
+//                                var_dump($price);
 				// Product Specials
 				$product_special_query = $this->db->query("SELECT price FROM " . DB_PREFIX . "product_special WHERE product_id = '" . (int)$cart['product_id'] . "' AND customer_group_id = '" . (int)$this->config->get('config_customer_group_id') . "' AND ((date_start = '0000-00-00' OR date_start < NOW()) AND (date_end = '0000-00-00' OR date_end > NOW())) ORDER BY priority ASC, price ASC LIMIT 1");
 
 				if ($product_special_query->num_rows) {
-					$price = $product_special_query->row['price'];
+                                    
+                                    //$price = $product_special_query->row['price'];
+                                    $price = $price * $product_special_query->row['price'] / $product_query->row['price'];    
 				}
-
+//                                var_dump($price);
 				// Reward Points
 				$product_reward_query = $this->db->query("SELECT points FROM " . DB_PREFIX . "product_reward WHERE product_id = '" . (int)$cart['product_id'] . "' AND customer_group_id = '" . (int)$this->config->get('config_customer_group_id') . "'");
 
