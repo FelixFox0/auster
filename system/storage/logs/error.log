@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 2017-06-14 22:23:19 - PHP Notice:  Undefined variable: cosyone_use_retina in C:\OPENSERVER\OpenServer\domains\auster.loc\catalog\view\theme\cosyone\template\common\footer.tpl on line 120
 2017-06-14 22:23:19 - PHP Notice:  Undefined variable: live_search in C:\OPENSERVER\OpenServer\domains\auster.loc\catalog\view\theme\cosyone\template\common\footer.tpl on line 179
 2017-06-14 22:23:19 - PHP Notice:  Undefined variable: cosyone_cookie in C:\OPENSERVER\OpenServer\domains\auster.loc\catalog\view\theme\cosyone\template\common\footer.tpl on line 180
@@ -846,3 +847,19 @@
 2017-06-15 0:01:54 - PHP Notice:  Undefined offset: 150 in C:\OPENSERVER\OpenServer\domains\auster.loc\system\library\cart\cart.php on line 261
 2017-06-15 0:01:54 - PHP Notice:  Undefined offset: 150 in C:\OPENSERVER\OpenServer\domains\auster.loc\system\library\cart\cart.php on line 261
 2017-06-15 0:01:54 - PHP Notice:  Undefined offset: 150 in C:\OPENSERVER\OpenServer\domains\auster.loc\system\library\cart\cart.php on line 261
+=======
+2017-06-15 1:54:17 - PHP Notice:  Undefined variable: product_info in D:\OpenServer\domains\auster-stone.loc\vqmod\vqcache\vq2-catalog_controller_product_category.php on line 266
+2017-06-15 1:54:17 - PHP Notice:  Undefined variable: product_info in D:\OpenServer\domains\auster-stone.loc\vqmod\vqcache\vq2-catalog_controller_product_category.php on line 266
+2017-06-15 1:54:17 - PHP Notice:  Undefined variable: product_info in D:\OpenServer\domains\auster-stone.loc\vqmod\vqcache\vq2-catalog_controller_product_category.php on line 272
+2017-06-15 1:54:17 - PHP Notice:  Undefined variable: product_info in D:\OpenServer\domains\auster-stone.loc\vqmod\vqcache\vq2-catalog_controller_product_category.php on line 266
+2017-06-15 1:54:17 - PHP Notice:  Undefined variable: product_info in D:\OpenServer\domains\auster-stone.loc\vqmod\vqcache\vq2-catalog_controller_product_category.php on line 266
+2017-06-15 1:54:17 - PHP Notice:  Undefined variable: product_info in D:\OpenServer\domains\auster-stone.loc\vqmod\vqcache\vq2-catalog_controller_product_category.php on line 272
+2017-06-15 1:54:17 - PHP Notice:  Undefined variable: product_info in D:\OpenServer\domains\auster-stone.loc\vqmod\vqcache\vq2-catalog_controller_product_category.php on line 266
+2017-06-15 1:54:17 - PHP Notice:  Undefined variable: product_info in D:\OpenServer\domains\auster-stone.loc\vqmod\vqcache\vq2-catalog_controller_product_category.php on line 266
+2017-06-15 1:54:17 - PHP Notice:  Undefined variable: product_info in D:\OpenServer\domains\auster-stone.loc\vqmod\vqcache\vq2-catalog_controller_product_category.php on line 266
+2017-06-15 1:54:17 - PHP Notice:  Undefined variable: product_info in D:\OpenServer\domains\auster-stone.loc\vqmod\vqcache\vq2-catalog_controller_product_category.php on line 266
+2017-06-15 1:58:21 - PHP Notice:  Undefined variable: result in D:\OpenServer\domains\auster-stone.loc\catalog\controller\module\cosyone_recently.php on line 68
+2017-06-15 1:58:21 - PHP Notice:  Undefined variable: result in D:\OpenServer\domains\auster-stone.loc\catalog\controller\module\cosyone_recently.php on line 68
+2017-06-15 1:58:21 - PHP Notice:  Undefined variable: result in D:\OpenServer\domains\auster-stone.loc\catalog\controller\module\cosyone_recently.php on line 74
+2017-06-15 1:58:21 - PHP Notice:  Undefined variable: result in D:\OpenServer\domains\auster-stone.loc\catalog\controller\module\cosyone_recently.php on line 68
+>>>>>>> 20f3b88d06f9cfac08ebaf294a2cdabc3f78d5cc

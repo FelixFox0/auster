@@ -364,9 +364,9 @@
 
       <!-- тут условие нужно поставить на СШД 24 и СШД 20 -->
       
-      <?php //var_dump($location);?>
+      <?php //var_dump($location); ?>
       <?php if($location){ ?>
-      <p><a class="btn show-catalog" target="_blank" href="http://auster-stone.com.ua/<?php echo $location; ?>">Смотреть каталог </a></p>
+      <p><a class="btn show-catalog" target="_blank" href="/<?php echo $location; ?>">Смотреть каталог </a></p>
       <?php } ?>
 
 <?php if($product_type==2){ ?>
@@ -1655,6 +1655,7 @@ $('#button-review').on('click', function() {
                             $('#dlin_resh').parent().hide();
                         }
                         
+                        $('#count_shcheley').trigger('change');
                         $('#rash_vozd').trigger('change');
                         });
                         
@@ -1710,7 +1711,7 @@ $('#button-review').on('click', function() {
                             
                             
                             if($('.check_type input:checked').val()==="rashod"){
-                                $('#dlin_resh').attr('value', dln_dif);
+                                $('#dlin_resh').val(dln_dif);
                             }
                             
                             

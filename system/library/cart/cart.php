@@ -287,7 +287,7 @@ class Cart {
                         case 2: $ind_percent = 40; break;
                         case 3: $ind_percent = 45; break;
                         case 4: $ind_percent = 50; break;
-                        default : $ind_percent =1;
+                        default : $ind_percent =35;
                     }
                     $final_r = $ind_count_r - $ind_count_r/100*$ind_percent;
                       
@@ -298,7 +298,7 @@ class Cart {
                         case 2: $ind_percent = 30; break;
                         case 3: $ind_percent = 35; break;
                         case 4: $ind_percent = 40; break;
-                        default : $ind_percent =1;
+                        default : $ind_percent =25;
                     }
                     $final_r = $ind_count_r - $ind_count_r/100*$ind_percent;
 

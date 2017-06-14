@@ -662,13 +662,13 @@ for( $i=1; $i< 6; $i++) {
 				}
 
 				if ($this->customer->isLogged() || !$this->config->get('config_customer_price')) {
-					$price = $this->currency->format($this->tax->calculate($result['price'], $result['tax_class_id'], $this->config->get('config_tax')), $this->session->data['currency']);
+					$price = $this->currency->format($this->tax->calculate($result['price']*$result['product_curs'], $result['tax_class_id'], $this->config->get('config_tax')), $this->session->data['currency']);
 				} else {
 					$price = false;
 				}
 
 				if ((float)$result['special']) {
-					$special = $this->currency->format($this->tax->calculate($result['special'], $result['tax_class_id'], $this->config->get('config_tax')), $this->session->data['currency']);
+					$special = $this->currency->format($this->tax->calculate($result['special']*$result['product_curs'], $result['tax_class_id'], $this->config->get('config_tax')), $this->session->data['currency']);
 				} else {
 					$special = false;
 				}
@@ -1092,7 +1092,7 @@ for( $i=1; $i< 6; $i++) {
                     case 2: $ind_count_r = $data['luk_price']['val_2_shch']; break;
                     case 3: $ind_count_r = $data['luk_price']['val_3_shch']; break;
                     case 4: $ind_count_r = $data['luk_price']['val_4_shch']; break;
-                    default : $ind_count_r =1;
+                    default : $ind_count_r =$data['luk_price']['val_1_shch'];
                 }
 //		var_dump($ind_count_r); 	
 //                die();
@@ -1111,7 +1111,7 @@ for( $i=1; $i< 6; $i++) {
                         case 2: $ind_percent = 40; break;
                         case 3: $ind_percent = 45; break;
                         case 4: $ind_percent = 50; break;
-                        default : $ind_percent =1;
+                        default : $ind_percent =35;
                     }
                     $final_r = $ind_count_r - $ind_count_r/100*$ind_percent;
                       
