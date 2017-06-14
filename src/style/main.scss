@@ -2274,6 +2274,9 @@ textarea.form-control {
 
 .show-catalog {
 	margin-bottom: 25px;
+	&:hover {
+		color: #fff;
+	}
 }
 
 .popup-zakaz,
@@ -2375,5 +2378,16 @@ textarea.form-control {
 	}
 }
 
+.sale_badge {
+	background-color: $brand2;
+}
+
+.extended_offer {
+	.price-old {
+		span {
+
+		}
+	}
+}
 
 @import "partials/media.scss";
