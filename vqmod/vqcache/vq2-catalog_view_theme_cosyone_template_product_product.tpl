@@ -363,9 +363,11 @@
 
 
       <!-- тут условие нужно поставить на СШД 24 и СШД 20 -->
-      <p><a class="btn show-catalog" target="_blank" href="http://auster-stone.com.ua/shd20">Смотреть каталог </a></p>
-      <p><a class="btn show-catalog" target="_blank" href="http://auster-stone.com.ua/shd24">Смотреть каталог </a></p>
-
+      
+      <?php //var_dump($location);?>
+      <?php if($location){ ?>
+      <p><a class="btn show-catalog" target="_blank" href="http://auster-stone.com.ua/<?php echo $location; ?>">Смотреть каталог </a></p>
+      <?php } ?>
 
 <?php if($product_type==2){ ?>
       <div class="luk-container">
@@ -737,9 +739,10 @@
         <?php if (!$special) { ?>
         <i class="ic-bage--white"></i><span itemprop="price"><?php echo $price; ?></span>
         <?php } else { ?>
-        <?php if (!$cosyone_product_yousave) { ?>
-        <i class="ic-bage--white"></i><span class="price-old"><?php echo $price; ?></span> <span class="price-new" itemprop="price"><?php echo $special; ?></span>
-        <?php } ?>
+        <?php //if (!$cosyone_product_yousave) { ?>
+        <!--<i class="ic-bage--white"></i><span class="price-old"><?php echo $price; ?></span> <span class="price-new" itemprop="price"><?php echo $special; ?></span>-->
+        <i class="ic-bage--white"></i><span itemprop="price"><?php echo $special; ?></span>
+        <?php //} ?>
         <?php } ?>
           
       </div> 
@@ -1705,6 +1708,12 @@ $('#button-review').on('click', function() {
                                 $('#dln_dif2').html(dln_dif);
                             }
                             
+                            
+                            if($('.check_type input:checked').val()==="rashod"){
+                                $('#dlin_resh').attr('value', dln_dif);
+                            }
+                            
+                            
                             var vis_dif = $('#count_shcheley').val() * $('#dlin_proz').val() + 20 * ($('#count_shcheley').val()-1) + 28*2;
                             $('#vis_dif').html(vis_dif);
                             
@@ -1883,11 +1892,12 @@ $('#button-review').on('click', function() {
                        $('.text_econom_count').html(outtext.econom[0]+'<span class="kop">'+outtext.econom[1]+'</span>грн.');
                        $('.text_now_pr_count').html(outtext.n_price[0]+'<span class="kop">'+outtext.n_price[1]+'</span>грн.');
                        $('.text_skidka_count').html(outtext.skidka+'%');*/
-                       $('.price-new span').html(outtext.luk_price_fist);
-                       $('.price-old span').html(outtext.old);
-                       $('.price-save span').html(outtext.yousave);
+                       $('.right .price-new span').html(outtext.luk_price_fist);
+                       $('.right .price-old span').html(outtext.old);
+                       $('.right .price-save span').html(outtext.yousave);
+                       $('.params-product .price span').html(outtext.luk_price_fist);
                     }else{
-                        $('.price span').html(outtext.luk_price_fist);
+                        $('.right .price span').html(outtext.luk_price_fist);
                     }
                     //
                 }

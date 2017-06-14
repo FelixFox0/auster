@@ -612,7 +612,7 @@ body {
 				img {
 					width: 100%;
 					height: 100%;
-					object-fit: contain;
+					object-fit: cover;
 				}
 			}
 		}
@@ -2388,6 +2388,11 @@ textarea.form-control {
 
 		}
 	}
+}
+
+.tab-content>.tab-pane {
+	width: 1170px;
+	overflow-x: auto;
 }
 
 @import "partials/media.scss";
