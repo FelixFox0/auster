@@ -967,6 +967,10 @@ body {
 	margin-bottom: 29px;
 	padding: 21px 27px 35px;
 
+	&:hover {
+		border-color: $brand2;
+	}
+
 	&:not(:nth-child(3n)) {
 		margin-right: 16px;
 	} 
@@ -2366,6 +2370,13 @@ textarea.form-control {
 		h3 {
 			margin: 0 0 20px 0;
 		}
+
+		a {
+			text-decoration: underline;
+			&:hover {
+				text-decoration: none;
+			}
+		}
 	}
 
 	.cart{
@@ -2385,14 +2396,40 @@ textarea.form-control {
 .extended_offer {
 	.price-old {
 		span {
-
+			color: gray;
+			font-family: "Rob-bold";
+			font-size: 17px;
+			text-decoration: line-through;
+		}
+	}
+	.price-new {
+		span {
+			color: #d85b10;
+			font-family: "Rob-bold";
+			font-size: 17px;
+		}
+	}
+	.price-save {
+		span {
+			color: $brand2;
+			font-family: "Rob-bold";
+			font-size: 17px;
 		}
 	}
 }
 
 .tab-content>.tab-pane {
-	width: 1170px;
+	width: 1070px;
+	max-width: 100%;
 	overflow-x: auto;
+}
+
+.extended_offer .amount {
+	display: flex;
+	align-items: center;
+	i {
+		margin-right: 5px;
+	}
 }
 
 @import "partials/media.scss";

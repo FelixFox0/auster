@@ -143,11 +143,11 @@ function fixOwl() {
       <form action="" id="formx" type="POST">
         <div class="consult__input">
           <label for=""><?php echo $text_name; ?></label>
-          <input type="text" name="name" placeholder="<?php echo $text_name2; ?>">
+          <input required type="text" name="name" placeholder="<?php echo $text_name2; ?>">
         </div>
         <div class="consult__input">
           <label for=""><?php echo $text_phone; ?></label>
-          <input type="text" name="phone" placeholder="<?php echo $text_phone2; ?>">
+          <input required type="text" name="phone" placeholder="<?php echo $text_phone2; ?>">
         </div>
         <div class="consult__input">
           <label for=""><?php echo $text_mail; ?></label>

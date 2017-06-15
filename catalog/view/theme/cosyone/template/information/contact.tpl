@@ -50,28 +50,29 @@
     </div>
     <div class="contact-block__col contact-block__form">
       <div class="consult__form consult__form--white">
-        <h3 class="consult__form-title"><span><?php echo $text_questions; ?></span></h3>
-        <p class="consult__form-subtitle"><?php echo $text_answer; ?></p>
-        <form action="">
+        <h3 class="consult__form-title"><span>Есть вопрос? Задайте его здесь!</span></h3>
+        <p class="consult__form-subtitle">Отправьте заявку и наш консультатнт свяжется 
+  с Вами в ближайшее время</p>
+        <form action="" id="form-contact">
           <div class="consult__input consult__input--white">
-            <label for=""><?php echo $text_name; ?></label>
-            <input type="text" placeholder="<?php echo $text_name2; ?>">
+            <label for="">Ваше имя</label>
+            <input required type="text" name="name" placeholder="Введите имя">
           </div>
           <div class="consult__input consult__input--white">
-            <label for=""><?php echo $text_phone; ?></label>
-            <input type="text" placeholder="<?php echo $text_phone2; ?>">
+            <label for="">Номер Вашего телефона</label>
+            <input required type="text" name="phone" placeholder="Введите имя">
           </div>
           <div class="consult__input consult__input--white">
-            <label for=""><?php echo $text_mail; ?></label>
-            <input type="email" placeholder="<?php echo $text_mail2; ?>">
+            <label for="">Ваш Е-mail</label>
+            <input type="email" name="mail" placeholder="Введите имя">
           </div>
           <div class="consult__input">
             <button>
               <i class="ic-send"></i>
-              <span><?php echo $text_button; ?></span>
+              <span>Отправить</span>
             </button>
           </div>
-          <div class="consult__txt"><?php echo $text_post_text; ?></div>
+          <div class="consult__txt">Мы заботимся о конфиденциальности Ваших данных</div>
         </form>
       </div>
     </div>

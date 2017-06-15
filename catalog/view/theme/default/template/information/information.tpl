@@ -34,11 +34,11 @@
         <form action="" type="POST" id="form3">
           <div class="consult__input consult__input--white">
             <label for=""><?php echo $text_name; ?></label>
-            <input type="text" placeholder="<?php echo $text_name2; ?>">
+            <input required type="text" placeholder="<?php echo $text_name2; ?>">
           </div>
           <div class="consult__input consult__input--white">
             <label for=""><?php echo $text_phone; ?></label>
-            <input type="text" placeholder="<?php echo $text_phone2; ?>">
+            <input required type="text" placeholder="<?php echo $text_phone2; ?>">
           </div>
           <div class="consult__input consult__input--white">
             <label for=""><?php echo $text_mail; ?></label>
