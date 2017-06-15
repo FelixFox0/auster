@@ -1,7 +1,7 @@
 <?php
 $_['text_blog'] = 'Blog';
 $_['heading_title'] = 'Фотогалерея';
-$_['heading_title_video'] = 'Відеогалерея';
+$_['heading_title_video'] = 'відео про люки';
 $_['back_to_galery'] = 'Повернутися до галереї';
 
 $_['text_author']  = '<i class="fa fa-edit"></i>&nbsp;Author: ';

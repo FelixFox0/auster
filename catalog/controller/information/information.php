@@ -2,6 +2,7 @@
 class ControllerInformationInformation extends Controller {
 	public function index() {
 		$this->load->language('information/information');
+                
 
 		$this->load->model('catalog/information');
 
@@ -37,6 +38,17 @@ class ControllerInformationInformation extends Controller {
 			$data['description'] = html_entity_decode($information_info['description'], ENT_QUOTES, 'UTF-8');
 
 			$data['continue'] = $this->url->link('common/home');
+                        
+                        $data['text_questions'] = $this->language->get('text_questions');
+                        $data['text_answer'] = $this->language->get('text_answer');
+                        $data['text_name'] = $this->language->get('text_name');
+                        $data['text_name2'] = $this->language->get('text_name2');
+                        $data['text_phone'] = $this->language->get('text_phone');
+                        $data['text_phone2'] = $this->language->get('text_phone2');
+                        $data['text_mail'] = $this->language->get('text_mail');
+                        $data['text_mail2'] = $this->language->get('text_mail2');
+                        $data['text_button'] = $this->language->get('text_button');
+                        $data['text_post_text'] = $this->language->get('text_post_text');
 
 			$data['column_left'] = $this->load->controller('common/column_left');
 			$data['column_right'] = $this->load->controller('common/column_right');

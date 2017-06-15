@@ -257,7 +257,7 @@ class ControllerProductProduct extends Controller {
 			$data['text_shirina'] = $this->language->get('text_shirina');
 			$data['text_dlina'] = $this->language->get('text_dlina');
 			$data['text_dop_char'] = $this->language->get('text_dop_char');
-
+                        $data['luk_container'] = $this->language->get('luk_container');
 			$data['entry_qty'] = $this->language->get('entry_qty');
 			$data['entry_name'] = $this->language->get('entry_name');
 			$data['entry_review'] = $this->language->get('entry_review');

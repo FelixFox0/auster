@@ -528,47 +528,10 @@
           
         </div>
           
-          <?php if(false){ ?>
-          
-          <div class="luk-container__inner">
-              <div class="luk-container__col">
-                  <div class="form-group">
-                      <label for="#">Сторона А, мм</label>
-                      <select name="" id="" class="form-control select new">
-                          <option value="">300</option>
-                          <option value="">400</option>
-                          <option value="">500</option>
-                          <option value="">600</option>
-                          <option value="">700</option>
-                      </select>
-                  </div>
-              </div>
-              <div class="luk-container__col">
-                  <div class="form-group">
-                      <label for="#">Сторона В, мм</label>
-                      <select name="" id="" class="form-control select new">
-                          <option value="">300</option>
-                          <option value="">400</option>
-                          <option value="">500</option>
-                          <option value="">600</option>
-                          <option value="">700</option>
-                      </select>
-                  </div>
-              </div>
-              <div class="luk-container__col">
-                  <div class="form-group">
-                      <label for="#">Количество</label>
-                      <input type="number" id="count-new" min="1" value="1" class="form-control">
-                  </div>
-              </div>
-          </div>
-          <?php } ?>
 
           <div class="luk-container__info">
-            <h3>Дополнительные характеристики</h3>
-            <p><strong>Сторона А</strong> - сторона расположения петли и замков</p>
-            <p><strong>Сторона В</strong> - другая сторона</p>
-            <p>Однодверный люк</p>
+            <?php echo $luk_container; ?>
+            
           </div>
 
         <div class="cart">

@@ -1,7 +1,7 @@
 <?php
 $_['text_blog'] = 'Blog';
 $_['heading_title'] = 'Фотогалерея';
-$_['heading_title_video'] = 'Видеогалерея';
+$_['heading_title_video'] = 'видео о люках';
 $_['back_to_galery'] = 'Вернутся в галерею';
 
 
