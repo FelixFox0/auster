@@ -22,7 +22,7 @@
             <?php } ?>
           </div>
           <div class="button-group">
-            <a href="<?php echo $product['href']; ?>">Подробнее</a>
+            <a href="<?php echo $product['href']; ?>"><?php echo $text_show; ?></a>
             <button type="button" onclick="cart.add('<?php echo $product['product_id']; ?>');"><i class="ic-cart2"></i></button>
           </div>
         </div>

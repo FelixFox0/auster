@@ -2,7 +2,7 @@
 <div class="container">
   <div class="row">
   <div class="title">
-    <h2>Продукция</h2>
+    <h2><?php echo $text_prod; ?></h2>
   </div>
 
   <?php echo $column_left; ?>
@@ -42,7 +42,7 @@
             <?php } ?>
           </div>
           <div class="button-group">
-            <a href="<?php echo $product['href']; ?>">Подробнее</a>
+            <a href="<?php echo $product['href']; ?>"><?php echo $text_show; ?></a>
             <button type="button" onclick="cart.add('<?php echo $product['product_id']; ?>');"><i class="ic-cart2"></i></button>
           </div>
         </div>

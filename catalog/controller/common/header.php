@@ -45,6 +45,12 @@ class ControllerCommonHeader extends Controller {
 
 		$this->load->language('common/header');
 
+                $data['text_name'] = $this->language->get('text_name');
+                $data['text_phone'] = $this->language->get('text_phone');
+                $data['text_button'] = $this->language->get('text_button');
+                $data['text_send'] = $this->language->get('text_send');
+                $data['text_post_text'] = $this->language->get('text_post_text');
+                
 		$data['text_home'] = $this->language->get('text_home');
 
 		// Wishlist
@@ -69,7 +75,10 @@ class ControllerCommonHeader extends Controller {
 		$data['text_checkout'] = $this->language->get('text_checkout');
 		$data['text_category'] = $this->language->get('text_category');
 		$data['text_all'] = $this->language->get('text_all');
-
+                
+                
+                
+                
 		$data['home'] = $this->url->link('common/home');
 		$data['wishlist'] = $this->url->link('account/wishlist', '', true);
 		$data['logged'] = $this->customer->isLogged();

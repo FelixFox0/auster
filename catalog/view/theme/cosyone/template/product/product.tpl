@@ -362,7 +362,7 @@
       <h1 itemprop="name"><?php echo $heading_title; ?></h1>
 
 
-      <!-- тут условие нужно поставить на СШД 24 и СШД 20 -->
+
       
       <?php //var_dump($location); ?>
       <?php if($location){ ?>

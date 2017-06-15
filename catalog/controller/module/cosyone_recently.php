@@ -11,6 +11,7 @@ class ControllerModuleCosyoneRecently extends Controller {
 		$data['button_cart'] = $this->language->get('button_cart');
 		$data['button_wishlist'] = $this->language->get('button_wishlist');
 		$data['button_compare'] = $this->language->get('button_compare');
+                $data['text_show'] = $this->language->get('text_show');
 		
 		$data['cosyone_percentage_sale_badge'] = $this->config->get('cosyone_percentage_sale_badge');
 		
