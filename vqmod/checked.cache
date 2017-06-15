@@ -420,3 +420,7 @@ admin\language\ru-ru\module\testModul.php
 admin\view\template\extension\module.tpl
 admin\controller\module\featured.php
 admin\view\template\module\featured.tpl
+catalog\language\uk-ua\information\information.php
+catalog\language\uk-ua\product\category.php
+catalog\language\uk-ua\blog\category.php
+catalog\language\uk-ua\error\not_found.php
