@@ -29,29 +29,28 @@
     </div>
     <div class="contact-block__col contact-block__form">
       <div class="consult__form consult__form--white">
-        <h3 class="consult__form-title"><span>Есть вопрос? Задайте его здесь!</span></h3>
-        <p class="consult__form-subtitle">Отправьте заявку и наш консультатнт свяжется 
-  с Вами в ближайшее время</p>
+        <h3 class="consult__form-title"><span><?php echo $text_questions; ?></span></h3>
+        <p class="consult__form-subtitle"><?php echo $text_answer; ?></p>
         <form action="" type="POST" id="form3">
           <div class="consult__input consult__input--white">
-            <label for="">Ваше имя</label>
-            <input type="text" name="name" placeholder="Введите имя">
+            <label for=""><?php echo $text_name; ?></label>
+            <input type="text" placeholder="<?php echo $text_name2; ?>">
           </div>
           <div class="consult__input consult__input--white">
-            <label for="">Номер Вашего телефона</label>
-            <input type="text" name="phone" placeholder="Введите имя">
+            <label for=""><?php echo $text_phone; ?></label>
+            <input type="text" placeholder="<?php echo $text_phone2; ?>">
           </div>
           <div class="consult__input consult__input--white">
-            <label for="">Ваш Е-mail</label>
-            <input type="email" name="mail" placeholder="Введите имя">
+            <label for=""><?php echo $text_mail; ?></label>
+            <input type="email" placeholder="<?php echo $text_mail2; ?>">
           </div>
           <div class="consult__input">
             <button>
               <i class="ic-send"></i>
-              <span>Отправить</span>
+              <span><?php echo $text_button; ?></span>
             </button>
           </div>
-          <div class="consult__txt">Мы заботимся о конфиденциальности Ваших данных</div>
+          <div class="consult__txt"><?php echo $text_post_text; ?></div>
         </form>
       </div>
     </div>

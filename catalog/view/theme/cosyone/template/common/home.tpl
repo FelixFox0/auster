@@ -16,7 +16,7 @@
       <div class="product-home__inner">
         <div class="product-home__left-column">
           <div class="title">
-            <h2>Продукция</h2>
+            <h2><?php echo $text_prod; ?></h2>
           </div>
           <?php echo $column_left; ?>
           <?php if ($column_left && $column_right) { ?>
@@ -51,7 +51,7 @@
 <div class="certificates">
   <div class="container certificates__container">
     <div class="title">
-      <h2>сертификаты</h2>
+      <h2><?php echo $text_sert; ?></h2>
     </div>
     <div class="certificates__inner">
       <div class="certificates__col">
@@ -134,33 +134,32 @@ function fixOwl() {
 <div class="consult">
   <div class="container no-clearfix consult__container">
     <div class="consult__question">
-      <h2>Есть <span>вопросы</span></h2>
-      <p>Наши специалисты с удовольствием ответят на любой ваш вопрос!</p>
+      <h2><?php echo $text_questions; ?></h2>
+      <p><?php echo $text_answer; ?></p>
     </div>
     <div class="consult__form">
-      <h3 class="consult__form-title">Консультация <span>эксперта</span></h3>
-      <p class="consult__form-subtitle">Отправьте заявку и наш консультатнт свяжется 
-с Вами в ближайшее время</p>
+      <h3 class="consult__form-title"><?php echo $text_consult; ?></h3>
+      <p class="consult__form-subtitle"><?php echo $text_post_text; ?></p>
       <form action="" id="formx" type="POST">
         <div class="consult__input">
-          <label for="">Ваше имя</label>
-          <input type="text" name="name" placeholder="Введите имя">
+          <label for=""><?php echo $text_name; ?></label>
+          <input type="text" name="name" placeholder="<?php echo $text_name2; ?>">
         </div>
         <div class="consult__input">
-          <label for="">Номер Вашего телефона</label>
-          <input type="text" name="phone" placeholder="Введите имя">
+          <label for=""><?php echo $text_phone; ?></label>
+          <input type="text" name="phone" placeholder="<?php echo $text_phone2; ?>">
         </div>
         <div class="consult__input">
-          <label for="">Ваш Е-mail</label>
-          <input type="email" name="mail" placeholder="Введите имя">
+          <label for=""><?php echo $text_mail; ?></label>
+          <input type="email" name="mail" placeholder="<?php echo $text_mail2; ?>">
         </div>
         <div class="consult__input">
           <button>
             <i class="ic-send"></i>
-            <span>Отправить</span>
+            <span><?php echo $text_button; ?></span>
           </button>
         </div>
-        <div class="consult__txt">Мы заботимся о конфиденциальности Ваших данных</div>
+        <div class="consult__txt"><?php echo $text_post_text2; ?></div>
       </form>
     </div>
   </div>
@@ -169,7 +168,7 @@ function fixOwl() {
 <div class="oficial-destr">
   <div class="container oficial-destr__container">
     <div class="title oficial-destr__title">
-      <h2>официальные дистрибьюторы линейных диффузоров</h2>
+      <h2><?php echo $text_dist; ?></h2>
     </div>
     <div class="oficial-destr__images">
       <img src="/image/distributor.jpg" alt="distributor">

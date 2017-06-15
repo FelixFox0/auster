@@ -32,7 +32,7 @@
 <div id="collections<?php echo $module; ?>" class="special-offers">
     <div class="container special-offers__container">
         <div class="title">
-            <h2>видео о люках</h2>
+            <h2><?php echo $heading_title_video; ?></h2>
         </div>
         <div class="special-offers__inner">
             <?php foreach ($collections as $key => $special_offer) { ?>

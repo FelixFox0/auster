@@ -6,7 +6,9 @@ class ControllerModuleCollectionsWidget extends Controller {
 
 		$this->load->model('design/collections_widget');
 		$this->load->model('tool/image');
-
+                $this->load->language('blog/category');
+                $data['heading_title_video'] =  $this->language->get('heading_title_video');
+                
 		//$this->document->addStyle('catalog/view/javascript/jquery/owl-carousel/owl.carousel.css');
 		//$this->document->addStyle('catalog/view/javascript/jquery/owl-carousel/owl.transitions.css');
 		//$this->document->addScript('catalog/view/javascript/jquery/owl-carousel/owl.carousel.min.js');
