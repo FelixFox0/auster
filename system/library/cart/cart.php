@@ -210,7 +210,8 @@ class Cart {
                                     //var_dump($opts_el->row['element_id']);
 //                                    $opts_array[];
                                 }
-                                //var_dump((object) $obj);
+//                                var_dump((object) $obj);
+//                                die();
                                 $opts = (object) $obj;
                                 /*
                                 

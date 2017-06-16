@@ -366,7 +366,7 @@
       
       <?php //var_dump($location); ?>
       <?php if($location){ ?>
-      <p><a class="btn show-catalog" target="_blank" href="/<?php echo $location; ?>">Смотреть каталог </a></p>
+      <p><a class="btn show-catalog" target="_blank" href="/<?php echo $location; ?>"><?php echo $look; ?></a></p>
       <?php } ?>
 
 <?php if($product_type==2){ ?>
@@ -565,7 +565,7 @@
         
         
        </div> <!-- Cart ends -->
-        
+        <?php echo $stock; ?>
         <?php if ($price) { ?>
         <meta itemprop="currency" content="<?php echo $currency_code; ?>" />
         <span itemprop="offerDetails" itemscope itemtype="http://data-vocabulary.org/Offer"><!-- Rich snippets start -->
@@ -640,7 +640,7 @@
 
             <button type="submit" id="button-cart" data-loading-text="<?php echo $text_loading; ?>" class="button contrast"><i class="fa fa-shopping-cart"></i> <?php echo $button_cart; ?></button>
           </div>
-        
+        <p><?php echo $stock; ?></p>
         
         
        </div> <!-- Cart ends -->
@@ -1583,7 +1583,7 @@ $('#button-review').on('click', function() {
 //--></script>
 <script>
     
-    $('.luk-container input').on('change',function(){
+    $('.luk-container input, .luk-container select').on('change',function(){
     
         research_t(); 
     });

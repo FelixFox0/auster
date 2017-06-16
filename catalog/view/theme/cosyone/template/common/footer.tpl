@@ -1,7 +1,7 @@
 <div id="footer" class="footer">
   <div class="container no-clearfix footer__container">
     <div class="footer__logo">
-      <a href="#"><img src="/image/catalog/logoo2.png" alt=""></a>
+      <a href="/"><img src="/image/catalog/logoo2.png" alt=""></a>
     </div>
     <div class="footer__losung"><?php echo $text_0; ?></div>
     <div class="footer__info">
@@ -12,16 +12,16 @@
         </div>
         <ul class="footer__list">
           <li class="footer__list-item">
-            <a href="#"><?php echo $text_2; ?></a>
+            <a href="/index.php?route=product/category&path=59_62"><?php echo $text_2; ?></a>
           </li>
           <li class="footer__list-item">
-            <a href="#"><?php echo $text_3; ?></a>
+            <a href="/index.php?route=product/category&path=59_63"><?php echo $text_3; ?></a>
           </li>
           <li class="footer__list-item">
-            <a href="#"><?php echo $text_4; ?></a>
+            <a href="/index.php?route=product/category&path=59_64"><?php echo $text_4; ?></a>
           </li>
           <li class="footer__list-item">
-            <a href="#"><?php echo $text_5; ?></a>
+            <a href="/index.php?route=product/category&path=59_65"><?php echo $text_5; ?></a>
           </li>
         </ul>
       </div>
@@ -33,7 +33,7 @@
         </div>
         <div class="footer__contacts">
           <div class="footer__contacts-address">
-            <a href="#"><?php echo $address; ?></a>
+            <a href="/index.php?route=information/contact"><?php echo $address; ?></a>
           </div>
           <div class="footer__contacts-mail">
             <a href="mailto:<?php echo $email; ?>"><?php echo $email; ?></a>
