@@ -35,3 +35,4 @@
 2017-06-18 17:18:52 - PHP Notice:  Undefined offset: 0 in C:\OPENSERVER\OpenServer\domains\auster.loc\vqmod\vqcache\vq2-catalog_controller_product_product.php on line 1082
 2017-06-18 17:21:07 - PHP Notice:  Undefined offset: 0 in C:\OPENSERVER\OpenServer\domains\auster.loc\vqmod\vqcache\vq2-catalog_controller_product_product.php on line 1082
 2017-06-18 21:39:47 - PHP Notice:  Undefined offset: 0 in C:\OPENSERVER\OpenServer\domains\auster.loc\vqmod\vqcache\vq2-catalog_controller_product_product.php on line 1082
+2017-06-18 23:47:45 - PHP Notice:  Error: Could not load template C:/OPENSERVER/OpenServer/domains/auster.loc/catalog/view/theme/default/template/default/template/payment/beznal.tpl! in C:\OPENSERVER\OpenServer\domains\auster.loc\vqmod\vqcache\vq2-system_library_template_basic.php on line 26
