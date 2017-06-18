@@ -204,6 +204,10 @@ body {
 .ic-arrow-right {
 	@include sprite($arrow-right);
 }
+
+.ic-check {
+	@include sprite($check);
+}
  
 .btn {
 	display: inline-block;
@@ -1915,8 +1919,17 @@ textarea.form-control {
 		font-size: 17px;
 		text-transform: uppercase;
 		color: #323232;
-		margin-bottom: 65px;
+		margin-bottom: 30px;
 		font-family: "Rob-bold";
+	}
+
+	.stock {
+		border-radius: 3px;
+		border: 1px solid  $brand;
+		display: inline-block;
+		color: $brand2;
+		padding: 6px 10px;
+		margin-bottom: 20px;
 	}
 
 	#zoom-btn {
@@ -2233,7 +2246,7 @@ textarea.form-control {
 				& > div:last-child {
 					font-size: 16px;
 					font-family: "Rob-bold";
-					margin-top: 5px;
+					margin-top: -1px;
 					padding-left: 30px;
 				}
 			}
@@ -2278,7 +2291,7 @@ textarea.form-control {
 
 .show-catalog {
 	margin-bottom: 25px;
-	&:hover {
+	&:hover,&:active, &:focus {
 		color: #fff;
 	}
 }
@@ -2356,14 +2369,17 @@ textarea.form-control {
 		display: flex;
 		flex: 1 1 auto;
 		margin-bottom: 30px;
-	}
 
-	&__col {
-		width: 33.333%;
 		.form-group {
 			padding: 0 15px;
+			width: 33.333%;
+		}
+
+		.control-label {
+			padding-left: 0;
 		}
 	}
+
 
 	&__info {
 		margin-bottom: 30px;
@@ -2429,6 +2445,22 @@ textarea.form-control {
 	align-items: center;
 	i {
 		margin-right: 5px;
+	}
+}
+
+#cboxLoadedContent {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	.product {
+		display: flex !important;
+		& > * {
+			flex: 1 1 auto !important;
+		}
+	}
+
+	.bottom {
+		text-align: center;
 	}
 }
 

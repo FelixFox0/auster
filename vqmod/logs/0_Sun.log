@@ -1,0 +1,233 @@
+---------- Date: 2017-06-18 16:14:14 ~ IP : 127.0.0.1 ----------
+REQUEST URI : /
+MOD DETAILS:
+   modFile   : C:\OPENSERVER\OpenServer\domains\auster.loc\vqmod/xml/cosyone_blog.xml
+   id        : OPENCART BLOG
+   version   : 1.0
+   vqmver    : 2.5.0
+   author    : Karl Pers - openthemer@gmail.com
+
+File Name    : catalog/controller/startup/seo_url.php(4)
+VQModObject::applyMod - SEARCH NOT FOUND (SKIPPED): ($data['route'] == 'information/information' && $key == 'information_id'))
+MOD DETAILS:
+   modFile   : C:\OPENSERVER\OpenServer\domains\auster.loc\vqmod/xml/all.install.ocmod.xml
+   id        : 
+   version   : OpenCart Version 2.2
+   vqmver    : 2.0.0
+   author    : Rupak Nepali
+
+File Name    : catalog/view/theme/*/template/common/header.tpl(0)
+VQModObject::applyMod - SEARCH NOT FOUND (ABORTING MOD): <ul class="nav navbar-nav">
+----------------------------------------------------------------------
+
+
+---------- Date: 2017-06-18 16:32:01 ~ IP : 127.0.0.1 ----------
+REQUEST URI : /SHD-20
+MOD DETAILS:
+   modFile   : C:\OPENSERVER\OpenServer\domains\auster.loc\vqmod/xml/cosyone_product_questions.xml
+   id        : Product Questions
+   version   : OC 2.x
+   vqmver    : 2.0.0
+   author    : Karl Pers - openthemer@gmail.com
+
+File Name    : catalog/view/theme/*/template/product/product.tpl(2)
+VQModObject::applyMod - SEARCH NOT FOUND (SKIPPED): <i class="fa fa-arrow-right"></i><i class="fa fa-arrow-left main_compare">
+----------------------------------------------------------------------
+
+
+---------- Date: 2017-06-18 17:02:36 ~ IP : 127.0.0.1 ----------
+REQUEST URI : /SHD-20
+MOD DETAILS:
+   modFile   : C:\OPENSERVER\OpenServer\domains\auster.loc\vqmod/xml/cosyone_product_questions.xml
+   id        : Product Questions
+   version   : OC 2.x
+   vqmver    : 2.0.0
+   author    : Karl Pers - openthemer@gmail.com
+
+File Name    : catalog/view/theme/*/template/product/product.tpl(2)
+VQModObject::applyMod - SEARCH NOT FOUND (SKIPPED): <i class="fa fa-arrow-right"></i><i class="fa fa-arrow-left main_compare">
+----------------------------------------------------------------------
+
+
+---------- Date: 2017-06-18 17:03:58 ~ IP : 127.0.0.1 ----------
+REQUEST URI : /SHD-20
+MOD DETAILS:
+   modFile   : C:\OPENSERVER\OpenServer\domains\auster.loc\vqmod/xml/cosyone_product_questions.xml
+   id        : Product Questions
+   version   : OC 2.x
+   vqmver    : 2.0.0
+   author    : Karl Pers - openthemer@gmail.com
+
+File Name    : catalog/view/theme/*/template/product/product.tpl(2)
+VQModObject::applyMod - SEARCH NOT FOUND (SKIPPED): <i class="fa fa-arrow-right"></i><i class="fa fa-arrow-left main_compare">
+----------------------------------------------------------------------
+
+
+---------- Date: 2017-06-18 17:05:13 ~ IP : 127.0.0.1 ----------
+REQUEST URI : /SHD-20
+MOD DETAILS:
+   modFile   : C:\OPENSERVER\OpenServer\domains\auster.loc\vqmod/xml/cosyone_product_questions.xml
+   id        : Product Questions
+   version   : OC 2.x
+   vqmver    : 2.0.0
+   author    : Karl Pers - openthemer@gmail.com
+
+File Name    : catalog/view/theme/*/template/product/product.tpl(2)
+VQModObject::applyMod - SEARCH NOT FOUND (SKIPPED): <i class="fa fa-arrow-right"></i><i class="fa fa-arrow-left main_compare">
+----------------------------------------------------------------------
+
+
+---------- Date: 2017-06-18 17:10:20 ~ IP : 127.0.0.1 ----------
+REQUEST URI : /SHD-20
+MOD DETAILS:
+   modFile   : C:\OPENSERVER\OpenServer\domains\auster.loc\vqmod/xml/cosyone_product_questions.xml
+   id        : Product Questions
+   version   : OC 2.x
+   vqmver    : 2.0.0
+   author    : Karl Pers - openthemer@gmail.com
+
+File Name    : catalog/view/theme/*/template/product/product.tpl(2)
+VQModObject::applyMod - SEARCH NOT FOUND (SKIPPED): <i class="fa fa-arrow-right"></i><i class="fa fa-arrow-left main_compare">
+----------------------------------------------------------------------
+
+
+---------- Date: 2017-06-18 17:12:30 ~ IP : 127.0.0.1 ----------
+REQUEST URI : /SHD-20
+MOD DETAILS:
+   modFile   : C:\OPENSERVER\OpenServer\domains\auster.loc\vqmod/xml/cosyone_product_questions.xml
+   id        : Product Questions
+   version   : OC 2.x
+   vqmver    : 2.0.0
+   author    : Karl Pers - openthemer@gmail.com
+
+File Name    : catalog/view/theme/*/template/product/product.tpl(2)
+VQModObject::applyMod - SEARCH NOT FOUND (SKIPPED): <i class="fa fa-arrow-right"></i><i class="fa fa-arrow-left main_compare">
+----------------------------------------------------------------------
+
+
+---------- Date: 2017-06-18 17:18:18 ~ IP : 127.0.0.1 ----------
+REQUEST URI : /index.php?route=product/product&path=59&product_id=44
+MOD DETAILS:
+   modFile   : C:\OPENSERVER\OpenServer\domains\auster.loc\vqmod/xml/cosyone_product_questions.xml
+   id        : Product Questions
+   version   : OC 2.x
+   vqmver    : 2.0.0
+   author    : Karl Pers - openthemer@gmail.com
+
+File Name    : catalog/view/theme/*/template/product/product.tpl(2)
+VQModObject::applyMod - SEARCH NOT FOUND (SKIPPED): <i class="fa fa-arrow-right"></i><i class="fa fa-arrow-left main_compare">
+----------------------------------------------------------------------
+
+
+---------- Date: 2017-06-18 17:18:46 ~ IP : 127.0.0.1 ----------
+REQUEST URI : /index.php?route=product/product&path=59&product_id=44
+MOD DETAILS:
+   modFile   : C:\OPENSERVER\OpenServer\domains\auster.loc\vqmod/xml/cosyone_product_questions.xml
+   id        : Product Questions
+   version   : OC 2.x
+   vqmver    : 2.0.0
+   author    : Karl Pers - openthemer@gmail.com
+
+File Name    : catalog/view/theme/*/template/product/product.tpl(2)
+VQModObject::applyMod - SEARCH NOT FOUND (SKIPPED): <i class="fa fa-arrow-right"></i><i class="fa fa-arrow-left main_compare">
+----------------------------------------------------------------------
+
+
+---------- Date: 2017-06-18 17:19:27 ~ IP : 127.0.0.1 ----------
+REQUEST URI : /index.php?route=product/product&path=59&product_id=44
+MOD DETAILS:
+   modFile   : C:\OPENSERVER\OpenServer\domains\auster.loc\vqmod/xml/cosyone_product_questions.xml
+   id        : Product Questions
+   version   : OC 2.x
+   vqmver    : 2.0.0
+   author    : Karl Pers - openthemer@gmail.com
+
+File Name    : catalog/view/theme/*/template/product/product.tpl(2)
+VQModObject::applyMod - SEARCH NOT FOUND (SKIPPED): <i class="fa fa-arrow-right"></i><i class="fa fa-arrow-left main_compare">
+----------------------------------------------------------------------
+
+
+---------- Date: 2017-06-18 17:20:20 ~ IP : 127.0.0.1 ----------
+REQUEST URI : /index.php?route=product/product&path=59&product_id=44
+MOD DETAILS:
+   modFile   : C:\OPENSERVER\OpenServer\domains\auster.loc\vqmod/xml/cosyone_product_questions.xml
+   id        : Product Questions
+   version   : OC 2.x
+   vqmver    : 2.0.0
+   author    : Karl Pers - openthemer@gmail.com
+
+File Name    : catalog/view/theme/*/template/product/product.tpl(2)
+VQModObject::applyMod - SEARCH NOT FOUND (SKIPPED): <i class="fa fa-arrow-right"></i><i class="fa fa-arrow-left main_compare">
+----------------------------------------------------------------------
+
+
+---------- Date: 2017-06-18 17:20:57 ~ IP : 127.0.0.1 ----------
+REQUEST URI : /index.php?route=product/product&path=59&product_id=44
+MOD DETAILS:
+   modFile   : C:\OPENSERVER\OpenServer\domains\auster.loc\vqmod/xml/cosyone_product_questions.xml
+   id        : Product Questions
+   version   : OC 2.x
+   vqmver    : 2.0.0
+   author    : Karl Pers - openthemer@gmail.com
+
+File Name    : catalog/view/theme/*/template/product/product.tpl(2)
+VQModObject::applyMod - SEARCH NOT FOUND (SKIPPED): <i class="fa fa-arrow-right"></i><i class="fa fa-arrow-left main_compare">
+----------------------------------------------------------------------
+
+
+---------- Date: 2017-06-18 17:22:55 ~ IP : 127.0.0.1 ----------
+REQUEST URI : /SHD-20
+MOD DETAILS:
+   modFile   : C:\OPENSERVER\OpenServer\domains\auster.loc\vqmod/xml/cosyone_product_questions.xml
+   id        : Product Questions
+   version   : OC 2.x
+   vqmver    : 2.0.0
+   author    : Karl Pers - openthemer@gmail.com
+
+File Name    : catalog/view/theme/*/template/product/product.tpl(2)
+VQModObject::applyMod - SEARCH NOT FOUND (SKIPPED): <i class="fa fa-arrow-right"></i><i class="fa fa-arrow-left main_compare">
+----------------------------------------------------------------------
+
+
+---------- Date: 2017-06-18 17:23:39 ~ IP : 127.0.0.1 ----------
+REQUEST URI : /SHD-20
+MOD DETAILS:
+   modFile   : C:\OPENSERVER\OpenServer\domains\auster.loc\vqmod/xml/cosyone_product_questions.xml
+   id        : Product Questions
+   version   : OC 2.x
+   vqmver    : 2.0.0
+   author    : Karl Pers - openthemer@gmail.com
+
+File Name    : catalog/view/theme/*/template/product/product.tpl(2)
+VQModObject::applyMod - SEARCH NOT FOUND (SKIPPED): <i class="fa fa-arrow-right"></i><i class="fa fa-arrow-left main_compare">
+----------------------------------------------------------------------
+
+
+---------- Date: 2017-06-18 17:28:10 ~ IP : 127.0.0.1 ----------
+REQUEST URI : /SHD-20
+MOD DETAILS:
+   modFile   : C:\OPENSERVER\OpenServer\domains\auster.loc\vqmod/xml/cosyone_product_questions.xml
+   id        : Product Questions
+   version   : OC 2.x
+   vqmver    : 2.0.0
+   author    : Karl Pers - openthemer@gmail.com
+
+File Name    : catalog/view/theme/*/template/product/product.tpl(2)
+VQModObject::applyMod - SEARCH NOT FOUND (SKIPPED): <i class="fa fa-arrow-right"></i><i class="fa fa-arrow-left main_compare">
+----------------------------------------------------------------------
+
+
+---------- Date: 2017-06-18 17:51:29 ~ IP : 127.0.0.1 ----------
+REQUEST URI : /SHD-20
+MOD DETAILS:
+   modFile   : C:\OPENSERVER\OpenServer\domains\auster.loc\vqmod/xml/cosyone_product_questions.xml
+   id        : Product Questions
+   version   : OC 2.x
+   vqmver    : 2.0.0
+   author    : Karl Pers - openthemer@gmail.com
+
+File Name    : catalog/view/theme/*/template/product/product.tpl(2)
+VQModObject::applyMod - SEARCH NOT FOUND (SKIPPED): <i class="fa fa-arrow-right"></i><i class="fa fa-arrow-left main_compare">
+----------------------------------------------------------------------
+
+
