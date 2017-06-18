@@ -18,7 +18,7 @@ $_['thousand_point']        = '';
 $_['text_home']             = '<i class="fa fa-home"></i>';
 $_['text_yes']              = 'Так';
 $_['text_no']               = 'Ні';
-$_['text_none']             = ' --- Немає --- ';
+$_['text_none']             = ' --- Не обрано --- ';
 $_['text_select']           = ' --- Оберіть --- ';
 $_['text_all_zones']        = 'Усі зони';
 $_['text_pagination']       = 'Показано %d по %d з %d (Всього сторінок %d)';

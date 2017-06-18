@@ -299,7 +299,14 @@ class ControllerQuickCheckoutConfirm extends Controller {
 					$this->session->data['comment'] .= ' ' . $this->session->data['delivery_time'];
 				}
 			}
-
+                        if($this->session->data['shipping_method']['code'] === 'novaposhta.warehouse'){
+                            $this->session->data['comment'] .= "\n\n" . $this->session->data['shipping_method']['title'] . $this->session->data['shipping_method']['additional'];
+                        }
+//                        var_dump($this->session->data['shipping_method']['code']);
+//                        var_dump($this->session->data['shipping_method']['title']);
+//                        var_dump($this->session->data['shipping_method']['additional']);
+//                        var_dump($this->session->data['comment']);
+//                        die();
 
 			$order_data['comment'] = $this->session->data['comment'];
 			$order_data['total'] = $total;
