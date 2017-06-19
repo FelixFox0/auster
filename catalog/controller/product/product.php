@@ -298,6 +298,16 @@ class ControllerProductProduct extends Controller {
                             
                         }
                         
+
+                        if(isset($product_info['val_baz_dlin']) && $product_info['val_baz_dlin']){
+                            $data['dl_sh'] = unserialize($product_info['val_baz_dlin']);
+
+                        }else{
+                            $data['dl_sh']['val_baz_dlin']=500;
+                            $data['dl_sh']['val_baz_shir']=250;
+                        }
+                        
+//                        var_dump($data['dl_sh']);
 			$data['tab_description'] = $this->language->get('tab_description');
 			$data['tab_razmeri'] = $this->language->get('tab_razmeri');
 			$data['tab_sertificati'] = $this->language->get('tab_sertificati');

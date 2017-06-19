@@ -617,7 +617,110 @@
       </div>
 </div>
 <?php } ?>
-<?php if($product_type!=2){ ?>
+
+
+<?php if($product_type==5){ ?>
+      <div class="luk-container">
+          <div class="luk-container__inner">         
+          
+            <div class="form-group">
+              <label class="control-label" for="shirinaresh"><?php echo $text_shirina; ?></label>
+              <input name="shirinaresh" id="shirinaresh" value="<?php echo $dl_sh['val_baz_shir']; ?> мм." class="form-control" disabled="disabled">
+            </div>
+            <div class="form-group">
+              <label class="control-label" for="shirinaresh"><?php echo $text_dlina; ?></label>
+              <input name="dlinanaresh" id="dlinanaresh" value="<?php echo $dl_sh['val_baz_dlin']; ?> мм." class="form-control" disabled="disabled">
+            </div>
+          
+        </div>
+          
+
+         
+
+        <div class="cart">
+         
+      <?php if ($price) { ?> 
+      <div class="price">
+        
+        <?php if (!$special) { ?>
+        <i class="ic-bage"></i><span itemprop="price"><?php echo $price; ?></span>
+        <?php } else { ?>
+        <?php if (!$cosyone_product_yousave) { ?>
+        <i class="ic-bage"></i><span class="price-old"><?php echo $price; ?></span> <span class="price-new" itemprop="price"><?php echo $special; ?></span>
+        <?php } ?>
+        <?php } ?>
+          
+      </div> 
+     </span> <!-- rich snippet ends -->
+      <?php } ?>
+        
+          
+          <div class="cart__inner">
+            <div class="counter">
+              <a class="quantity_button minus icon">-</a><input type="text" name="quantity" value="<?php echo $minimum; ?>" size="2" id="input-quantity" class="quantity" /><a class="quantity_button plus icon">+</a>
+           
+            <input type="hidden" name="product_id" value="<?php echo $product_id; ?>" />
+            </div>
+
+            <button type="submit" id="button-cart" data-loading-text="<?php echo $text_loading; ?>" class="button contrast"><i class="fa fa-shopping-cart"></i> <?php echo $button_cart; ?></button>
+          </div>
+        
+        
+        
+       </div> <!-- Cart ends -->
+        
+        <?php if ($price) { ?>
+        <meta itemprop="currency" content="<?php echo $currency_code; ?>" />
+        <span itemprop="offerDetails" itemscope itemtype="http://data-vocabulary.org/Offer"><!-- Rich snippets start -->
+        <?php if (($special) && ($cosyone_product_yousave)) { ?>
+        
+        <div class="extended_offer">
+        
+        <div class="price-new"><?php echo $text_special_price; ?><span class="amount contrast_font" itemprop="price"><i class="ic-bage"></i><span><?php echo $special; ?></span></span></div>
+        <div class="price-old"><?php echo $text_old_price; ?><span class="amount contrast_font"><i class="ic-bage"></i><span><?php echo $price; ?></span></span></div>
+        <div class="price-save"><?php echo $text_you_save; ?><span class="amount contrast_font"><i class="ic-bage"></i><span><?php echo $yousave; ?></span></span> </div>
+        </div>
+
+        <?php } ?>
+        
+        <?php if (($special_date_end > 0) && ($cosyone_product_countdown)) { ?>
+        <div class="contrast_font"><div class="offer"></div></div> 
+        
+        <?php if ($cosyone_product_hurry) { ?>
+        <div class="hurry">
+        <span class="items_left contrast_color"><?php echo $text_stock_quantity; ?></span>
+        <span class="items_sold"><?php echo $text_items_sold; ?></span>
+        </div>
+        <?php } ?>
+        <?php } ?>
+        <?php } ?>
+       
+      
+        <?php if ($minimum > 1) { ?>
+        <div class="minimum"><?php echo $text_minimum; ?></div>
+        <?php } ?>
+        <?php if ($price) { ?>
+        <?php if ($points) { ?>
+        <div class="reward"><?php echo $text_points; ?> <?php echo $points; ?></div>
+        <?php } ?>
+       <?php if ($discounts) { ?>
+        <div class="discount">
+          <?php foreach ($discounts as $discount) { ?>
+          <span><?php echo $discount['quantity']; ?><?php echo $text_discount; ?><?php echo $discount['price']; ?></span>
+          <?php } ?>
+        </div>
+        <?php } ?>
+        <?php } ?>
+        
+      </div>
+</div>
+<?php } ?>
+
+
+
+
+
+<?php if(($product_type!=2)&&($product_type!=5)){ ?>
         <div class="cart">
          
       <?php if ($price) { ?> 
