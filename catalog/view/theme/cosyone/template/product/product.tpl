@@ -1557,12 +1557,18 @@ $('#button-cart').on('click', function() {
 		success: function(json) {
 			$('.alert, .text-danger').remove();
 			$('.form-group').removeClass('has-error');
-
+                        //console.log(json['error']);
 			if (json['error']) {
 				if (json['error']['option']) {
 					for (i in json['error']['option']) {
-						var element = $('#input-option' + i.replace('_', '-'));
+                                            
+                                                if($("div").is('#input-option' + i.replace('_', '-'))){
+                                                    var element = $('#input-option' + i.replace('_', '-'));
+                                                }else{
+                                                    var element = $('[name="option[' + i +']"]').parent();
+                                                }
 						
+                                                
 						if (element.parent().hasClass('input-group')) {
 							element.parent().after('<div class="text-danger">' + json['error']['option'][i] + '</div>');
 						} else {
@@ -1576,7 +1582,7 @@ $('#button-cart').on('click', function() {
 				}
 				
 				// Highlight any found errors
-				$('.text-danger').parent().addClass('has-error');
+				//$('.text-danger').parent().addClass('has-error');
 			}
 			
 			if (json['success']) {
