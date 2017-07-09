@@ -1,4 +1,4 @@
-<?php echo $header; ?>
+<?php echo $header; ?><?php if( ! empty( $mfilter_json ) ) { echo '<div id="mfilter-json" style="display:none">' . base64_encode( $mfilter_json ) . '</div>'; } ?>
 <div class="container">
   <div class="row">
   <div class="title">
@@ -15,7 +15,7 @@
     <?php } ?>
 	
     <div id="content" class="<?php echo $class; ?> <?php echo $cosyone_grid_category; ?>">
-    <?php echo $content_top; ?>
+    <?php echo $content_top; ?><div id="mfilter-content-container">
   
   <h1 ><?php echo $heading_title; ?></h1>
    <?php if ($thumb || $description) { ?>   
@@ -93,7 +93,7 @@
     <div class="pull-right"><a href="<?php echo $continue; ?>" class="button"><?php echo $button_continue; ?></a></div>
   </div>
   <?php } ?>
-  <?php echo $content_bottom; ?></div>
+  </div><?php echo $content_bottom; ?></div>
   <?php echo $column_right; ?></div>
   
 

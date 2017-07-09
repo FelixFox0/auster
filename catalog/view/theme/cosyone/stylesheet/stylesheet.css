@@ -1691,19 +1691,19 @@ table.radio tr.highlight td {
 	bottom:0;
 	right:5px;
 	left:5px;
-	border:1px solid;
+	border:1px solid #62daa6;
 	border-color:transparent;
 	transition:border-color 500ms;
 }
 .category-grid .item:hover:before {
-	border-color:#e5e5e5;
+	border:1px solid #62daa6;
 	transition:border-color 500ms;
 }
 .category-grid.grid3 .item {
 	width:33.33%;
 }
 .category-grid.grid4 .item {
-	width:25%;
+	width:24.9%;
 }
 .category-grid.grid5 .item {
 	width:20%;
@@ -2295,7 +2295,7 @@ table.radio tr.highlight td {
 /* Product page */
 .product-info {
 	width:100%;
-	display:table;
+	display: block;
 	padding-top:15px;
 	margin-bottom:20px;
 }

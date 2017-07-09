@@ -39,6 +39,31 @@ class ControllerProductCategory extends Controller {
 			$limit = $this->config->get($this->config->get('config_theme') . '_product_limit');
 		}
 
+
+			if (file_exists('catalog/view/theme/cosyone/js/countdown/jquery.countdown_' . $this->language->get('code') . '.js')) {
+			$this->document->addScript('catalog/view/theme/cosyone/js/countdown/jquery.countdown_' . $this->language->get('code') . '.js');
+			} else {
+			$this->document->addScript('catalog/view/theme/cosyone/js/countdown/jquery.countdown_en.js');
+			}
+			$this->load->language('common/cosyone');
+			$data['text_category_expire'] = $this->language->get('text_category_expire');
+			$data['cosyone_category_thumb'] = $this->config->get('cosyone_category_thumb');
+			$data['cosyone_grid_category'] = $this->config->get('cosyone_grid_category');
+			$data['cosyone_category_refine'] = $this->config->get('cosyone_category_refine');
+			$data['cosyone_category_per_row'] = $this->config->get('cosyone_category_per_row');
+			$data['cosyone_rollover_effect'] = $this->config->get('cosyone_rollover_effect');
+			$data['cosyone_percentage_sale_badge'] = $this->config->get('cosyone_percentage_sale_badge');
+			$cosyone_quicklook = $this->config->get('cosyone_text_ql');
+			if(empty($cosyone_quicklook[$this->config->get('config_language_id')])) {
+				$data['cosyone_text_ql'] = false;
+			} else if (isset($cosyone_quicklook[$this->config->get('config_language_id')])) {
+				$data['cosyone_text_ql'] = html_entity_decode($cosyone_quicklook[$this->config->get('config_language_id')], ENT_QUOTES, 'UTF-8');
+			}
+			$data['cosyone_brand'] = $this->config->get('cosyone_brand');
+			$data['cosyone_product_countdown'] = $this->config->get('cosyone_product_countdown');
+			$data['cosyone_product_hurry'] = $this->config->get('cosyone_product_hurry');
+			$data['cosyone_default_view'] = $this->config->get('cosyone_default_view');
+			
 		$data['breadcrumbs'] = array();
 
 		$data['breadcrumbs'][] = array(
@@ -48,6 +73,11 @@ class ControllerProductCategory extends Controller {
 
 		if (isset($this->request->get['path'])) {
 			$url = '';
+
+				if( ! empty( $this->request->get['mfp'] ) ) {
+					$url .= '&mfp=' . $this->request->get['mfp'];
+				}
+			
 
 			if (isset($this->request->get['sort'])) {
 				$url .= '&sort=' . $this->request->get['sort'];
@@ -134,6 +164,11 @@ class ControllerProductCategory extends Controller {
 
 			$url = '';
 
+				if( ! empty( $this->request->get['mfp'] ) ) {
+					$url .= '&mfp=' . $this->request->get['mfp'];
+				}
+			
+
 			if (isset($this->request->get['filter'])) {
 				$url .= '&filter=' . $this->request->get['filter'];
 			}
@@ -150,6 +185,15 @@ class ControllerProductCategory extends Controller {
 				$url .= '&limit=' . $this->request->get['limit'];
 			}
 
+
+				$fmSettings = $this->config->get('mega_filter_settings');
+				
+				if( ! empty( $fmSettings['not_remember_filter_for_subcategories'] ) && false !== ( $mfpPos = strpos( $url, '&mfp=' ) ) ) {
+					$mfUrlBeforeChange = $url;
+					$mfSt = mb_strpos( $url, '&', $mfpPos+1, 'utf-8');
+					$url = $mfSt === false ? '' : mb_substr($url, $mfSt, mb_strlen( $url, 'utf-8' ), 'utf-8');
+				}
+			
 			$data['categories'] = array();
 
 			$results = $this->model_catalog_category->getCategories($category_id);
@@ -160,12 +204,24 @@ class ControllerProductCategory extends Controller {
 					'filter_sub_category' => true
 				);
 
+
+	$image = $this->model_tool_image->resize($result['image'], $this->config->get('cosyone_refine_image_w'), $this->config->get('cosyone_refine_image_h'));
+			
 				$data['categories'][] = array(
+
+	'thumb' => $image,
+			
 					'name' => $result['name'] . ($this->config->get('config_product_count') ? ' (' . $this->model_catalog_product->getTotalProducts($filter_data) . ')' : ''),
 					'href' => $this->url->link('product/category', 'path=' . $this->request->get['path'] . '_' . $result['category_id'] . $url)
 				);
 			}
 
+
+				if( isset( $mfUrlBeforeChange ) ) {
+					$url = $mfUrlBeforeChange;
+					unset( $mfUrlBeforeChange );
+				}
+			
 			$data['products'] = array();
 
 			$filter_data = array(
@@ -177,6 +233,26 @@ class ControllerProductCategory extends Controller {
 				'limit'              => $limit
 			);
 
+
+				$fmSettings = $this->config->get('mega_filter_settings');
+		
+				if( ! empty( $fmSettings['show_products_from_subcategories'] ) ) {
+					if( ! empty( $fmSettings['level_products_from_subcategories'] ) ) {
+						$fmLevel = (int) $fmSettings['level_products_from_subcategories'];
+						$fmPath = explode( '_', empty( $this->request->get['path'] ) ? '' : $this->request->get['path'] );
+
+						if( $fmPath && count( $fmPath ) >= $fmLevel ) {
+							$filter_data['filter_sub_category'] = '1';
+						}
+					} else {
+						$filter_data['filter_sub_category'] = '1';
+					}
+				}
+				
+				if( ! empty( $this->request->get['manufacturer_id'] ) ) {
+					$filter_data['filter_manufacturer_id'] = (int) $this->request->get['manufacturer_id'];
+				}
+			
 			$product_total = $this->model_catalog_product->getTotalProducts($filter_data);
 
 			$results = $this->model_catalog_product->getProducts($filter_data);
@@ -212,6 +288,27 @@ class ControllerProductCategory extends Controller {
 					$rating = false;
 				}
 
+
+			// Cosyone custom code starts	
+			  if ((float)$result['special']) {
+				$sales_percantage = ((($this->tax->calculate($result['price'], $result['tax_class_id'], $this->config->get('config_tax')))-($this->tax->calculate($result['special'], $result['tax_class_id'], $this->config->get('config_tax'))))/(($this->tax->calculate($result['price'], $result['tax_class_id'], $this->config->get('config_tax')))/100));
+				} else {
+				$sales_percantage = false;
+				}
+				if ((float)$result['special']) {
+    			$special_info = $this->model_catalog_product->getSpecialPriceEnd($result['product_id']);
+        		$special_date_end = strtotime($special_info['date_end']) - time();
+    			} else {
+        		$special_date_end = false;
+    			}
+				$images = $this->model_catalog_product->getProductImages($result['product_id']);
+            	if(isset($images[0]['image']) && !empty($images[0]['image'])){
+                 $images =$images[0]['image'];
+               } else {
+				$images = false;
+				}
+				// cosyone end
+			   
 				$data['products'][] = array(
 					'product_id'  => $result['product_id'],
 					'thumb'       => $image,
@@ -219,14 +316,31 @@ class ControllerProductCategory extends Controller {
 					'description' => utf8_substr(strip_tags(html_entity_decode($result['description'], ENT_QUOTES, 'UTF-8')), 0, $this->config->get($this->config->get('config_theme') . '_product_description_length')) . '..',
 					'price'       => $price,
 					'special'     => $special,
+
+			// Cosyone custom code starts	
+			  'sales_percantage' => number_format($sales_percantage, 0, ',', '.'),
+			  'special_date_end' => $special_date_end,
+			  'stock_quantity' => sprintf($this->language->get('text_category_stock_quantity'), (int)$result['quantity']),
+			  'brand_name'		=> $result['manufacturer'],
+			  'thumb_hover'  => $this->model_tool_image->resize($images, $this->config->get('theme_default_image_product_width'), $this->config->get('theme_default_image_product_height')),
+			  // Cosyone custom code ends
+			   
 					'tax'         => $tax,
 					'minimum'     => $result['minimum'] > 0 ? $result['minimum'] : 1,
 					'rating'      => $result['rating'],
+
+		'quickview'        => $this->url->link('product/quickview', 'product_id=' . $result['product_id'], '', 'SSL'),
+		
 					'href'        => $this->url->link('product/product', 'path=' . $this->request->get['path'] . '&product_id=' . $result['product_id'] . $url)
 				);
 			}
 
 			$url = '';
+
+				if( ! empty( $this->request->get['mfp'] ) ) {
+					$url .= '&mfp=' . $this->request->get['mfp'];
+				}
+			
 
 			if (isset($this->request->get['filter'])) {
 				$url .= '&filter=' . $this->request->get['filter'];
@@ -296,6 +410,11 @@ class ControllerProductCategory extends Controller {
 
 			$url = '';
 
+				if( ! empty( $this->request->get['mfp'] ) ) {
+					$url .= '&mfp=' . $this->request->get['mfp'];
+				}
+			
+
 			if (isset($this->request->get['filter'])) {
 				$url .= '&filter=' . $this->request->get['filter'];
 			}
@@ -323,6 +442,11 @@ class ControllerProductCategory extends Controller {
 			}
 
 			$url = '';
+
+				if( ! empty( $this->request->get['mfp'] ) ) {
+					$url .= '&mfp=' . $this->request->get['mfp'];
+				}
+			
 
 			if (isset($this->request->get['filter'])) {
 				$url .= '&filter=' . $this->request->get['filter'];
@@ -376,9 +500,55 @@ class ControllerProductCategory extends Controller {
 			$data['footer'] = $this->load->controller('common/footer');
 			$data['header'] = $this->load->controller('common/header');
 
+
+				if( isset( $this->request->get['mfilterAjax'] ) ) {
+					$settings	= $this->config->get('mega_filter_settings');
+					$baseTypes	= array( 'stock_status', 'manufacturers', 'rating', 'attributes', 'price', 'options', 'filters' );
+		
+					if( isset( $this->request->get['mfilterBTypes'] ) ) {
+						$baseTypes = explode( ',', $this->request->get['mfilterBTypes'] );
+					}
+					
+					if( ! empty( $settings['calculate_number_of_products'] ) || in_array( 'categories:tree', $baseTypes ) ) {
+						if( empty( $settings['calculate_number_of_products'] ) ) {
+							$baseTypes = array( 'categories:tree' );
+						}
+				
+						$this->load->model( 'module/mega_filter' );
+
+						$idx = 0;
+		
+						if( isset( $this->request->get['mfilterIdx'] ) )
+							$idx = (int) $this->request->get['mfilterIdx'];
+						
+						$data['mfilter_json'] = json_encode( MegaFilterCore::newInstance( $this, NULL )->getJsonData($baseTypes, $idx) );
+					}
+				
+					$data['header'] = $data['column_left'] = $data['column_right'] = $data['content_top'] = $data['content_bottom'] = $data['footer'] = '';
+				}
+				
+				if( ! empty( $data['breadcrumbs'] ) && ! empty( $this->request->get['mfp'] ) ) {
+					foreach( $data['breadcrumbs'] as $mfK => $mfBreadcrumb ) {
+						$mfReplace = preg_replace( '/path\[[^\]]+\],?/', '', $this->request->get['mfp'] );
+						$mfFind = ( mb_strpos( $mfBreadcrumb['href'], '?mfp=', 0, 'utf-8' ) !== false ? '?mfp=' : '&mfp=' );
+						
+						$data['breadcrumbs'][$mfK]['href'] = str_replace(array(
+							$mfFind . $this->request->get['mfp'],
+							'&amp;mfp=' . $this->request->get['mfp'],
+							$mfFind . urlencode( $this->request->get['mfp'] ),
+							'&amp;mfp=' . urlencode( $this->request->get['mfp'] )
+						), $mfReplace ? $mfFind . $mfReplace : '', $mfBreadcrumb['href'] );
+					}
+				}
+			
 			$this->response->setOutput($this->load->view('product/category', $data));
 		} else {
 			$url = '';
+
+				if( ! empty( $this->request->get['mfp'] ) ) {
+					$url .= '&mfp=' . $this->request->get['mfp'];
+				}
+			
 
 			if (isset($this->request->get['path'])) {
 				$url .= '&path=' . $this->request->get['path'];
@@ -428,6 +598,47 @@ class ControllerProductCategory extends Controller {
 			$data['footer'] = $this->load->controller('common/footer');
 			$data['header'] = $this->load->controller('common/header');
 
+
+				if( isset( $this->request->get['mfilterAjax'] ) ) {
+					$settings	= $this->config->get('mega_filter_settings');
+					$baseTypes	= array( 'stock_status', 'manufacturers', 'rating', 'attributes', 'price', 'options', 'filters' );
+		
+					if( isset( $this->request->get['mfilterBTypes'] ) ) {
+						$baseTypes = explode( ',', $this->request->get['mfilterBTypes'] );
+					}
+					
+					if( ! empty( $settings['calculate_number_of_products'] ) || in_array( 'categories:tree', $baseTypes ) ) {
+						if( empty( $settings['calculate_number_of_products'] ) ) {
+							$baseTypes = array( 'categories:tree' );
+						}
+				
+						$this->load->model( 'module/mega_filter' );
+
+						$idx = 0;
+		
+						if( isset( $this->request->get['mfilterIdx'] ) )
+							$idx = (int) $this->request->get['mfilterIdx'];
+						
+						$data['mfilter_json'] = json_encode( MegaFilterCore::newInstance( $this, NULL )->getJsonData($baseTypes, $idx) );
+					}
+				
+					$data['header'] = $data['column_left'] = $data['column_right'] = $data['content_top'] = $data['content_bottom'] = $data['footer'] = '';
+				}
+				
+				if( ! empty( $data['breadcrumbs'] ) && ! empty( $this->request->get['mfp'] ) ) {
+					foreach( $data['breadcrumbs'] as $mfK => $mfBreadcrumb ) {
+						$mfReplace = preg_replace( '/path\[[^\]]+\],?/', '', $this->request->get['mfp'] );
+						$mfFind = ( mb_strpos( $mfBreadcrumb['href'], '?mfp=', 0, 'utf-8' ) !== false ? '?mfp=' : '&mfp=' );
+						
+						$data['breadcrumbs'][$mfK]['href'] = str_replace(array(
+							$mfFind . $this->request->get['mfp'],
+							'&amp;mfp=' . $this->request->get['mfp'],
+							$mfFind . urlencode( $this->request->get['mfp'] ),
+							'&amp;mfp=' . urlencode( $this->request->get['mfp'] )
+						), $mfReplace ? $mfFind . $mfReplace : '', $mfBreadcrumb['href'] );
+					}
+				}
+			
 			$this->response->setOutput($this->load->view('error/not_found', $data));
 		}
 	}

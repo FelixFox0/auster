@@ -97,6 +97,11 @@ body {
 	}
 }
 
+h2,h1 {
+	margin-top: 0;
+	margin-bottom: 20px;
+}
+
 .title {
 	margin-bottom: 80px;
 
@@ -2309,6 +2314,10 @@ textarea.form-control {
 }
 
 .tab-pane {
+
+	table {
+		width: 100%;
+	}
 	.table_class_lik {
 		width: 100%;
 
@@ -2435,7 +2444,6 @@ textarea.form-control {
 }
 
 .tab-content>.tab-pane {
-	width: 1070px;
 	max-width: 100%;
 	overflow-x: auto;
 }
@@ -2461,6 +2469,50 @@ textarea.form-control {
 
 	.bottom {
 		text-align: center;
+	}
+}
+
+.categories-block {
+	padding: 20px 0;
+
+	.box-heading {
+		font-size: 15px;
+		font-family: "Rob-bold";
+		margin-bottom: 15px;
+	}
+
+
+
+	.category-grid {
+		width: 100%;
+		margin-bottom: 0;
+
+		img {
+			width: 100%;
+			height: auto;
+		}
+
+		a {
+			color: #333;
+		}
+	}
+}
+
+.category-info {
+	margin-bottom: 50px;
+	.image {
+		margin-right: 25px;
+		width: 200px;
+		height: auto;
+		img {
+			width: 100%;
+			height: auto;
+		}
+	}
+	.name {
+		a {
+			text-transform: uppercase;
+		}
 	}
 }
 
