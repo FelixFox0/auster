@@ -367,3 +367,10 @@ admin\view\template\module\featured.tpl
 admin\controller\module\collections_widget.php
 admin\model\design\collections.php
 admin\view\template\module\collections_widget.tpl
+catalog\controller\blog\special_offers.php
+catalog\model\blog\special_offers.php
+catalog\view\theme\cosyone\template\blog\special_offers.tpl
+catalog\controller\information\information.php
+catalog\language\en-gb\information\information.php
+catalog\language\ru-ru\information\information.php
+catalog\view\theme\default\template\information\information.tpl

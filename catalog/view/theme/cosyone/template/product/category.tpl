@@ -17,7 +17,37 @@
     <div id="content" class="<?php echo $class; ?> <?php echo $cosyone_grid_category; ?>">
     <?php echo $content_top; ?>
   
-  <h1 style="display: none;"><?php echo $heading_title; ?></h1>
+  <h1 ><?php echo $heading_title; ?></h1>
+   <?php if ($thumb || $description) { ?>   
+  <div class="category-info">   
+  <?php if ($cosyone_category_thumb == 'enabled' && ($thumb)) { ?>    
+    <div class="image"><img src="<?php echo $thumb; ?>" alt="<?php echo $heading_title; ?>" /></div>    
+    <?php } ?>    
+    <?php if ($description) { ?>    
+    <?php echo $description; ?>   
+    <?php } ?>    
+  </div>    
+  <?php } ?>    
+      
+  <?php if ($categories && $cosyone_category_refine) { ?>   
+  <div class="categories-block">
+    <div class="box-heading"><?php echo $text_refine; ?></div>    
+  <div class="grid_holder">   
+  <div class="category-grid <?php echo $cosyone_category_per_row; ?>">    
+      
+  <?php foreach ($categories as $category) { ?><!--   
+    --><div class="item contrast_font">   
+    <?php if ($category['thumb']) { ?>    
+  <div class="image"><a href="<?php echo $category['href']; ?>"><img src="<?php echo $category['thumb']; ?>" alt="<?php echo $category['name']; ?>" /></a></div>    
+   <?php } ?>    
+     <div class="name"><a href="<?php echo $category['href']; ?>"><?php echo $category['name']; ?></a></div>   
+     </div>    
+     <?php } ?>    
+       </div>    
+       </div><!--      
+   -->
+  </div>
+  <?php } ?>
 
   <?php if ($products) { ?>
 

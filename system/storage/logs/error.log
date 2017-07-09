@@ -30,3 +30,8 @@
 2017-07-09 22:58:41 - PHP Notice:  Undefined variable: home_top_center in C:\OPENSERVER\OpenServer\domains\auster.loc\catalog\view\theme\cosyone\template\common\home.tpl on line 11
 2017-07-09 22:58:41 - PHP Notice:  Undefined variable: home_top_right in C:\OPENSERVER\OpenServer\domains\auster.loc\catalog\view\theme\cosyone\template\common\home.tpl on line 11
 2017-07-09 22:58:41 - PHP Notice:  Undefined variable: content_bottom_half in C:\OPENSERVER\OpenServer\domains\auster.loc\catalog\view\theme\cosyone\template\common\home.tpl on line 41
+2017-07-10 0:40:58 - PHP Notice:  Undefined offset: 0 in C:\OPENSERVER\OpenServer\domains\auster.loc\vqmod\vqcache\vq2-catalog_controller_product_product.php on line 1092
+2017-07-10 0:40:58 - PHP Notice:  Undefined index: ral_color in C:\OPENSERVER\OpenServer\domains\auster.loc\vqmod\vqcache\vq2-catalog_controller_product_product.php on line 1188
+2017-07-10 0:40:59 - PHP Notice:  Undefined index: ral_color in C:\OPENSERVER\OpenServer\domains\auster.loc\vqmod\vqcache\vq2-catalog_controller_product_product.php on line 1188
+2017-07-10 0:56:35 - PHP Notice:  Undefined index: ral_color in C:\OPENSERVER\OpenServer\domains\auster.loc\vqmod\vqcache\vq2-catalog_controller_product_product.php on line 1188
+2017-07-10 0:56:38 - PHP Notice:  Undefined index: ral_color in C:\OPENSERVER\OpenServer\domains\auster.loc\vqmod\vqcache\vq2-catalog_controller_product_product.php on line 1188

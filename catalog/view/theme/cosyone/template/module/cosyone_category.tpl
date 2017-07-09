@@ -8,7 +8,6 @@
           <li class="open"><a href="<?php echo $category_1['href']; ?>" ><?php echo $category_1['name']; ?></a> 
           <?php } ?>
           <?php if ($category_1['children']) { ?>
-          <div class="sign"><span class="plus">+</span><span class="minus">-</span></div>
           <ul style="display: block;">
             <?php foreach ($category_1['children'] as $category_2) { ?>
             <?php if ($category_2['category_2_id'] == $category_2_id) { ?>
@@ -16,19 +15,7 @@
             <?php } else { ?>
           <li><a href="<?php echo $category_2['href']; ?>"><?php echo $category_2['name']; ?></a>
           <?php } ?>
-              <?php if ($category_2['children']) { ?>
-              <div class="sign"><span class="plus">+</span><span class="minus">-</span></div>
-              <ul>
-                <?php foreach ($category_2['children'] as $category_3) { ?>
-                
-                <?php if ($category_3['category_3_id'] == $category_3_id) { ?>
-                <li class="active"><a href="<?php echo $category_3['href']; ?>"><?php echo $category_3['name']; ?></a></li>
-                <?php } else { ?>
-          <li><a href="<?php echo $category_3['href']; ?>"><?php echo $category_3['name']; ?></a></li>
-          <?php } ?>
-                <?php } ?>
-              </ul>
-              <?php } ?>
+             
             </li>
             <?php } ?>
           </ul>
