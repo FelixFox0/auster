@@ -10,6 +10,7 @@
         'yellow_and_beige' => [
             'name' => 'Yellow and Beige','ral-colorpicker_header_yellow_and_beige',
             'colors' => [
+                ['name' => 'RAL 9016', 'hex' => '#F6F6F6'],
                 ['name' => 'RAL 1000', 'hex' => '#BEBD7F'],
                 ['name' => 'RAL 1001', 'hex' => '#C2B078'],
                 ['name' => 'RAL 1002', 'hex' => '#C6A664'],
@@ -257,7 +258,7 @@
                 ['name' => 'RAL 9007', 'hex' => '#8F8F8F'],
                 ['name' => 'RAL 9010', 'hex' => '#FFFFFF'],
                 ['name' => 'RAL 9011', 'hex' => '#1C1C1C'],
-                ['name' => 'RAL 9016', 'hex' => '#F6F6F6'],
+//                ['name' => 'RAL 9016', 'hex' => '#F6F6F6'],
                 ['name' => 'RAL 9017', 'hex' => '#1E1E1E'],
                 ['name' => 'RAL 9018', 'hex' => '#D7D7D7'],
                 ['name' => 'RAL 9022', 'hex' => '#9C9C9C'],
@@ -617,7 +618,110 @@
       </div>
 </div>
 <?php } ?>
-<?php if($product_type!=2){ ?>
+
+
+<?php if($product_type==5){ ?>
+      <div class="luk-container">
+          <div class="luk-container__inner">         
+          
+            <div class="form-group">
+              <label class="control-label" for="shirinaresh"><?php echo $text_shirina; ?></label>
+              <input name="shirinaresh" id="shirinaresh" value="<?php echo $dl_sh['val_baz_shir']; ?> мм." class="form-control" disabled="disabled">
+            </div>
+            <div class="form-group">
+              <label class="control-label" for="shirinaresh"><?php echo $text_dlina; ?></label>
+              <input name="dlinanaresh" id="dlinanaresh" value="<?php echo $dl_sh['val_baz_dlin']; ?> мм." class="form-control" disabled="disabled">
+            </div>
+          
+        </div>
+          
+
+         
+
+        <div class="cart">
+         
+      <?php if ($price) { ?> 
+      <div class="price">
+        
+        <?php if (!$special) { ?>
+        <i class="ic-bage"></i><span itemprop="price"><?php echo $price; ?></span>
+        <?php } else { ?>
+        <?php if (!$cosyone_product_yousave) { ?>
+        <i class="ic-bage"></i><span class="price-old"><?php echo $price; ?></span> <span class="price-new" itemprop="price"><?php echo $special; ?></span>
+        <?php } ?>
+        <?php } ?>
+          
+      </div> 
+     </span> <!-- rich snippet ends -->
+      <?php } ?>
+        
+          
+          <div class="cart__inner">
+            <div class="counter">
+              <a class="quantity_button minus icon">-</a><input type="text" name="quantity" value="<?php echo $minimum; ?>" size="2" id="input-quantity" class="quantity" /><a class="quantity_button plus icon">+</a>
+           
+            <input type="hidden" name="product_id" value="<?php echo $product_id; ?>" />
+            </div>
+
+            <button type="submit" id="button-cart" data-loading-text="<?php echo $text_loading; ?>" class="button contrast"><i class="fa fa-shopping-cart"></i> <?php echo $button_cart; ?></button>
+          </div>
+        
+        
+        
+       </div> <!-- Cart ends -->
+        
+        <?php if ($price) { ?>
+        <meta itemprop="currency" content="<?php echo $currency_code; ?>" />
+        <span itemprop="offerDetails" itemscope itemtype="http://data-vocabulary.org/Offer"><!-- Rich snippets start -->
+        <?php if (($special) && ($cosyone_product_yousave)) { ?>
+        
+        <div class="extended_offer">
+        
+        <div class="price-new"><?php echo $text_special_price; ?><span class="amount contrast_font" itemprop="price"><i class="ic-bage"></i><span><?php echo $special; ?></span></span></div>
+        <div class="price-old"><?php echo $text_old_price; ?><span class="amount contrast_font"><i class="ic-bage"></i><span><?php echo $price; ?></span></span></div>
+        <div class="price-save"><?php echo $text_you_save; ?><span class="amount contrast_font"><i class="ic-bage"></i><span><?php echo $yousave; ?></span></span> </div>
+        </div>
+
+        <?php } ?>
+        
+        <?php if (($special_date_end > 0) && ($cosyone_product_countdown)) { ?>
+        <div class="contrast_font"><div class="offer"></div></div> 
+        
+        <?php if ($cosyone_product_hurry) { ?>
+        <div class="hurry">
+        <span class="items_left contrast_color"><?php echo $text_stock_quantity; ?></span>
+        <span class="items_sold"><?php echo $text_items_sold; ?></span>
+        </div>
+        <?php } ?>
+        <?php } ?>
+        <?php } ?>
+       
+      
+        <?php if ($minimum > 1) { ?>
+        <div class="minimum"><?php echo $text_minimum; ?></div>
+        <?php } ?>
+        <?php if ($price) { ?>
+        <?php if ($points) { ?>
+        <div class="reward"><?php echo $text_points; ?> <?php echo $points; ?></div>
+        <?php } ?>
+       <?php if ($discounts) { ?>
+        <div class="discount">
+          <?php foreach ($discounts as $discount) { ?>
+          <span><?php echo $discount['quantity']; ?><?php echo $text_discount; ?><?php echo $discount['price']; ?></span>
+          <?php } ?>
+        </div>
+        <?php } ?>
+        <?php } ?>
+        
+      </div>
+</div>
+<?php } ?>
+
+
+
+
+
+<?php if(($product_type!=2)&&($product_type!=5)){ ?>
         <div class="cart">
          
       <?php if ($price) { ?> 
@@ -1399,6 +1503,25 @@ $(".to_review").click(function() {
 
 <!-- Default scrips below -->    
 <script type="text/javascript"><!--
+$('#dlin_proz, #count_shcheley').change(function(){
+    //console.log($('#count_shcheley').val());
+    if($('#count_shcheley').val()==1 || !$('#count_shcheley').val()){
+        $('#dlin_proz > option[value="24"]').prop('disabled', false);
+    }else{
+        $('#dlin_proz > option[value="24"]').prop('disabled', true);
+    }
+    if($('#dlin_proz').val()==20 || !$('#dlin_proz').val()){
+            $('#count_shcheley > option[value="2"]').prop('disabled', false);
+            $('#count_shcheley > option[value="3"]').prop('disabled', false);
+            $('#count_shcheley > option[value="4"]').prop('disabled', false);
+        } else {
+            $('#count_shcheley > option[value="2"]').prop('disabled', true);
+            $('#count_shcheley > option[value="3"]').prop('disabled', true);
+            $('#count_shcheley > option[value="4"]').prop('disabled', true);
+        }
+    
+});
+
 $('select[name=\'recurring_id\'], input[name="quantity"]').change(function(){
 	$.ajax({
 		url: 'index.php?route=product/product/getRecurringDescription',
@@ -1598,7 +1721,7 @@ $('#button-review').on('click', function() {
                         $('.check_type input').on('change',function(){
                         //console.log($(this).val());
                         if($('.check_type input:checked').val()==="dlina"){
-                            console.log($(this).val());
+//                            console.log($(this).val());
                             $('.dlina').show();
                             $('.rashod').hide();
                             $('#rash_vozd').parent().hide();
@@ -1615,7 +1738,7 @@ $('#button-review').on('click', function() {
                         $('#rash_vozd').trigger('change');
                         });
                         
-                        $('#count_shcheley, #dlin_resh, #rash_vozd, #t_out_dif, #t_out_dif2, #rast_ot_pov, #type_resh, #input-quantity, #dlin_proz, #s_vozd_iz_rasp').on('change keyup',function(){
+                        $('#count_shcheley, #dlin_resh, #rash_vozd, #t_out_dif, #t_out_dif2, #rast_ot_pov, #type_resh, #input-quantity, #dlin_proz, #s_vozd_iz_rasp, #ral_color').on('change keyup',function(){
                             //console.log($(this).val());
                             var treb_ziv_sech = ($('#rash_vozd').val() / $('#input-quantity').val())/(3600* $('#s_vozd_iz_rasp').val());
                             //console.log(treb_ziv_sech);
@@ -1647,11 +1770,11 @@ $('#button-review').on('click', function() {
                                 }else{
                                     var dln_dif = $('#dlin_resh').val()-28*2;
                                 }
-                            console.log(dln_dif);
+                            //console.log(dln_dif);
                             }else{
                             
                                 var dln_dif = Math.ceil((treb_ziv_sech *1000000)/($('#dlin_proz').val()*$('#count_shcheley').val())/100)*100-10;
-                            console.log(dln_dif);
+                            //console.log(dln_dif);
                             }
                             
                             $('#dln_dif').html(dln_dif);
@@ -1784,7 +1907,7 @@ $('#button-review').on('click', function() {
                                 success: function(json){
                                     //console.log(json);
                                     // $('.image-additional.prod .owl-item').remove();
-                                    console.log(json);
+                                    //console.log(json);
                                     
                                     //var arr = $.map(json, function(el) { return el; })
 
@@ -1840,11 +1963,11 @@ $('#button-review').on('click', function() {
                 success: function(result){
                     //console.log(result);
                    var outtext = $.parseJSON(result);
-                   console.log(outtext.luk_price_fist[0]);
+                   //console.log(outtext.luk_price_fist[0]);
                     
                     if(outtext.old != undefined){
-                        console.log(outtext.old);
-                        console.log(outtext.yousave);
+                        //console.log(outtext.old);
+                        //console.log(outtext.yousave);
                        /*$('.text_old_pr_count').html(outtext.full_price[0]+'<span class="kop">'+outtext.full_price[1]+'</span>грн.');
                        $('.text_econom_count').html(outtext.econom[0]+'<span class="kop">'+outtext.econom[1]+'</span>грн.');
                        $('.text_now_pr_count').html(outtext.n_price[0]+'<span class="kop">'+outtext.n_price[1]+'</span>грн.');
@@ -1854,7 +1977,8 @@ $('#button-review').on('click', function() {
                        $('.right .price-save span span').html(outtext.yousave);
                        $('.params-product .price span').html(outtext.luk_price_fist);
                     }else{
-                        $('.right .price span span').html(outtext.luk_price_fist);
+                        $('.right .price span').html(outtext.luk_price_fist);
+                        $('.params-product .price span').html(outtext.luk_price_fist);
                     }
                     //
                 }

@@ -298,6 +298,16 @@ class ControllerProductProduct extends Controller {
                             
                         }
                         
+
+                        if(isset($product_info['val_baz_dlin']) && $product_info['val_baz_dlin']){
+                            $data['dl_sh'] = unserialize($product_info['val_baz_dlin']);
+
+                        }else{
+                            $data['dl_sh']['val_baz_dlin']=500;
+                            $data['dl_sh']['val_baz_shir']=250;
+                        }
+                        
+//                        var_dump($data['dl_sh']);
 			$data['tab_description'] = $this->language->get('tab_description');
 			$data['tab_razmeri'] = $this->language->get('tab_razmeri');
 			$data['tab_sertificati'] = $this->language->get('tab_sertificati');
@@ -1059,6 +1069,12 @@ if ($product_info['dop_img']) {
             }else{*/
                    $r_pr = $pritem*$data['product_curs']*$this->request->post['quantity'];
                    $r_pr = $pritem*$data['product_curs'];
+                   
+//                   var_dump($this->request->post['ral_color']);
+//                   die();
+                   if($this->request->post['ral_color'] !== "RAL 9016"){
+                       $r_pr = $r_pr + $r_pr/100*20;
+                   }
                    if($product_info['special']){
                        $data['old'] = $this->currency->format($this->tax->calculate($r_pr, $product_info['tax_class_id'], $this->config->get('config_tax')), $this->session->data['currency']);
                        $data['yousave'] = $r_pr;
