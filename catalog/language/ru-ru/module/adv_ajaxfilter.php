@@ -6,7 +6,7 @@ $_['text_price_range']   = 'Цена';
 $_['text_range']   = 'Диапазон: ';
 $_['text_manufacturers'] = 'Бренд';
 $_['text_tags'] 		 = 'Тег';
-$_['text_categories']    = 'Категория';
+$_['text_categories']    = 'Продукция';
 
 $_['text_all'] 			 = 'Все';
 $_['clear_filter']       = 'Сбросить фильтр';
