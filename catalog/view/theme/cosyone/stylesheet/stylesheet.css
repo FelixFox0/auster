@@ -1604,9 +1604,7 @@ table.radio tr.highlight td {
 }
 
 /* Category/menu module */
-.box-category {
-	margin-top:-7px;
-}
+
 .box-category .sign {
 	position:absolute;
 	right:0px;
