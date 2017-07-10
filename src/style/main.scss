@@ -100,6 +100,8 @@ body {
 h2,h1 {
 	margin-top: 0;
 	margin-bottom: 20px;
+	text-transform: uppercase;
+	font-size: 26px;
 }
 
 .title {
@@ -2020,6 +2022,31 @@ textarea.form-control {
 	box-shadow: 0 0 7px rgba(0,0,0,.2);
 	position: relative;
 
+	.button-cart {
+		position: absolute;
+		right: 0;
+		top: 0;
+		padding: 4px 25px;
+		height: 100%;
+		display: flex;
+		color: #fff;
+		font-family: "Rob-bold";
+		font-size: 20px;
+		background-color: $brand2;
+		border: none;
+		text-transform: uppercase;
+		letter-spacing: 1px;
+		transition: all .2s ease-in;
+		text-align: center;
+		width: 135px;
+		justify-content: center;
+		&:hover {
+			width: 165px;
+		}
+
+
+	}
+
 	.price {
 		position: absolute;
 		bottom: 8px;
@@ -2086,8 +2113,8 @@ textarea.form-control {
 
 			& + .form-group {
 				display: flex;
-				align-items: center;
-				flex-wrap: wrap;
+				align-items: flex-start;
+				flex-wrap: nowrap;
 				width: 100%;
 
 				.control-label {
@@ -2096,6 +2123,7 @@ textarea.form-control {
 					background-color: $brand;
 					color: #fff;
 					position: relative;
+					flex-shrink: 0;
 
 					&:after {
 						content: "";
@@ -2358,14 +2386,53 @@ textarea.form-control {
 		.image-additional {
 			width: 25%;
 			padding: 0px 15px;
+			position: relative;
 			img {
 				width: 100%;
 				height: auto;
+			}
+
+			.owl-nav {
+				position: absolute;
+				left: 0;
+				top: 50%;
+				width: 100%;
+				display: flex;
+				justify-content: space-between;
+				margin-top: -5px;
+				pointer-events: none;
+				.owl-prev, .owl-next {
+					pointer-events: auto;
+					&:hover {
+						color: $brand2;
+					}
+				}
 			}
 		}
 	}
 }
 
+.image-additional.prod {
+
+	.owl-nav {
+		position: absolute;
+		left: -15px;
+		top: 50%;
+		width: calc(100% + 30px);
+		display: flex;
+		justify-content: space-between;
+		transform: translateY(-50%);
+		pointer-events: none;
+		.owl-prev, .owl-next {
+			pointer-events: auto;
+			font-weight: bold;
+			font-size: 26px;
+			&:hover {
+				color: $brand2;
+			}
+		}
+	}
+}
 
 .luk-container {
 	padding: 25px 30px;
@@ -2513,6 +2580,15 @@ textarea.form-control {
 		a {
 			text-transform: uppercase;
 		}
+	}
+}
+
+.check_type {
+	display: flex;
+	align-items: center;
+	flex-wrap: wrap;
+	.text-danger {
+		width: 100%
 	}
 }
 

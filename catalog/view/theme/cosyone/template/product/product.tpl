@@ -816,6 +816,10 @@
         <i class="ic-bage--white"></i><span itemprop="price"><?php echo $special; ?></span>
         <?php //} ?>
         <?php } ?>
+
+        <button class="button-cart" id="button-cart2">
+            купить
+        </button>
           
       </div> 
      </span> <!-- rich snippet ends -->
@@ -1542,7 +1546,7 @@ $('select[name=\'recurring_id\'], input[name="quantity"]').change(function(){
 });
 //--></script> 
 <script type="text/javascript"><!--
-$('#button-cart').on('click', function() {
+$('#button-cart, #button-cart2').on('click', function() {
 	$.ajax({
 		url: 'index.php?route=checkout/cart/add',
 		type: 'post',
@@ -1570,9 +1574,9 @@ $('#button-cart').on('click', function() {
 						
                                                 
 						if (element.parent().hasClass('input-group')) {
-							element.parent().after('<div class="text-danger">' + json['error']['option'][i] + '</div>');
+							element.append('<div class="text-danger">' + json['error']['option'][i] + '</div>');
 						} else {
-							element.after('<div class="text-danger">' + json['error']['option'][i] + '</div>');
+							element.append('<div class="text-danger">' + json['error']['option'][i] + '</div>');
 						}
 					}
 				}
@@ -2012,11 +2016,18 @@ $('.image_carousel').owlCarousel({
   items: 3,
   autoPlay: 3000,
   loop: true,
-  nav: false,
+  nav: true,
+  navText: ["<i class='fa fa-angle-left'>","<i class='fa fa-angle-right'>"],
   autoplay: true,
   margin: 15
 });
 --></script>
+
+<script>
+    $(document).ready(function($) {
+        $(".check_type .radio label").click();
+    });
+</script>
 
 <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js"></script>
 </div>
