@@ -384,7 +384,7 @@ class Cart {
                                 
 				//$price = $product_query->row['price'];
 				$price = $aft_pr;
-
+                                
 				// Product Discounts
 				$discount_quantity = 0;
 
@@ -412,6 +412,15 @@ class Cart {
                                     $price = $price * $product_special_query->row['price'] / $product_query->row['price'];    
 				}
 //                                var_dump($price);
+                                
+//                                var_dump($opts->ral_color);
+                                
+                                if(isset($opts->ral_color)){
+                                    if($opts->ral_color != "RAL 9016"){
+                                        $price = $price + $price/100*20;
+                                    }
+                                }
+                                
 				// Reward Points
 				$product_reward_query = $this->db->query("SELECT points FROM " . DB_PREFIX . "product_reward WHERE product_id = '" . (int)$cart['product_id'] . "' AND customer_group_id = '" . (int)$this->config->get('config_customer_group_id') . "'");
 

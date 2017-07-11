@@ -277,7 +277,10 @@ class ControllerProductProduct extends Controller {
 			$data['button_upload'] = $this->language->get('button_upload');
 			$data['button_continue'] = $this->language->get('button_continue');
                         $data['look'] = $this->language->get('look');
-
+                        $data['text_msg'] = $this->language->get('text_msg');
+                        $data['text_stvor_resh'] = $this->language->get('text_stvor_resh');
+                        $data['text_vibor'] = $this->language->get('text_vibor');
+                        
 			$this->load->model('catalog/review');
                         
                         $data['tabs']=  json_decode($product_info['tabs'],1);
@@ -364,9 +367,12 @@ if ($product_info['dop_img']) {
                         $data['product_type'] = $product_info['product_type'];
                         $data['product_color_ral'] = $this->url->link('information/information','information_id=12');
                         $data['product_curs'] = $product_info['product_curs'];
+//                        var_dump($product_info['luk_price']);
                         if($product_info['product_type'] == 2){
                             if($product_info['luk_price']){
                               $data['luk_price'] = unserialize($product_info['luk_price']);  
+//                              var_dump($data['luk_price']);
+//                              die();
                             }else{
                                 $data['luk_price'] = NULL;
                             }
@@ -514,7 +520,7 @@ if ($product_info['dop_img']) {
 						} else {
 							$price = false;
 						}
-
+//                                                var_dump($option_value);
 						$product_option_value_data[] = array(
 							'product_option_value_id' => $option_value['product_option_value_id'],
 							'option_value_id'         => $option_value['option_value_id'],
@@ -522,7 +528,8 @@ if ($product_info['dop_img']) {
 							'image'                   => $this->model_tool_image->resize($option_value['image'], 50, 50),
 							'price'                   => $price,
 							'price_prefix'            => $option_value['price_prefix'],
-                                                        'name_el'                    => $option_value['name_el']
+                                                        'name_el'                 => $option_value['name_el'],
+                                                        'quantity'                => $option_value['quantity'],
 						);
 					}
 				}
@@ -890,7 +897,7 @@ if ($product_info['dop_img']) {
 
 		$product_info = $this->model_catalog_product->getProduct($product_id);
 		$recurring_info = $this->model_catalog_product->getProfile($product_id, $recurring_id);
-
+                
 		$json = array();
 
 		if ($product_info && $recurring_info) {
@@ -1072,8 +1079,10 @@ if ($product_info['dop_img']) {
                    
 //                   var_dump($this->request->post['ral_color']);
 //                   die();
-                   if($this->request->post['ral_color'] !== "RAL 9016"){
-                       $r_pr = $r_pr + $r_pr/100*20;
+                   if(isset($this->request->post['ral_color'])){
+                    if($this->request->post['ral_color'] !== "RAL 9016"){
+                        $r_pr = $r_pr + $r_pr/100*20;
+                    }
                    }
                    if($product_info['special']){
                        $data['old'] = $this->currency->format($this->tax->calculate($r_pr, $product_info['tax_class_id'], $this->config->get('config_tax')), $this->session->data['currency']);

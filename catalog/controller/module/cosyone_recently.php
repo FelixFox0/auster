@@ -12,7 +12,7 @@ class ControllerModuleCosyoneRecently extends Controller {
 		$data['button_wishlist'] = $this->language->get('button_wishlist');
 		$data['button_compare'] = $this->language->get('button_compare');
                 $data['text_show'] = $this->language->get('text_show');
-		
+		$data['text_msg'] = $this->language->get('text_msg');
 		$data['cosyone_percentage_sale_badge'] = $this->config->get('cosyone_percentage_sale_badge');
 		
 		$cosyone_quicklook = $this->config->get('cosyone_text_ql');

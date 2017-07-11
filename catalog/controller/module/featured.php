@@ -4,6 +4,7 @@ class ControllerModuleFeatured extends Controller {
 		$this->load->language('module/featured');
 
 		$data['heading_title'] = $this->language->get('heading_title');
+                $data['text_msg'] = $this->language->get('text_msg');
 
 		$data['text_tax'] = $this->language->get('text_tax');
                 $data['text_show'] = $this->language->get('text_show');
