@@ -2592,4 +2592,41 @@ textarea.form-control {
 	}
 }
 
+.dropdown.selaa {
+	display: flex;
+	align-items: center;
+
+	.dropdown-menu {
+		width: 100%;
+		padding: 0;
+		
+		li {
+			padding: 5px 23px;
+		}
+		li:hover {
+			background-color: $brand2;
+		}
+	}
+
+	.plus1,
+	.minus1 {
+		height: 23px;
+		width: 23px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		border: 1px solid #ebebeb;
+		border-left: 0;
+		color: $brand;
+		&:hover {
+			background-color: $brand2;
+			color: #fff;
+		}
+	}
+
+	.plus1 {
+		border-bottom: 0;
+	}
+}
+
 @import "partials/media.scss";
