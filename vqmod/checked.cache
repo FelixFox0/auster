@@ -152,3 +152,6 @@ catalog\controller\information\information.php
 catalog\language\en-gb\information\information.php
 catalog\language\ru-ru\information\information.php
 catalog\view\theme\default\template\information\information.tpl
+catalog\language\en-gb\product\category.php
+catalog\language\ru-ru\product\category.php
+system\library\pagination.php
