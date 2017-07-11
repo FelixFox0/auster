@@ -380,11 +380,12 @@
           <div class="luk-container__inner">         
           
         <?php foreach ($options as $option) { ?>
-                
+                <?php //var_dump($option); ?>
         <?php if ($option['type'] == 'select') { ?>
             <div class="form-group<?php echo ($option['required'] ? ' required' : ''); ?>">
               <label class="control-label" for="input-option<?php echo $option['product_option_id']; ?>"><?php echo $option['name']; ?></label>
               <!--<select name="option[<?php echo $option['product_option_id']; ?>]" id="input-option<?php echo $option['product_option_id']; ?>" class="form-control">-->
+              <?php if(false){ ?>
               <select name="option[<?php echo $option['product_option_id']; ?>]" id="<?php echo $option['element_id']; ?>" class="form-control">
   
                 <option value=""><?php echo $text_select; ?></option>
@@ -394,11 +395,43 @@
                 <?php if ($option_value['price']) { ?>
                 (<?php echo $option_value['price_prefix']; ?><?php echo $option_value['price']; ?>)
                 <?php } ?>
+                <?php if ($option_value['quantity']) { ?>
+                <?php echo $text_stvor_resh; ?>
+                <?php }else{ ?>
+                
+                <?php } ?>
                 </option>
                 <?php } ?>
               </select>
+              <?php } ?>
+              <div class="dropdown selaa">
+                  <input name="option[<?php echo $option['product_option_id']; ?>]" id="<?php echo $option['element_id']; ?>" class="form-control"  type="text" data-toggle="dropdown" placeholder="<?php echo $text_select; ?>">
+                <div class="luk-button">
+                  <a class="plus1" href="#">+</a>
+                  <a class="minus1" href="#">-</a>
+                  </div>
+                  <ul class="dropdown-menu">
+                
+                  
+                        <?php foreach ($option['product_option_value'] as $option_value) { ?>
+                      <!--<option value="<?php echo $option_value['product_option_value_id']; ?>"><?php echo $option_value['name']; ?>-->
+                      <li><option value="<?php echo $option_value['name_el']; ?>"><?php echo $option_value['name']; ?>
+                      <?php if ($option_value['price']) { ?>
+                      (<?php echo $option_value['price_prefix']; ?><?php echo $option_value['price']; ?>)
+                      <?php } ?>
+                      <?php if ($option_value['quantity']) { ?>
+                      <?php echo $text_stvor_resh; ?>
+                      <?php }else{ ?>
+
+                      <?php } ?>
+                      </option></li>
+                      <?php } ?>
+                </ul>
+              </div>
             </div>
             <?php } ?>
+            
+            
         
         <?php if ($option['type'] == 'radio') { ?>
             <div class="form-group<?php echo ($option['required'] ? ' required' : ''); ?>">
@@ -725,6 +758,7 @@
         <div class="cart">
          
       <?php if ($price) { ?> 
+      <?php if ($price !== "0 грн.") { ?>
       <div class="price">
         
         <?php if (!$special) { ?>
@@ -737,6 +771,9 @@
           
       </div> 
      </span> <!-- rich snippet ends -->
+     <?php }else{ ?>
+            <p><?php echo $text_msg; ?></p>
+        <?php } ?>
       <?php } ?>
         
           
@@ -1131,6 +1168,7 @@
   <div class="tab-content">
       
       <div class="tab-pane" id="tab-razmeri">
+                    <?php //var_dump($luk_price); ?>
                         <?php if($product_type == 2 && $luk_price){ ?>
                         <table class='table_class_lik'>
                             <tbody>
@@ -1389,6 +1427,7 @@
             <h4><a href="<?php echo $product['href']; ?>"><?php echo $product['name']; ?></a></h4>
 
             <?php if ($product['price']) { ?>
+            <?php if ($product['price'] !== "0 грн.") { ?>
             <p class="price">
               <i class="ic-bage"></i>
               <?php if (!$product['special']) { ?>
@@ -1397,11 +1436,16 @@
               <span class="price-new"><?php echo $product['special']; ?></span> <span class="price-old"><?php echo $product['price']; ?></span>
               <?php } ?>
             </p>
+            <?php }else{ ?>
+                <p><?php echo $text_msg; ?></p>
+            <?php } ?>
             <?php } ?>
           </div>
           <div class="button-group">
             <a href="<?php echo $product['href']; ?>">Подробнее</a>
-            <button type="button" onclick="cart.add('<?php echo $product['product_id']; ?>');"><i class="ic-cart2"></i></button>
+            <?php if ($product['price'] !== "0 грн.") { ?>
+                <button type="button" onclick="cart.add('<?php echo $product['product_id']; ?>');"><i class="ic-cart2"></i></button>
+            <?php } ?>
           </div>
         </div>
       </div>
@@ -1974,7 +2018,7 @@ $('#button-review').on('click', function() {
                     //console.log(result);
                    var outtext = $.parseJSON(result);
                    //console.log(outtext.luk_price_fist[0]);
-                    
+                    if(outtext.luk_price_fist != "0 грн."){
                     if(outtext.old != undefined){
                         //console.log(outtext.old);
                         //console.log(outtext.yousave);
@@ -1990,6 +2034,14 @@ $('#button-review').on('click', function() {
                         $('.right .price span').html(outtext.luk_price_fist);
                         $('.params-product .price span').html(outtext.luk_price_fist);
                     }
+                }else{
+                    $('.right .price span').html("Выбор не возможен");
+                    $('.params-product .price span').html("<?php echo $text_vibor; ?>");
+                    $('.right .price-new span span').html("<?php echo $text_vibor; ?>");
+                    $('.right .price-old span span').html("");
+                    $('.right .price-save span span').html("");
+                    $('.params-product .price span').html("<?php echo $text_vibor; ?>");
+                }
                     //
                 }
             });
@@ -2028,6 +2080,30 @@ $('.image_carousel').owlCarousel({
         $(".check_type .radio label").click();
     });
 </script>
+<script>
+    $('.selaa option').on('click', function(e) {
+        //e.preventdefault;
+        //console.log($(this).val());
+        $(this).parent().parent().prev().prev().val($(this).val());
+        research_t(); 
+    });
+</script>
+
+<script>
+    $('.luk-button a').on('click', function(e) {
+        e.preventDefault();
+        //console.log($(this).val());
+        if($(this).hasClass("plus1")){
+            $(this).parent().prev().val(Number($(this).parent().prev().val()) + 50);
+        } else {
+            if(Number($(this).parent().prev().val())>49){
+                $(this).parent().prev().val(Number($(this).parent().prev().val()) - 50);
+            }
+        }
+        research_t(); 
+    });
+</script>
+
 
 <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js"></script>
 </div>
