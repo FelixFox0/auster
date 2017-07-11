@@ -18,9 +18,6 @@
             <a href="/index.php?route=product/category&path=59_63"><?php echo $text_3; ?></a>
           </li>
           <li class="footer__list-item">
-            <a href="/index.php?route=product/category&path=59_64"><?php echo $text_4; ?></a>
-          </li>
-          <li class="footer__list-item">
             <a href="/index.php?route=product/category&path=59_65"><?php echo $text_5; ?></a>
           </li>
         </ul>
