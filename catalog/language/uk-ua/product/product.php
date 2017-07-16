@@ -91,8 +91,8 @@ $_['text_b'] = 'Чорний';
 $_['text_w'] = 'Білий';
 $_['text_ral_color'] = 'Колір лінійного дифузору з';
 $_['text_placeholder'] = 'Приклад: 3012';
-$_['text_dlina'] = 'Сторона А:';
-$_['text_shirina'] = 'Сторона В:';
+$_['text_dlina'] = 'Сторона B:';
+$_['text_shirina'] = 'Сторона A:';
 $_['text_now_pr'] = 'Ціна';
 $_['text_loading-text'] = 'Додавання до кошика';
 

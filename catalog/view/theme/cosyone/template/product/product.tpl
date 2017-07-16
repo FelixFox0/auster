@@ -325,6 +325,11 @@
 
       <div class="image-additional prod" style="width:<?php echo $thumb_width; ?>px; height:<?php echo $additional_height; ?>px">      
       <ul class="image_carousel owl-carousel">
+
+        <!-- Show even the main image among the additional if  -->
+         <?php if ($cosyone_product_zoom) { ?>
+       <li><a href="<?php echo $popup; ?>" title="<?php echo $heading_title; ?>" class="cloud-zoom-gallery colorbox" rel="useZoom: 'zoom1', smallImage: '<?php echo $thumb; ?>'"><img src="<?php echo $small; ?>" title="<?php echo $heading_title; ?>" alt="<?php echo $heading_title; ?>" width="<?php echo $additional_width; ?>" height="<?php echo $additional_height; ?>"/></a></li>
+        <?php } ?>
        <!-- Additional images -->
         <?php foreach ($images as $image) { ?>
         <li class="item">
@@ -336,10 +341,6 @@
         <img src="<?php echo $image['small']; ?>" title="<?php echo $heading_title; ?>" width="<?php echo $additional_width; ?>" height="<?php echo $additional_height; ?>" alt="<?php echo $heading_title; ?>" /></a></li>
         <?php } ?>
         
-        <!-- Show even the main image among the additional if  -->
-         <?php if ($cosyone_product_zoom) { ?>
-       <li><a href="<?php echo $popup; ?>" title="<?php echo $heading_title; ?>" class="cloud-zoom-gallery colorbox" rel="useZoom: 'zoom1', smallImage: '<?php echo $thumb; ?>'"><img src="<?php echo $small; ?>" title="<?php echo $heading_title; ?>" alt="<?php echo $heading_title; ?>" width="<?php echo $additional_width; ?>" height="<?php echo $additional_height; ?>"/></a></li>
-        <?php } ?>
         </ul>
         
       </div>
