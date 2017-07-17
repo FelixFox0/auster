@@ -87,8 +87,8 @@ $_['text_b'] = 'Черный';
 $_['text_w'] = 'Белый';
 $_['text_ral_color'] = 'Цвет диффузора по';
 $_['text_placeholder'] = 'Пример: 3012';
-$_['text_dlina'] = 'Сторона А:';
-$_['text_shirina'] = 'Сторона В:';
+$_['text_dlina'] = 'Сторона B:';
+$_['text_shirina'] = 'Сторона A:';
 $_['text_now_pr'] = 'Цена';
 $_['text_loading-text'] = 'Добавление в корзину';
 
