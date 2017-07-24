@@ -1185,19 +1185,28 @@
                                 </tr>
                                 <tr>
                                     <th></th>
-                                    <?php for($a=250;$a<=1000;$a+=50){
+                                    <?php /*for($a=200;$a<=1600;$a+=50){
                                         echo "<th>$a</th>";
+                                    }*/ ?>
+                                    <?php foreach($luk_price as $key=>$luk_pr){
+                                        foreach($luk_pr as $key1=>$val){
+                                            echo "<th>$key1</th>";
+                                        }
+                                        break;
                                     } ?>
                                 </tr>
-                                <?php  for($b=200;$b<=1000;$b+=50){
+                                <?php  
+                                //for($b=200;$b<=1600;$b+=50){
+                                foreach($luk_price as $key=>$luk_pr){
                                 echo '<tr>';
-                                echo '<td>'.$b.'</td>';
-                                    for($c=250;$c<=1000;$c+=50){
+                                echo '<td>'.$key.'</td>';
+                                    //for($c=200;$c<=1600;$c+=50){
+                                    foreach($luk_pr as $key2=>$luk){
                                         echo '<td';
-                                        if(isset($green_field[$c][$b])){
+                                        /*if(isset($green_field[$c][$b])){
                                             echo' class="green_td" ';
-                                        }
-                                        echo '>'.$product_curs*$luk_price[$c][$b].'грн.</td>';
+                                        }*/
+                                        echo '>'.$product_curs*$luk.'грн.</td>';
                                     }
                                 echo '</tr>';
                             }  ?>

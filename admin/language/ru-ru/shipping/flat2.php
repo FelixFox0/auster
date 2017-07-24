@@ -1,6 +1,6 @@
 <?php
 // Heading
-$_['heading_title']    = 'Фиксированная стоимость доставки';
+$_['heading_title']    = 'InTime';
 
 // Text
 $_['text_shipping']    = 'Доставка';

@@ -468,53 +468,7 @@
                 </div>
               </div>
 
-               <div class="form-group big_prices <?php if($type_product != 2)echo 'hide'; ?>">
-                   <div class='col-sm-1 pre_p_fp_asd'>
-                       <?php
-                       //for($i=200;$i<=2000;$i+=50){
-                       for($i=200;$i<=1000;$i+=50){
-                                        echo '<p class="p_fp_asd">'.$i.'</p>';
-                                    } ?>
-                   </div>
-                   <div class='col-sm-11 ov_x_sc'>
-                        <table width='100%'>
-                       <tbody>
-                        <tr>
-                            <th></th>
-                            <?php  
-                            //var_dump($luk_price);
-                            // for($a=250;$a<=2000;$a+=50){
-                            for($a=250;$a<=1000;$a+=50){
-                                echo '<th>'.$a.'</th>';
-                            } ?>
-                        <tr>
-                            <?php 
-                            //for($b=200;$b<=2000;$b+=50){
-                            for($b=200;$b<=1000;$b+=50){
-                                echo '<tr>';
-                                echo '<td></td>';
-                                    //for($c=250;$c<=2000;$c+=50){
-                                    for($c=250;$c<=1000;$c+=50){
-                                        echo '<td><span class="width_span_stein"><input type="text" name="luk_price['.$c.']['.$b.']" value="';
-                                        if(isset($luk_price[$c][$b])){
-                                            echo $luk_price[$c][$b];
-                                        }else{
-                                            echo 0; 
-                                        }
-                                        echo '"><input type="checkbox" name="green_field['.$c.']['.$b.']" '; 
-                                        if(isset($green_field[$c][$b])){
-                                            echo 'checked';
-                                        }
-                                        echo '></span></td>';
-                                    } 
-                                echo '</tr>';
-                            } ?>
-                       </tbody>
-                       
-                   </table>
-                   </div>
-                  
-               </div>
+               
                 
                 <div class='col-sm-11 resh14 <?php if($type_product != 3 && $type_product != 4)echo 'hide'; ?>'>
                     <div class="form-group">
@@ -1240,9 +1194,82 @@
 	    
           </div>
         </form>
+          
+          <div class="form-group big_prices <?php if($type_product != 2)echo 'hide'; ?>">
+              <form id="big_prices">
+                   <div class='col-sm-1 pre_p_fp_asd'>
+                       <?php
+                       //for($i=200;$i<=2000;$i+=50){
+                       for($i=200;$i<=1600;$i+=50){
+                                        echo '<p class="p_fp_asd">'.$i.'</p>';
+                                    } ?>
+                   </div>
+                   <div class='col-sm-11 ov_x_sc'>
+                        <table width='100%'>
+                       <tbody>
+                        <tr>
+                            <th></th>
+                            <?php  
+                            //var_dump($luk_price);
+                            // for($a=250;$a<=2000;$a+=50){
+                            for($a=200;$a<=1600;$a+=50){
+                                echo '<th>'.$a.'</th>';
+                            } ?>
+                        <tr>
+                            <?php 
+                            //for($b=200;$b<=2000;$b+=50){
+                            for($b=200;$b<=1600;$b+=50){
+                                echo '<tr>';
+                                echo '<td></td>';
+                                    //for($c=250;$c<=2000;$c+=50){
+                                    for($c=200;$c<=1600;$c+=50){
+                                        echo '<td><span class="width_span_stein"><input type="text" name="luk_price['.$c.']['.$b.']" value="';
+                                        if(isset($luk_price[$c][$b])){
+                                            echo $luk_price[$c][$b];
+                                        }else{
+                                            echo 0; 
+                                        }
+                                        /*echo '"><input type="checkbox" name="green_field['.$c.']['.$b.']" '; 
+                                        if(isset($green_field[$c][$b])){
+                                            echo 'checked';
+                                        }
+                                        echo '></span></td>';*/
+                                        echo '"></span></td>';
+                                    } 
+                                echo '</tr>';
+                            } ?>
+                       </tbody>
+                       
+                   </table>
+                   </div>
+                  </form>
+                  <p class="savetab">Сохранить таблицу</p>
+                  
+               </div>
+          
+          
       </div>
     </div>
   </div>
+    
+<script>
+
+    /*$('#form-product').submit(function(e) {
+        console.log('azaza');
+        
+    });*/
+/*$( "form" ).on( "submit", function( event ) {
+    event.preventDefault();
+    //console.log('azaza');
+    //console.log( $(this).serialize() );
+    //console.log("<?php echo htmlspecialchars_decode($action); ?>");
+    //$.post("<?php htmlspecialchars_decode($action); ?>", { data: $(this).serialize()} );
+    $.post("<?php htmlspecialchars_decode($action); ?>", $(this).serialize() );
+});
+*/
+
+</script>
+    
   <script type="text/javascript"><!--
 // Manufacturer
 $('input[name=\'manufacturer\']').autocomplete({
@@ -1791,5 +1818,23 @@ $('#option a:first').tab('show');
         }
     })
 
-//--></script></div>
+//--></script>
+  
+
+  <script>
+    $('.savetab').on('click', function() {  
+        console.log($('#big_prices').serialize());
+        $.ajax({
+            url: 'index.php?route=catalog/product/editLukPrice&token=<?php echo $token; ?>&product_id=<?php echo $product_id; ?>',
+            dataType: 'json',
+            type: 'post',
+            data: $('#big_prices').serialize(),
+            
+            success: function(json) {
+                alert('Таблица сохранена');
+            }
+        })
+    })
+  </script>
+</div>
 <?php echo $footer; ?>

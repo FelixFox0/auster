@@ -370,13 +370,50 @@ if ($product_info['dop_img']) {
 //                        var_dump($product_info['luk_price']);
                         if($product_info['product_type'] == 2){
                             if($product_info['luk_price']){
-                              $data['luk_price'] = unserialize($product_info['luk_price']);  
+//                              $data['luk_price'] = unserialize($product_info['luk_price']);  
 //                              var_dump($data['luk_price']);
+//                              die();
+                              $luk_price = unserialize($product_info['luk_price']); 
+                              foreach ($luk_price as $key1=>$luk_pri){
+                                  foreach ($luk_pri as $key2=>$value) {
+                                     if(!$value){
+                                         unset($luk_price[$key1][$key2]);
+                                     }
+                                  }
+                              }
+                              foreach ($luk_price as $key=>$value){
+                                if(!$value){
+                                    unset($luk_price[$key]);
+                                }
+                              }
+                              
+                              foreach ($luk_price as $key1 => $luk_pr) {
+                                  foreach ($luk_pr as $key2 => $value) {
+                                      foreach ($luk_price as $key3=> $luk){
+                                          if(!isset($luk[$key2])){
+                                              $luk_price[$key3][$key2]="0";
+                                          }
+                                      }
+                                  }
+                              }
+                              foreach ($luk_price as $key1 => $luk_pr) {
+                                ksort($luk_price[$key1]);
+                              }
+                              //$data['luk_price'] = $luk_price;
+                              foreach ($luk_price as $key1 => $luk_pr) {
+                                  foreach ($luk_pr as $key2 => $value) {
+                                      $luk_price2[$key2][$key1] = $value;
+                                  } 
+                              }
+                              $data['luk_price'] = $luk_price2;
+                              
+//                              var_dump($luk_price2);
 //                              die();
                             }else{
                                 $data['luk_price'] = NULL;
                             }
-                            $pritem = $data['luk_price'][250][200]; 
+//                            $pritem = $data['luk_price'][250][200]; 
+                            $pritem = '';
                         }elseif($product_info['product_type'] == 3 || $product_info['product_type'] == 4  ){
                             if($product_info['price_resh']){
                               $data['luk_price'] = unserialize($product_info['price_resh']);  

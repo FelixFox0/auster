@@ -72,9 +72,10 @@ class ControllerCatalogProduct extends Controller {
 		$this->document->setTitle($this->language->get('heading_title'));
 
 		$this->load->model('catalog/product');
-
+                   
 		if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validateForm()) {
-                    //var_dump($this->request->post);
+//                    var_dump( ($this->request->post));
+//                    die(); 
 			$this->model_catalog_product->editProduct($this->request->get['product_id'], $this->request->post);
 
 			$this->session->data['success'] = $this->language->get('text_success');
@@ -525,6 +526,7 @@ class ControllerCatalogProduct extends Controller {
 
 	protected function getForm() {
 		$data['heading_title'] = $this->language->get('heading_title');
+                $data['product_id'] = $this->request->get['product_id'];
 
 		$data['text_form'] = !isset($this->request->get['product_id']) ? $this->language->get('text_add') : $this->language->get('text_edit');
 		$data['text_enabled'] = $this->language->get('text_enabled');
@@ -1666,4 +1668,19 @@ class ControllerCatalogProduct extends Controller {
 		$this->response->addHeader('Content-Type: application/json');
 		$this->response->setOutput(json_encode($json));
 	}
+        
+        
+        
+        public function editlukprice() {
+//            var_dump($this->request->get);
+//            var_dump($this->request->post);
+		$this->load->model('catalog/product');
+                   
+		$this->model_catalog_product->editLukPrice($this->request->get['product_id'], $this->request->post);
+
+		$json['success'] = $this->language->get('text_success');
+                $this->response->addHeader('Content-Type: application/json');
+		$this->response->setOutput(json_encode($json));
+        }
+
 }

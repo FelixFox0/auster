@@ -198,7 +198,11 @@ class ModelCatalogProduct extends Model {
 		$this->db->query("UPDATE " . DB_PREFIX . "product SET product_curs='".$data['product_curs']."',product_type = '" . $this->db->escape($data['type_product']) . "', model = '" . $this->db->escape($data['model']) . "', sku = '" . $this->db->escape($data['sku']) . "', upc = '" . $this->db->escape($data['upc']) . "', ean = '" . $this->db->escape($data['ean']) . "', jan = '" . $this->db->escape($data['jan']) . "', isbn = '" . $this->db->escape($data['isbn']) . "', mpn = '" . $this->db->escape($data['mpn']) . "', location = '" . $this->db->escape($data['location']) . "', quantity = '" . (int)$data['quantity'] . "', minimum = '" . (int)$data['minimum'] . "', subtract = '" . (int)$data['subtract'] . "', stock_status_id = '" . (int)$data['stock_status_id'] . "', date_available = '" . $this->db->escape($data['date_available']) . "', manufacturer_id = '" . (int)$data['manufacturer_id'] . "', shipping = '" . (int)$data['shipping'] . "', price = '" . (float)$data['price'] . "', points = '" . (int)$data['points'] . "', weight = '" . (float)$data['weight'] . "', weight_class_id = '" . (int)$data['weight_class_id'] . "', length = '" . (float)$data['length'] . "', width = '" . (float)$data['width'] . "', height = '" . (float)$data['height'] . "', length_class_id = '" . (int)$data['length_class_id'] . "', status = '" . (int)$data['status'] . "', tax_class_id = '" . (int)$data['tax_class_id'] . "', sort_order = '" . (int)$data['sort_order'] . "', tabs = '" . json_encode($data['all_tab']) . "', date_modified = NOW() WHERE product_id = '" . (int)$product_id . "'");
 
                 if($data['type_product'] == 2){
-                    $luk_price = serialize($data['luk_price']);
+                    if(isset($data['luk_price'])){
+                        $luk_price = serialize($data['luk_price']);
+                    }else{
+                        $luk_price = NULL;
+                    }
                     if(isset($data['green_field'])){
                         $green_field = serialize($data['green_field']);
                     }else{
@@ -208,9 +212,11 @@ class ModelCatalogProduct extends Model {
                    $t_up = $this->db->query('SELECT * FROM '.DB_PREFIX.'product_spec_price WHERE  product_id="'. (int)$product_id.'"');
 
                    if($t_up->num_rows == 0){
-                       $this->db->query("INSERT INTO " . DB_PREFIX . "product_spec_price SET green_field='".$green_field."', luk_price='".$luk_price."', product_id='". $product_id."'");
+                       //$this->db->query("INSERT INTO " . DB_PREFIX . "product_spec_price SET green_field='".$green_field."', luk_price='".$luk_price."', product_id='". $product_id."'");
+                       $this->db->query("INSERT INTO " . DB_PREFIX . "product_spec_price SET green_field='".$green_field."', product_id='". $product_id."'");                     
                    }else{
-                        $this->db->query("UPDATE " . DB_PREFIX . "product_spec_price SET green_field='".$green_field."', luk_price='".$luk_price."' WHERE product_id='". (int)$product_id."'");
+//                        $this->db->query("UPDATE " . DB_PREFIX . "product_spec_price SET green_field='".$green_field."', luk_price='".$luk_price."' WHERE product_id='". (int)$product_id."'");
+                        $this->db->query("UPDATE " . DB_PREFIX . "product_spec_price SET green_field='".$green_field."' WHERE product_id='". (int)$product_id."'");
                    }
                 }
                 
@@ -921,10 +927,28 @@ class ModelCatalogProduct extends Model {
     }
     
     
+    public function editLukPrice($product_id, $data) {
+//        var_dump($data);
+//        die();
+
+                
+                    if(isset($data['luk_price'])){
+                        $luk_price = serialize($data['luk_price']);
+                    }else{
+                        $luk_price = NULL;
+                    }
+
+                   $t_up = $this->db->query('SELECT * FROM '.DB_PREFIX.'product_spec_price WHERE  product_id="'. (int)$product_id.'"');
+
+                   if($t_up->num_rows == 0){
+                       $this->db->query("INSERT INTO " . DB_PREFIX . "product_spec_price SET luk_price='".$luk_price."', product_id='". $product_id."'");
+                   }else{
+                        $this->db->query("UPDATE " . DB_PREFIX . "product_spec_price SET luk_price='".$luk_price."' WHERE product_id='". (int)$product_id."'");
+                   }
+                
     
     
-    
-    
+    }
     
     
 }

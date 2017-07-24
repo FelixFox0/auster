@@ -5,5 +5,5 @@
 //info@marketplus.if.ua
 
 // Text
-$_['text_title']       = 'Наземна пошта';
-$_['text_description'] = 'Тарифи наземної пошти';
+$_['text_title']       = 'InTime';
+$_['text_description'] = 'InTime';
