@@ -329,6 +329,7 @@ class ControllerProductProduct extends Controller {
 			$data['dostavka'] = html_entity_decode($product_info['dostavka'], ENT_QUOTES, 'UTF-8');
 			$data['dop_char'] = html_entity_decode($product_info['dop_char'], ENT_QUOTES, 'UTF-8');
                         $data['dop_field'] = html_entity_decode($product_info['dop_field'], ENT_QUOTES, 'UTF-8');
+                        $data['quantity'] = $product_info['quantity'];
                         
 			if ($product_info['quantity'] <= 0) {
 				$data['stock'] = $product_info['stock_status'];
@@ -740,7 +741,7 @@ if ($product_info['dop_img']) {
                         $data['text_dln_dif2'] = $this->language->get('text_dln_dif2');
                         $data['text_vis_dif'] = $this->language->get('text_vis_dif');
                         $data['text_vozn_rash_vozd'] = $this->language->get('text_vozn_rash_vozd');
-//                        var_dump($data);
+                        //var_dump($data);
 			if (file_exists(DIR_TEMPLATE . $this->config->get('config_template') . '/template/product/product.tpl')) {
 				$this->response->setOutput($this->load->view($this->config->get('config_template') . '/template/product/product.tpl', $data));
 			} else {

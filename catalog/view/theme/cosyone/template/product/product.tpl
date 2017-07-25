@@ -363,8 +363,16 @@
       
       <h1 itemprop="name"><?php echo $heading_title; ?></h1>
       <div class="stock">
+        <?php if($quantity){ ?>
         <i class="fa fa-check-circle" aria-hidden="true"></i>
         <span><?php echo $stock; ?> </span> 
+        <?php }else{ ?>
+        <span style="color: red"><?php echo $stock; ?> </span> 
+        <?php } ?>
+          
+        
+        
+        
       </div>
       
 
@@ -599,7 +607,11 @@
             <input type="hidden" name="product_id" value="<?php echo $product_id; ?>" />
             </div>
 
+            <?php if($quantity){ ?>
             <button type="submit" id="button-cart" data-loading-text="<?php echo $text_loading; ?>" class="button contrast"><i class="fa fa-shopping-cart"></i> <?php echo $button_cart; ?></button>
+            <?php }else{ ?>
+            <button disabled="disabled" type="submit" id="button-cart" data-loading-text="<?php echo $text_loading; ?>" class="button contrast"><i class="fa fa-shopping-cart"></i> <?php echo $button_cart; ?></button>
+            <?php } ?>
           </div>
         
         
@@ -697,7 +709,11 @@
             <input type="hidden" name="product_id" value="<?php echo $product_id; ?>" />
             </div>
 
+            <?php if($quantity){ ?>
             <button type="submit" id="button-cart" data-loading-text="<?php echo $text_loading; ?>" class="button contrast"><i class="fa fa-shopping-cart"></i> <?php echo $button_cart; ?></button>
+            <?php }else{ ?>
+            <button disabled="disabled" type="submit" id="button-cart" data-loading-text="<?php echo $text_loading; ?>" class="button contrast"><i class="fa fa-shopping-cart"></i> <?php echo $button_cart; ?></button>
+            <?php } ?>
           </div>
         
         
@@ -784,9 +800,12 @@
            
             <input type="hidden" name="product_id" value="<?php echo $product_id; ?>" />
             </div>
-
+            <?php if($quantity){ ?>
             <button type="submit" id="button-cart" data-loading-text="<?php echo $text_loading; ?>" class="button contrast"><i class="fa fa-shopping-cart"></i> <?php echo $button_cart; ?></button>
-          </div>
+            <?php }else{ ?>
+            <button disabled="disabled" type="submit" id="button-cart" data-loading-text="<?php echo $text_loading; ?>" class="button contrast"><i class="fa fa-shopping-cart"></i> <?php echo $button_cart; ?></button>
+            <?php } ?>
+            </div>
         <!-- <p><?php echo $stock; ?></p> -->
         
         
